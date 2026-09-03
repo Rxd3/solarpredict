@@ -1,0 +1,376 @@
+{
+  "dataset": {
+    "name": "Solar Power Dataset",
+    "source_url": "https://www.kaggle.com/datasets/s1nister/solar-power-generation-dataset",
+    "license": "CC0: Public Domain",
+    "timezone": "Not specified by dataset source; timestamps kept timezone-naive."
+  },
+  "generated_at_utc": "2026-09-03T11:00:24.207167+00:00",
+  "source_files_are_modified": false,
+  "file_count": 1,
+  "files": [
+    {
+      "filename": "solar_data.csv",
+      "path": "data/operational/solar-power-dataset/solar_data.csv",
+      "size_bytes": 138228,
+      "sha256": "0615c4d92c7869074f99c4a6552cc201ab6db8152fc77650758664ed2c4ba393",
+      "rows": 1009,
+      "columns": 14,
+      "column_names": [
+        "Timestamp",
+        "Air_Temp",
+        "Relative_Humidity",
+        "Wind_Speed",
+        "Wind_Direction",
+        "Solar_Radiation",
+        "RTD_1",
+        "RTD_2",
+        "RTD_3",
+        "RTD_4",
+        "RTD_5",
+        "Array_Voltage",
+        "Array_Current",
+        "Power_Generated"
+      ],
+      "inferred_dtypes": {
+        "Timestamp": "str",
+        "Air_Temp": "float64",
+        "Relative_Humidity": "float64",
+        "Wind_Speed": "float64",
+        "Wind_Direction": "float64",
+        "Solar_Radiation": "float64",
+        "RTD_1": "float64",
+        "RTD_2": "float64",
+        "RTD_3": "float64",
+        "RTD_4": "float64",
+        "RTD_5": "float64",
+        "Array_Voltage": "float64",
+        "Array_Current": "float64",
+        "Power_Generated": "float64"
+      },
+      "missing_values": {
+        "Timestamp": 0,
+        "Air_Temp": 0,
+        "Relative_Humidity": 0,
+        "Wind_Speed": 0,
+        "Wind_Direction": 0,
+        "Solar_Radiation": 0,
+        "RTD_1": 0,
+        "RTD_2": 0,
+        "RTD_3": 0,
+        "RTD_4": 0,
+        "RTD_5": 0,
+        "Array_Voltage": 0,
+        "Array_Current": 0,
+        "Power_Generated": 0
+      },
+      "total_missing_values": 0,
+      "duplicate_rows": 0,
+      "unique_values_per_column": {
+        "Timestamp": 1009,
+        "Air_Temp": 990,
+        "Relative_Humidity": 990,
+        "Wind_Speed": 35,
+        "Wind_Direction": 955,
+        "Solar_Radiation": 844,
+        "RTD_1": 979,
+        "RTD_2": 983,
+        "RTD_3": 988,
+        "RTD_4": 983,
+        "RTD_5": 985,
+        "Array_Voltage": 935,
+        "Array_Current": 699,
+        "Power_Generated": 1002
+      },
+      "timestamp": {
+        "column": "Timestamp",
+        "format": "%d-%m-%Y %H:%M",
+        "timezone": "Not specified by dataset source; timestamps kept timezone-naive.",
+        "parse_failures": 0,
+        "valid_timestamp_count": 1009,
+        "minimum": "2022-04-27 15:32:00",
+        "maximum": "2022-04-29 01:08:00",
+        "source_order_monotonic_increasing": true,
+        "backward_timestamp_steps": 0,
+        "duplicate_timestamps": 0,
+        "median_interval_seconds": 120.0,
+        "minimum_interval_seconds": 120.0,
+        "maximum_interval_seconds": 120.0,
+        "irregular_gap_count": 0,
+        "estimated_missing_intervals": 0,
+        "irregular_gap_examples": []
+      },
+      "expected_numeric_columns": [
+        "Air_Temp",
+        "Relative_Humidity",
+        "Wind_Speed",
+        "Wind_Direction",
+        "Solar_Radiation",
+        "RTD_1",
+        "RTD_2",
+        "RTD_3",
+        "RTD_4",
+        "RTD_5",
+        "Array_Voltage",
+        "Array_Current",
+        "Power_Generated"
+      ],
+      "invalid_non_numeric_values": {
+        "Air_Temp": {
+          "count": 0,
+          "examples": []
+        },
+        "Relative_Humidity": {
+          "count": 0,
+          "examples": []
+        },
+        "Wind_Speed": {
+          "count": 0,
+          "examples": []
+        },
+        "Wind_Direction": {
+          "count": 0,
+          "examples": []
+        },
+        "Solar_Radiation": {
+          "count": 0,
+          "examples": []
+        },
+        "RTD_1": {
+          "count": 0,
+          "examples": []
+        },
+        "RTD_2": {
+          "count": 0,
+          "examples": []
+        },
+        "RTD_3": {
+          "count": 0,
+          "examples": []
+        },
+        "RTD_4": {
+          "count": 0,
+          "examples": []
+        },
+        "RTD_5": {
+          "count": 0,
+          "examples": []
+        },
+        "Array_Voltage": {
+          "count": 0,
+          "examples": []
+        },
+        "Array_Current": {
+          "count": 0,
+          "examples": []
+        },
+        "Power_Generated": {
+          "count": 0,
+          "examples": []
+        }
+      },
+      "total_invalid_non_numeric_values": 0,
+      "physical_range_flags": {
+        "Air_Temp": {
+          "rule": "below absolute zero (-273.15 degrees Celsius)",
+          "evaluated": true,
+          "count": 0,
+          "minimum_flagged_value": null,
+          "maximum_flagged_value": null,
+          "row_indices_sample": [],
+          "action": "flagged only; source rows retained"
+        },
+        "Relative_Humidity": {
+          "rule": "outside 0 to 100 %RH",
+          "evaluated": true,
+          "count": 0,
+          "minimum_flagged_value": null,
+          "maximum_flagged_value": null,
+          "row_indices_sample": [],
+          "action": "flagged only; source rows retained"
+        },
+        "Wind_Speed": {
+          "rule": "below 0 m/s",
+          "evaluated": true,
+          "count": 0,
+          "minimum_flagged_value": null,
+          "maximum_flagged_value": null,
+          "row_indices_sample": [],
+          "action": "flagged only; source rows retained"
+        },
+        "Wind_Direction": {
+          "rule": "outside 0 to 360 degrees",
+          "evaluated": true,
+          "count": 10,
+          "minimum_flagged_value": 363.53532,
+          "maximum_flagged_value": 385.63088,
+          "row_indices_sample": [
+            7,
+            15,
+            75,
+            571,
+            572,
+            574,
+            577,
+            621,
+            670,
+            686
+          ],
+          "action": "flagged only; source rows retained"
+        },
+        "Solar_Radiation": {
+          "rule": "below 0 W/m^2",
+          "evaluated": true,
+          "count": 314,
+          "minimum_flagged_value": -0.838326,
+          "maximum_flagged_value": -0.00531,
+          "row_indices_sample": [
+            111,
+            114,
+            117,
+            120,
+            121,
+            123,
+            124,
+            127,
+            128,
+            131
+          ],
+          "action": "flagged only; source rows retained"
+        },
+        "Power_Generated": {
+          "rule": "below 0 W",
+          "evaluated": true,
+          "count": 0,
+          "minimum_flagged_value": null,
+          "maximum_flagged_value": null,
+          "row_indices_sample": [],
+          "action": "flagged only; source rows retained"
+        }
+      },
+      "numeric_statistics": {
+        "Air_Temp": {
+          "count": 1009.0,
+          "mean": 25.353897454905848,
+          "standard_deviation": 11.434404431144172,
+          "minimum": 12.075478,
+          "median": 19.883582,
+          "maximum": 49.631508
+        },
+        "Relative_Humidity": {
+          "count": 1009.0,
+          "mean": 31.806119117938554,
+          "standard_deviation": 12.325127892096715,
+          "minimum": 10.648168,
+          "median": 34.883796,
+          "maximum": 51.489112
+        },
+        "Wind_Speed": {
+          "count": 1009.0,
+          "mean": 0.17971590386521305,
+          "standard_deviation": 0.43455059272225544,
+          "minimum": 0.0,
+          "median": 0.0,
+          "maximum": 2.933334
+        },
+        "Wind_Direction": {
+          "count": 1009.0,
+          "mean": 210.65387740436074,
+          "standard_deviation": 62.051724443440634,
+          "minimum": 1.577505,
+          "median": 212.51144,
+          "maximum": 385.63088
+        },
+        "Solar_Radiation": {
+          "count": 1009.0,
+          "mean": 224.05104187512387,
+          "standard_deviation": 357.57896177919315,
+          "minimum": -0.838326,
+          "median": 1.765152,
+          "maximum": 1132.1284
+        },
+        "RTD_1": {
+          "count": 1009.0,
+          "mean": 47.160848913776015,
+          "standard_deviation": 33.97846828436805,
+          "minimum": 19.737124,
+          "median": 27.453532,
+          "maximum": 116.76676
+        },
+        "RTD_2": {
+          "count": 1009.0,
+          "mean": 46.948064523290384,
+          "standard_deviation": 31.62610687145907,
+          "minimum": 21.188662,
+          "median": 28.78908,
+          "maximum": 111.63094
+        },
+        "RTD_3": {
+          "count": 1009.0,
+          "mean": 45.75595462239841,
+          "standard_deviation": 30.656893994842026,
+          "minimum": 20.738694,
+          "median": 28.103806,
+          "maximum": 109.62222
+        },
+        "RTD_4": {
+          "count": 1009.0,
+          "mean": 46.669776182358774,
+          "standard_deviation": 31.942839521471658,
+          "minimum": 20.615538,
+          "median": 27.97172,
+          "maximum": 111.6808
+        },
+        "RTD_5": {
+          "count": 1009.0,
+          "mean": 46.97586224975224,
+          "standard_deviation": 32.06582975912517,
+          "minimum": 20.744964,
+          "median": 28.191964,
+          "maximum": 111.62812
+        },
+        "Array_Voltage": {
+          "count": 1009.0,
+          "mean": 34.10545644598612,
+          "standard_deviation": 31.007751365375366,
+          "minimum": 1.574978,
+          "median": 51.296516,
+          "maximum": 81.778936
+        },
+        "Array_Current": {
+          "count": 1009.0,
+          "mean": 5.38397000099108,
+          "standard_deviation": 0.01873966888945234,
+          "minimum": 5.351294,
+          "median": 5.391468,
+          "maximum": 5.407162
+        },
+        "Power_Generated": {
+          "count": 1009.0,
+          "mean": 183.1516090901883,
+          "standard_deviation": 166.29901929254774,
+          "minimum": 8.485232,
+          "median": 276.00158,
+          "maximum": 438.55684
+        }
+      }
+    }
+  ],
+  "totals": {
+    "rows": 1009,
+    "missing_values": 0,
+    "duplicate_rows": 0,
+    "invalid_non_numeric_values": 0
+  },
+  "figures": [
+    "outputs/figures/operational/solar_data_power_vs_time.png",
+    "outputs/figures/operational/solar_data_solar_radiation_vs_time.png",
+    "outputs/figures/operational/solar_data_ambient_temperature_vs_time.png",
+    "outputs/figures/operational/solar_data_power_vs_solar_radiation.png",
+    "outputs/figures/operational/solar_data_voltage_current_vs_time.png",
+    "outputs/figures/operational/solar_data_correlation_matrix.png",
+    "outputs/figures/operational/solar_data_daily_power_pattern.png",
+    "outputs/figures/operational/solar_data_important_feature_distributions.png"
+  ],
+  "quality_policy": "Flags are retained for review; this stage does not delete, impute, correct, or classify anomalies."
+}

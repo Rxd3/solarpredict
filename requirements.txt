@@ -1,0 +1,19 @@
+# Core data analysis and visualization
+pandas>=2.2
+numpy>=1.26
+matplotlib>=3.8
+scikit-learn>=1.4
+plotly>=5.20
+joblib>=1.3
+kagglehub>=1.0
+jupyterlab>=4.2
+
+# Computer vision and future object-detection work
+opencv-python>=4.9
+ultralytics>=8.2
+
+# Future dashboard development
+streamlit>=1.32
+
+# Testing
+pytest>=8.0

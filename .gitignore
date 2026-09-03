@@ -1,0 +1,55 @@
+# Python bytecode and caches
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Packaging artifacts
+build/
+dist/
+*.egg-info/
+
+# Notebook checkpoints
+.ipynb_checkpoints/
+
+# IDE and operating-system files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Local configuration and secrets
+.env
+.env.*
+!.env.example
+.kaggle/
+kaggle.json
+
+# Dataset contents (retain directory placeholders and documentation)
+data/operational/**
+!data/operational/.gitkeep
+data/images/*
+!data/images/.gitkeep
+data/processed/*
+!data/processed/.gitkeep
+
+# Generated models and outputs
+models/*
+!models/.gitkeep
+outputs/figures/*
+!outputs/figures/.gitkeep
+outputs/predictions/*
+!outputs/predictions/.gitkeep
+
+# Common experiment output directories
+runs/
+wandb/
