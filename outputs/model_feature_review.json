@@ -1,0 +1,3033 @@
+{
+  "feature_stage": "Day 11 feature review and model-input planning",
+  "generated_at_utc": "2026-09-03T23:03:53.804582+00:00",
+  "input_file": "data/processed/operational_features_change.csv",
+  "input_sha256": "ca79f6c6bc35e89b194fc6e7c8b051e5784d226246942f6c10b4329f8cb23c1e",
+  "dataset_shape": {
+    "rows": 1009,
+    "columns": 81
+  },
+  "timezone": "Not specified by dataset source; timestamps kept timezone-naive.",
+  "feature_counts": {
+    "total": 81,
+    "by_category": {
+      "identifiers/time": 9,
+      "original environmental measurements": 5,
+      "original electrical measurements": 3,
+      "RTD channels": 5,
+      "basic engineered features": 5,
+      "rolling features": 30,
+      "change/rate features": 20,
+      "diagnostic features": 3,
+      "context flags": 1
+    },
+    "by_recommendation": {
+      "CONTEXT_ONLY": 2,
+      "EXCLUDE_FROM_MODEL": 43,
+      "KEEP": 9,
+      "OPTIONAL": 26,
+      "UNRESOLVED": 1
+    }
+  },
+  "feature_inventory": [
+    {
+      "feature_name": "Timestamp",
+      "category": "identifiers/time",
+      "dtype": "datetime64[us]",
+      "missing_count": 0,
+      "missing_percentage": 0.0,
+      "missingness_mechanism": "none",
+      "unexpected_missing_count": 0,
+      "documented_missing_values_present": true,
+      "unique_nonmissing_values": 1009,
+      "variability_status": "variable",
+      "variability_reason": "Does not meet the documented constant or near-constant rules.",
+      "intended_interpretation": "Timezone-naive observation time and chronological index.",
+      "recommendation": "CONTEXT_ONLY"
+    },
+    {
+      "feature_name": "Air_Temp",
+      "category": "original environmental measurements",
+      "dtype": "float64",
+      "missing_count": 0,
+      "missing_percentage": 0.0,
+      "missingness_mechanism": "none",
+      "unexpected_missing_count": 0,
+      "documented_missing_values_present": true,
+      "unique_nonmissing_values": 990,
+      "variability_status": "variable",
+      "variability_reason": "Does not meet the documented constant or near-constant rules.",
+      "intended_interpretation": "Original ambient air-temperature measurement.",
+      "recommendation": "KEEP"
+    },
+    {
+      "feature_name": "Relative_Humidity",
+      "category": "original environmental measurements",
+      "dtype": "float64",
+      "missing_count": 0,
+      "missing_percentage": 0.0,
+      "missingness_mechanism": "none",
+      "unexpected_missing_count": 0,
+      "documented_missing_values_present": true,
+      "unique_nonmissing_values": 990,
+      "variability_status": "variable",
+      "variability_reason": "Does not meet the documented constant or near-constant rules.",
+      "intended_interpretation": "Original ambient relative-humidity measurement.",
+      "recommendation": "KEEP"
+    },
+    {
+      "feature_name": "Wind_Speed",
+      "category": "original environmental measurements",
+      "dtype": "float64",
+      "missing_count": 0,
+      "missing_percentage": 0.0,
+      "missingness_mechanism": "none",
+      "unexpected_missing_count": 0,
+      "documented_missing_values_present": true,
+      "unique_nonmissing_values": 35,
+      "variability_status": "variable",
+      "variability_reason": "Does not meet the documented constant or near-constant rules.",
+      "intended_interpretation": "Original wind-speed measurement used as environmental context.",
+      "recommendation": "KEEP"
+    },
+    {
+      "feature_name": "Wind_Direction",
+      "category": "original environmental measurements",
+      "dtype": "float64",
+      "missing_count": 0,
+      "missing_percentage": 0.0,
+      "missingness_mechanism": "none",
+      "unexpected_missing_count": 0,
+      "documented_missing_values_present": true,
+      "unique_nonmissing_values": 955,
+      "variability_status": "variable",
+      "variability_reason": "Does not meet the documented constant or near-constant rules.",
+      "intended_interpretation": "Original circular wind-direction measurement; values above 360 remain unresolved.",
+      "recommendation": "UNRESOLVED"
+    },
+    {
+      "feature_name": "Solar_Radiation",
+      "category": "original environmental measurements",
+      "dtype": "float64",
+      "missing_count": 0,
+      "missing_percentage": 0.0,
+      "missingness_mechanism": "none",
+      "unexpected_missing_count": 0,
+      "documented_missing_values_present": true,
+      "unique_nonmissing_values": 844,
+      "variability_status": "variable",
+      "variability_reason": "Does not meet the documented constant or near-constant rules.",
+      "intended_interpretation": "Original solar-radiation measurement and primary available-light context.",
+      "recommendation": "KEEP"
+    },
+    {
+      "feature_name": "RTD_1",
+      "category": "RTD channels",
+      "dtype": "float64",
+      "missing_count": 0,
+      "missing_percentage": 0.0,
+      "missingness_mechanism": "none",
+      "unexpected_missing_count": 0,
+      "documented_missing_values_present": true,
+      "unique_nonmissing_values": 979,
+      "variability_status": "variable",
+      "variability_reason": "Does not meet the documented constant or near-constant rules.",
+      "intended_interpretation": "Original RTD channel 1; placement, physical meaning, and unit are unconfirmed.",
+      "recommendation": "EXCLUDE_FROM_MODEL"
+    },
+    {
+      "feature_name": "RTD_2",
+      "category": "RTD channels",
+      "dtype": "float64",
+      "missing_count": 0,
+      "missing_percentage": 0.0,
+      "missingness_mechanism": "none",
+      "unexpected_missing_count": 0,
+      "documented_missing_values_present": true,
+      "unique_nonmissing_values": 983,
+      "variability_status": "variable",
+      "variability_reason": "Does not meet the documented constant or near-constant rules.",
+      "intended_interpretation": "Original RTD channel 2; placement, physical meaning, and unit are unconfirmed.",
+      "recommendation": "EXCLUDE_FROM_MODEL"
+    },
+    {
+      "feature_name": "RTD_3",
+      "category": "RTD channels",
+      "dtype": "float64",
+      "missing_count": 0,
+      "missing_percentage": 0.0,
+      "missingness_mechanism": "none",
+      "unexpected_missing_count": 0,
+      "documented_missing_values_present": true,
+      "unique_nonmissing_values": 988,
+      "variability_status": "variable",
+      "variability_reason": "Does not meet the documented constant or near-constant rules.",
+      "intended_interpretation": "Original RTD channel 3; placement, physical meaning, and unit are unconfirmed.",
+      "recommendation": "EXCLUDE_FROM_MODEL"
+    },
+    {
+      "feature_name": "RTD_4",
+      "category": "RTD channels",
+      "dtype": "float64",
+      "missing_count": 0,
+      "missing_percentage": 0.0,
+      "missingness_mechanism": "none",
+      "unexpected_missing_count": 0,
+      "documented_missing_values_present": true,
+      "unique_nonmissing_values": 983,
+      "variability_status": "variable",
+      "variability_reason": "Does not meet the documented constant or near-constant rules.",
+      "intended_interpretation": "Original RTD channel 4; placement, physical meaning, and unit are unconfirmed.",
+      "recommendation": "EXCLUDE_FROM_MODEL"
+    },
+    {
+      "feature_name": "RTD_5",
+      "category": "RTD channels",
+      "dtype": "float64",
+      "missing_count": 0,
+      "missing_percentage": 0.0,
+      "missingness_mechanism": "none",
+      "unexpected_missing_count": 0,
+      "documented_missing_values_present": true,
+      "unique_nonmissing_values": 985,
+      "variability_status": "variable",
+      "variability_reason": "Does not meet the documented constant or near-constant rules.",
+      "intended_interpretation": "Original RTD channel 5; placement, physical meaning, and unit are unconfirmed.",
+      "recommendation": "EXCLUDE_FROM_MODEL"
+    },
+    {
+      "feature_name": "Array_Voltage",
+      "category": "original electrical measurements",
+      "dtype": "float64",
+      "missing_count": 0,
+      "missing_percentage": 0.0,
+      "missingness_mechanism": "none",
+      "unexpected_missing_count": 0,
+      "documented_missing_values_present": true,
+      "unique_nonmissing_values": 935,
+      "variability_status": "variable",
+      "variability_reason": "Does not meet the documented constant or near-constant rules.",
+      "intended_interpretation": "Original array-voltage measurement; nearly duplicates generated-power behavior here.",
+      "recommendation": "EXCLUDE_FROM_MODEL"
+    },
+    {
+      "feature_name": "Array_Current",
+      "category": "original electrical measurements",
+      "dtype": "float64",
+      "missing_count": 0,
+      "missing_percentage": 0.0,
+      "missingness_mechanism": "none",
+      "unexpected_missing_count": 0,
+      "documented_missing_values_present": true,
+      "unique_nonmissing_values": 699,
+      "variability_status": "near_constant",
+      "variability_reason": "Population standard deviation / |mean| is 0.003479.",
+      "intended_interpretation": "Original array-current measurement with a narrow observed range.",
+      "recommendation": "OPTIONAL"
+    },
+    {
+      "feature_name": "Power_Generated",
+      "category": "original electrical measurements",
+      "dtype": "float64",
+      "missing_count": 0,
+      "missing_percentage": 0.0,
+      "missingness_mechanism": "none",
+      "unexpected_missing_count": 0,
+      "documented_missing_values_present": true,
+      "unique_nonmissing_values": 1002,
+      "variability_status": "variable",
+      "variability_reason": "Does not meet the documented constant or near-constant rules.",
+      "intended_interpretation": "Original generated-power measurement and main operational output.",
+      "recommendation": "KEEP"
+    },
+    {
+      "feature_name": "hour",
+      "category": "identifiers/time",
+      "dtype": "int64",
+      "missing_count": 0,
+      "missing_percentage": 0.0,
+      "missingness_mechanism": "none",
+      "unexpected_missing_count": 0,
+      "documented_missing_values_present": true,
+      "unique_nonmissing_values": 24,
+      "variability_status": "variable",
+      "variability_reason": "Does not meet the documented constant or near-constant rules.",
+      "intended_interpretation": "Clock hour extracted from the timezone-naive timestamp.",
+      "recommendation": "EXCLUDE_FROM_MODEL"
+    },
+    {
+      "feature_name": "minute",
+      "category": "identifiers/time",
+      "dtype": "int64",
+      "missing_count": 0,
+      "missing_percentage": 0.0,
+      "missingness_mechanism": "none",
+      "unexpected_missing_count": 0,
+      "documented_missing_values_present": true,
+      "unique_nonmissing_values": 30,
+      "variability_status": "variable",
+      "variability_reason": "Does not meet the documented constant or near-constant rules.",
+      "intended_interpretation": "Clock minute extracted from the timestamp.",
+      "recommendation": "EXCLUDE_FROM_MODEL"
+    },
+    {
+      "feature_name": "minute_of_day",
+      "category": "identifiers/time",
+      "dtype": "int64",
+      "missing_count": 0,
+      "missing_percentage": 0.0,
+      "missingness_mechanism": "none",
+      "unexpected_missing_count": 0,
+      "documented_missing_values_present": true,
+      "unique_nonmissing_values": 720,
+      "variability_status": "variable",
+      "variability_reason": "Does not meet the documented constant or near-constant rules.",
+      "intended_interpretation": "Linear minute index within a day.",
+      "recommendation": "EXCLUDE_FROM_MODEL"
+    },
+    {
+      "feature_name": "elapsed_minutes_from_start",
+      "category": "identifiers/time",
+      "dtype": "float64",
+      "missing_count": 0,
+      "missing_percentage": 0.0,
+      "missingness_mechanism": "none",
+      "unexpected_missing_count": 0,
+      "documented_missing_values_present": true,
+      "unique_nonmissing_values": 1009,
+      "variability_status": "variable",
+      "variability_reason": "Does not meet the documented constant or near-constant rules.",
+      "intended_interpretation": "Dataset-position trend measured from the first observation.",
+      "recommendation": "EXCLUDE_FROM_MODEL"
+    },
+    {
+      "feature_name": "hour_sin",
+      "category": "identifiers/time",
+      "dtype": "float64",
+      "missing_count": 0,
+      "missing_percentage": 0.0,
+      "missingness_mechanism": "none",
+      "unexpected_missing_count": 0,
+      "documented_missing_values_present": true,
+      "unique_nonmissing_values": 20,
+      "variability_status": "variable",
+      "variability_reason": "Does not meet the documented constant or near-constant rules.",
+      "intended_interpretation": "Cyclical sine encoding of clock hour.",
+      "recommendation": "EXCLUDE_FROM_MODEL"
+    },
+    {
+      "feature_name": "hour_cos",
+      "category": "identifiers/time",
+      "dtype": "float64",
+      "missing_count": 0,
+      "missing_percentage": 0.0,
+      "missingness_mechanism": "none",
+      "unexpected_missing_count": 0,
+      "documented_missing_values_present": true,
+      "unique_nonmissing_values": 22,
+      "variability_status": "variable",
+      "variability_reason": "Does not meet the documented constant or near-constant rules.",
+      "intended_interpretation": "Cyclical cosine encoding of clock hour.",
+      "recommendation": "EXCLUDE_FROM_MODEL"
+    },
+    {
+      "feature_name": "minute_of_day_sin",
+      "category": "identifiers/time",
+      "dtype": "float64",
+      "missing_count": 0,
+      "missing_percentage": 0.0,
+      "missingness_mechanism": "none",
+      "unexpected_missing_count": 0,
+      "documented_missing_values_present": true,
+      "unique_nonmissing_values": 610,
+      "variability_status": "variable",
+      "variability_reason": "Does not meet the documented constant or near-constant rules.",
+      "intended_interpretation": "Fine-grained cyclical sine encoding of time of day.",
+      "recommendation": "KEEP"
+    },
+    {
+      "feature_name": "minute_of_day_cos",
+      "category": "identifiers/time",
+      "dtype": "float64",
+      "missing_count": 0,
+      "missing_percentage": 0.0,
+      "missingness_mechanism": "none",
+      "unexpected_missing_count": 0,
+      "documented_missing_values_present": true,
+      "unique_nonmissing_values": 616,
+      "variability_status": "variable",
+      "variability_reason": "Does not meet the documented constant or near-constant rules.",
+      "intended_interpretation": "Fine-grained cyclical cosine encoding of time of day.",
+      "recommendation": "KEEP"
+    },
+    {
+      "feature_name": "rtd_mean",
+      "category": "basic engineered features",
+      "dtype": "float64",
+      "missing_count": 0,
+      "missing_percentage": 0.0,
+      "missingness_mechanism": "none",
+      "unexpected_missing_count": 0,
+      "documented_missing_values_present": true,
+      "unique_nonmissing_values": 1009,
+      "variability_status": "variable",
+      "variability_reason": "Does not meet the documented constant or near-constant rules.",
+      "intended_interpretation": "Row-wise mean of the five unverified RTD channels.",
+      "recommendation": "KEEP"
+    },
+    {
+      "feature_name": "rtd_std",
+      "category": "basic engineered features",
+      "dtype": "float64",
+      "missing_count": 0,
+      "missing_percentage": 0.0,
+      "missingness_mechanism": "none",
+      "unexpected_missing_count": 0,
+      "documented_missing_values_present": true,
+      "unique_nonmissing_values": 1009,
+      "variability_status": "variable",
+      "variability_reason": "Does not meet the documented constant or near-constant rules.",
+      "intended_interpretation": "Row-wise population standard deviation across the five RTD channels.",
+      "recommendation": "KEEP"
+    },
+    {
+      "feature_name": "rtd_min",
+      "category": "basic engineered features",
+      "dtype": "float64",
+      "missing_count": 0,
+      "missing_percentage": 0.0,
+      "missingness_mechanism": "none",
+      "unexpected_missing_count": 0,
+      "documented_missing_values_present": true,
+      "unique_nonmissing_values": 985,
+      "variability_status": "variable",
+      "variability_reason": "Does not meet the documented constant or near-constant rules.",
+      "intended_interpretation": "Row-wise minimum of the five RTD channels.",
+      "recommendation": "EXCLUDE_FROM_MODEL"
+    },
+    {
+      "feature_name": "rtd_max",
+      "category": "basic engineered features",
+      "dtype": "float64",
+      "missing_count": 0,
+      "missing_percentage": 0.0,
+      "missingness_mechanism": "none",
+      "unexpected_missing_count": 0,
+      "documented_missing_values_present": true,
+      "unique_nonmissing_values": 984,
+      "variability_status": "variable",
+      "variability_reason": "Does not meet the documented constant or near-constant rules.",
+      "intended_interpretation": "Row-wise maximum of the five RTD channels.",
+      "recommendation": "EXCLUDE_FROM_MODEL"
+    },
+    {
+      "feature_name": "rtd_range",
+      "category": "basic engineered features",
+      "dtype": "float64",
+      "missing_count": 0,
+      "missing_percentage": 0.0,
+      "missingness_mechanism": "none",
+      "unexpected_missing_count": 0,
+      "documented_missing_values_present": true,
+      "unique_nonmissing_values": 1007,
+      "variability_status": "variable",
+      "variability_reason": "Does not meet the documented constant or near-constant rules.",
+      "intended_interpretation": "Row-wise RTD maximum minus minimum, describing channel disagreement.",
+      "recommendation": "OPTIONAL"
+    },
+    {
+      "feature_name": "electrical_power_product",
+      "category": "diagnostic features",
+      "dtype": "float64",
+      "missing_count": 0,
+      "missing_percentage": 0.0,
+      "missingness_mechanism": "none",
+      "unexpected_missing_count": 0,
+      "documented_missing_values_present": true,
+      "unique_nonmissing_values": 1002,
+      "variability_status": "variable",
+      "variability_reason": "Does not meet the documented constant or near-constant rules.",
+      "intended_interpretation": "Array_Voltage multiplied by Array_Current; almost exactly recreates Power_Generated.",
+      "recommendation": "EXCLUDE_FROM_MODEL"
+    },
+    {
+      "feature_name": "power_consistency_residual",
+      "category": "diagnostic features",
+      "dtype": "float64",
+      "missing_count": 0,
+      "missing_percentage": 0.0,
+      "missingness_mechanism": "none",
+      "unexpected_missing_count": 0,
+      "documented_missing_values_present": true,
+      "unique_nonmissing_values": 1002,
+      "variability_status": "variable",
+      "variability_reason": "Does not meet the documented constant or near-constant rules.",
+      "intended_interpretation": "Power_Generated minus the voltage-current product.",
+      "recommendation": "EXCLUDE_FROM_MODEL"
+    },
+    {
+      "feature_name": "power_consistency_abs_error",
+      "category": "diagnostic features",
+      "dtype": "float64",
+      "missing_count": 0,
+      "missing_percentage": 0.0,
+      "missingness_mechanism": "none",
+      "unexpected_missing_count": 0,
+      "documented_missing_values_present": true,
+      "unique_nonmissing_values": 1002,
+      "variability_status": "variable",
+      "variability_reason": "Does not meet the documented constant or near-constant rules.",
+      "intended_interpretation": "Absolute value of the power-consistency residual.",
+      "recommendation": "EXCLUDE_FROM_MODEL"
+    },
+    {
+      "feature_name": "low_light_context",
+      "category": "context flags",
+      "dtype": "int64",
+      "missing_count": 0,
+      "missing_percentage": 0.0,
+      "missingness_mechanism": "none",
+      "unexpected_missing_count": 0,
+      "documented_missing_values_present": true,
+      "unique_nonmissing_values": 2,
+      "variability_status": "variable",
+      "variability_reason": "Does not meet the documented constant or near-constant rules.",
+      "intended_interpretation": "Exploratory context flag for Solar_Radiation at or below 5 W/m^2.",
+      "recommendation": "CONTEXT_ONLY"
+    },
+    {
+      "feature_name": "power_generated_roll_mean_10m",
+      "category": "rolling features",
+      "dtype": "float64",
+      "missing_count": 4,
+      "missing_percentage": 0.39643211100099107,
+      "missingness_mechanism": "rolling_window_warm_up",
+      "unexpected_missing_count": 0,
+      "documented_missing_values_present": true,
+      "unique_nonmissing_values": 1005,
+      "variability_status": "variable",
+      "variability_reason": "Does not meet the documented constant or near-constant rules.",
+      "intended_interpretation": "Complete trailing 10-minute mean of generated power; current and earlier observations only.",
+      "recommendation": "OPTIONAL"
+    },
+    {
+      "feature_name": "power_generated_roll_std_10m",
+      "category": "rolling features",
+      "dtype": "float64",
+      "missing_count": 4,
+      "missing_percentage": 0.39643211100099107,
+      "missingness_mechanism": "rolling_window_warm_up",
+      "unexpected_missing_count": 0,
+      "documented_missing_values_present": true,
+      "unique_nonmissing_values": 1005,
+      "variability_status": "variable",
+      "variability_reason": "Does not meet the documented constant or near-constant rules.",
+      "intended_interpretation": "Complete trailing 10-minute std of generated power; current and earlier observations only.",
+      "recommendation": "OPTIONAL"
+    },
+    {
+      "feature_name": "power_generated_roll_min_10m",
+      "category": "rolling features",
+      "dtype": "float64",
+      "missing_count": 4,
+      "missing_percentage": 0.39643211100099107,
+      "missingness_mechanism": "rolling_window_warm_up",
+      "unexpected_missing_count": 0,
+      "documented_missing_values_present": true,
+      "unique_nonmissing_values": 559,
+      "variability_status": "variable",
+      "variability_reason": "Does not meet the documented constant or near-constant rules.",
+      "intended_interpretation": "Complete trailing 10-minute min of generated power; current and earlier observations only.",
+      "recommendation": "EXCLUDE_FROM_MODEL"
+    },
+    {
+      "feature_name": "power_generated_roll_max_10m",
+      "category": "rolling features",
+      "dtype": "float64",
+      "missing_count": 4,
+      "missing_percentage": 0.39643211100099107,
+      "missingness_mechanism": "rolling_window_warm_up",
+      "unexpected_missing_count": 0,
+      "documented_missing_values_present": true,
+      "unique_nonmissing_values": 538,
+      "variability_status": "variable",
+      "variability_reason": "Does not meet the documented constant or near-constant rules.",
+      "intended_interpretation": "Complete trailing 10-minute max of generated power; current and earlier observations only.",
+      "recommendation": "EXCLUDE_FROM_MODEL"
+    },
+    {
+      "feature_name": "power_generated_roll_mean_30m",
+      "category": "rolling features",
+      "dtype": "float64",
+      "missing_count": 14,
+      "missing_percentage": 1.3875123885034688,
+      "missingness_mechanism": "rolling_window_warm_up",
+      "unexpected_missing_count": 0,
+      "documented_missing_values_present": true,
+      "unique_nonmissing_values": 995,
+      "variability_status": "variable",
+      "variability_reason": "Does not meet the documented constant or near-constant rules.",
+      "intended_interpretation": "Complete trailing 30-minute mean of generated power; current and earlier observations only.",
+      "recommendation": "OPTIONAL"
+    },
+    {
+      "feature_name": "power_generated_roll_std_30m",
+      "category": "rolling features",
+      "dtype": "float64",
+      "missing_count": 14,
+      "missing_percentage": 1.3875123885034688,
+      "missingness_mechanism": "rolling_window_warm_up",
+      "unexpected_missing_count": 0,
+      "documented_missing_values_present": true,
+      "unique_nonmissing_values": 995,
+      "variability_status": "variable",
+      "variability_reason": "Does not meet the documented constant or near-constant rules.",
+      "intended_interpretation": "Complete trailing 30-minute std of generated power; current and earlier observations only.",
+      "recommendation": "OPTIONAL"
+    },
+    {
+      "feature_name": "power_generated_roll_min_30m",
+      "category": "rolling features",
+      "dtype": "float64",
+      "missing_count": 14,
+      "missing_percentage": 1.3875123885034688,
+      "missingness_mechanism": "rolling_window_warm_up",
+      "unexpected_missing_count": 0,
+      "documented_missing_values_present": true,
+      "unique_nonmissing_values": 446,
+      "variability_status": "variable",
+      "variability_reason": "Does not meet the documented constant or near-constant rules.",
+      "intended_interpretation": "Complete trailing 30-minute min of generated power; current and earlier observations only.",
+      "recommendation": "EXCLUDE_FROM_MODEL"
+    },
+    {
+      "feature_name": "power_generated_roll_max_30m",
+      "category": "rolling features",
+      "dtype": "float64",
+      "missing_count": 14,
+      "missing_percentage": 1.3875123885034688,
+      "missingness_mechanism": "rolling_window_warm_up",
+      "unexpected_missing_count": 0,
+      "documented_missing_values_present": true,
+      "unique_nonmissing_values": 437,
+      "variability_status": "variable",
+      "variability_reason": "Does not meet the documented constant or near-constant rules.",
+      "intended_interpretation": "Complete trailing 30-minute max of generated power; current and earlier observations only.",
+      "recommendation": "EXCLUDE_FROM_MODEL"
+    },
+    {
+      "feature_name": "power_generated_roll_mean_60m",
+      "category": "rolling features",
+      "dtype": "float64",
+      "missing_count": 29,
+      "missing_percentage": 2.8741328047571852,
+      "missingness_mechanism": "rolling_window_warm_up",
+      "unexpected_missing_count": 0,
+      "documented_missing_values_present": true,
+      "unique_nonmissing_values": 980,
+      "variability_status": "variable",
+      "variability_reason": "Does not meet the documented constant or near-constant rules.",
+      "intended_interpretation": "Complete trailing 60-minute mean of generated power; current and earlier observations only.",
+      "recommendation": "EXCLUDE_FROM_MODEL"
+    },
+    {
+      "feature_name": "power_generated_roll_std_60m",
+      "category": "rolling features",
+      "dtype": "float64",
+      "missing_count": 29,
+      "missing_percentage": 2.8741328047571852,
+      "missingness_mechanism": "rolling_window_warm_up",
+      "unexpected_missing_count": 0,
+      "documented_missing_values_present": true,
+      "unique_nonmissing_values": 980,
+      "variability_status": "variable",
+      "variability_reason": "Does not meet the documented constant or near-constant rules.",
+      "intended_interpretation": "Complete trailing 60-minute std of generated power; current and earlier observations only.",
+      "recommendation": "EXCLUDE_FROM_MODEL"
+    },
+    {
+      "feature_name": "power_generated_roll_min_60m",
+      "category": "rolling features",
+      "dtype": "float64",
+      "missing_count": 29,
+      "missing_percentage": 2.8741328047571852,
+      "missingness_mechanism": "rolling_window_warm_up",
+      "unexpected_missing_count": 0,
+      "documented_missing_values_present": true,
+      "unique_nonmissing_values": 377,
+      "variability_status": "variable",
+      "variability_reason": "Does not meet the documented constant or near-constant rules.",
+      "intended_interpretation": "Complete trailing 60-minute min of generated power; current and earlier observations only.",
+      "recommendation": "EXCLUDE_FROM_MODEL"
+    },
+    {
+      "feature_name": "power_generated_roll_max_60m",
+      "category": "rolling features",
+      "dtype": "float64",
+      "missing_count": 29,
+      "missing_percentage": 2.8741328047571852,
+      "missingness_mechanism": "rolling_window_warm_up",
+      "unexpected_missing_count": 0,
+      "documented_missing_values_present": true,
+      "unique_nonmissing_values": 379,
+      "variability_status": "variable",
+      "variability_reason": "Does not meet the documented constant or near-constant rules.",
+      "intended_interpretation": "Complete trailing 60-minute max of generated power; current and earlier observations only.",
+      "recommendation": "EXCLUDE_FROM_MODEL"
+    },
+    {
+      "feature_name": "solar_radiation_roll_mean_10m",
+      "category": "rolling features",
+      "dtype": "float64",
+      "missing_count": 4,
+      "missing_percentage": 0.39643211100099107,
+      "missingness_mechanism": "rolling_window_warm_up",
+      "unexpected_missing_count": 0,
+      "documented_missing_values_present": true,
+      "unique_nonmissing_values": 996,
+      "variability_status": "variable",
+      "variability_reason": "Does not meet the documented constant or near-constant rules.",
+      "intended_interpretation": "Complete trailing 10-minute mean of solar radiation; current and earlier observations only.",
+      "recommendation": "OPTIONAL"
+    },
+    {
+      "feature_name": "solar_radiation_roll_std_10m",
+      "category": "rolling features",
+      "dtype": "float64",
+      "missing_count": 4,
+      "missing_percentage": 0.39643211100099107,
+      "missingness_mechanism": "rolling_window_warm_up",
+      "unexpected_missing_count": 0,
+      "documented_missing_values_present": true,
+      "unique_nonmissing_values": 999,
+      "variability_status": "variable",
+      "variability_reason": "Does not meet the documented constant or near-constant rules.",
+      "intended_interpretation": "Complete trailing 10-minute std of solar radiation; current and earlier observations only.",
+      "recommendation": "OPTIONAL"
+    },
+    {
+      "feature_name": "solar_radiation_roll_min_10m",
+      "category": "rolling features",
+      "dtype": "float64",
+      "missing_count": 4,
+      "missing_percentage": 0.39643211100099107,
+      "missingness_mechanism": "rolling_window_warm_up",
+      "unexpected_missing_count": 0,
+      "documented_missing_values_present": true,
+      "unique_nonmissing_values": 553,
+      "variability_status": "variable",
+      "variability_reason": "Does not meet the documented constant or near-constant rules.",
+      "intended_interpretation": "Complete trailing 10-minute min of solar radiation; current and earlier observations only.",
+      "recommendation": "EXCLUDE_FROM_MODEL"
+    },
+    {
+      "feature_name": "solar_radiation_roll_max_10m",
+      "category": "rolling features",
+      "dtype": "float64",
+      "missing_count": 4,
+      "missing_percentage": 0.39643211100099107,
+      "missingness_mechanism": "rolling_window_warm_up",
+      "unexpected_missing_count": 0,
+      "documented_missing_values_present": true,
+      "unique_nonmissing_values": 539,
+      "variability_status": "variable",
+      "variability_reason": "Does not meet the documented constant or near-constant rules.",
+      "intended_interpretation": "Complete trailing 10-minute max of solar radiation; current and earlier observations only.",
+      "recommendation": "EXCLUDE_FROM_MODEL"
+    },
+    {
+      "feature_name": "solar_radiation_roll_mean_30m",
+      "category": "rolling features",
+      "dtype": "float64",
+      "missing_count": 14,
+      "missing_percentage": 1.3875123885034688,
+      "missingness_mechanism": "rolling_window_warm_up",
+      "unexpected_missing_count": 0,
+      "documented_missing_values_present": true,
+      "unique_nonmissing_values": 992,
+      "variability_status": "variable",
+      "variability_reason": "Does not meet the documented constant or near-constant rules.",
+      "intended_interpretation": "Complete trailing 30-minute mean of solar radiation; current and earlier observations only.",
+      "recommendation": "OPTIONAL"
+    },
+    {
+      "feature_name": "solar_radiation_roll_std_30m",
+      "category": "rolling features",
+      "dtype": "float64",
+      "missing_count": 14,
+      "missing_percentage": 1.3875123885034688,
+      "missingness_mechanism": "rolling_window_warm_up",
+      "unexpected_missing_count": 0,
+      "documented_missing_values_present": true,
+      "unique_nonmissing_values": 993,
+      "variability_status": "variable",
+      "variability_reason": "Does not meet the documented constant or near-constant rules.",
+      "intended_interpretation": "Complete trailing 30-minute std of solar radiation; current and earlier observations only.",
+      "recommendation": "OPTIONAL"
+    },
+    {
+      "feature_name": "solar_radiation_roll_min_30m",
+      "category": "rolling features",
+      "dtype": "float64",
+      "missing_count": 14,
+      "missing_percentage": 1.3875123885034688,
+      "missingness_mechanism": "rolling_window_warm_up",
+      "unexpected_missing_count": 0,
+      "documented_missing_values_present": true,
+      "unique_nonmissing_values": 410,
+      "variability_status": "variable",
+      "variability_reason": "Does not meet the documented constant or near-constant rules.",
+      "intended_interpretation": "Complete trailing 30-minute min of solar radiation; current and earlier observations only.",
+      "recommendation": "EXCLUDE_FROM_MODEL"
+    },
+    {
+      "feature_name": "solar_radiation_roll_max_30m",
+      "category": "rolling features",
+      "dtype": "float64",
+      "missing_count": 14,
+      "missing_percentage": 1.3875123885034688,
+      "missingness_mechanism": "rolling_window_warm_up",
+      "unexpected_missing_count": 0,
+      "documented_missing_values_present": true,
+      "unique_nonmissing_values": 402,
+      "variability_status": "variable",
+      "variability_reason": "Does not meet the documented constant or near-constant rules.",
+      "intended_interpretation": "Complete trailing 30-minute max of solar radiation; current and earlier observations only.",
+      "recommendation": "EXCLUDE_FROM_MODEL"
+    },
+    {
+      "feature_name": "solar_radiation_roll_mean_60m",
+      "category": "rolling features",
+      "dtype": "float64",
+      "missing_count": 29,
+      "missing_percentage": 2.8741328047571852,
+      "missingness_mechanism": "rolling_window_warm_up",
+      "unexpected_missing_count": 0,
+      "documented_missing_values_present": true,
+      "unique_nonmissing_values": 979,
+      "variability_status": "variable",
+      "variability_reason": "Does not meet the documented constant or near-constant rules.",
+      "intended_interpretation": "Complete trailing 60-minute mean of solar radiation; current and earlier observations only.",
+      "recommendation": "EXCLUDE_FROM_MODEL"
+    },
+    {
+      "feature_name": "solar_radiation_roll_std_60m",
+      "category": "rolling features",
+      "dtype": "float64",
+      "missing_count": 29,
+      "missing_percentage": 2.8741328047571852,
+      "missingness_mechanism": "rolling_window_warm_up",
+      "unexpected_missing_count": 0,
+      "documented_missing_values_present": true,
+      "unique_nonmissing_values": 980,
+      "variability_status": "variable",
+      "variability_reason": "Does not meet the documented constant or near-constant rules.",
+      "intended_interpretation": "Complete trailing 60-minute std of solar radiation; current and earlier observations only.",
+      "recommendation": "EXCLUDE_FROM_MODEL"
+    },
+    {
+      "feature_name": "solar_radiation_roll_min_60m",
+      "category": "rolling features",
+      "dtype": "float64",
+      "missing_count": 29,
+      "missing_percentage": 2.8741328047571852,
+      "missingness_mechanism": "rolling_window_warm_up",
+      "unexpected_missing_count": 0,
+      "documented_missing_values_present": true,
+      "unique_nonmissing_values": 354,
+      "variability_status": "variable",
+      "variability_reason": "Does not meet the documented constant or near-constant rules.",
+      "intended_interpretation": "Complete trailing 60-minute min of solar radiation; current and earlier observations only.",
+      "recommendation": "EXCLUDE_FROM_MODEL"
+    },
+    {
+      "feature_name": "solar_radiation_roll_max_60m",
+      "category": "rolling features",
+      "dtype": "float64",
+      "missing_count": 29,
+      "missing_percentage": 2.8741328047571852,
+      "missingness_mechanism": "rolling_window_warm_up",
+      "unexpected_missing_count": 0,
+      "documented_missing_values_present": true,
+      "unique_nonmissing_values": 374,
+      "variability_status": "variable",
+      "variability_reason": "Does not meet the documented constant or near-constant rules.",
+      "intended_interpretation": "Complete trailing 60-minute max of solar radiation; current and earlier observations only.",
+      "recommendation": "EXCLUDE_FROM_MODEL"
+    },
+    {
+      "feature_name": "air_temp_roll_mean_30m",
+      "category": "rolling features",
+      "dtype": "float64",
+      "missing_count": 14,
+      "missing_percentage": 1.3875123885034688,
+      "missingness_mechanism": "rolling_window_warm_up",
+      "unexpected_missing_count": 0,
+      "documented_missing_values_present": true,
+      "unique_nonmissing_values": 995,
+      "variability_status": "variable",
+      "variability_reason": "Does not meet the documented constant or near-constant rules.",
+      "intended_interpretation": "Complete trailing 30-minute mean of air temperature; current and earlier observations only.",
+      "recommendation": "OPTIONAL"
+    },
+    {
+      "feature_name": "air_temp_roll_mean_60m",
+      "category": "rolling features",
+      "dtype": "float64",
+      "missing_count": 29,
+      "missing_percentage": 2.8741328047571852,
+      "missingness_mechanism": "rolling_window_warm_up",
+      "unexpected_missing_count": 0,
+      "documented_missing_values_present": true,
+      "unique_nonmissing_values": 980,
+      "variability_status": "variable",
+      "variability_reason": "Does not meet the documented constant or near-constant rules.",
+      "intended_interpretation": "Complete trailing 60-minute mean of air temperature; current and earlier observations only.",
+      "recommendation": "EXCLUDE_FROM_MODEL"
+    },
+    {
+      "feature_name": "relative_humidity_roll_mean_30m",
+      "category": "rolling features",
+      "dtype": "float64",
+      "missing_count": 14,
+      "missing_percentage": 1.3875123885034688,
+      "missingness_mechanism": "rolling_window_warm_up",
+      "unexpected_missing_count": 0,
+      "documented_missing_values_present": true,
+      "unique_nonmissing_values": 995,
+      "variability_status": "variable",
+      "variability_reason": "Does not meet the documented constant or near-constant rules.",
+      "intended_interpretation": "Complete trailing 30-minute mean of relative humidity; current and earlier observations only.",
+      "recommendation": "OPTIONAL"
+    },
+    {
+      "feature_name": "relative_humidity_roll_mean_60m",
+      "category": "rolling features",
+      "dtype": "float64",
+      "missing_count": 29,
+      "missing_percentage": 2.8741328047571852,
+      "missingness_mechanism": "rolling_window_warm_up",
+      "unexpected_missing_count": 0,
+      "documented_missing_values_present": true,
+      "unique_nonmissing_values": 980,
+      "variability_status": "variable",
+      "variability_reason": "Does not meet the documented constant or near-constant rules.",
+      "intended_interpretation": "Complete trailing 60-minute mean of relative humidity; current and earlier observations only.",
+      "recommendation": "EXCLUDE_FROM_MODEL"
+    },
+    {
+      "feature_name": "rtd_mean_roll_mean_30m",
+      "category": "rolling features",
+      "dtype": "float64",
+      "missing_count": 14,
+      "missing_percentage": 1.3875123885034688,
+      "missingness_mechanism": "rolling_window_warm_up",
+      "unexpected_missing_count": 0,
+      "documented_missing_values_present": true,
+      "unique_nonmissing_values": 995,
+      "variability_status": "variable",
+      "variability_reason": "Does not meet the documented constant or near-constant rules.",
+      "intended_interpretation": "Complete trailing 30-minute mean of mean RTD level; current and earlier observations only.",
+      "recommendation": "OPTIONAL"
+    },
+    {
+      "feature_name": "rtd_mean_roll_std_30m",
+      "category": "rolling features",
+      "dtype": "float64",
+      "missing_count": 14,
+      "missing_percentage": 1.3875123885034688,
+      "missingness_mechanism": "rolling_window_warm_up",
+      "unexpected_missing_count": 0,
+      "documented_missing_values_present": true,
+      "unique_nonmissing_values": 995,
+      "variability_status": "variable",
+      "variability_reason": "Does not meet the documented constant or near-constant rules.",
+      "intended_interpretation": "Complete trailing 30-minute std of mean RTD level; current and earlier observations only.",
+      "recommendation": "OPTIONAL"
+    },
+    {
+      "feature_name": "power_generated_diff",
+      "category": "change/rate features",
+      "dtype": "float64",
+      "missing_count": 1,
+      "missing_percentage": 0.09910802775024777,
+      "missingness_mechanism": "first_difference_warm_up",
+      "unexpected_missing_count": 0,
+      "documented_missing_values_present": true,
+      "unique_nonmissing_values": 1001,
+      "variability_status": "variable",
+      "variability_reason": "Does not meet the documented constant or near-constant rules.",
+      "intended_interpretation": "Current minus previous power generated value over one two-minute interval.",
+      "recommendation": "OPTIONAL"
+    },
+    {
+      "feature_name": "solar_radiation_diff",
+      "category": "change/rate features",
+      "dtype": "float64",
+      "missing_count": 1,
+      "missing_percentage": 0.09910802775024777,
+      "missingness_mechanism": "first_difference_warm_up",
+      "unexpected_missing_count": 0,
+      "documented_missing_values_present": true,
+      "unique_nonmissing_values": 640,
+      "variability_status": "variable",
+      "variability_reason": "Does not meet the documented constant or near-constant rules.",
+      "intended_interpretation": "Current minus previous solar radiation value over one two-minute interval.",
+      "recommendation": "OPTIONAL"
+    },
+    {
+      "feature_name": "air_temp_diff",
+      "category": "change/rate features",
+      "dtype": "float64",
+      "missing_count": 1,
+      "missing_percentage": 0.09910802775024777,
+      "missingness_mechanism": "first_difference_warm_up",
+      "unexpected_missing_count": 0,
+      "documented_missing_values_present": true,
+      "unique_nonmissing_values": 999,
+      "variability_status": "variable",
+      "variability_reason": "Does not meet the documented constant or near-constant rules.",
+      "intended_interpretation": "Current minus previous air temp value over one two-minute interval.",
+      "recommendation": "OPTIONAL"
+    },
+    {
+      "feature_name": "relative_humidity_diff",
+      "category": "change/rate features",
+      "dtype": "float64",
+      "missing_count": 1,
+      "missing_percentage": 0.09910802775024777,
+      "missingness_mechanism": "first_difference_warm_up",
+      "unexpected_missing_count": 0,
+      "documented_missing_values_present": true,
+      "unique_nonmissing_values": 987,
+      "variability_status": "variable",
+      "variability_reason": "Does not meet the documented constant or near-constant rules.",
+      "intended_interpretation": "Current minus previous relative humidity value over one two-minute interval.",
+      "recommendation": "OPTIONAL"
+    },
+    {
+      "feature_name": "array_voltage_diff",
+      "category": "change/rate features",
+      "dtype": "float64",
+      "missing_count": 1,
+      "missing_percentage": 0.09910802775024777,
+      "missingness_mechanism": "first_difference_warm_up",
+      "unexpected_missing_count": 0,
+      "documented_missing_values_present": true,
+      "unique_nonmissing_values": 798,
+      "variability_status": "variable",
+      "variability_reason": "Does not meet the documented constant or near-constant rules.",
+      "intended_interpretation": "Current minus previous array voltage value over one two-minute interval.",
+      "recommendation": "EXCLUDE_FROM_MODEL"
+    },
+    {
+      "feature_name": "array_current_diff",
+      "category": "change/rate features",
+      "dtype": "float64",
+      "missing_count": 1,
+      "missing_percentage": 0.09910802775024777,
+      "missingness_mechanism": "first_difference_warm_up",
+      "unexpected_missing_count": 0,
+      "documented_missing_values_present": true,
+      "unique_nonmissing_values": 303,
+      "variability_status": "variable",
+      "variability_reason": "Does not meet the documented constant or near-constant rules.",
+      "intended_interpretation": "Current minus previous array current value over one two-minute interval.",
+      "recommendation": "OPTIONAL"
+    },
+    {
+      "feature_name": "rtd_mean_diff",
+      "category": "change/rate features",
+      "dtype": "float64",
+      "missing_count": 1,
+      "missing_percentage": 0.09910802775024777,
+      "missingness_mechanism": "first_difference_warm_up",
+      "unexpected_missing_count": 0,
+      "documented_missing_values_present": true,
+      "unique_nonmissing_values": 1007,
+      "variability_status": "variable",
+      "variability_reason": "Does not meet the documented constant or near-constant rules.",
+      "intended_interpretation": "Current minus previous rtd mean value over one two-minute interval.",
+      "recommendation": "OPTIONAL"
+    },
+    {
+      "feature_name": "power_generated_rate_per_min",
+      "category": "change/rate features",
+      "dtype": "float64",
+      "missing_count": 1,
+      "missing_percentage": 0.09910802775024777,
+      "missingness_mechanism": "first_difference_warm_up",
+      "unexpected_missing_count": 0,
+      "documented_missing_values_present": true,
+      "unique_nonmissing_values": 1001,
+      "variability_status": "variable",
+      "variability_reason": "Does not meet the documented constant or near-constant rules.",
+      "intended_interpretation": "First difference of power generated divided by the verified two-minute interval.",
+      "recommendation": "EXCLUDE_FROM_MODEL"
+    },
+    {
+      "feature_name": "solar_radiation_rate_per_min",
+      "category": "change/rate features",
+      "dtype": "float64",
+      "missing_count": 1,
+      "missing_percentage": 0.09910802775024777,
+      "missingness_mechanism": "first_difference_warm_up",
+      "unexpected_missing_count": 0,
+      "documented_missing_values_present": true,
+      "unique_nonmissing_values": 640,
+      "variability_status": "variable",
+      "variability_reason": "Does not meet the documented constant or near-constant rules.",
+      "intended_interpretation": "First difference of solar radiation divided by the verified two-minute interval.",
+      "recommendation": "EXCLUDE_FROM_MODEL"
+    },
+    {
+      "feature_name": "air_temp_rate_per_min",
+      "category": "change/rate features",
+      "dtype": "float64",
+      "missing_count": 1,
+      "missing_percentage": 0.09910802775024777,
+      "missingness_mechanism": "first_difference_warm_up",
+      "unexpected_missing_count": 0,
+      "documented_missing_values_present": true,
+      "unique_nonmissing_values": 999,
+      "variability_status": "variable",
+      "variability_reason": "Does not meet the documented constant or near-constant rules.",
+      "intended_interpretation": "First difference of air temp divided by the verified two-minute interval.",
+      "recommendation": "EXCLUDE_FROM_MODEL"
+    },
+    {
+      "feature_name": "relative_humidity_rate_per_min",
+      "category": "change/rate features",
+      "dtype": "float64",
+      "missing_count": 1,
+      "missing_percentage": 0.09910802775024777,
+      "missingness_mechanism": "first_difference_warm_up",
+      "unexpected_missing_count": 0,
+      "documented_missing_values_present": true,
+      "unique_nonmissing_values": 987,
+      "variability_status": "variable",
+      "variability_reason": "Does not meet the documented constant or near-constant rules.",
+      "intended_interpretation": "First difference of relative humidity divided by the verified two-minute interval.",
+      "recommendation": "EXCLUDE_FROM_MODEL"
+    },
+    {
+      "feature_name": "array_voltage_rate_per_min",
+      "category": "change/rate features",
+      "dtype": "float64",
+      "missing_count": 1,
+      "missing_percentage": 0.09910802775024777,
+      "missingness_mechanism": "first_difference_warm_up",
+      "unexpected_missing_count": 0,
+      "documented_missing_values_present": true,
+      "unique_nonmissing_values": 798,
+      "variability_status": "variable",
+      "variability_reason": "Does not meet the documented constant or near-constant rules.",
+      "intended_interpretation": "First difference of array voltage divided by the verified two-minute interval.",
+      "recommendation": "EXCLUDE_FROM_MODEL"
+    },
+    {
+      "feature_name": "array_current_rate_per_min",
+      "category": "change/rate features",
+      "dtype": "float64",
+      "missing_count": 1,
+      "missing_percentage": 0.09910802775024777,
+      "missingness_mechanism": "first_difference_warm_up",
+      "unexpected_missing_count": 0,
+      "documented_missing_values_present": true,
+      "unique_nonmissing_values": 303,
+      "variability_status": "variable",
+      "variability_reason": "Does not meet the documented constant or near-constant rules.",
+      "intended_interpretation": "First difference of array current divided by the verified two-minute interval.",
+      "recommendation": "EXCLUDE_FROM_MODEL"
+    },
+    {
+      "feature_name": "rtd_mean_rate_per_min",
+      "category": "change/rate features",
+      "dtype": "float64",
+      "missing_count": 1,
+      "missing_percentage": 0.09910802775024777,
+      "missingness_mechanism": "first_difference_warm_up",
+      "unexpected_missing_count": 0,
+      "documented_missing_values_present": true,
+      "unique_nonmissing_values": 1007,
+      "variability_status": "variable",
+      "variability_reason": "Does not meet the documented constant or near-constant rules.",
+      "intended_interpretation": "First difference of rtd mean divided by the verified two-minute interval.",
+      "recommendation": "EXCLUDE_FROM_MODEL"
+    },
+    {
+      "feature_name": "power_generated_relative_change",
+      "category": "change/rate features",
+      "dtype": "float64",
+      "missing_count": 1,
+      "missing_percentage": 0.09910802775024777,
+      "missingness_mechanism": "denominator_safety",
+      "unexpected_missing_count": 0,
+      "documented_missing_values_present": true,
+      "unique_nonmissing_values": 1006,
+      "variability_status": "variable",
+      "variability_reason": "Does not meet the documented constant or near-constant rules.",
+      "intended_interpretation": "Safeguarded two-minute generated-power change divided by the previous power value.",
+      "recommendation": "OPTIONAL"
+    },
+    {
+      "feature_name": "solar_radiation_relative_change",
+      "category": "change/rate features",
+      "dtype": "float64",
+      "missing_count": 518,
+      "missing_percentage": 51.33795837462834,
+      "missingness_mechanism": "denominator_safety",
+      "unexpected_missing_count": 0,
+      "documented_missing_values_present": true,
+      "unique_nonmissing_values": 491,
+      "variability_status": "variable",
+      "variability_reason": "Does not meet the documented constant or near-constant rules.",
+      "intended_interpretation": "Safeguarded two-minute radiation change divided by the previous radiation value.",
+      "recommendation": "OPTIONAL"
+    },
+    {
+      "feature_name": "power_deviation_from_30m_mean",
+      "category": "change/rate features",
+      "dtype": "float64",
+      "missing_count": 14,
+      "missing_percentage": 1.3875123885034688,
+      "missingness_mechanism": "rolling_window_warm_up",
+      "unexpected_missing_count": 0,
+      "documented_missing_values_present": true,
+      "unique_nonmissing_values": 995,
+      "variability_status": "variable",
+      "variability_reason": "Does not meet the documented constant or near-constant rules.",
+      "intended_interpretation": "Generated power minus its causal trailing 30-minute mean.",
+      "recommendation": "OPTIONAL"
+    },
+    {
+      "feature_name": "solar_deviation_from_30m_mean",
+      "category": "change/rate features",
+      "dtype": "float64",
+      "missing_count": 14,
+      "missing_percentage": 1.3875123885034688,
+      "missingness_mechanism": "rolling_window_warm_up",
+      "unexpected_missing_count": 0,
+      "documented_missing_values_present": true,
+      "unique_nonmissing_values": 995,
+      "variability_status": "variable",
+      "variability_reason": "Does not meet the documented constant or near-constant rules.",
+      "intended_interpretation": "Solar radiation minus its causal trailing 30-minute mean.",
+      "recommendation": "OPTIONAL"
+    },
+    {
+      "feature_name": "power_deviation_ratio_30m",
+      "category": "change/rate features",
+      "dtype": "float64",
+      "missing_count": 14,
+      "missing_percentage": 1.3875123885034688,
+      "missingness_mechanism": "rolling_window_warm_up",
+      "unexpected_missing_count": 0,
+      "documented_missing_values_present": true,
+      "unique_nonmissing_values": 995,
+      "variability_status": "variable",
+      "variability_reason": "Does not meet the documented constant or near-constant rules.",
+      "intended_interpretation": "Power deviation divided by its trailing mean when the denominator is safe.",
+      "recommendation": "OPTIONAL"
+    },
+    {
+      "feature_name": "solar_deviation_ratio_30m",
+      "category": "change/rate features",
+      "dtype": "float64",
+      "missing_count": 520,
+      "missing_percentage": 51.536174430128845,
+      "missingness_mechanism": "rolling_window_warm_up_and_denominator_safety",
+      "unexpected_missing_count": 0,
+      "documented_missing_values_present": true,
+      "unique_nonmissing_values": 489,
+      "variability_status": "variable",
+      "variability_reason": "Does not meet the documented constant or near-constant rules.",
+      "intended_interpretation": "Radiation deviation divided by its trailing mean when the denominator is safe.",
+      "recommendation": "OPTIONAL"
+    }
+  ],
+  "missingness_review": {
+    "total_missing_cells": 1585,
+    "rolling_window_warm_up_nan_cells": 546,
+    "first_difference_warm_up_nan_cells": 14,
+    "deliberate_denominator_safety_nan_cells": 1025,
+    "unexpected_nan_cells": 0,
+    "documented_nan_cells": 1585,
+    "all_missing_values_explained": true,
+    "future_policy_recommendation": [
+      "Do not backfill, because it would use future observations.",
+      "The Core set has no current NaNs, so it does not require a warm-up-row exclusion.",
+      "For the Extended set, omit its first 14 rows because its longest selected baseline is 30 minutes.",
+      "If a 60-minute rolling feature is added later, omit the first 29 rows for that candidate matrix.",
+      "Keep high-missingness solar relative/ratio features out of the initial general-purpose model.",
+      "Evaluate safeguarded solar ratios only in a separately defined daylight subset.",
+      "Investigate any future unexpected missing values before choosing train-only imputation rules."
+    ]
+  },
+  "redundancy_analysis": {
+    "method": "Pearson correlation using pairwise complete numerical observations",
+    "exploratory_absolute_threshold": 0.95,
+    "numerical_feature_count": 80,
+    "highly_correlated_pair_count": 181,
+    "highly_correlated_pairs": [
+      {
+        "feature_1": "air_temp_diff",
+        "feature_2": "air_temp_rate_per_min",
+        "pearson_correlation": 1.0,
+        "absolute_correlation": 1.0,
+        "paired_observations": 1008
+      },
+      {
+        "feature_1": "power_generated_diff",
+        "feature_2": "power_generated_rate_per_min",
+        "pearson_correlation": 1.0,
+        "absolute_correlation": 1.0,
+        "paired_observations": 1008
+      },
+      {
+        "feature_1": "relative_humidity_diff",
+        "feature_2": "relative_humidity_rate_per_min",
+        "pearson_correlation": 1.0,
+        "absolute_correlation": 1.0,
+        "paired_observations": 1008
+      },
+      {
+        "feature_1": "rtd_mean_diff",
+        "feature_2": "rtd_mean_rate_per_min",
+        "pearson_correlation": 1.0,
+        "absolute_correlation": 1.0,
+        "paired_observations": 1008
+      },
+      {
+        "feature_1": "solar_radiation_diff",
+        "feature_2": "solar_radiation_rate_per_min",
+        "pearson_correlation": 1.0,
+        "absolute_correlation": 1.0,
+        "paired_observations": 1008
+      },
+      {
+        "feature_1": "array_voltage_diff",
+        "feature_2": "array_voltage_rate_per_min",
+        "pearson_correlation": 0.9999999999999998,
+        "absolute_correlation": 0.9999999999999998,
+        "paired_observations": 1008
+      },
+      {
+        "feature_1": "array_current_diff",
+        "feature_2": "array_current_rate_per_min",
+        "pearson_correlation": 0.9999999999999997,
+        "absolute_correlation": 0.9999999999999997,
+        "paired_observations": 1008
+      },
+      {
+        "feature_1": "Power_Generated",
+        "feature_2": "electrical_power_product",
+        "pearson_correlation": 0.9999999999999947,
+        "absolute_correlation": 0.9999999999999947,
+        "paired_observations": 1009
+      },
+      {
+        "feature_1": "Array_Voltage",
+        "feature_2": "electrical_power_product",
+        "pearson_correlation": 0.9999901846477333,
+        "absolute_correlation": 0.9999901846477333,
+        "paired_observations": 1009
+      },
+      {
+        "feature_1": "Array_Voltage",
+        "feature_2": "Power_Generated",
+        "pearson_correlation": 0.9999901846428636,
+        "absolute_correlation": 0.9999901846428636,
+        "paired_observations": 1009
+      },
+      {
+        "feature_1": "power_generated_diff",
+        "feature_2": "array_voltage_rate_per_min",
+        "pearson_correlation": 0.9999754249694105,
+        "absolute_correlation": 0.9999754249694105,
+        "paired_observations": 1008
+      },
+      {
+        "feature_1": "power_generated_rate_per_min",
+        "feature_2": "array_voltage_rate_per_min",
+        "pearson_correlation": 0.9999754249694105,
+        "absolute_correlation": 0.9999754249694105,
+        "paired_observations": 1008
+      },
+      {
+        "feature_1": "array_voltage_diff",
+        "feature_2": "power_generated_rate_per_min",
+        "pearson_correlation": 0.9999754249694104,
+        "absolute_correlation": 0.9999754249694104,
+        "paired_observations": 1008
+      },
+      {
+        "feature_1": "power_generated_diff",
+        "feature_2": "array_voltage_diff",
+        "pearson_correlation": 0.9999754249694104,
+        "absolute_correlation": 0.9999754249694104,
+        "paired_observations": 1008
+      },
+      {
+        "feature_1": "RTD_3",
+        "feature_2": "rtd_min",
+        "pearson_correlation": 0.9999563230604978,
+        "absolute_correlation": 0.9999563230604978,
+        "paired_observations": 1009
+      },
+      {
+        "feature_1": "RTD_1",
+        "feature_2": "rtd_max",
+        "pearson_correlation": 0.9997949806823709,
+        "absolute_correlation": 0.9997949806823709,
+        "paired_observations": 1009
+      },
+      {
+        "feature_1": "RTD_2",
+        "feature_2": "rtd_min",
+        "pearson_correlation": 0.9997030891879424,
+        "absolute_correlation": 0.9997030891879424,
+        "paired_observations": 1009
+      },
+      {
+        "feature_1": "RTD_4",
+        "feature_2": "rtd_mean",
+        "pearson_correlation": 0.999673010826152,
+        "absolute_correlation": 0.999673010826152,
+        "paired_observations": 1009
+      },
+      {
+        "feature_1": "RTD_2",
+        "feature_2": "RTD_3",
+        "pearson_correlation": 0.9996613706779297,
+        "absolute_correlation": 0.9996613706779297,
+        "paired_observations": 1009
+      },
+      {
+        "feature_1": "rtd_mean",
+        "feature_2": "rtd_min",
+        "pearson_correlation": 0.999584846580039,
+        "absolute_correlation": 0.999584846580039,
+        "paired_observations": 1009
+      },
+      {
+        "feature_1": "RTD_4",
+        "feature_2": "RTD_5",
+        "pearson_correlation": 0.9995715869198464,
+        "absolute_correlation": 0.9995715869198464,
+        "paired_observations": 1009
+      },
+      {
+        "feature_1": "RTD_2",
+        "feature_2": "rtd_mean",
+        "pearson_correlation": 0.9995705491974592,
+        "absolute_correlation": 0.9995705491974592,
+        "paired_observations": 1009
+      },
+      {
+        "feature_1": "RTD_5",
+        "feature_2": "rtd_mean",
+        "pearson_correlation": 0.9995582514055321,
+        "absolute_correlation": 0.9995582514055321,
+        "paired_observations": 1009
+      },
+      {
+        "feature_1": "RTD_3",
+        "feature_2": "rtd_mean",
+        "pearson_correlation": 0.9994745819060393,
+        "absolute_correlation": 0.9994745819060393,
+        "paired_observations": 1009
+      },
+      {
+        "feature_1": "rtd_mean",
+        "feature_2": "rtd_max",
+        "pearson_correlation": 0.9993779748813115,
+        "absolute_correlation": 0.9993779748813115,
+        "paired_observations": 1009
+      },
+      {
+        "feature_1": "RTD_1",
+        "feature_2": "rtd_mean",
+        "pearson_correlation": 0.9993682455763743,
+        "absolute_correlation": 0.9993682455763743,
+        "paired_observations": 1009
+      },
+      {
+        "feature_1": "RTD_5",
+        "feature_2": "rtd_max",
+        "pearson_correlation": 0.999304149301819,
+        "absolute_correlation": 0.999304149301819,
+        "paired_observations": 1009
+      },
+      {
+        "feature_1": "hour",
+        "feature_2": "minute_of_day",
+        "pearson_correlation": 0.9992100184744942,
+        "absolute_correlation": 0.9992100184744942,
+        "paired_observations": 1009
+      },
+      {
+        "feature_1": "solar_radiation_roll_mean_10m",
+        "feature_2": "solar_radiation_roll_max_10m",
+        "pearson_correlation": 0.9991828158638593,
+        "absolute_correlation": 0.9991828158638593,
+        "paired_observations": 1005
+      },
+      {
+        "feature_1": "solar_radiation_roll_mean_10m",
+        "feature_2": "solar_radiation_roll_min_10m",
+        "pearson_correlation": 0.999120277551825,
+        "absolute_correlation": 0.999120277551825,
+        "paired_observations": 1005
+      },
+      {
+        "feature_1": "Solar_Radiation",
+        "feature_2": "solar_radiation_roll_max_10m",
+        "pearson_correlation": 0.9990589633237753,
+        "absolute_correlation": 0.9990589633237753,
+        "paired_observations": 1005
+      },
+      {
+        "feature_1": "RTD_2",
+        "feature_2": "RTD_4",
+        "pearson_correlation": 0.9989746195006143,
+        "absolute_correlation": 0.9989746195006143,
+        "paired_observations": 1009
+      },
+      {
+        "feature_1": "RTD_4",
+        "feature_2": "rtd_max",
+        "pearson_correlation": 0.998972588269022,
+        "absolute_correlation": 0.998972588269022,
+        "paired_observations": 1009
+      },
+      {
+        "feature_1": "RTD_1",
+        "feature_2": "RTD_5",
+        "pearson_correlation": 0.9989652428887373,
+        "absolute_correlation": 0.9989652428887373,
+        "paired_observations": 1009
+      },
+      {
+        "feature_1": "RTD_4",
+        "feature_2": "rtd_min",
+        "pearson_correlation": 0.9989630682985972,
+        "absolute_correlation": 0.9989630682985972,
+        "paired_observations": 1009
+      },
+      {
+        "feature_1": "RTD_3",
+        "feature_2": "RTD_4",
+        "pearson_correlation": 0.9987832385195744,
+        "absolute_correlation": 0.9987832385195744,
+        "paired_observations": 1009
+      },
+      {
+        "feature_1": "Solar_Radiation",
+        "feature_2": "solar_radiation_roll_mean_10m",
+        "pearson_correlation": 0.9987804412121026,
+        "absolute_correlation": 0.9987804412121026,
+        "paired_observations": 1005
+      },
+      {
+        "feature_1": "RTD_1",
+        "feature_2": "RTD_4",
+        "pearson_correlation": 0.9986850768919978,
+        "absolute_correlation": 0.9986850768919978,
+        "paired_observations": 1009
+      },
+      {
+        "feature_1": "RTD_2",
+        "feature_2": "RTD_5",
+        "pearson_correlation": 0.998550012657961,
+        "absolute_correlation": 0.998550012657961,
+        "paired_observations": 1009
+      },
+      {
+        "feature_1": "RTD_5",
+        "feature_2": "rtd_min",
+        "pearson_correlation": 0.9985346489201159,
+        "absolute_correlation": 0.9985346489201159,
+        "paired_observations": 1009
+      },
+      {
+        "feature_1": "RTD_1",
+        "feature_2": "rtd_min",
+        "pearson_correlation": 0.9984863515005027,
+        "absolute_correlation": 0.9984863515005027,
+        "paired_observations": 1009
+      },
+      {
+        "feature_1": "RTD_1",
+        "feature_2": "RTD_2",
+        "pearson_correlation": 0.9983833510194806,
+        "absolute_correlation": 0.9983833510194806,
+        "paired_observations": 1009
+      },
+      {
+        "feature_1": "RTD_1",
+        "feature_2": "RTD_3",
+        "pearson_correlation": 0.9983475802724355,
+        "absolute_correlation": 0.9983475802724355,
+        "paired_observations": 1009
+      },
+      {
+        "feature_1": "rtd_min",
+        "feature_2": "rtd_max",
+        "pearson_correlation": 0.9983355980999183,
+        "absolute_correlation": 0.9983355980999183,
+        "paired_observations": 1009
+      },
+      {
+        "feature_1": "RTD_3",
+        "feature_2": "RTD_5",
+        "pearson_correlation": 0.9983093661796938,
+        "absolute_correlation": 0.9983093661796938,
+        "paired_observations": 1009
+      },
+      {
+        "feature_1": "RTD_2",
+        "feature_2": "rtd_max",
+        "pearson_correlation": 0.9981956038899016,
+        "absolute_correlation": 0.9981956038899016,
+        "paired_observations": 1009
+      },
+      {
+        "feature_1": "RTD_3",
+        "feature_2": "rtd_max",
+        "pearson_correlation": 0.9981652815681112,
+        "absolute_correlation": 0.9981652815681112,
+        "paired_observations": 1009
+      },
+      {
+        "feature_1": "power_generated_roll_mean_10m",
+        "feature_2": "power_generated_roll_min_10m",
+        "pearson_correlation": 0.9974604936151233,
+        "absolute_correlation": 0.9974604936151233,
+        "paired_observations": 1005
+      },
+      {
+        "feature_1": "Array_Voltage",
+        "feature_2": "power_generated_roll_mean_10m",
+        "pearson_correlation": 0.9972910075595034,
+        "absolute_correlation": 0.9972910075595034,
+        "paired_observations": 1005
+      },
+      {
+        "feature_1": "power_generated_roll_mean_10m",
+        "feature_2": "power_generated_roll_max_10m",
+        "pearson_correlation": 0.9972839873672961,
+        "absolute_correlation": 0.9972839873672961,
+        "paired_observations": 1005
+      },
+      {
+        "feature_1": "Power_Generated",
+        "feature_2": "power_generated_roll_mean_10m",
+        "pearson_correlation": 0.997274731846936,
+        "absolute_correlation": 0.997274731846936,
+        "paired_observations": 1005
+      },
+      {
+        "feature_1": "electrical_power_product",
+        "feature_2": "power_generated_roll_mean_10m",
+        "pearson_correlation": 0.9972747318151397,
+        "absolute_correlation": 0.9972747318151397,
+        "paired_observations": 1005
+      },
+      {
+        "feature_1": "Array_Voltage",
+        "feature_2": "power_generated_roll_min_10m",
+        "pearson_correlation": 0.9971652810924682,
+        "absolute_correlation": 0.9971652810924682,
+        "paired_observations": 1005
+      },
+      {
+        "feature_1": "Power_Generated",
+        "feature_2": "power_generated_roll_min_10m",
+        "pearson_correlation": 0.9971121746499467,
+        "absolute_correlation": 0.9971121746499467,
+        "paired_observations": 1005
+      },
+      {
+        "feature_1": "electrical_power_product",
+        "feature_2": "power_generated_roll_min_10m",
+        "pearson_correlation": 0.9971121745738915,
+        "absolute_correlation": 0.9971121745738915,
+        "paired_observations": 1005
+      },
+      {
+        "feature_1": "Solar_Radiation",
+        "feature_2": "solar_radiation_roll_min_10m",
+        "pearson_correlation": 0.9970278616007164,
+        "absolute_correlation": 0.9970278616007164,
+        "paired_observations": 1005
+      },
+      {
+        "feature_1": "solar_radiation_roll_min_10m",
+        "feature_2": "solar_radiation_roll_max_10m",
+        "pearson_correlation": 0.9968937117982588,
+        "absolute_correlation": 0.9968937117982588,
+        "paired_observations": 1005
+      },
+      {
+        "feature_1": "solar_radiation_roll_max_10m",
+        "feature_2": "solar_radiation_roll_max_30m",
+        "pearson_correlation": 0.9959579867238866,
+        "absolute_correlation": 0.9959579867238866,
+        "paired_observations": 995
+      },
+      {
+        "feature_1": "solar_radiation_roll_min_10m",
+        "feature_2": "solar_radiation_roll_mean_30m",
+        "pearson_correlation": 0.9957994843497996,
+        "absolute_correlation": 0.9957994843497996,
+        "paired_observations": 995
+      },
+      {
+        "feature_1": "solar_radiation_roll_mean_10m",
+        "feature_2": "solar_radiation_roll_mean_30m",
+        "pearson_correlation": 0.995542363602154,
+        "absolute_correlation": 0.995542363602154,
+        "paired_observations": 995
+      },
+      {
+        "feature_1": "relative_humidity_roll_mean_30m",
+        "feature_2": "relative_humidity_roll_mean_60m",
+        "pearson_correlation": 0.9948329816942476,
+        "absolute_correlation": 0.9948329816942476,
+        "paired_observations": 980
+      },
+      {
+        "feature_1": "solar_radiation_roll_mean_30m",
+        "feature_2": "solar_radiation_roll_max_30m",
+        "pearson_correlation": 0.9947914348087272,
+        "absolute_correlation": 0.9947914348087272,
+        "paired_observations": 995
+      },
+      {
+        "feature_1": "solar_radiation_roll_mean_10m",
+        "feature_2": "solar_radiation_roll_max_30m",
+        "pearson_correlation": 0.9945286041105561,
+        "absolute_correlation": 0.9945286041105561,
+        "paired_observations": 995
+      },
+      {
+        "feature_1": "solar_radiation_roll_max_10m",
+        "feature_2": "solar_radiation_roll_mean_30m",
+        "pearson_correlation": 0.9939778188081246,
+        "absolute_correlation": 0.9939778188081246,
+        "paired_observations": 995
+      },
+      {
+        "feature_1": "solar_radiation_roll_mean_30m",
+        "feature_2": "solar_radiation_roll_min_30m",
+        "pearson_correlation": 0.9939440290290263,
+        "absolute_correlation": 0.9939440290290263,
+        "paired_observations": 995
+      },
+      {
+        "feature_1": "Relative_Humidity",
+        "feature_2": "relative_humidity_roll_mean_30m",
+        "pearson_correlation": 0.9934324264153406,
+        "absolute_correlation": 0.9934324264153406,
+        "paired_observations": 995
+      },
+      {
+        "feature_1": "air_temp_roll_mean_30m",
+        "feature_2": "air_temp_roll_mean_60m",
+        "pearson_correlation": 0.9930322988827902,
+        "absolute_correlation": 0.9930322988827902,
+        "paired_observations": 980
+      },
+      {
+        "feature_1": "electrical_power_product",
+        "feature_2": "power_generated_roll_max_10m",
+        "pearson_correlation": 0.9929080715999357,
+        "absolute_correlation": 0.9929080715999357,
+        "paired_observations": 1005
+      },
+      {
+        "feature_1": "Power_Generated",
+        "feature_2": "power_generated_roll_max_10m",
+        "pearson_correlation": 0.9929080715887926,
+        "absolute_correlation": 0.9929080715887926,
+        "paired_observations": 1005
+      },
+      {
+        "feature_1": "Array_Voltage",
+        "feature_2": "power_generated_roll_max_10m",
+        "pearson_correlation": 0.9928887898441727,
+        "absolute_correlation": 0.9928887898441727,
+        "paired_observations": 1005
+      },
+      {
+        "feature_1": "Solar_Radiation",
+        "feature_2": "solar_radiation_roll_max_30m",
+        "pearson_correlation": 0.992714840924795,
+        "absolute_correlation": 0.992714840924795,
+        "paired_observations": 995
+      },
+      {
+        "feature_1": "solar_radiation_roll_mean_30m",
+        "feature_2": "solar_radiation_roll_mean_60m",
+        "pearson_correlation": 0.9925084708765397,
+        "absolute_correlation": 0.9925084708765397,
+        "paired_observations": 980
+      },
+      {
+        "feature_1": "solar_radiation_roll_max_30m",
+        "feature_2": "solar_radiation_roll_max_60m",
+        "pearson_correlation": 0.9921484794503802,
+        "absolute_correlation": 0.9921484794503802,
+        "paired_observations": 980
+      },
+      {
+        "feature_1": "solar_radiation_roll_min_10m",
+        "feature_2": "solar_radiation_roll_max_30m",
+        "pearson_correlation": 0.9916537134550447,
+        "absolute_correlation": 0.9916537134550447,
+        "paired_observations": 995
+      },
+      {
+        "feature_1": "Solar_Radiation",
+        "feature_2": "solar_radiation_roll_mean_30m",
+        "pearson_correlation": 0.99136141976342,
+        "absolute_correlation": 0.99136141976342,
+        "paired_observations": 995
+      },
+      {
+        "feature_1": "power_generated_roll_max_10m",
+        "feature_2": "power_generated_roll_mean_30m",
+        "pearson_correlation": 0.9912235162551819,
+        "absolute_correlation": 0.9912235162551819,
+        "paired_observations": 995
+      },
+      {
+        "feature_1": "power_generated_roll_mean_10m",
+        "feature_2": "power_generated_roll_mean_30m",
+        "pearson_correlation": 0.991199948602572,
+        "absolute_correlation": 0.991199948602572,
+        "paired_observations": 995
+      },
+      {
+        "feature_1": "RTD_3",
+        "feature_2": "rtd_mean_roll_mean_30m",
+        "pearson_correlation": 0.9905143882615894,
+        "absolute_correlation": 0.9905143882615894,
+        "paired_observations": 995
+      },
+      {
+        "feature_1": "RTD_2",
+        "feature_2": "rtd_mean_roll_mean_30m",
+        "pearson_correlation": 0.9903596079354507,
+        "absolute_correlation": 0.9903596079354507,
+        "paired_observations": 995
+      },
+      {
+        "feature_1": "power_generated_roll_min_10m",
+        "feature_2": "power_generated_roll_max_10m",
+        "pearson_correlation": 0.9903030116868163,
+        "absolute_correlation": 0.9903030116868163,
+        "paired_observations": 1005
+      },
+      {
+        "feature_1": "rtd_min",
+        "feature_2": "rtd_mean_roll_mean_30m",
+        "pearson_correlation": 0.9902638846546267,
+        "absolute_correlation": 0.9902638846546267,
+        "paired_observations": 995
+      },
+      {
+        "feature_1": "solar_radiation_roll_min_30m",
+        "feature_2": "solar_radiation_roll_mean_60m",
+        "pearson_correlation": 0.9902001958687755,
+        "absolute_correlation": 0.9902001958687755,
+        "paired_observations": 980
+      },
+      {
+        "feature_1": "Air_Temp",
+        "feature_2": "air_temp_roll_mean_30m",
+        "pearson_correlation": 0.9895264022977958,
+        "absolute_correlation": 0.9895264022977958,
+        "paired_observations": 995
+      },
+      {
+        "feature_1": "rtd_mean",
+        "feature_2": "rtd_mean_roll_mean_30m",
+        "pearson_correlation": 0.9892437386393446,
+        "absolute_correlation": 0.9892437386393446,
+        "paired_observations": 995
+      },
+      {
+        "feature_1": "hour_sin",
+        "feature_2": "minute_of_day_sin",
+        "pearson_correlation": 0.9892188241391104,
+        "absolute_correlation": 0.9892188241391104,
+        "paired_observations": 1009
+      },
+      {
+        "feature_1": "power_generated_roll_min_10m",
+        "feature_2": "power_generated_roll_min_30m",
+        "pearson_correlation": 0.9891834785651397,
+        "absolute_correlation": 0.9891834785651397,
+        "paired_observations": 995
+      },
+      {
+        "feature_1": "hour_cos",
+        "feature_2": "minute_of_day_cos",
+        "pearson_correlation": 0.9887164877294261,
+        "absolute_correlation": 0.9887164877294261,
+        "paired_observations": 1009
+      },
+      {
+        "feature_1": "power_generated_roll_mean_30m",
+        "feature_2": "power_generated_roll_mean_60m",
+        "pearson_correlation": 0.9884075505749986,
+        "absolute_correlation": 0.9884075505749986,
+        "paired_observations": 980
+      },
+      {
+        "feature_1": "RTD_4",
+        "feature_2": "rtd_mean_roll_mean_30m",
+        "pearson_correlation": 0.987954405327267,
+        "absolute_correlation": 0.987954405327267,
+        "paired_observations": 995
+      },
+      {
+        "feature_1": "solar_radiation_roll_min_10m",
+        "feature_2": "solar_radiation_roll_min_30m",
+        "pearson_correlation": 0.9877211046036338,
+        "absolute_correlation": 0.9877211046036338,
+        "paired_observations": 995
+      },
+      {
+        "feature_1": "RTD_5",
+        "feature_2": "rtd_mean_roll_mean_30m",
+        "pearson_correlation": 0.987656328957519,
+        "absolute_correlation": 0.987656328957519,
+        "paired_observations": 995
+      },
+      {
+        "feature_1": "RTD_1",
+        "feature_2": "rtd_mean_roll_mean_30m",
+        "pearson_correlation": 0.9875035540810645,
+        "absolute_correlation": 0.9875035540810645,
+        "paired_observations": 995
+      },
+      {
+        "feature_1": "rtd_max",
+        "feature_2": "rtd_mean_roll_mean_30m",
+        "pearson_correlation": 0.9872798772793987,
+        "absolute_correlation": 0.9872798772793987,
+        "paired_observations": 995
+      },
+      {
+        "feature_1": "power_generated_roll_min_10m",
+        "feature_2": "power_generated_roll_mean_30m",
+        "pearson_correlation": 0.9870713406896504,
+        "absolute_correlation": 0.9870713406896504,
+        "paired_observations": 995
+      },
+      {
+        "feature_1": "rtd_std",
+        "feature_2": "rtd_range",
+        "pearson_correlation": 0.9868154250577706,
+        "absolute_correlation": 0.9868154250577706,
+        "paired_observations": 1009
+      },
+      {
+        "feature_1": "solar_radiation_roll_max_30m",
+        "feature_2": "solar_radiation_roll_mean_60m",
+        "pearson_correlation": 0.9863047780675986,
+        "absolute_correlation": 0.9863047780675986,
+        "paired_observations": 980
+      },
+      {
+        "feature_1": "solar_radiation_roll_mean_60m",
+        "feature_2": "solar_radiation_roll_max_60m",
+        "pearson_correlation": 0.9857674242765238,
+        "absolute_correlation": 0.9857674242765238,
+        "paired_observations": 980
+      },
+      {
+        "feature_1": "solar_radiation_roll_mean_10m",
+        "feature_2": "solar_radiation_roll_min_30m",
+        "pearson_correlation": 0.9855666637105128,
+        "absolute_correlation": 0.9855666637105128,
+        "paired_observations": 995
+      },
+      {
+        "feature_1": "power_generated_roll_mean_10m",
+        "feature_2": "power_generated_roll_min_30m",
+        "pearson_correlation": 0.9853420824908014,
+        "absolute_correlation": 0.9853420824908014,
+        "paired_observations": 995
+      },
+      {
+        "feature_1": "power_generated_roll_mean_30m",
+        "feature_2": "power_generated_roll_max_30m",
+        "pearson_correlation": 0.9847867907626378,
+        "absolute_correlation": 0.9847867907626378,
+        "paired_observations": 995
+      },
+      {
+        "feature_1": "power_generated_roll_mean_30m",
+        "feature_2": "power_generated_roll_min_30m",
+        "pearson_correlation": 0.984529465426739,
+        "absolute_correlation": 0.984529465426739,
+        "paired_observations": 995
+      },
+      {
+        "feature_1": "Array_Voltage",
+        "feature_2": "power_generated_roll_min_30m",
+        "pearson_correlation": 0.9839285052336303,
+        "absolute_correlation": 0.9839285052336303,
+        "paired_observations": 995
+      },
+      {
+        "feature_1": "solar_radiation_roll_mean_30m",
+        "feature_2": "solar_radiation_roll_max_60m",
+        "pearson_correlation": 0.9837967002925463,
+        "absolute_correlation": 0.9837967002925463,
+        "paired_observations": 980
+      },
+      {
+        "feature_1": "electrical_power_product",
+        "feature_2": "power_generated_roll_min_30m",
+        "pearson_correlation": 0.983681596704409,
+        "absolute_correlation": 0.983681596704409,
+        "paired_observations": 995
+      },
+      {
+        "feature_1": "Power_Generated",
+        "feature_2": "power_generated_roll_min_30m",
+        "pearson_correlation": 0.9836815964833343,
+        "absolute_correlation": 0.9836815964833343,
+        "paired_observations": 995
+      },
+      {
+        "feature_1": "Array_Voltage",
+        "feature_2": "power_generated_roll_mean_30m",
+        "pearson_correlation": 0.9835061431160529,
+        "absolute_correlation": 0.9835061431160529,
+        "paired_observations": 995
+      },
+      {
+        "feature_1": "electrical_power_product",
+        "feature_2": "power_generated_roll_mean_30m",
+        "pearson_correlation": 0.9833784206326172,
+        "absolute_correlation": 0.9833784206326172,
+        "paired_observations": 995
+      },
+      {
+        "feature_1": "Power_Generated",
+        "feature_2": "power_generated_roll_mean_30m",
+        "pearson_correlation": 0.9833784203424668,
+        "absolute_correlation": 0.9833784203424668,
+        "paired_observations": 995
+      },
+      {
+        "feature_1": "power_generated_roll_max_30m",
+        "feature_2": "power_generated_roll_mean_60m",
+        "pearson_correlation": 0.9825816625083681,
+        "absolute_correlation": 0.9825816625083681,
+        "paired_observations": 980
+      },
+      {
+        "feature_1": "solar_radiation_roll_max_10m",
+        "feature_2": "solar_radiation_roll_min_30m",
+        "pearson_correlation": 0.9823960690074095,
+        "absolute_correlation": 0.9823960690074095,
+        "paired_observations": 995
+      },
+      {
+        "feature_1": "solar_radiation_roll_mean_60m",
+        "feature_2": "solar_radiation_roll_min_60m",
+        "pearson_correlation": 0.9817561948204668,
+        "absolute_correlation": 0.9817561948204668,
+        "paired_observations": 980
+      },
+      {
+        "feature_1": "power_generated_roll_min_30m",
+        "feature_2": "power_generated_roll_min_60m",
+        "pearson_correlation": 0.9812710317758085,
+        "absolute_correlation": 0.9812710317758085,
+        "paired_observations": 980
+      },
+      {
+        "feature_1": "Solar_Radiation",
+        "feature_2": "solar_radiation_roll_min_30m",
+        "pearson_correlation": 0.9808410353882279,
+        "absolute_correlation": 0.9808410353882279,
+        "paired_observations": 995
+      },
+      {
+        "feature_1": "solar_radiation_roll_min_30m",
+        "feature_2": "solar_radiation_roll_max_30m",
+        "pearson_correlation": 0.9804521598303613,
+        "absolute_correlation": 0.9804521598303613,
+        "paired_observations": 995
+      },
+      {
+        "feature_1": "solar_radiation_roll_max_10m",
+        "feature_2": "solar_radiation_roll_max_60m",
+        "pearson_correlation": 0.9804449958649456,
+        "absolute_correlation": 0.9804449958649456,
+        "paired_observations": 980
+      },
+      {
+        "feature_1": "Relative_Humidity",
+        "feature_2": "relative_humidity_roll_mean_60m",
+        "pearson_correlation": 0.980110847529811,
+        "absolute_correlation": 0.980110847529811,
+        "paired_observations": 980
+      },
+      {
+        "feature_1": "solar_radiation_roll_min_10m",
+        "feature_2": "solar_radiation_roll_mean_60m",
+        "pearson_correlation": 0.979755465295545,
+        "absolute_correlation": 0.979755465295545,
+        "paired_observations": 980
+      },
+      {
+        "feature_1": "solar_radiation_roll_mean_10m",
+        "feature_2": "solar_radiation_roll_mean_60m",
+        "pearson_correlation": 0.9796226245042216,
+        "absolute_correlation": 0.9796226245042216,
+        "paired_observations": 980
+      },
+      {
+        "feature_1": "Array_Current",
+        "feature_2": "air_temp_roll_mean_60m",
+        "pearson_correlation": -0.9789177384252821,
+        "absolute_correlation": 0.9789177384252821,
+        "paired_observations": 980
+      },
+      {
+        "feature_1": "solar_radiation_roll_max_10m",
+        "feature_2": "solar_radiation_roll_mean_60m",
+        "pearson_correlation": 0.9783438688904835,
+        "absolute_correlation": 0.9783438688904835,
+        "paired_observations": 980
+      },
+      {
+        "feature_1": "solar_radiation_roll_mean_10m",
+        "feature_2": "solar_radiation_roll_max_60m",
+        "pearson_correlation": 0.9781090721458771,
+        "absolute_correlation": 0.9781090721458771,
+        "paired_observations": 980
+      },
+      {
+        "feature_1": "power_generated_roll_max_10m",
+        "feature_2": "power_generated_roll_min_30m",
+        "pearson_correlation": 0.9774569155805795,
+        "absolute_correlation": 0.9774569155805795,
+        "paired_observations": 995
+      },
+      {
+        "feature_1": "power_generated_roll_max_10m",
+        "feature_2": "power_generated_roll_max_30m",
+        "pearson_correlation": 0.9759290897658092,
+        "absolute_correlation": 0.9759290897658092,
+        "paired_observations": 995
+      },
+      {
+        "feature_1": "solar_radiation_roll_min_30m",
+        "feature_2": "solar_radiation_roll_min_60m",
+        "pearson_correlation": 0.9757331926086876,
+        "absolute_correlation": 0.9757331926086876,
+        "paired_observations": 980
+      },
+      {
+        "feature_1": "Air_Temp",
+        "feature_2": "air_temp_roll_mean_60m",
+        "pearson_correlation": 0.9744047890861589,
+        "absolute_correlation": 0.9744047890861589,
+        "paired_observations": 980
+      },
+      {
+        "feature_1": "solar_radiation_roll_min_10m",
+        "feature_2": "solar_radiation_roll_max_60m",
+        "pearson_correlation": 0.974393703419991,
+        "absolute_correlation": 0.974393703419991,
+        "paired_observations": 980
+      },
+      {
+        "feature_1": "Solar_Radiation",
+        "feature_2": "solar_radiation_roll_max_60m",
+        "pearson_correlation": 0.9742734980073274,
+        "absolute_correlation": 0.9742734980073274,
+        "paired_observations": 980
+      },
+      {
+        "feature_1": "Solar_Radiation",
+        "feature_2": "solar_radiation_roll_mean_60m",
+        "pearson_correlation": 0.9729220048287999,
+        "absolute_correlation": 0.9729220048287999,
+        "paired_observations": 980
+      },
+      {
+        "feature_1": "power_generated_roll_min_30m",
+        "feature_2": "power_generated_roll_mean_60m",
+        "pearson_correlation": 0.9707961623091943,
+        "absolute_correlation": 0.9707961623091943,
+        "paired_observations": 980
+      },
+      {
+        "feature_1": "power_generated_roll_mean_10m",
+        "feature_2": "power_generated_roll_max_30m",
+        "pearson_correlation": 0.9705115857006188,
+        "absolute_correlation": 0.9705115857006188,
+        "paired_observations": 995
+      },
+      {
+        "feature_1": "Array_Current",
+        "feature_2": "air_temp_roll_mean_30m",
+        "pearson_correlation": -0.9701973672267858,
+        "absolute_correlation": 0.9701973672267858,
+        "paired_observations": 995
+      },
+      {
+        "feature_1": "power_generated_roll_max_10m",
+        "feature_2": "power_generated_roll_mean_60m",
+        "pearson_correlation": 0.9694423630717014,
+        "absolute_correlation": 0.9694423630717014,
+        "paired_observations": 980
+      },
+      {
+        "feature_1": "power_generated_roll_mean_10m",
+        "feature_2": "power_generated_roll_mean_60m",
+        "pearson_correlation": 0.9684842395045713,
+        "absolute_correlation": 0.9684842395045713,
+        "paired_observations": 980
+      },
+      {
+        "feature_1": "Air_Temp",
+        "feature_2": "solar_radiation_roll_max_60m",
+        "pearson_correlation": 0.9681924387887892,
+        "absolute_correlation": 0.9681924387887892,
+        "paired_observations": 980
+      },
+      {
+        "feature_1": "solar_radiation_roll_mean_30m",
+        "feature_2": "solar_radiation_roll_min_60m",
+        "pearson_correlation": 0.9670871476671332,
+        "absolute_correlation": 0.9670871476671332,
+        "paired_observations": 980
+      },
+      {
+        "feature_1": "power_generated_roll_min_10m",
+        "feature_2": "power_generated_roll_min_60m",
+        "pearson_correlation": 0.9670787998115645,
+        "absolute_correlation": 0.9670787998115645,
+        "paired_observations": 980
+      },
+      {
+        "feature_1": "power_generated_roll_mean_60m",
+        "feature_2": "power_generated_roll_max_60m",
+        "pearson_correlation": 0.9665736261549498,
+        "absolute_correlation": 0.9665736261549498,
+        "paired_observations": 980
+      },
+      {
+        "feature_1": "solar_radiation_roll_min_30m",
+        "feature_2": "solar_radiation_roll_max_60m",
+        "pearson_correlation": 0.9665595653819644,
+        "absolute_correlation": 0.9665595653819644,
+        "paired_observations": 980
+      },
+      {
+        "feature_1": "power_generated_roll_mean_30m",
+        "feature_2": "power_generated_roll_min_60m",
+        "pearson_correlation": 0.9642449968555304,
+        "absolute_correlation": 0.9642449968555304,
+        "paired_observations": 980
+      },
+      {
+        "feature_1": "Array_Voltage",
+        "feature_2": "power_generated_roll_max_30m",
+        "pearson_correlation": 0.9640722465350863,
+        "absolute_correlation": 0.9640722465350863,
+        "paired_observations": 995
+      },
+      {
+        "feature_1": "electrical_power_product",
+        "feature_2": "power_generated_roll_max_30m",
+        "pearson_correlation": 0.9640585428863282,
+        "absolute_correlation": 0.9640585428863282,
+        "paired_observations": 995
+      },
+      {
+        "feature_1": "Power_Generated",
+        "feature_2": "power_generated_roll_max_30m",
+        "pearson_correlation": 0.9640585424462074,
+        "absolute_correlation": 0.9640585424462074,
+        "paired_observations": 995
+      },
+      {
+        "feature_1": "power_generated_roll_min_10m",
+        "feature_2": "power_generated_roll_mean_60m",
+        "pearson_correlation": 0.9639024738612397,
+        "absolute_correlation": 0.9639024738612397,
+        "paired_observations": 980
+      },
+      {
+        "feature_1": "power_generated_roll_mean_10m",
+        "feature_2": "power_generated_roll_min_60m",
+        "pearson_correlation": 0.9636261565809638,
+        "absolute_correlation": 0.9636261565809638,
+        "paired_observations": 980
+      },
+      {
+        "feature_1": "power_generated_roll_mean_60m",
+        "feature_2": "power_generated_roll_min_60m",
+        "pearson_correlation": 0.9636032650847051,
+        "absolute_correlation": 0.9636032650847051,
+        "paired_observations": 980
+      },
+      {
+        "feature_1": "RTD_1",
+        "feature_2": "solar_radiation_roll_max_60m",
+        "pearson_correlation": 0.9634802672907478,
+        "absolute_correlation": 0.9634802672907478,
+        "paired_observations": 980
+      },
+      {
+        "feature_1": "rtd_max",
+        "feature_2": "solar_radiation_roll_max_60m",
+        "pearson_correlation": 0.9630612668310256,
+        "absolute_correlation": 0.9630612668310256,
+        "paired_observations": 980
+      },
+      {
+        "feature_1": "power_generated_roll_max_30m",
+        "feature_2": "power_generated_roll_max_60m",
+        "pearson_correlation": 0.9622239990370891,
+        "absolute_correlation": 0.9622239990370891,
+        "paired_observations": 980
+      },
+      {
+        "feature_1": "Array_Voltage",
+        "feature_2": "power_generated_roll_min_60m",
+        "pearson_correlation": 0.9620145113029385,
+        "absolute_correlation": 0.9620145113029385,
+        "paired_observations": 980
+      },
+      {
+        "feature_1": "power_generated_roll_min_10m",
+        "feature_2": "power_generated_roll_max_30m",
+        "pearson_correlation": 0.9618044843518668,
+        "absolute_correlation": 0.9618044843518668,
+        "paired_observations": 995
+      },
+      {
+        "feature_1": "solar_radiation_roll_max_60m",
+        "feature_2": "air_temp_roll_mean_30m",
+        "pearson_correlation": 0.9617708295927435,
+        "absolute_correlation": 0.9617708295927435,
+        "paired_observations": 980
+      },
+      {
+        "feature_1": "electrical_power_product",
+        "feature_2": "power_generated_roll_min_60m",
+        "pearson_correlation": 0.9614730407113162,
+        "absolute_correlation": 0.9614730407113162,
+        "paired_observations": 980
+      },
+      {
+        "feature_1": "Power_Generated",
+        "feature_2": "power_generated_roll_min_60m",
+        "pearson_correlation": 0.9614730405555681,
+        "absolute_correlation": 0.9614730405555681,
+        "paired_observations": 980
+      },
+      {
+        "feature_1": "rtd_mean",
+        "feature_2": "solar_radiation_roll_max_60m",
+        "pearson_correlation": 0.9597710449512024,
+        "absolute_correlation": 0.9597710449512024,
+        "paired_observations": 980
+      },
+      {
+        "feature_1": "RTD_5",
+        "feature_2": "solar_radiation_roll_max_60m",
+        "pearson_correlation": 0.9590741878054673,
+        "absolute_correlation": 0.9590741878054673,
+        "paired_observations": 980
+      },
+      {
+        "feature_1": "Array_Voltage",
+        "feature_2": "power_generated_roll_mean_60m",
+        "pearson_correlation": 0.9590305026362698,
+        "absolute_correlation": 0.9590305026362698,
+        "paired_observations": 980
+      },
+      {
+        "feature_1": "RTD_3",
+        "feature_2": "solar_radiation_roll_max_60m",
+        "pearson_correlation": 0.9589607451365623,
+        "absolute_correlation": 0.9589607451365623,
+        "paired_observations": 980
+      },
+      {
+        "feature_1": "electrical_power_product",
+        "feature_2": "power_generated_roll_mean_60m",
+        "pearson_correlation": 0.9587281368637333,
+        "absolute_correlation": 0.9587281368637333,
+        "paired_observations": 980
+      },
+      {
+        "feature_1": "Power_Generated",
+        "feature_2": "power_generated_roll_mean_60m",
+        "pearson_correlation": 0.9587281363882043,
+        "absolute_correlation": 0.9587281363882043,
+        "paired_observations": 980
+      },
+      {
+        "feature_1": "RTD_4",
+        "feature_2": "solar_radiation_roll_max_60m",
+        "pearson_correlation": 0.958644755149442,
+        "absolute_correlation": 0.958644755149442,
+        "paired_observations": 980
+      },
+      {
+        "feature_1": "rtd_min",
+        "feature_2": "solar_radiation_roll_max_60m",
+        "pearson_correlation": 0.95858016277337,
+        "absolute_correlation": 0.95858016277337,
+        "paired_observations": 980
+      },
+      {
+        "feature_1": "RTD_1",
+        "feature_2": "solar_radiation_roll_mean_60m",
+        "pearson_correlation": 0.9576795839948202,
+        "absolute_correlation": 0.9576795839948202,
+        "paired_observations": 980
+      },
+      {
+        "feature_1": "rtd_max",
+        "feature_2": "solar_radiation_roll_mean_60m",
+        "pearson_correlation": 0.9574911249529784,
+        "absolute_correlation": 0.9574911249529784,
+        "paired_observations": 980
+      },
+      {
+        "feature_1": "power_generated_roll_max_10m",
+        "feature_2": "power_generated_roll_min_60m",
+        "pearson_correlation": 0.9560823740748078,
+        "absolute_correlation": 0.9560823740748078,
+        "paired_observations": 980
+      },
+      {
+        "feature_1": "RTD_2",
+        "feature_2": "solar_radiation_roll_max_60m",
+        "pearson_correlation": 0.9559623696032161,
+        "absolute_correlation": 0.9559623696032161,
+        "paired_observations": 980
+      },
+      {
+        "feature_1": "Air_Temp",
+        "feature_2": "Array_Current",
+        "pearson_correlation": -0.9542637772295911,
+        "absolute_correlation": 0.9542637772295911,
+        "paired_observations": 1009
+      },
+      {
+        "feature_1": "solar_radiation_roll_min_10m",
+        "feature_2": "solar_radiation_roll_min_60m",
+        "pearson_correlation": 0.9541241060281808,
+        "absolute_correlation": 0.9541241060281808,
+        "paired_observations": 980
+      },
+      {
+        "feature_1": "rtd_mean",
+        "feature_2": "solar_radiation_roll_mean_60m",
+        "pearson_correlation": 0.9540134479043606,
+        "absolute_correlation": 0.9540134479043606,
+        "paired_observations": 980
+      },
+      {
+        "feature_1": "Relative_Humidity",
+        "feature_2": "Array_Current",
+        "pearson_correlation": 0.9536504243905584,
+        "absolute_correlation": 0.9536504243905584,
+        "paired_observations": 1009
+      },
+      {
+        "feature_1": "RTD_5",
+        "feature_2": "solar_radiation_roll_mean_60m",
+        "pearson_correlation": 0.9534843609967226,
+        "absolute_correlation": 0.9534843609967226,
+        "paired_observations": 980
+      },
+      {
+        "feature_1": "RTD_4",
+        "feature_2": "solar_radiation_roll_mean_60m",
+        "pearson_correlation": 0.9534362217953772,
+        "absolute_correlation": 0.9534362217953772,
+        "paired_observations": 980
+      },
+      {
+        "feature_1": "solar_radiation_roll_max_30m",
+        "feature_2": "solar_radiation_roll_min_60m",
+        "pearson_correlation": 0.9531214727724201,
+        "absolute_correlation": 0.9531214727724201,
+        "paired_observations": 980
+      },
+      {
+        "feature_1": "solar_radiation_roll_mean_10m",
+        "feature_2": "solar_radiation_roll_min_60m",
+        "pearson_correlation": 0.9526249882026488,
+        "absolute_correlation": 0.9526249882026488,
+        "paired_observations": 980
+      },
+      {
+        "feature_1": "RTD_3",
+        "feature_2": "solar_radiation_roll_mean_60m",
+        "pearson_correlation": 0.9521850091950937,
+        "absolute_correlation": 0.9521850091950937,
+        "paired_observations": 980
+      },
+      {
+        "feature_1": "rtd_min",
+        "feature_2": "solar_radiation_roll_mean_60m",
+        "pearson_correlation": 0.9518730191039111,
+        "absolute_correlation": 0.9518730191039111,
+        "paired_observations": 980
+      },
+      {
+        "feature_1": "solar_radiation_roll_max_60m",
+        "feature_2": "rtd_mean_roll_mean_30m",
+        "pearson_correlation": 0.9515430942987629,
+        "absolute_correlation": 0.9515430942987629,
+        "paired_observations": 980
+      },
+      {
+        "feature_1": "power_generated_roll_min_30m",
+        "feature_2": "power_generated_roll_max_30m",
+        "pearson_correlation": 0.9505642588212866,
+        "absolute_correlation": 0.9505642588212866,
+        "paired_observations": 995
+      },
+      {
+        "feature_1": "RTD_2",
+        "feature_2": "solar_radiation_roll_mean_60m",
+        "pearson_correlation": 0.9505290273432663,
+        "absolute_correlation": 0.9505290273432663,
+        "paired_observations": 980
+      },
+      {
+        "feature_1": "Air_Temp",
+        "feature_2": "solar_radiation_roll_max_30m",
+        "pearson_correlation": 0.9501138460316239,
+        "absolute_correlation": 0.9501138460316239,
+        "paired_observations": 995
+      },
+      {
+        "feature_1": "air_temp_roll_mean_60m",
+        "feature_2": "rtd_mean_roll_mean_30m",
+        "pearson_correlation": 0.9500889642149374,
+        "absolute_correlation": 0.9500889642149374,
+        "paired_observations": 980
+      },
+      {
+        "feature_1": "solar_radiation_roll_max_10m",
+        "feature_2": "solar_radiation_roll_min_60m",
+        "pearson_correlation": 0.9500209829827131,
+        "absolute_correlation": 0.9500209829827131,
+        "paired_observations": 980
+      }
+    ],
+    "focused_redundancy_groups": [
+      {
+        "group_name": "electrical power reconstruction",
+        "members": [
+          "Power_Generated",
+          "Array_Voltage",
+          "electrical_power_product"
+        ],
+        "minimum_pairwise_absolute_correlation": 0.9999901846428636,
+        "maximum_pairwise_absolute_correlation": 0.9999999999999947,
+        "recommendation": "Choose one representation for an initial model; the product nearly recreates generated power."
+      },
+      {
+        "group_name": "power and voltage transitions",
+        "members": [
+          "power_generated_diff",
+          "power_generated_rate_per_min",
+          "array_voltage_diff",
+          "array_voltage_rate_per_min"
+        ],
+        "minimum_pairwise_absolute_correlation": 0.9999754249694104,
+        "maximum_pairwise_absolute_correlation": 1.0,
+        "recommendation": "Rates are fixed scalar multiples of differences, and voltage transitions mirror power transitions."
+      },
+      {
+        "group_name": "RTD level summaries",
+        "members": [
+          "RTD_1",
+          "RTD_2",
+          "RTD_3",
+          "RTD_4",
+          "RTD_5",
+          "rtd_mean",
+          "rtd_min",
+          "rtd_max"
+        ],
+        "minimum_pairwise_absolute_correlation": 0.9981652815681112,
+        "maximum_pairwise_absolute_correlation": 0.9999563230604978,
+        "recommendation": "Use the mean for level and a dispersion summary rather than all level channels initially."
+      },
+      {
+        "group_name": "RTD dispersion summaries",
+        "members": [
+          "rtd_std",
+          "rtd_range"
+        ],
+        "minimum_pairwise_absolute_correlation": 0.9868154250577706,
+        "maximum_pairwise_absolute_correlation": 0.9868154250577706,
+        "recommendation": "Both summarize disagreement among the same five RTD channels."
+      },
+      {
+        "group_name": "power rolling means",
+        "members": [
+          "power_generated_roll_mean_10m",
+          "power_generated_roll_mean_30m",
+          "power_generated_roll_mean_60m"
+        ],
+        "minimum_pairwise_absolute_correlation": 0.9684842395045713,
+        "maximum_pairwise_absolute_correlation": 0.991199948602572,
+        "recommendation": "Overlapping trailing windows encode similar slow-moving power level information."
+      },
+      {
+        "group_name": "solar rolling means",
+        "members": [
+          "solar_radiation_roll_mean_10m",
+          "solar_radiation_roll_mean_30m",
+          "solar_radiation_roll_mean_60m"
+        ],
+        "minimum_pairwise_absolute_correlation": 0.9796226245042216,
+        "maximum_pairwise_absolute_correlation": 0.995542363602154,
+        "recommendation": "Overlapping trailing windows encode similar radiation level information."
+      },
+      {
+        "group_name": "environmental rolling means",
+        "members": [
+          "air_temp_roll_mean_30m",
+          "air_temp_roll_mean_60m"
+        ],
+        "minimum_pairwise_absolute_correlation": 0.9930322988827902,
+        "maximum_pairwise_absolute_correlation": 0.9930322988827902,
+        "recommendation": "The two temperature windows are highly correlated in this short file."
+      },
+      {
+        "group_name": "humidity rolling means",
+        "members": [
+          "relative_humidity_roll_mean_30m",
+          "relative_humidity_roll_mean_60m"
+        ],
+        "minimum_pairwise_absolute_correlation": 0.9948329816942476,
+        "maximum_pairwise_absolute_correlation": 0.9948329816942476,
+        "recommendation": "The two humidity windows are highly correlated in this short file."
+      },
+      {
+        "group_name": "linear clock representations",
+        "members": [
+          "hour",
+          "minute_of_day"
+        ],
+        "minimum_pairwise_absolute_correlation": 0.9992100184744942,
+        "maximum_pairwise_absolute_correlation": 0.9992100184744942,
+        "recommendation": "Minute of day almost deterministically contains clock hour; cyclical time encoding is preferred."
+      }
+    ],
+    "exact_difference_rate_pairs": [
+      {
+        "difference_feature": "power_generated_diff",
+        "rate_feature": "power_generated_rate_per_min",
+        "pearson_correlation": 1.0,
+        "relationship": "rate = difference / 2 minutes"
+      },
+      {
+        "difference_feature": "solar_radiation_diff",
+        "rate_feature": "solar_radiation_rate_per_min",
+        "pearson_correlation": 1.0,
+        "relationship": "rate = difference / 2 minutes"
+      },
+      {
+        "difference_feature": "air_temp_diff",
+        "rate_feature": "air_temp_rate_per_min",
+        "pearson_correlation": 1.0,
+        "relationship": "rate = difference / 2 minutes"
+      },
+      {
+        "difference_feature": "relative_humidity_diff",
+        "rate_feature": "relative_humidity_rate_per_min",
+        "pearson_correlation": 1.0,
+        "relationship": "rate = difference / 2 minutes"
+      },
+      {
+        "difference_feature": "array_voltage_diff",
+        "rate_feature": "array_voltage_rate_per_min",
+        "pearson_correlation": 0.9999999999999998,
+        "relationship": "rate = difference / 2 minutes"
+      },
+      {
+        "difference_feature": "array_current_diff",
+        "rate_feature": "array_current_rate_per_min",
+        "pearson_correlation": 0.9999999999999997,
+        "relationship": "rate = difference / 2 minutes"
+      },
+      {
+        "difference_feature": "rtd_mean_diff",
+        "rate_feature": "rtd_mean_rate_per_min",
+        "pearson_correlation": 1.0,
+        "relationship": "rate = difference / 2 minutes"
+      }
+    ],
+    "modeling_note": "Highly correlated inputs can repeatedly represent the same physical pattern, distort distances, and give one process excessive influence in distance-based or unsupervised models. Correlation alone is not a deletion rule."
+  },
+  "recommended_exclusions": [
+    {
+      "feature_name": "RTD_1",
+      "reason": "Strongly redundant RTD level measurement; use rtd_mean plus one dispersion summary initially."
+    },
+    {
+      "feature_name": "RTD_2",
+      "reason": "Strongly redundant RTD level measurement; use rtd_mean plus one dispersion summary initially."
+    },
+    {
+      "feature_name": "RTD_3",
+      "reason": "Strongly redundant RTD level measurement; use rtd_mean plus one dispersion summary initially."
+    },
+    {
+      "feature_name": "RTD_4",
+      "reason": "Strongly redundant RTD level measurement; use rtd_mean plus one dispersion summary initially."
+    },
+    {
+      "feature_name": "RTD_5",
+      "reason": "Strongly redundant RTD level measurement; use rtd_mean plus one dispersion summary initially."
+    },
+    {
+      "feature_name": "Array_Voltage",
+      "reason": "Correlation with Power_Generated is approximately 0.99999; choose one initial electrical level representation."
+    },
+    {
+      "feature_name": "hour",
+      "reason": "Use the finer cyclical minute-of-day sine/cosine pair instead of discontinuous linear clock fields."
+    },
+    {
+      "feature_name": "minute",
+      "reason": "Use the finer cyclical minute-of-day sine/cosine pair instead of discontinuous linear clock fields."
+    },
+    {
+      "feature_name": "minute_of_day",
+      "reason": "Use the finer cyclical minute-of-day sine/cosine pair instead of discontinuous linear clock fields."
+    },
+    {
+      "feature_name": "elapsed_minutes_from_start",
+      "reason": "Encodes position in this short file and may not generalize to later deployments."
+    },
+    {
+      "feature_name": "hour_sin",
+      "reason": "The minute-of-day cyclical pair already provides finer daily phase information."
+    },
+    {
+      "feature_name": "hour_cos",
+      "reason": "The minute-of-day cyclical pair already provides finer daily phase information."
+    },
+    {
+      "feature_name": "rtd_min",
+      "reason": "Strongly redundant RTD level measurement; use rtd_mean plus one dispersion summary initially."
+    },
+    {
+      "feature_name": "rtd_max",
+      "reason": "Strongly redundant RTD level measurement; use rtd_mean plus one dispersion summary initially."
+    },
+    {
+      "feature_name": "electrical_power_product",
+      "reason": "Deterministically uses the voltage-current-power identity and is retained for diagnostics, not the initial model."
+    },
+    {
+      "feature_name": "power_consistency_residual",
+      "reason": "Deterministically uses the voltage-current-power identity and is retained for diagnostics, not the initial model."
+    },
+    {
+      "feature_name": "power_consistency_abs_error",
+      "reason": "Deterministically uses the voltage-current-power identity and is retained for diagnostics, not the initial model."
+    },
+    {
+      "feature_name": "power_generated_roll_min_10m",
+      "reason": "Overlaps strongly with rolling level summaries and is omitted from the bounded first comparison."
+    },
+    {
+      "feature_name": "power_generated_roll_max_10m",
+      "reason": "Overlaps strongly with rolling level summaries and is omitted from the bounded first comparison."
+    },
+    {
+      "feature_name": "power_generated_roll_min_30m",
+      "reason": "Overlaps strongly with rolling level summaries and is omitted from the bounded first comparison."
+    },
+    {
+      "feature_name": "power_generated_roll_max_30m",
+      "reason": "Overlaps strongly with rolling level summaries and is omitted from the bounded first comparison."
+    },
+    {
+      "feature_name": "power_generated_roll_mean_60m",
+      "reason": "Overlapping rolling window omitted to limit correlated representations in the first comparison."
+    },
+    {
+      "feature_name": "power_generated_roll_std_60m",
+      "reason": "Overlapping rolling window omitted to limit correlated representations in the first comparison."
+    },
+    {
+      "feature_name": "power_generated_roll_min_60m",
+      "reason": "Overlaps strongly with rolling level summaries and is omitted from the bounded first comparison."
+    },
+    {
+      "feature_name": "power_generated_roll_max_60m",
+      "reason": "Overlaps strongly with rolling level summaries and is omitted from the bounded first comparison."
+    },
+    {
+      "feature_name": "solar_radiation_roll_min_10m",
+      "reason": "Overlaps strongly with rolling level summaries and is omitted from the bounded first comparison."
+    },
+    {
+      "feature_name": "solar_radiation_roll_max_10m",
+      "reason": "Overlaps strongly with rolling level summaries and is omitted from the bounded first comparison."
+    },
+    {
+      "feature_name": "solar_radiation_roll_min_30m",
+      "reason": "Overlaps strongly with rolling level summaries and is omitted from the bounded first comparison."
+    },
+    {
+      "feature_name": "solar_radiation_roll_max_30m",
+      "reason": "Overlaps strongly with rolling level summaries and is omitted from the bounded first comparison."
+    },
+    {
+      "feature_name": "solar_radiation_roll_mean_60m",
+      "reason": "Overlapping rolling window omitted to limit correlated representations in the first comparison."
+    },
+    {
+      "feature_name": "solar_radiation_roll_std_60m",
+      "reason": "Overlapping rolling window omitted to limit correlated representations in the first comparison."
+    },
+    {
+      "feature_name": "solar_radiation_roll_min_60m",
+      "reason": "Overlaps strongly with rolling level summaries and is omitted from the bounded first comparison."
+    },
+    {
+      "feature_name": "solar_radiation_roll_max_60m",
+      "reason": "Overlaps strongly with rolling level summaries and is omitted from the bounded first comparison."
+    },
+    {
+      "feature_name": "air_temp_roll_mean_60m",
+      "reason": "Overlapping rolling window omitted to limit correlated representations in the first comparison."
+    },
+    {
+      "feature_name": "relative_humidity_roll_mean_60m",
+      "reason": "Overlapping rolling window omitted to limit correlated representations in the first comparison."
+    },
+    {
+      "feature_name": "array_voltage_diff",
+      "reason": "Almost perfectly mirrors power_generated_diff in this dataset."
+    },
+    {
+      "feature_name": "power_generated_rate_per_min",
+      "reason": "Exactly equals its corresponding difference divided by two, so keeping both adds no information."
+    },
+    {
+      "feature_name": "solar_radiation_rate_per_min",
+      "reason": "Exactly equals its corresponding difference divided by two, so keeping both adds no information."
+    },
+    {
+      "feature_name": "air_temp_rate_per_min",
+      "reason": "Exactly equals its corresponding difference divided by two, so keeping both adds no information."
+    },
+    {
+      "feature_name": "relative_humidity_rate_per_min",
+      "reason": "Exactly equals its corresponding difference divided by two, so keeping both adds no information."
+    },
+    {
+      "feature_name": "array_voltage_rate_per_min",
+      "reason": "Exactly equals its corresponding difference divided by two, so keeping both adds no information."
+    },
+    {
+      "feature_name": "array_current_rate_per_min",
+      "reason": "Exactly equals its corresponding difference divided by two, so keeping both adds no information."
+    },
+    {
+      "feature_name": "rtd_mean_rate_per_min",
+      "reason": "Exactly equals its corresponding difference divided by two, so keeping both adds no information."
+    }
+  ],
+  "unresolved_features": [
+    {
+      "feature_name": "Wind_Direction",
+      "reason": "Source encoding must be clarified before circular treatment; ten values exceed 360 degrees."
+    }
+  ],
+  "candidate_feature_sets": {
+    "core_unsupervised_features": {
+      "display_name": "Core Unsupervised Features",
+      "feature_count": 9,
+      "feature_names": [
+        "Power_Generated",
+        "Solar_Radiation",
+        "Air_Temp",
+        "Relative_Humidity",
+        "Wind_Speed",
+        "rtd_mean",
+        "rtd_std",
+        "minute_of_day_sin",
+        "minute_of_day_cos"
+      ],
+      "rationale": "Compact coverage of output, illumination, environment, summarized RTD behavior, and cyclical time without deterministic electrical duplicates.",
+      "known_limitations": [
+        "The source covers only about 33.6 hours.",
+        "Power and environmental variables still share a strong daily cycle.",
+        "RTD physical meaning and units remain unconfirmed.",
+        "Scaling must later be fitted on training data only."
+      ]
+    },
+    "extended_diagnostic_features": {
+      "display_name": "Extended Diagnostic Features",
+      "feature_count": 23,
+      "feature_names": [
+        "Power_Generated",
+        "Solar_Radiation",
+        "Air_Temp",
+        "Relative_Humidity",
+        "Wind_Speed",
+        "rtd_mean",
+        "rtd_std",
+        "minute_of_day_sin",
+        "minute_of_day_cos",
+        "Array_Current",
+        "rtd_range",
+        "power_generated_roll_mean_30m",
+        "power_generated_roll_std_30m",
+        "solar_radiation_roll_mean_30m",
+        "solar_radiation_roll_std_30m",
+        "rtd_mean_roll_mean_30m",
+        "rtd_mean_roll_std_30m",
+        "power_generated_diff",
+        "solar_radiation_diff",
+        "array_current_diff",
+        "rtd_mean_diff",
+        "power_deviation_from_30m_mean",
+        "solar_deviation_from_30m_mean"
+      ],
+      "rationale": "Adds one current channel, RTD disagreement, selected 30-minute baselines, selected changes, and absolute deviations for later comparison.",
+      "known_limitations": [
+        "More correlated inputs may influence distance-based methods unevenly.",
+        "Rolling and deviation inputs require removal of the initial warm-up rows.",
+        "Array_Current is near-constant under the documented exploratory rule.",
+        "This set must be compared using time-aware evaluation, not assumed superior."
+      ]
+    },
+    "daylight_specific_features": {
+      "display_name": "Daylight-Specific Features",
+      "feature_count": 8,
+      "feature_names": [
+        "Power_Generated",
+        "Solar_Radiation",
+        "power_generated_diff",
+        "solar_radiation_diff",
+        "power_generated_relative_change",
+        "solar_radiation_relative_change",
+        "power_deviation_ratio_30m",
+        "solar_deviation_ratio_30m"
+      ],
+      "rationale": "Retains safeguarded solar and power ratios for a separately filtered daylight analysis where their denominators are interpretable.",
+      "application_policy": "Use only after defining a causal daylight mask that satisfies the existing 5 W/m^2 radiation denominator safeguard and rolling-baseline availability.",
+      "known_limitations": [
+        "It is not a general day-and-night feature set.",
+        "The 5 W/m^2 threshold is exploratory, not a manufacturer limit.",
+        "Relative changes remain sensitive near the accepted denominator boundary."
+      ]
+    }
+  },
+  "power_generated_strategy": {
+    "recommended_first_approach": "A. Unsupervised multivariate detection",
+    "reason": "It is the simplest defensible internship prototype for the current normal-only, short dataset: one compact matrix, no separately trained power predictor, and clear comparison of observed multivariate operating context.",
+    "approach_a_unsupervised_multivariate": {
+      "power_role": "Input feature in the compact core set.",
+      "electrical_policy": "Use Power_Generated as the initial electrical level; exclude Array_Voltage and electrical_power_product, and treat Array_Current as an optional extension.",
+      "limitations": "Scores will be relative to a very short operating record and require later time-aware validation with synthetic scenarios and additional real days."
+    },
+    "approach_b_prediction_residual": {
+      "power_role": "Prediction target rather than model input.",
+      "future_input_policy": "Use environmental and temporal context only. Exclude Power_Generated, Array_Voltage, Array_Current, electrical_power_product, consistency residuals, and all power-derived rolling/change/deviation features from the predictors.",
+      "future_anomaly_signal": "A large out-of-sample difference between observed and predicted power could be evaluated as a residual signal; no threshold is defined today.",
+      "why_later": "A credible expected-power predictor needs more independent days and a strict time-aware evaluation design to avoid overfitting this 33.6-hour record."
+    }
+  },
+  "rtd_strategy": {
+    "recommended_option": "Option B: summary variables",
+    "initial_features": [
+      "rtd_mean",
+      "rtd_std"
+    ],
+    "extended_feature": "rtd_range",
+    "reason": "All RTD channel pairs correlate from about 0.9983 to 0.9997. The mean preserves shared level while standard deviation or range represents channel disagreement.",
+    "retention_policy": "Keep RTD_1 through RTD_5 in the master dataset for diagnostic review, especially if their locations, units, or independent failure modes are later confirmed."
+  },
+  "recurring_transition_review_file": "outputs/recurring_transition_review.json",
+  "recurring_transition_findings": [
+    "Both windows show an abrupt simultaneous fall in Power_Generated and Array_Voltage at exactly 17:00 while Array_Current increases slightly.",
+    "The event-row power values are similar (285.185280 and 283.232540), and the aligned 42-minute power and voltage profiles correlate above 0.998.",
+    "Solar_Radiation rises at both event steps rather than falling, but the two radiation windows have different levels; neither event changes low_light_context.",
+    "Trailing power means respond gradually, leaving large negative local power deviations at each event. The evidence supports the neutral description 'recurring power transition', not a fault or causal conclusion."
+  ],
+  "protected_source_files": {
+    "data/operational/solar-power-dataset/solar_data.csv": {
+      "sha256_before": "0615c4d92c7869074f99c4a6552cc201ab6db8152fc77650758664ed2c4ba393",
+      "sha256_after": "0615c4d92c7869074f99c4a6552cc201ab6db8152fc77650758664ed2c4ba393",
+      "unchanged": true
+    },
+    "data/processed/operational_cleaned.csv": {
+      "sha256_before": "3e440f11bf0a00227a4b2ae3ce29e38de0a03bb647b577daa2ff1f5d098624fc",
+      "sha256_after": "3e440f11bf0a00227a4b2ae3ce29e38de0a03bb647b577daa2ff1f5d098624fc",
+      "unchanged": true
+    },
+    "data/processed/operational_features_basic.csv": {
+      "sha256_before": "99f9f3a61f4602d518b6b2fa024f415f95acbd988cd9a4e5588f62e1f19dbcd7",
+      "sha256_after": "99f9f3a61f4602d518b6b2fa024f415f95acbd988cd9a4e5588f62e1f19dbcd7",
+      "unchanged": true
+    },
+    "data/processed/operational_features_rolling.csv": {
+      "sha256_before": "bfb29573505add5c5748f44719ae7db0f67fb41ce7f3a8741f215937bc002dfe",
+      "sha256_after": "bfb29573505add5c5748f44719ae7db0f67fb41ce7f3a8741f215937bc002dfe",
+      "unchanged": true
+    },
+    "data/processed/operational_features_change.csv": {
+      "sha256_before": "ca79f6c6bc35e89b194fc6e7c8b051e5784d226246942f6c10b4329f8cb23c1e",
+      "sha256_after": "ca79f6c6bc35e89b194fc6e7c8b051e5784d226246942f6c10b4329f8cb23c1e",
+      "unchanged": true
+    }
+  },
+  "validation": {
+    "passed": true,
+    "checks": {
+      "input_shape_is_1009_by_81": true,
+      "feature_inventory_includes_all_81_columns": true,
+      "each_feature_has_a_valid_recommendation": true,
+      "all_missing_values_have_documented_causes": true,
+      "all_candidate_feature_names_exist": true,
+      "no_source_dataset_modified": true,
+      "models_directory_unchanged": true,
+      "no_anomaly_label_columns_present_or_introduced": true,
+      "no_model_was_fitted_or_serialized": true
+    }
+  },
+  "excluded_work": [
+    "synthetic anomaly generation",
+    "anomaly-detection model training",
+    "fitted scaling or imputation",
+    "feature removal from the master dataset",
+    "computer vision",
+    "video processing",
+    "dashboard implementation"
+  ]
+}

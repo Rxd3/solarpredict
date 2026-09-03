@@ -1,0 +1,647 @@
+{
+  "feature_stage": "Day 10 causal change and rate-of-change features",
+  "generated_at_utc": "2026-09-03T22:44:52.989032+00:00",
+  "input_file": "data/processed/operational_features_rolling.csv",
+  "output_file": "data/processed/operational_features_change.csv",
+  "input_dataset_shape": {
+    "rows": 1009,
+    "columns": 61
+  },
+  "output_dataset_shape": {
+    "rows": 1009,
+    "columns": 81
+  },
+  "new_feature_count": 20,
+  "new_feature_names": [
+    "power_generated_diff",
+    "solar_radiation_diff",
+    "air_temp_diff",
+    "relative_humidity_diff",
+    "array_voltage_diff",
+    "array_current_diff",
+    "rtd_mean_diff",
+    "power_generated_rate_per_min",
+    "solar_radiation_rate_per_min",
+    "air_temp_rate_per_min",
+    "relative_humidity_rate_per_min",
+    "array_voltage_rate_per_min",
+    "array_current_rate_per_min",
+    "rtd_mean_rate_per_min",
+    "power_generated_relative_change",
+    "solar_radiation_relative_change",
+    "power_deviation_from_30m_mean",
+    "solar_deviation_from_30m_mean",
+    "power_deviation_ratio_30m",
+    "solar_deviation_ratio_30m"
+  ],
+  "sampling_interval_assumption": {
+    "minutes": 2.0,
+    "seconds": 120,
+    "status": "Verified from every consecutive source timestamp."
+  },
+  "causal_policy": "First differences and rates use current minus previous. Existing 30-minute baselines are trailing. No future row is accessed.",
+  "relative_change_safeguards": {
+    "power_generated_relative_change": {
+      "source": "Power_Generated",
+      "formula": "(current - previous) / previous",
+      "minimum_absolute_previous_value": 1.0,
+      "unsafe_result": "NaN",
+      "threshold_status": "Project numerical-stability safeguard."
+    },
+    "solar_radiation_relative_change": {
+      "source": "Solar_Radiation",
+      "formula": "(current - previous) / previous",
+      "minimum_absolute_previous_value": 5.0,
+      "unsafe_result": "NaN",
+      "threshold_status": "Project numerical-stability safeguard."
+    }
+  },
+  "deviation_ratio_safeguards": {
+    "power_deviation_ratio_30m": {
+      "source": "Power_Generated",
+      "baseline": "power_generated_roll_mean_30m",
+      "formula": "(current - trailing_baseline) / trailing_baseline",
+      "minimum_absolute_baseline": 1.0,
+      "unsafe_result": "NaN",
+      "threshold_status": "Project numerical-stability safeguard."
+    },
+    "solar_deviation_ratio_30m": {
+      "source": "Solar_Radiation",
+      "baseline": "solar_radiation_roll_mean_30m",
+      "formula": "(current - trailing_baseline) / trailing_baseline",
+      "minimum_absolute_baseline": 5.0,
+      "unsafe_result": "NaN",
+      "threshold_status": "Project numerical-stability safeguard."
+    }
+  },
+  "feature_statistics": {
+    "power_generated_diff": {
+      "count": 1008,
+      "nan_count": 1,
+      "minimum": -125.30496,
+      "maximum": 70.26801999999998,
+      "mean": -0.4115666051587302,
+      "median": 0.01116800000000045,
+      "standard_deviation": 8.400509440087996
+    },
+    "solar_radiation_diff": {
+      "count": 1008,
+      "nan_count": 1,
+      "minimum": -76.2843,
+      "maximum": 199.30508,
+      "mean": -0.7024108224206349,
+      "median": -0.100891,
+      "standard_deviation": 13.021788109338216
+    },
+    "air_temp_diff": {
+      "count": 1008,
+      "nan_count": 1,
+      "minimum": -6.5232639999999975,
+      "maximum": 16.329852,
+      "mean": -0.02691136309523809,
+      "median": -0.034547000000001604,
+      "standard_deviation": 0.7636679194314956
+    },
+    "relative_humidity_diff": {
+      "count": 1008,
+      "nan_count": 1,
+      "minimum": -3.376272,
+      "maximum": 2.487014000000002,
+      "mean": 0.0312610873015873,
+      "median": 0.0271379999999972,
+      "standard_deviation": 0.7458228316389375
+    },
+    "array_voltage_diff": {
+      "count": 1008,
+      "nan_count": 1,
+      "minimum": -23.461776000000008,
+      "maximum": 13.074187999999992,
+      "mean": -0.07673269345238094,
+      "median": 0.0020450000000002,
+      "standard_deviation": 1.5654213186005839
+    },
+    "array_current_diff": {
+      "count": 1008,
+      "nan_count": 1,
+      "minimum": -0.0055869999999993,
+      "maximum": 0.0083339999999996,
+      "mean": 3.328571428571836e-05,
+      "median": 0.0,
+      "standard_deviation": 0.0008768431718829185
+    },
+    "rtd_mean_diff": {
+      "count": 1008,
+      "nan_count": 1,
+      "minimum": -38.15628719999998,
+      "maximum": 8.838662399999976,
+      "mean": -0.06872808571428568,
+      "median": -0.03086640000000245,
+      "standard_deviation": 1.8264725612410826
+    },
+    "power_generated_rate_per_min": {
+      "count": 1008,
+      "nan_count": 1,
+      "minimum": -62.65248,
+      "maximum": 35.13400999999999,
+      "mean": -0.2057833025793651,
+      "median": 0.0055840000000002,
+      "standard_deviation": 4.200254720043998
+    },
+    "solar_radiation_rate_per_min": {
+      "count": 1008,
+      "nan_count": 1,
+      "minimum": -38.14215,
+      "maximum": 99.65254,
+      "mean": -0.35120541121031745,
+      "median": -0.0504455,
+      "standard_deviation": 6.510894054669108
+    },
+    "air_temp_rate_per_min": {
+      "count": 1008,
+      "nan_count": 1,
+      "minimum": -3.2616319999999988,
+      "maximum": 8.164926,
+      "mean": -0.013455681547619041,
+      "median": -0.01727350000000075,
+      "standard_deviation": 0.3818339597157478
+    },
+    "relative_humidity_rate_per_min": {
+      "count": 1008,
+      "nan_count": 1,
+      "minimum": -1.688136,
+      "maximum": 1.243507000000001,
+      "mean": 0.015630543650793645,
+      "median": 0.013568999999998551,
+      "standard_deviation": 0.3729114158194687
+    },
+    "array_voltage_rate_per_min": {
+      "count": 1008,
+      "nan_count": 1,
+      "minimum": -11.730888000000004,
+      "maximum": 6.537093999999996,
+      "mean": -0.03836634672619048,
+      "median": 0.0010225000000001,
+      "standard_deviation": 0.7827106593002918
+    },
+    "array_current_rate_per_min": {
+      "count": 1008,
+      "nan_count": 1,
+      "minimum": -0.0027934999999996,
+      "maximum": 0.0041669999999998,
+      "mean": 1.664285714285865e-05,
+      "median": 0.0,
+      "standard_deviation": 0.00043842158594144855
+    },
+    "rtd_mean_rate_per_min": {
+      "count": 1008,
+      "nan_count": 1,
+      "minimum": -19.07814359999999,
+      "maximum": 4.419331199999988,
+      "mean": -0.03436404285714284,
+      "median": -0.0154332000000012,
+      "standard_deviation": 0.9132362806205413
+    },
+    "power_generated_relative_change": {
+      "count": 1008,
+      "nan_count": 1,
+      "minimum": -0.3757398750848205,
+      "maximum": 0.5331723345831986,
+      "mean": -0.0016706727638310197,
+      "median": 0.0003665967314134,
+      "standard_deviation": 0.05597845718634113
+    },
+    "solar_radiation_relative_change": {
+      "count": 491,
+      "nan_count": 518,
+      "minimum": -0.4973553024143314,
+      "maximum": 0.4970010628020768,
+      "mean": -0.008168794193401847,
+      "median": -0.0078908992811176,
+      "standard_deviation": 0.07500914480741719
+    },
+    "power_deviation_from_30m_mean": {
+      "count": 995,
+      "nan_count": 14,
+      "minimum": -178.9926016,
+      "maximum": 196.55666,
+      "mean": -2.949163823919597,
+      "median": 0.1157401333333325,
+      "standard_deviation": 29.998013660173832
+    },
+    "solar_deviation_from_30m_mean": {
+      "count": 995,
+      "nan_count": 14,
+      "minimum": -121.23239333333332,
+      "maximum": 440.704636,
+      "mean": -4.490283946465659,
+      "median": -0.1318075333333332,
+      "standard_deviation": 46.82734069234154
+    },
+    "power_deviation_ratio_30m": {
+      "count": 995,
+      "nan_count": 14,
+      "minimum": -0.9211690566523186,
+      "maximum": 3.1187361161028626,
+      "mean": 0.00010044690303341833,
+      "median": 0.0042850427218891,
+      "standard_deviation": 0.2742730013417646
+    },
+    "solar_deviation_ratio_30m": {
+      "count": 489,
+      "nan_count": 520,
+      "minimum": -0.9787526019537516,
+      "maximum": 1.5111426634366,
+      "mean": -0.047743206102986414,
+      "median": -0.0431603577522899,
+      "standard_deviation": 0.3359506888019576
+    }
+  },
+  "largest_observed_transitions": {
+    "label": "largest observed transitions",
+    "largest_power_transitions": [
+      {
+        "rank": 1,
+        "timestamp": "2022-04-27 17:00:00",
+        "previous_timestamp": "2022-04-27 16:58:00",
+        "signal": "Power_Generated",
+        "previous_value": 410.49024,
+        "current_value": 285.18528,
+        "signed_change": -125.30496,
+        "absolute_change": 125.30496,
+        "simultaneous_other_signal_change": 14.622779999999976,
+        "previous_low_light_context": 0,
+        "current_low_light_context": 0,
+        "low_light_context_changed": false
+      },
+      {
+        "rank": 2,
+        "timestamp": "2022-04-28 17:00:00",
+        "previous_timestamp": "2022-04-28 16:58:00",
+        "signal": "Power_Generated",
+        "previous_value": 386.718,
+        "current_value": 283.23254,
+        "signed_change": -103.48546000000005,
+        "absolute_change": 103.48546000000005,
+        "simultaneous_other_signal_change": 39.06036,
+        "previous_low_light_context": 0,
+        "current_low_light_context": 0,
+        "low_light_context_changed": false
+      },
+      {
+        "rank": 3,
+        "timestamp": "2022-04-27 17:52:00",
+        "previous_timestamp": "2022-04-27 17:50:00",
+        "signal": "Power_Generated",
+        "previous_value": 349.33592,
+        "current_value": 278.9739,
+        "signed_change": -70.36201999999997,
+        "absolute_change": 70.36201999999997,
+        "simultaneous_other_signal_change": -0.7000400000000013,
+        "previous_low_light_context": 0,
+        "current_low_light_context": 0,
+        "low_light_context_changed": false
+      },
+      {
+        "rank": 4,
+        "timestamp": "2022-04-27 17:50:00",
+        "previous_timestamp": "2022-04-27 17:48:00",
+        "signal": "Power_Generated",
+        "previous_value": 279.0679,
+        "current_value": 349.33592,
+        "signed_change": 70.26801999999998,
+        "absolute_change": 70.26801999999998,
+        "simultaneous_other_signal_change": -3.617919999999998,
+        "previous_low_light_context": 0,
+        "current_low_light_context": 0,
+        "low_light_context_changed": false
+      },
+      {
+        "rank": 5,
+        "timestamp": "2022-04-28 05:28:00",
+        "previous_timestamp": "2022-04-28 05:26:00",
+        "signal": "Power_Generated",
+        "previous_value": 150.71768,
+        "current_value": 209.42626,
+        "signed_change": 58.70858000000001,
+        "absolute_change": 58.70858000000001,
+        "simultaneous_other_signal_change": 0.0,
+        "previous_low_light_context": 1,
+        "current_low_light_context": 1,
+        "low_light_context_changed": false
+      },
+      {
+        "rank": 6,
+        "timestamp": "2022-04-28 19:14:00",
+        "previous_timestamp": "2022-04-28 19:12:00",
+        "signal": "Power_Generated",
+        "previous_value": 192.04978,
+        "current_value": 139.88236,
+        "signed_change": -52.16741999999999,
+        "absolute_change": 52.16741999999999,
+        "simultaneous_other_signal_change": -0.405335,
+        "previous_low_light_context": 1,
+        "current_low_light_context": 1,
+        "low_light_context_changed": false
+      },
+      {
+        "rank": 7,
+        "timestamp": "2022-04-27 19:14:00",
+        "previous_timestamp": "2022-04-27 19:12:00",
+        "signal": "Power_Generated",
+        "previous_value": 203.7106,
+        "current_value": 152.64992,
+        "signed_change": -51.06067999999999,
+        "absolute_change": 51.06067999999999,
+        "simultaneous_other_signal_change": -0.555786,
+        "previous_low_light_context": 1,
+        "current_low_light_context": 1,
+        "low_light_context_changed": false
+      },
+      {
+        "rank": 8,
+        "timestamp": "2022-04-28 05:26:00",
+        "previous_timestamp": "2022-04-28 05:24:00",
+        "signal": "Power_Generated",
+        "previous_value": 99.667768,
+        "current_value": 150.71768,
+        "signed_change": 51.049912000000006,
+        "absolute_change": 51.049912000000006,
+        "simultaneous_other_signal_change": 0.0,
+        "previous_low_light_context": 1,
+        "current_low_light_context": 1,
+        "low_light_context_changed": false
+      },
+      {
+        "rank": 9,
+        "timestamp": "2022-04-27 19:16:00",
+        "previous_timestamp": "2022-04-27 19:14:00",
+        "signal": "Power_Generated",
+        "previous_value": 152.64992,
+        "current_value": 102.26274,
+        "signed_change": -50.387180000000015,
+        "absolute_change": 50.387180000000015,
+        "simultaneous_other_signal_change": 0.687874,
+        "previous_low_light_context": 1,
+        "current_low_light_context": 1,
+        "low_light_context_changed": false
+      },
+      {
+        "rank": 10,
+        "timestamp": "2022-04-28 05:30:00",
+        "previous_timestamp": "2022-04-28 05:28:00",
+        "signal": "Power_Generated",
+        "previous_value": 209.42626,
+        "current_value": 258.7089,
+        "signed_change": 49.282640000000015,
+        "absolute_change": 49.282640000000015,
+        "simultaneous_other_signal_change": 0.152222,
+        "previous_low_light_context": 1,
+        "current_low_light_context": 1,
+        "low_light_context_changed": false
+      }
+    ],
+    "largest_solar_radiation_transitions": [
+      {
+        "rank": 1,
+        "timestamp": "2022-04-28 09:58:00",
+        "previous_timestamp": "2022-04-28 09:56:00",
+        "signal": "Solar_Radiation",
+        "previous_value": 401.0154,
+        "current_value": 600.32048,
+        "signed_change": 199.30508,
+        "absolute_change": 199.30508,
+        "simultaneous_other_signal_change": 0.5913800000000151,
+        "previous_low_light_context": 0,
+        "current_low_light_context": 0,
+        "low_light_context_changed": false
+      },
+      {
+        "rank": 2,
+        "timestamp": "2022-04-28 10:00:00",
+        "previous_timestamp": "2022-04-28 09:58:00",
+        "signal": "Solar_Radiation",
+        "previous_value": 600.32048,
+        "current_value": 780.73856,
+        "signed_change": 180.41808000000003,
+        "absolute_change": 180.41808000000003,
+        "simultaneous_other_signal_change": -3.9957,
+        "previous_low_light_context": 0,
+        "current_low_light_context": 0,
+        "low_light_context_changed": false
+      },
+      {
+        "rank": 3,
+        "timestamp": "2022-04-28 09:52:00",
+        "previous_timestamp": "2022-04-28 09:50:00",
+        "signal": "Solar_Radiation",
+        "previous_value": 275.43894,
+        "current_value": 379.73912,
+        "signed_change": 104.30018,
+        "absolute_change": 104.30018,
+        "simultaneous_other_signal_change": 1.2354399999999828,
+        "previous_low_light_context": 0,
+        "current_low_light_context": 0,
+        "low_light_context_changed": false
+      },
+      {
+        "rank": 4,
+        "timestamp": "2022-04-27 17:22:00",
+        "previous_timestamp": "2022-04-27 17:20:00",
+        "signal": "Solar_Radiation",
+        "previous_value": 218.5837,
+        "current_value": 142.2994,
+        "signed_change": -76.2843,
+        "absolute_change": 76.2843,
+        "simultaneous_other_signal_change": -0.927720000000022,
+        "previous_low_light_context": 0,
+        "current_low_light_context": 0,
+        "low_light_context_changed": false
+      },
+      {
+        "rank": 5,
+        "timestamp": "2022-04-28 13:14:00",
+        "previous_timestamp": "2022-04-28 13:12:00",
+        "signal": "Solar_Radiation",
+        "previous_value": 1013.4186,
+        "current_value": 1084.6672,
+        "signed_change": 71.24860000000012,
+        "absolute_change": 71.24860000000012,
+        "simultaneous_other_signal_change": 2.3534799999999905,
+        "previous_low_light_context": 0,
+        "current_low_light_context": 0,
+        "low_light_context_changed": false
+      },
+      {
+        "rank": 6,
+        "timestamp": "2022-04-28 13:32:00",
+        "previous_timestamp": "2022-04-28 13:30:00",
+        "signal": "Solar_Radiation",
+        "previous_value": 985.3796,
+        "current_value": 1046.2046,
+        "signed_change": 60.825000000000045,
+        "absolute_change": 60.825000000000045,
+        "simultaneous_other_signal_change": 0.6109200000000214,
+        "previous_low_light_context": 0,
+        "current_low_light_context": 0,
+        "low_light_context_changed": false
+      },
+      {
+        "rank": 7,
+        "timestamp": "2022-04-28 12:50:00",
+        "previous_timestamp": "2022-04-28 12:48:00",
+        "signal": "Solar_Radiation",
+        "previous_value": 1091.4534,
+        "current_value": 1036.9386,
+        "signed_change": -54.51480000000015,
+        "absolute_change": 54.51480000000015,
+        "simultaneous_other_signal_change": -1.9013199999999983,
+        "previous_low_light_context": 0,
+        "current_low_light_context": 0,
+        "low_light_context_changed": false
+      },
+      {
+        "rank": 8,
+        "timestamp": "2022-04-28 15:50:00",
+        "previous_timestamp": "2022-04-28 15:48:00",
+        "signal": "Solar_Radiation",
+        "previous_value": 535.71388,
+        "current_value": 481.29996,
+        "signed_change": -54.41392000000002,
+        "absolute_change": 54.41392000000002,
+        "simultaneous_other_signal_change": -0.6910799999999995,
+        "previous_low_light_context": 0,
+        "current_low_light_context": 0,
+        "low_light_context_changed": false
+      },
+      {
+        "rank": 9,
+        "timestamp": "2022-04-28 14:50:00",
+        "previous_timestamp": "2022-04-28 14:48:00",
+        "signal": "Solar_Radiation",
+        "previous_value": 839.82272,
+        "current_value": 788.35584,
+        "signed_change": -51.46688000000006,
+        "absolute_change": 51.46688000000006,
+        "simultaneous_other_signal_change": -2.936359999999979,
+        "previous_low_light_context": 0,
+        "current_low_light_context": 0,
+        "low_light_context_changed": false
+      },
+      {
+        "rank": 10,
+        "timestamp": "2022-04-28 10:06:00",
+        "previous_timestamp": "2022-04-28 10:04:00",
+        "signal": "Solar_Radiation",
+        "previous_value": 802.97712,
+        "current_value": 850.0384,
+        "signed_change": 47.06128000000001,
+        "absolute_change": 47.06128000000001,
+        "simultaneous_other_signal_change": 46.82839999999999,
+        "previous_low_light_context": 0,
+        "current_low_light_context": 0,
+        "low_light_context_changed": false
+      }
+    ],
+    "relationship_summary": {
+      "shared_top_10_timestamp_count": 0,
+      "shared_top_10_timestamps": [],
+      "power_top_10_low_light_rows": 6,
+      "power_top_10_low_light_context_change_count": 0,
+      "pearson_correlation_between_same_step_power_and_solar_differences": -0.01777069716406476,
+      "observation": "The top-ten lists do not share a timestamp. The two largest power drops recur at 17:00 on consecutive dates without a simultaneously top-ranked radiation change. Six of the ten largest power changes occur while low_light_context is already 1, but none crosses that flag boundary at the same row. These are descriptive patterns and do not establish causation or an anomaly label."
+    }
+  },
+  "protected_source_files": {
+    "data/operational/solar-power-dataset/solar_data.csv": {
+      "sha256_before": "0615c4d92c7869074f99c4a6552cc201ab6db8152fc77650758664ed2c4ba393",
+      "sha256_after": "0615c4d92c7869074f99c4a6552cc201ab6db8152fc77650758664ed2c4ba393",
+      "unchanged": true
+    },
+    "data/processed/operational_cleaned.csv": {
+      "sha256_before": "3e440f11bf0a00227a4b2ae3ce29e38de0a03bb647b577daa2ff1f5d098624fc",
+      "sha256_after": "3e440f11bf0a00227a4b2ae3ce29e38de0a03bb647b577daa2ff1f5d098624fc",
+      "unchanged": true
+    },
+    "data/processed/operational_features_basic.csv": {
+      "sha256_before": "99f9f3a61f4602d518b6b2fa024f415f95acbd988cd9a4e5588f62e1f19dbcd7",
+      "sha256_after": "99f9f3a61f4602d518b6b2fa024f415f95acbd988cd9a4e5588f62e1f19dbcd7",
+      "unchanged": true
+    },
+    "data/processed/operational_features_rolling.csv": {
+      "sha256_before": "bfb29573505add5c5748f44719ae7db0f67fb41ce7f3a8741f215937bc002dfe",
+      "sha256_after": "bfb29573505add5c5748f44719ae7db0f67fb41ce7f3a8741f215937bc002dfe",
+      "unchanged": true
+    }
+  },
+  "validation": {
+    "passed": true,
+    "checks": {
+      "rows_preserved": true,
+      "all_previous_columns_present": true,
+      "all_previous_csv_values_preserved": true,
+      "all_change_columns_present": true,
+      "exact_column_layout": true,
+      "all_feature_formulas_match_recalculation": true,
+      "first_difference_row_is_nan": true,
+      "first_rate_row_is_nan": true,
+      "all_rates_equal_difference_divided_by_two_minutes": true,
+      "all_denominator_safeguards_applied": true,
+      "no_infinity_values_generated": true,
+      "input_hash_matches_pre_write_hash": true,
+      "causal_current_and_previous_only": true,
+      "all_protected_source_files_unchanged": true
+    },
+    "input_rows": 1009,
+    "output_rows": 1009,
+    "input_columns": 61,
+    "output_columns": 81,
+    "formula_checks_by_feature": {
+      "power_generated_diff": true,
+      "solar_radiation_diff": true,
+      "air_temp_diff": true,
+      "relative_humidity_diff": true,
+      "array_voltage_diff": true,
+      "array_current_diff": true,
+      "rtd_mean_diff": true,
+      "power_generated_rate_per_min": true,
+      "solar_radiation_rate_per_min": true,
+      "air_temp_rate_per_min": true,
+      "relative_humidity_rate_per_min": true,
+      "array_voltage_rate_per_min": true,
+      "array_current_rate_per_min": true,
+      "rtd_mean_rate_per_min": true,
+      "power_generated_relative_change": true,
+      "solar_radiation_relative_change": true,
+      "power_deviation_from_30m_mean": true,
+      "solar_deviation_from_30m_mean": true,
+      "power_deviation_ratio_30m": true,
+      "solar_deviation_ratio_30m": true
+    },
+    "rate_checks_by_signal": {
+      "Power_Generated": true,
+      "Solar_Radiation": true,
+      "Air_Temp": true,
+      "Relative_Humidity": true,
+      "Array_Voltage": true,
+      "Array_Current": true,
+      "rtd_mean": true
+    },
+    "safeguard_checks_by_feature": {
+      "power_generated_relative_change": true,
+      "solar_radiation_relative_change": true,
+      "power_deviation_ratio_30m": true,
+      "solar_deviation_ratio_30m": true
+    },
+    "input_sha256": "bfb29573505add5c5748f44719ae7db0f67fb41ce7f3a8741f215937bc002dfe",
+    "previous_value_mismatch": null
+  },
+  "timezone": "Not specified by dataset source; timestamps kept timezone-naive.",
+  "excluded_work": [
+    "feature selection",
+    "synthetic anomaly generation",
+    "anomaly-detection models",
+    "computer vision",
+    "video processing",
+    "dashboard"
+  ]
+}

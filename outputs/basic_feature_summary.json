@@ -1,0 +1,184 @@
+{
+  "feature_stage": "Day 8 initial feature engineering",
+  "generated_at_utc": "2026-09-03T22:18:37.046432+00:00",
+  "input_file": "data/processed/operational_cleaned.csv",
+  "output_file": "data/processed/operational_features_basic.csv",
+  "input_sha256_before": "3e440f11bf0a00227a4b2ae3ce29e38de0a03bb647b577daa2ff1f5d098624fc",
+  "input_sha256_after": "3e440f11bf0a00227a4b2ae3ce29e38de0a03bb647b577daa2ff1f5d098624fc",
+  "input_file_unchanged": true,
+  "original_column_count": 14,
+  "original_measurement_feature_count_excluding_timestamp": 13,
+  "engineered_feature_count": 17,
+  "final_dataset_shape": {
+    "rows": 1009,
+    "columns": 31
+  },
+  "original_column_names": [
+    "Timestamp",
+    "Air_Temp",
+    "Relative_Humidity",
+    "Wind_Speed",
+    "Wind_Direction",
+    "Solar_Radiation",
+    "RTD_1",
+    "RTD_2",
+    "RTD_3",
+    "RTD_4",
+    "RTD_5",
+    "Array_Voltage",
+    "Array_Current",
+    "Power_Generated"
+  ],
+  "engineered_feature_names": [
+    "hour",
+    "minute",
+    "minute_of_day",
+    "elapsed_minutes_from_start",
+    "hour_sin",
+    "hour_cos",
+    "minute_of_day_sin",
+    "minute_of_day_cos",
+    "rtd_mean",
+    "rtd_std",
+    "rtd_min",
+    "rtd_max",
+    "rtd_range",
+    "electrical_power_product",
+    "power_consistency_residual",
+    "power_consistency_abs_error",
+    "low_light_context"
+  ],
+  "engineered_feature_ranges": {
+    "hour": {
+      "minimum": 0.0,
+      "maximum": 23.0
+    },
+    "minute": {
+      "minimum": 0.0,
+      "maximum": 58.0
+    },
+    "minute_of_day": {
+      "minimum": 0.0,
+      "maximum": 1438.0
+    },
+    "elapsed_minutes_from_start": {
+      "minimum": 0.0,
+      "maximum": 2016.0
+    },
+    "hour_sin": {
+      "minimum": -1.0,
+      "maximum": 1.0
+    },
+    "hour_cos": {
+      "minimum": -1.0,
+      "maximum": 1.0
+    },
+    "minute_of_day_sin": {
+      "minimum": -1.0,
+      "maximum": 1.0
+    },
+    "minute_of_day_cos": {
+      "minimum": -1.0,
+      "maximum": 1.0
+    },
+    "rtd_mean": {
+      "minimum": 20.6130196,
+      "maximum": 112.20541999999998
+    },
+    "rtd_std": {
+      "minimum": 0.1782935258965953,
+      "maximum": 8.33087125581534
+    },
+    "rtd_min": {
+      "minimum": 19.737124,
+      "maximum": 109.62222
+    },
+    "rtd_max": {
+      "minimum": 21.188662,
+      "maximum": 116.76676
+    },
+    "rtd_range": {
+      "minimum": 0.5513800000000018,
+      "maximum": 19.111136
+    },
+    "electrical_power_product": {
+      "minimum": 8.48523334945,
+      "maximum": 438.556881434432
+    },
+    "power_consistency_residual": {
+      "minimum": -8.764569599861716e-05,
+      "maximum": 4.711503999033084e-05
+    },
+    "power_consistency_abs_error": {
+      "minimum": 2.2833001267486e-08,
+      "maximum": 8.764569599861716e-05
+    },
+    "low_light_context": {
+      "minimum": 0.0,
+      "maximum": 1.0
+    }
+  },
+  "low_light_context": {
+    "formula": "1 when Solar_Radiation <= 5; otherwise 0",
+    "threshold": 5.0,
+    "threshold_status": "Exploratory project threshold, not a manufacturer specification.",
+    "observation_count": 518,
+    "percentage_of_rows": 51.33795837462834,
+    "negative_solar_radiation_values_modified": false
+  },
+  "power_consistency_residual_statistics": {
+    "count": 1009,
+    "minimum": -8.764569599861716e-05,
+    "maximum": 4.711503999033084e-05,
+    "mean": -8.758579778090661e-06,
+    "median": -2.0362250001682014e-06,
+    "standard_deviation": 1.9202407873755228e-05,
+    "absolute_error_minimum": 2.2833001267486e-08,
+    "absolute_error_maximum": 8.764569599861716e-05,
+    "absolute_error_mean": 1.3006132402119024e-05,
+    "absolute_error_median": 3.833648008821911e-06
+  },
+  "power_generated_policy": {
+    "strategy_selected": false,
+    "possible_unsupervised_role": "May be used as an input variable.",
+    "possible_prediction_role": "May instead be a prediction target.",
+    "electrical_power_product_warning": "Do not automatically use it alongside Power_Generated because it recreates that measurement almost exactly.",
+    "residual_role": "Primarily a diagnostic consistency signal."
+  },
+  "timezone": "Not specified by dataset source; timestamps kept timezone-naive.",
+  "wind_direction_policy": "Original values retained unchanged; no modulo correction or circular wind features were created.",
+  "excluded_feature_categories": [
+    "weekday, month, and season",
+    "rolling-window statistics",
+    "rate-of-change and first-difference features",
+    "wind-direction cyclical features"
+  ],
+  "validation": {
+    "passed": true,
+    "checks": {
+      "input_hash_matches_pre_write_hash": true,
+      "rows_preserved": true,
+      "all_original_columns_present": true,
+      "all_original_values_preserved": true,
+      "all_engineered_columns_present": true,
+      "exact_column_layout": true,
+      "no_unexpected_engineered_missing_values": true,
+      "cyclical_ranges_within_minus_one_and_one": true,
+      "rtd_minimum_mean_maximum_order_valid": true,
+      "rtd_range_nonnegative": true,
+      "electrical_consistency_calculations_valid": true,
+      "low_light_flag_matches_threshold": true,
+      "no_prohibited_day_8_features": true,
+      "cleaned_input_hash_unchanged": true
+    },
+    "source_rows": 1009,
+    "feature_rows": 1009,
+    "source_columns": 14,
+    "feature_columns": 31,
+    "source_missing_values": 0,
+    "engineered_missing_values": 0,
+    "source_sha256": "3e440f11bf0a00227a4b2ae3ce29e38de0a03bb647b577daa2ff1f5d098624fc",
+    "original_value_mismatch": null,
+    "prohibited_feature_names": []
+  }
+}

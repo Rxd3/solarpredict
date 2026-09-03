@@ -1,0 +1,306 @@
+{
+  "generated_at_utc": "2026-09-03T11:11:04.131301+00:00",
+  "dataset": "Solar Power Dataset",
+  "raw_file": "data/operational/solar-power-dataset/solar_data.csv",
+  "processed_file": "data/processed/operational_cleaned.csv",
+  "raw_sha256_before_processing": "0615c4d92c7869074f99c4a6552cc201ab6db8152fc77650758664ed2c4ba393",
+  "raw_sha256_after_processing": "0615c4d92c7869074f99c4a6552cc201ab6db8152fc77650758664ed2c4ba393",
+  "processed_sha256": "3e440f11bf0a00227a4b2ae3ce29e38de0a03bb647b577daa2ff1f5d098624fc",
+  "raw_file_unchanged": true,
+  "timezone": "Not specified by dataset source; timestamps kept timezone-naive.",
+  "timestamp_input_format": "%d-%m-%Y %H:%M",
+  "timestamp_output_format": "%Y-%m-%d %H:%M:%S",
+  "rows_before_preprocessing": 1009,
+  "rows_after_preprocessing": 1009,
+  "duplicate_rows_found": 0,
+  "duplicate_rows_removed": 0,
+  "duplicate_timestamps_before": 0,
+  "duplicate_timestamps_after": 0,
+  "source_order_was_changed_by_sorting": false,
+  "missing_values_before": {
+    "Timestamp": 0,
+    "Air_Temp": 0,
+    "Relative_Humidity": 0,
+    "Wind_Speed": 0,
+    "Wind_Direction": 0,
+    "Solar_Radiation": 0,
+    "RTD_1": 0,
+    "RTD_2": 0,
+    "RTD_3": 0,
+    "RTD_4": 0,
+    "RTD_5": 0,
+    "Array_Voltage": 0,
+    "Array_Current": 0,
+    "Power_Generated": 0
+  },
+  "missing_values_after": {
+    "Timestamp": 0,
+    "Air_Temp": 0,
+    "Relative_Humidity": 0,
+    "Wind_Speed": 0,
+    "Wind_Direction": 0,
+    "Solar_Radiation": 0,
+    "RTD_1": 0,
+    "RTD_2": 0,
+    "RTD_3": 0,
+    "RTD_4": 0,
+    "RTD_5": 0,
+    "Array_Voltage": 0,
+    "Array_Current": 0,
+    "Power_Generated": 0
+  },
+  "total_missing_values_before": 0,
+  "total_missing_values_after": 0,
+  "invalid_numeric_values_coerced_to_missing": {
+    "Air_Temp": 0,
+    "Relative_Humidity": 0,
+    "Wind_Speed": 0,
+    "Wind_Direction": 0,
+    "Solar_Radiation": 0,
+    "RTD_1": 0,
+    "RTD_2": 0,
+    "RTD_3": 0,
+    "RTD_4": 0,
+    "RTD_5": 0,
+    "Array_Voltage": 0,
+    "Array_Current": 0,
+    "Power_Generated": 0
+  },
+  "columns_converted_to_numeric": [
+    "Air_Temp",
+    "Relative_Humidity",
+    "Wind_Speed",
+    "Wind_Direction",
+    "Solar_Radiation",
+    "RTD_1",
+    "RTD_2",
+    "RTD_3",
+    "RTD_4",
+    "RTD_5",
+    "Array_Voltage",
+    "Array_Current",
+    "Power_Generated"
+  ],
+  "timestamp_parsing_failures_before": 0,
+  "timestamp_parsing_failures_after": 0,
+  "start_timestamp": "2022-04-27 15:32:00",
+  "end_timestamp": "2022-04-29 01:08:00",
+  "observed_median_interval_seconds": 120.0,
+  "irregular_timestamp_gaps": 0,
+  "preprocessing_steps": [
+    "Validated the raw file against the verified 14-column schema.",
+    "Parsed Timestamp using %d-%m-%Y %H:%M without timezone localization.",
+    "Removed exact duplicate rows only, keeping the first occurrence.",
+    "Stable-sorted rows chronologically; equal timestamps retain source order.",
+    "Coerced the 13 verified measurement columns to numeric dtypes.",
+    "Preserved missing values without dropping rows or imputing values.",
+    "Preserved range-flagged and unusual measurements without clipping or outlier removal.",
+    "Serialized timestamps as %Y-%m-%d %H:%M:%S for an unambiguous processed CSV."
+  ],
+  "processing_warnings": [
+    "Timezone is not specified by the source; timestamps remain timezone-naive.",
+    "Preserved 314 Solar_Radiation values below 0 W/m^2.",
+    "Preserved 10 Wind_Direction values outside 0 to 360 degrees."
+  ],
+  "validation": {
+    "passed": true,
+    "checks": {
+      "raw_file_hash_unchanged": true,
+      "row_count_matches_exact_duplicate_policy": true,
+      "all_raw_columns_preserved": true,
+      "all_required_columns_present": true,
+      "no_unexpected_columns_added": true,
+      "column_order_preserved": true,
+      "timestamp_parse_failure_count_preserved": true,
+      "valid_timestamps_monotonic_increasing": true,
+      "unparseable_timestamps_sorted_last": true,
+      "numerical_ranges_preserved": true,
+      "processed_content_matches_expected_pipeline": true
+    },
+    "issues": [],
+    "raw_rows": 1009,
+    "processed_rows": 1009,
+    "expected_processed_rows": 1009,
+    "rows_removed_fraction": 0.0,
+    "lost_columns": [],
+    "missing_required_columns": [],
+    "unexpected_columns": [],
+    "raw_timestamp_profile": {
+      "parse_failures": 0,
+      "valid_timestamp_count": 1009,
+      "minimum": "2022-04-27 15:32:00",
+      "maximum": "2022-04-29 01:08:00",
+      "source_order_monotonic_increasing": true,
+      "backward_timestamp_steps": 0,
+      "duplicate_timestamps": 0,
+      "median_interval_seconds": 120.0,
+      "minimum_interval_seconds": 120.0,
+      "maximum_interval_seconds": 120.0,
+      "irregular_gap_count": 0,
+      "estimated_missing_intervals": 0,
+      "irregular_gap_examples": []
+    },
+    "processed_timestamp_profile": {
+      "parse_failures": 0,
+      "valid_timestamp_count": 1009,
+      "minimum": "2022-04-27 15:32:00",
+      "maximum": "2022-04-29 01:08:00",
+      "source_order_monotonic_increasing": true,
+      "backward_timestamp_steps": 0,
+      "duplicate_timestamps": 0,
+      "median_interval_seconds": 120.0,
+      "minimum_interval_seconds": 120.0,
+      "maximum_interval_seconds": 120.0,
+      "irregular_gap_count": 0,
+      "estimated_missing_intervals": 0,
+      "irregular_gap_examples": []
+    },
+    "numerical_ranges": {
+      "Air_Temp": {
+        "raw": {
+          "minimum": 12.075478,
+          "maximum": 49.631508
+        },
+        "processed": {
+          "minimum": 12.075478,
+          "maximum": 49.631508
+        },
+        "preserved": true
+      },
+      "Relative_Humidity": {
+        "raw": {
+          "minimum": 10.648168,
+          "maximum": 51.489112
+        },
+        "processed": {
+          "minimum": 10.648168,
+          "maximum": 51.489112
+        },
+        "preserved": true
+      },
+      "Wind_Speed": {
+        "raw": {
+          "minimum": 0.0,
+          "maximum": 2.933334
+        },
+        "processed": {
+          "minimum": 0.0,
+          "maximum": 2.933334
+        },
+        "preserved": true
+      },
+      "Wind_Direction": {
+        "raw": {
+          "minimum": 1.577505,
+          "maximum": 385.63088
+        },
+        "processed": {
+          "minimum": 1.577505,
+          "maximum": 385.63088
+        },
+        "preserved": true
+      },
+      "Solar_Radiation": {
+        "raw": {
+          "minimum": -0.838326,
+          "maximum": 1132.1284
+        },
+        "processed": {
+          "minimum": -0.838326,
+          "maximum": 1132.1284
+        },
+        "preserved": true
+      },
+      "RTD_1": {
+        "raw": {
+          "minimum": 19.737124,
+          "maximum": 116.76676
+        },
+        "processed": {
+          "minimum": 19.737124,
+          "maximum": 116.76676
+        },
+        "preserved": true
+      },
+      "RTD_2": {
+        "raw": {
+          "minimum": 21.188662,
+          "maximum": 111.63094
+        },
+        "processed": {
+          "minimum": 21.188662,
+          "maximum": 111.63094
+        },
+        "preserved": true
+      },
+      "RTD_3": {
+        "raw": {
+          "minimum": 20.738694,
+          "maximum": 109.62222
+        },
+        "processed": {
+          "minimum": 20.738694,
+          "maximum": 109.62222
+        },
+        "preserved": true
+      },
+      "RTD_4": {
+        "raw": {
+          "minimum": 20.615538,
+          "maximum": 111.6808
+        },
+        "processed": {
+          "minimum": 20.615538,
+          "maximum": 111.6808
+        },
+        "preserved": true
+      },
+      "RTD_5": {
+        "raw": {
+          "minimum": 20.744964,
+          "maximum": 111.62812
+        },
+        "processed": {
+          "minimum": 20.744964,
+          "maximum": 111.62812
+        },
+        "preserved": true
+      },
+      "Array_Voltage": {
+        "raw": {
+          "minimum": 1.574978,
+          "maximum": 81.778936
+        },
+        "processed": {
+          "minimum": 1.574978,
+          "maximum": 81.778936
+        },
+        "preserved": true
+      },
+      "Array_Current": {
+        "raw": {
+          "minimum": 5.351294,
+          "maximum": 5.407162
+        },
+        "processed": {
+          "minimum": 5.351294,
+          "maximum": 5.407162
+        },
+        "preserved": true
+      },
+      "Power_Generated": {
+        "raw": {
+          "minimum": 8.485232,
+          "maximum": 438.55684
+        },
+        "processed": {
+          "minimum": 8.485232,
+          "maximum": 438.55684
+        },
+        "preserved": true
+      }
+    },
+    "content_mismatch": null,
+    "raw_sha256_after_processing": "0615c4d92c7869074f99c4a6552cc201ab6db8152fc77650758664ed2c4ba393"
+  }
+}

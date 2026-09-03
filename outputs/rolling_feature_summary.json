@@ -1,0 +1,828 @@
+{
+  "feature_stage": "Day 9 trailing rolling-window feature engineering",
+  "generated_at_utc": "2026-09-03T22:28:52.605938+00:00",
+  "input_file": "data/processed/operational_features_basic.csv",
+  "output_file": "data/processed/operational_features_rolling.csv",
+  "validation_figure": "outputs/figures/operational/day9_power_rolling_mean.png",
+  "input_dataset_shape": {
+    "rows": 1009,
+    "columns": 31
+  },
+  "output_dataset_shape": {
+    "rows": 1009,
+    "columns": 61
+  },
+  "rolling_feature_count": 30,
+  "rolling_feature_names": [
+    "power_generated_roll_mean_10m",
+    "power_generated_roll_std_10m",
+    "power_generated_roll_min_10m",
+    "power_generated_roll_max_10m",
+    "power_generated_roll_mean_30m",
+    "power_generated_roll_std_30m",
+    "power_generated_roll_min_30m",
+    "power_generated_roll_max_30m",
+    "power_generated_roll_mean_60m",
+    "power_generated_roll_std_60m",
+    "power_generated_roll_min_60m",
+    "power_generated_roll_max_60m",
+    "solar_radiation_roll_mean_10m",
+    "solar_radiation_roll_std_10m",
+    "solar_radiation_roll_min_10m",
+    "solar_radiation_roll_max_10m",
+    "solar_radiation_roll_mean_30m",
+    "solar_radiation_roll_std_30m",
+    "solar_radiation_roll_min_30m",
+    "solar_radiation_roll_max_30m",
+    "solar_radiation_roll_mean_60m",
+    "solar_radiation_roll_std_60m",
+    "solar_radiation_roll_min_60m",
+    "solar_radiation_roll_max_60m",
+    "air_temp_roll_mean_30m",
+    "air_temp_roll_mean_60m",
+    "relative_humidity_roll_mean_30m",
+    "relative_humidity_roll_mean_60m",
+    "rtd_mean_roll_mean_30m",
+    "rtd_mean_roll_std_30m"
+  ],
+  "rolling_feature_specs": [
+    {
+      "name": "power_generated_roll_mean_10m",
+      "source_column": "Power_Generated",
+      "statistic": "mean",
+      "window_minutes": 10,
+      "window_samples": 5,
+      "center": false,
+      "minimum_periods": 5
+    },
+    {
+      "name": "power_generated_roll_std_10m",
+      "source_column": "Power_Generated",
+      "statistic": "std",
+      "window_minutes": 10,
+      "window_samples": 5,
+      "center": false,
+      "minimum_periods": 5
+    },
+    {
+      "name": "power_generated_roll_min_10m",
+      "source_column": "Power_Generated",
+      "statistic": "min",
+      "window_minutes": 10,
+      "window_samples": 5,
+      "center": false,
+      "minimum_periods": 5
+    },
+    {
+      "name": "power_generated_roll_max_10m",
+      "source_column": "Power_Generated",
+      "statistic": "max",
+      "window_minutes": 10,
+      "window_samples": 5,
+      "center": false,
+      "minimum_periods": 5
+    },
+    {
+      "name": "power_generated_roll_mean_30m",
+      "source_column": "Power_Generated",
+      "statistic": "mean",
+      "window_minutes": 30,
+      "window_samples": 15,
+      "center": false,
+      "minimum_periods": 15
+    },
+    {
+      "name": "power_generated_roll_std_30m",
+      "source_column": "Power_Generated",
+      "statistic": "std",
+      "window_minutes": 30,
+      "window_samples": 15,
+      "center": false,
+      "minimum_periods": 15
+    },
+    {
+      "name": "power_generated_roll_min_30m",
+      "source_column": "Power_Generated",
+      "statistic": "min",
+      "window_minutes": 30,
+      "window_samples": 15,
+      "center": false,
+      "minimum_periods": 15
+    },
+    {
+      "name": "power_generated_roll_max_30m",
+      "source_column": "Power_Generated",
+      "statistic": "max",
+      "window_minutes": 30,
+      "window_samples": 15,
+      "center": false,
+      "minimum_periods": 15
+    },
+    {
+      "name": "power_generated_roll_mean_60m",
+      "source_column": "Power_Generated",
+      "statistic": "mean",
+      "window_minutes": 60,
+      "window_samples": 30,
+      "center": false,
+      "minimum_periods": 30
+    },
+    {
+      "name": "power_generated_roll_std_60m",
+      "source_column": "Power_Generated",
+      "statistic": "std",
+      "window_minutes": 60,
+      "window_samples": 30,
+      "center": false,
+      "minimum_periods": 30
+    },
+    {
+      "name": "power_generated_roll_min_60m",
+      "source_column": "Power_Generated",
+      "statistic": "min",
+      "window_minutes": 60,
+      "window_samples": 30,
+      "center": false,
+      "minimum_periods": 30
+    },
+    {
+      "name": "power_generated_roll_max_60m",
+      "source_column": "Power_Generated",
+      "statistic": "max",
+      "window_minutes": 60,
+      "window_samples": 30,
+      "center": false,
+      "minimum_periods": 30
+    },
+    {
+      "name": "solar_radiation_roll_mean_10m",
+      "source_column": "Solar_Radiation",
+      "statistic": "mean",
+      "window_minutes": 10,
+      "window_samples": 5,
+      "center": false,
+      "minimum_periods": 5
+    },
+    {
+      "name": "solar_radiation_roll_std_10m",
+      "source_column": "Solar_Radiation",
+      "statistic": "std",
+      "window_minutes": 10,
+      "window_samples": 5,
+      "center": false,
+      "minimum_periods": 5
+    },
+    {
+      "name": "solar_radiation_roll_min_10m",
+      "source_column": "Solar_Radiation",
+      "statistic": "min",
+      "window_minutes": 10,
+      "window_samples": 5,
+      "center": false,
+      "minimum_periods": 5
+    },
+    {
+      "name": "solar_radiation_roll_max_10m",
+      "source_column": "Solar_Radiation",
+      "statistic": "max",
+      "window_minutes": 10,
+      "window_samples": 5,
+      "center": false,
+      "minimum_periods": 5
+    },
+    {
+      "name": "solar_radiation_roll_mean_30m",
+      "source_column": "Solar_Radiation",
+      "statistic": "mean",
+      "window_minutes": 30,
+      "window_samples": 15,
+      "center": false,
+      "minimum_periods": 15
+    },
+    {
+      "name": "solar_radiation_roll_std_30m",
+      "source_column": "Solar_Radiation",
+      "statistic": "std",
+      "window_minutes": 30,
+      "window_samples": 15,
+      "center": false,
+      "minimum_periods": 15
+    },
+    {
+      "name": "solar_radiation_roll_min_30m",
+      "source_column": "Solar_Radiation",
+      "statistic": "min",
+      "window_minutes": 30,
+      "window_samples": 15,
+      "center": false,
+      "minimum_periods": 15
+    },
+    {
+      "name": "solar_radiation_roll_max_30m",
+      "source_column": "Solar_Radiation",
+      "statistic": "max",
+      "window_minutes": 30,
+      "window_samples": 15,
+      "center": false,
+      "minimum_periods": 15
+    },
+    {
+      "name": "solar_radiation_roll_mean_60m",
+      "source_column": "Solar_Radiation",
+      "statistic": "mean",
+      "window_minutes": 60,
+      "window_samples": 30,
+      "center": false,
+      "minimum_periods": 30
+    },
+    {
+      "name": "solar_radiation_roll_std_60m",
+      "source_column": "Solar_Radiation",
+      "statistic": "std",
+      "window_minutes": 60,
+      "window_samples": 30,
+      "center": false,
+      "minimum_periods": 30
+    },
+    {
+      "name": "solar_radiation_roll_min_60m",
+      "source_column": "Solar_Radiation",
+      "statistic": "min",
+      "window_minutes": 60,
+      "window_samples": 30,
+      "center": false,
+      "minimum_periods": 30
+    },
+    {
+      "name": "solar_radiation_roll_max_60m",
+      "source_column": "Solar_Radiation",
+      "statistic": "max",
+      "window_minutes": 60,
+      "window_samples": 30,
+      "center": false,
+      "minimum_periods": 30
+    },
+    {
+      "name": "air_temp_roll_mean_30m",
+      "source_column": "Air_Temp",
+      "statistic": "mean",
+      "window_minutes": 30,
+      "window_samples": 15,
+      "center": false,
+      "minimum_periods": 15
+    },
+    {
+      "name": "air_temp_roll_mean_60m",
+      "source_column": "Air_Temp",
+      "statistic": "mean",
+      "window_minutes": 60,
+      "window_samples": 30,
+      "center": false,
+      "minimum_periods": 30
+    },
+    {
+      "name": "relative_humidity_roll_mean_30m",
+      "source_column": "Relative_Humidity",
+      "statistic": "mean",
+      "window_minutes": 30,
+      "window_samples": 15,
+      "center": false,
+      "minimum_periods": 15
+    },
+    {
+      "name": "relative_humidity_roll_mean_60m",
+      "source_column": "Relative_Humidity",
+      "statistic": "mean",
+      "window_minutes": 60,
+      "window_samples": 30,
+      "center": false,
+      "minimum_periods": 30
+    },
+    {
+      "name": "rtd_mean_roll_mean_30m",
+      "source_column": "rtd_mean",
+      "statistic": "mean",
+      "window_minutes": 30,
+      "window_samples": 15,
+      "center": false,
+      "minimum_periods": 15
+    },
+    {
+      "name": "rtd_mean_roll_std_30m",
+      "source_column": "rtd_mean",
+      "statistic": "std",
+      "window_minutes": 30,
+      "window_samples": 15,
+      "center": false,
+      "minimum_periods": 15
+    }
+  ],
+  "window_definitions": {
+    "10m": {
+      "minutes": 10,
+      "samples": 5,
+      "sampling_interval_minutes": 2,
+      "full_window_required": true,
+      "centered": false
+    },
+    "30m": {
+      "minutes": 30,
+      "samples": 15,
+      "sampling_interval_minutes": 2,
+      "full_window_required": true,
+      "centered": false
+    },
+    "60m": {
+      "minutes": 60,
+      "samples": 30,
+      "sampling_interval_minutes": 2,
+      "full_window_required": true,
+      "centered": false
+    }
+  },
+  "window_direction": "Trailing only: each value uses the current row and previous rows; future rows are never used.",
+  "rolling_standard_deviation_ddof": 0,
+  "initial_nan_policy": "Retained in place; no backfill, future fill, or row removal.",
+  "nan_counts_by_window": {
+    "10m": {
+      "window_samples": 5,
+      "feature_count": 8,
+      "expected_initial_nan_count_per_feature": 4,
+      "actual_nan_counts": {
+        "power_generated_roll_mean_10m": 4,
+        "power_generated_roll_std_10m": 4,
+        "power_generated_roll_min_10m": 4,
+        "power_generated_roll_max_10m": 4,
+        "solar_radiation_roll_mean_10m": 4,
+        "solar_radiation_roll_std_10m": 4,
+        "solar_radiation_roll_min_10m": 4,
+        "solar_radiation_roll_max_10m": 4
+      },
+      "total_nan_values": 32
+    },
+    "30m": {
+      "window_samples": 15,
+      "feature_count": 12,
+      "expected_initial_nan_count_per_feature": 14,
+      "actual_nan_counts": {
+        "power_generated_roll_mean_30m": 14,
+        "power_generated_roll_std_30m": 14,
+        "power_generated_roll_min_30m": 14,
+        "power_generated_roll_max_30m": 14,
+        "solar_radiation_roll_mean_30m": 14,
+        "solar_radiation_roll_std_30m": 14,
+        "solar_radiation_roll_min_30m": 14,
+        "solar_radiation_roll_max_30m": 14,
+        "air_temp_roll_mean_30m": 14,
+        "relative_humidity_roll_mean_30m": 14,
+        "rtd_mean_roll_mean_30m": 14,
+        "rtd_mean_roll_std_30m": 14
+      },
+      "total_nan_values": 168
+    },
+    "60m": {
+      "window_samples": 30,
+      "feature_count": 10,
+      "expected_initial_nan_count_per_feature": 29,
+      "actual_nan_counts": {
+        "power_generated_roll_mean_60m": 29,
+        "power_generated_roll_std_60m": 29,
+        "power_generated_roll_min_60m": 29,
+        "power_generated_roll_max_60m": 29,
+        "solar_radiation_roll_mean_60m": 29,
+        "solar_radiation_roll_std_60m": 29,
+        "solar_radiation_roll_min_60m": 29,
+        "solar_radiation_roll_max_60m": 29,
+        "air_temp_roll_mean_60m": 29,
+        "relative_humidity_roll_mean_60m": 29
+      },
+      "total_nan_values": 290
+    }
+  },
+  "rolling_feature_statistics": {
+    "power_generated_roll_mean_10m": {
+      "count": 1005,
+      "nan_count": 4,
+      "minimum": 8.503455599999999,
+      "maximum": 436.674992,
+      "mean": 182.99311895880598,
+      "median": 276.0365,
+      "standard_deviation": 165.83720340089388
+    },
+    "power_generated_roll_std_10m": {
+      "count": 1005,
+      "nan_count": 4,
+      "minimum": 0.0020503410264257,
+      "maximum": 70.54338259693397,
+      "mean": 2.402868653446268,
+      "median": 0.3026373182140883,
+      "standard_deviation": 8.924462407738725
+    },
+    "power_generated_roll_min_10m": {
+      "count": 1005,
+      "nan_count": 4,
+      "minimum": 8.485232,
+      "maximum": 434.65944,
+      "mean": 179.97037574726366,
+      "median": 275.74456,
+      "standard_deviation": 165.1139858768069
+    },
+    "power_generated_roll_max_10m": {
+      "count": 1005,
+      "nan_count": 4,
+      "minimum": 8.558962,
+      "maximum": 438.55684,
+      "mean": 186.27677154626866,
+      "median": 276.43484,
+      "standard_deviation": 167.214191961399
+    },
+    "power_generated_roll_mean_30m": {
+      "count": 995,
+      "nan_count": 14,
+      "minimum": 8.7028424,
+      "maximum": 434.0078853333334,
+      "mean": 182.57693730331658,
+      "median": 261.3529106666667,
+      "standard_deviation": 164.23630425811896
+    },
+    "power_generated_roll_std_30m": {
+      "count": 995,
+      "nan_count": 14,
+      "minimum": 0.020030293995077,
+      "maximum": 111.13674974331038,
+      "mean": 7.01360193136652,
+      "median": 0.8512937562087882,
+      "standard_deviation": 19.612799380456078
+    },
+    "power_generated_roll_min_30m": {
+      "count": 995,
+      "nan_count": 14,
+      "minimum": 8.485232,
+      "maximum": 431.23236,
+      "mean": 172.94700795778894,
+      "median": 150.71768,
+      "standard_deviation": 162.77764696908667
+    },
+    "power_generated_roll_max_30m": {
+      "count": 995,
+      "nan_count": 14,
+      "minimum": 8.984904,
+      "maximum": 438.55684,
+      "mean": 193.208798,
+      "median": 276.79636,
+      "standard_deviation": 168.51751858915924
+    },
+    "power_generated_roll_mean_60m": {
+      "count": 980,
+      "nan_count": 29,
+      "minimum": 9.0268044,
+      "maximum": 431.851196,
+      "mean": 181.94409484544218,
+      "median": 210.768965,
+      "standard_deviation": 161.4698611265434
+    },
+    "power_generated_roll_std_60m": {
+      "count": 980,
+      "nan_count": 29,
+      "minimum": 0.0517243855293576,
+      "maximum": 122.8041638871406,
+      "mean": 14.14131621997976,
+      "median": 1.5546421231895706,
+      "standard_deviation": 29.327254146733676
+    },
+    "power_generated_roll_min_60m": {
+      "count": 980,
+      "nan_count": 29,
+      "minimum": 8.485232,
+      "maximum": 427.96536,
+      "mean": 162.59181733061226,
+      "median": 15.861463,
+      "standard_deviation": 159.04368066423348
+    },
+    "power_generated_roll_max_60m": {
+      "count": 980,
+      "nan_count": 29,
+      "minimum": 9.64621,
+      "maximum": 438.55684,
+      "mean": 203.2886983020408,
+      "median": 279.07865000000004,
+      "standard_deviation": 169.59278077688248
+    },
+    "solar_radiation_roll_mean_10m": {
+      "count": 1005,
+      "nan_count": 4,
+      "minimum": -0.7477005999999999,
+      "maximum": 1127.73056,
+      "mean": 223.54098057094527,
+      "median": 1.8125886,
+      "standard_deviation": 357.24716244635306
+    },
+    "solar_radiation_roll_std_10m": {
+      "count": 1005,
+      "nan_count": 4,
+      "minimum": 0.0242793412723059,
+      "maximum": 170.0447187562826,
+      "mean": 5.839669407411022,
+      "median": 0.7144630121286133,
+      "standard_deviation": 12.294477961368921
+    },
+    "solar_radiation_roll_min_10m": {
+      "count": 1005,
+      "nan_count": 4,
+      "minimum": -0.838326,
+      "maximum": 1119.5154,
+      "mean": 215.65333430149255,
+      "median": 0.906693,
+      "standard_deviation": 349.51308206738406
+    },
+    "solar_radiation_roll_max_10m": {
+      "count": 1005,
+      "nan_count": 4,
+      "minimum": -0.636543,
+      "maximum": 1132.1284,
+      "mean": 231.4333845472637,
+      "median": 2.52095,
+      "standard_deviation": 365.0356186167233
+    },
+    "solar_radiation_roll_mean_30m": {
+      "count": 995,
+      "nan_count": 14,
+      "minimum": -0.5656245333333333,
+      "maximum": 1118.2320533333334,
+      "mean": 222.44671837058627,
+      "median": 2.8359254666666667,
+      "standard_deviation": 356.18873565138193
+    },
+    "solar_radiation_roll_std_30m": {
+      "count": 995,
+      "nan_count": 14,
+      "minimum": 0.1056065889194341,
+      "maximum": 246.16594771533224,
+      "mean": 14.578715181170265,
+      "median": 2.6465113865556016,
+      "standard_deviation": 27.858894240388626
+    },
+    "solar_radiation_roll_min_30m": {
+      "count": 995,
+      "nan_count": 14,
+      "minimum": -0.838326,
+      "maximum": 1088.7222,
+      "mean": 199.466160719598,
+      "median": -0.00531,
+      "standard_deviation": 335.74477800290816
+    },
+    "solar_radiation_roll_max_30m": {
+      "count": 995,
+      "nan_count": 14,
+      "minimum": -0.231209,
+      "maximum": 1132.1284,
+      "mean": 245.62619481005024,
+      "median": 8.038323,
+      "standard_deviation": 376.8830946087655
+    },
+    "solar_radiation_roll_mean_60m": {
+      "count": 980,
+      "nan_count": 29,
+      "minimum": -0.3297251333333333,
+      "maximum": 1101.88048,
+      "mean": 221.38580330897958,
+      "median": 5.760539816666666,
+      "standard_deviation": 354.2673148677046
+    },
+    "solar_radiation_roll_std_60m": {
+      "count": 980,
+      "nan_count": 29,
+      "minimum": 0.1988782648194541,
+      "maximum": 294.5004274666163,
+      "mean": 27.15609995034891,
+      "median": 7.839549313353654,
+      "standard_deviation": 46.50060205974494
+    },
+    "solar_radiation_roll_min_60m": {
+      "count": 980,
+      "nan_count": 29,
+      "minimum": -0.838326,
+      "maximum": 1061.8976,
+      "mean": 178.28036869183674,
+      "median": -0.47115700000000005,
+      "standard_deviation": 318.5785387594985
+    },
+    "solar_radiation_roll_max_60m": {
+      "count": 980,
+      "nan_count": 29,
+      "minimum": 0.211739,
+      "maximum": 1132.1284,
+      "mean": 266.7304692163265,
+      "median": 25.588509000000002,
+      "standard_deviation": 392.3719525065922
+    },
+    "air_temp_roll_mean_30m": {
+      "count": 995,
+      "nan_count": 14,
+      "minimum": 12.284262533333331,
+      "maximum": 48.676956,
+      "mean": 25.287194492596317,
+      "median": 19.8914112,
+      "standard_deviation": 11.324573054891532
+    },
+    "air_temp_roll_mean_60m": {
+      "count": 980,
+      "nan_count": 29,
+      "minimum": 12.534197933333331,
+      "maximum": 48.25896506666667,
+      "mean": 25.2233104570068,
+      "median": 19.891012766666666,
+      "standard_deviation": 11.216492039050967
+    },
+    "relative_humidity_roll_mean_30m": {
+      "count": 995,
+      "nan_count": 14,
+      "minimum": 11.397814133333332,
+      "maximum": 50.204726666666666,
+      "mean": 31.872126515376884,
+      "median": 34.8904272,
+      "standard_deviation": 12.220671316257548
+    },
+    "relative_humidity_roll_mean_60m": {
+      "count": 980,
+      "nan_count": 29,
+      "minimum": 11.574144933333336,
+      "maximum": 49.9606932,
+      "mean": 31.953294057959184,
+      "median": 35.02033266666666,
+      "standard_deviation": 12.090964721116864
+    },
+    "rtd_mean_roll_mean_30m": {
+      "count": 995,
+      "nan_count": 14,
+      "minimum": 20.66868786666667,
+      "maximum": 111.26538986666668,
+      "mean": 46.50490665642881,
+      "median": 28.09341232,
+      "standard_deviation": 31.76386130222626
+    },
+    "rtd_mean_roll_std_30m": {
+      "count": 995,
+      "nan_count": 14,
+      "minimum": 0.0288551442644612,
+      "maximum": 21.5126043312078,
+      "mean": 1.3422898083280559,
+      "median": 0.2960513003053443,
+      "standard_deviation": 2.9969327026982926
+    }
+  },
+  "protected_source_files": {
+    "data/operational/solar-power-dataset/solar_data.csv": {
+      "sha256_before": "0615c4d92c7869074f99c4a6552cc201ab6db8152fc77650758664ed2c4ba393",
+      "sha256_after": "0615c4d92c7869074f99c4a6552cc201ab6db8152fc77650758664ed2c4ba393",
+      "unchanged": true
+    },
+    "data/processed/operational_cleaned.csv": {
+      "sha256_before": "3e440f11bf0a00227a4b2ae3ce29e38de0a03bb647b577daa2ff1f5d098624fc",
+      "sha256_after": "3e440f11bf0a00227a4b2ae3ce29e38de0a03bb647b577daa2ff1f5d098624fc",
+      "unchanged": true
+    },
+    "data/processed/operational_features_basic.csv": {
+      "sha256_before": "99f9f3a61f4602d518b6b2fa024f415f95acbd988cd9a4e5588f62e1f19dbcd7",
+      "sha256_after": "99f9f3a61f4602d518b6b2fa024f415f95acbd988cd9a4e5588f62e1f19dbcd7",
+      "unchanged": true
+    }
+  },
+  "validation": {
+    "passed": true,
+    "checks": {
+      "rows_preserved": true,
+      "all_previous_columns_present": true,
+      "all_previous_values_preserved": true,
+      "all_rolling_columns_present": true,
+      "exact_column_layout": true,
+      "all_rolling_formulas_match_trailing_recalculation": true,
+      "all_nan_counts_match_full_windows": true,
+      "all_nans_are_initial_prefix_only": true,
+      "all_primary_min_mean_max_relationships_valid": true,
+      "input_hash_matches_pre_write_hash": true,
+      "trailing_only_configuration": true,
+      "all_protected_source_files_unchanged": true
+    },
+    "source_rows": 1009,
+    "output_rows": 1009,
+    "source_columns": 31,
+    "output_columns": 61,
+    "formula_checks_by_feature": {
+      "power_generated_roll_mean_10m": true,
+      "power_generated_roll_std_10m": true,
+      "power_generated_roll_min_10m": true,
+      "power_generated_roll_max_10m": true,
+      "power_generated_roll_mean_30m": true,
+      "power_generated_roll_std_30m": true,
+      "power_generated_roll_min_30m": true,
+      "power_generated_roll_max_30m": true,
+      "power_generated_roll_mean_60m": true,
+      "power_generated_roll_std_60m": true,
+      "power_generated_roll_min_60m": true,
+      "power_generated_roll_max_60m": true,
+      "solar_radiation_roll_mean_10m": true,
+      "solar_radiation_roll_std_10m": true,
+      "solar_radiation_roll_min_10m": true,
+      "solar_radiation_roll_max_10m": true,
+      "solar_radiation_roll_mean_30m": true,
+      "solar_radiation_roll_std_30m": true,
+      "solar_radiation_roll_min_30m": true,
+      "solar_radiation_roll_max_30m": true,
+      "solar_radiation_roll_mean_60m": true,
+      "solar_radiation_roll_std_60m": true,
+      "solar_radiation_roll_min_60m": true,
+      "solar_radiation_roll_max_60m": true,
+      "air_temp_roll_mean_30m": true,
+      "air_temp_roll_mean_60m": true,
+      "relative_humidity_roll_mean_30m": true,
+      "relative_humidity_roll_mean_60m": true,
+      "rtd_mean_roll_mean_30m": true,
+      "rtd_mean_roll_std_30m": true
+    },
+    "nan_count_checks_by_feature": {
+      "power_generated_roll_mean_10m": true,
+      "power_generated_roll_std_10m": true,
+      "power_generated_roll_min_10m": true,
+      "power_generated_roll_max_10m": true,
+      "power_generated_roll_mean_30m": true,
+      "power_generated_roll_std_30m": true,
+      "power_generated_roll_min_30m": true,
+      "power_generated_roll_max_30m": true,
+      "power_generated_roll_mean_60m": true,
+      "power_generated_roll_std_60m": true,
+      "power_generated_roll_min_60m": true,
+      "power_generated_roll_max_60m": true,
+      "solar_radiation_roll_mean_10m": true,
+      "solar_radiation_roll_std_10m": true,
+      "solar_radiation_roll_min_10m": true,
+      "solar_radiation_roll_max_10m": true,
+      "solar_radiation_roll_mean_30m": true,
+      "solar_radiation_roll_std_30m": true,
+      "solar_radiation_roll_min_30m": true,
+      "solar_radiation_roll_max_30m": true,
+      "solar_radiation_roll_mean_60m": true,
+      "solar_radiation_roll_std_60m": true,
+      "solar_radiation_roll_min_60m": true,
+      "solar_radiation_roll_max_60m": true,
+      "air_temp_roll_mean_30m": true,
+      "air_temp_roll_mean_60m": true,
+      "relative_humidity_roll_mean_30m": true,
+      "relative_humidity_roll_mean_60m": true,
+      "rtd_mean_roll_mean_30m": true,
+      "rtd_mean_roll_std_30m": true
+    },
+    "initial_nan_prefix_checks_by_feature": {
+      "power_generated_roll_mean_10m": true,
+      "power_generated_roll_std_10m": true,
+      "power_generated_roll_min_10m": true,
+      "power_generated_roll_max_10m": true,
+      "power_generated_roll_mean_30m": true,
+      "power_generated_roll_std_30m": true,
+      "power_generated_roll_min_30m": true,
+      "power_generated_roll_max_30m": true,
+      "power_generated_roll_mean_60m": true,
+      "power_generated_roll_std_60m": true,
+      "power_generated_roll_min_60m": true,
+      "power_generated_roll_max_60m": true,
+      "solar_radiation_roll_mean_10m": true,
+      "solar_radiation_roll_std_10m": true,
+      "solar_radiation_roll_min_10m": true,
+      "solar_radiation_roll_max_10m": true,
+      "solar_radiation_roll_mean_30m": true,
+      "solar_radiation_roll_std_30m": true,
+      "solar_radiation_roll_min_30m": true,
+      "solar_radiation_roll_max_30m": true,
+      "solar_radiation_roll_mean_60m": true,
+      "solar_radiation_roll_std_60m": true,
+      "solar_radiation_roll_min_60m": true,
+      "solar_radiation_roll_max_60m": true,
+      "air_temp_roll_mean_30m": true,
+      "air_temp_roll_mean_60m": true,
+      "relative_humidity_roll_mean_30m": true,
+      "relative_humidity_roll_mean_60m": true,
+      "rtd_mean_roll_mean_30m": true,
+      "rtd_mean_roll_std_30m": true
+    },
+    "min_mean_max_checks": {
+      "power_generated_10m": true,
+      "power_generated_30m": true,
+      "power_generated_60m": true,
+      "solar_radiation_10m": true,
+      "solar_radiation_30m": true,
+      "solar_radiation_60m": true
+    },
+    "source_sha256": "99f9f3a61f4602d518b6b2fa024f415f95acbd988cd9a4e5588f62e1f19dbcd7",
+    "original_value_mismatch": null
+  },
+  "excluded_work": [
+    "rate-of-change features",
+    "percentage-change features",
+    "synthetic anomalies",
+    "anomaly-detection models",
+    "computer vision",
+    "video processing",
+    "dashboard"
+  ],
+  "timezone": "Not specified by dataset source; timestamps kept timezone-naive."
+}
