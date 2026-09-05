@@ -1,0 +1,719 @@
+{
+  "stage": "Day 22 frozen anomaly-detector evaluation on final synthetic data",
+  "frozen_configuration": {
+    "feature_order": [
+      "Power_Generated",
+      "Solar_Radiation",
+      "Air_Temp",
+      "Relative_Humidity",
+      "Wind_Speed",
+      "rtd_mean",
+      "rtd_std"
+    ],
+    "threshold": 0.7135242760182695,
+    "threshold_rule": "anomaly_score > threshold",
+    "score_convention": "higher score = more anomalous; score = -model.score_samples",
+    "detector_verification": {
+      "detector_config": {
+        "path": "config/frozen_anomaly_detector.yaml",
+        "sha256": "825cdc02e000352611de77bc19fce1e550f0dd8c7bd8a791e5cc2f1da79dd8b3"
+      },
+      "detector_metadata": {
+        "path": "models/frozen_anomaly_detector_metadata.json",
+        "sha256": "04c323a6fd8cc4fa05660940162b80e12f493a9e88a6e0a4c62dd84fc607b4a8"
+      },
+      "scaler": {
+        "path": "models/comparisons/no_time_standard_scaler.joblib",
+        "sha256": "b8b04db85a3bae4a0187b8ede66e859e811b7ee85b995976c9dc808b67b9aefb"
+      },
+      "model": {
+        "path": "models/comparisons/no_time_isolation_forest.joblib",
+        "sha256": "5eb151856bb1d0776587140bb2eb201ba450f40293d540a90db44b3599ef963c"
+      },
+      "scaler_training_rows": 336,
+      "feature_order": [
+        "Power_Generated",
+        "Solar_Radiation",
+        "Air_Temp",
+        "Relative_Humidity",
+        "Wind_Speed",
+        "rtd_mean",
+        "rtd_std"
+      ],
+      "fit_called": false
+    },
+    "threshold_verification": {
+      "threshold_config": {
+        "path": "config/frozen_anomaly_threshold.yaml",
+        "sha256": "019d251482160e64da89e33c7276c6aad864696bfa907a087a7d7c300b0139b7"
+      },
+      "threshold_metadata": {
+        "path": "models/frozen_anomaly_threshold_metadata.json",
+        "sha256": "eb5d7ea51827faaa1620b8d7ef5f42da8294dfd30a8a281c5ccfbc3f77c5eec9"
+      },
+      "strategy": "calibration_percentile",
+      "value": 0.7135242760182695,
+      "comparison_operator": "strictly_greater_than"
+    },
+    "detector_metadata_status": "prototype_frozen"
+  },
+  "inputs": {
+    "synthetic": {
+      "path": "data/model_ready/final_synthetic_evaluation_no_time_7.csv",
+      "sha256": "b7e8b550ef0f8ed7f3b93a1aef1a64ca6ffaa1ec7743789e09c083ce163badd0",
+      "shape": [
+        337,
+        12
+      ]
+    },
+    "paired_baseline": {
+      "path": "data/model_ready/baseline_evaluation.csv",
+      "sha256": "d52b5ff4ffcb6800d5892663ba6aa4f7b6aac58208854a95b437937d9985a61f",
+      "rows": 337
+    },
+    "synthetic_metadata": {
+      "path": "outputs/final_synthetic_evaluation_metadata.json",
+      "sha256": "01364f6158b902c0cd727b55637234b3a34d9a15a43107771bc850621a9cbcba"
+    }
+  },
+  "outputs": {
+    "predictions": {
+      "path": "outputs/final_synthetic_anomaly_predictions.csv",
+      "sha256": "6ea5fa316221317c5e50257df14227651f333b929f347c35b36551be17adc177"
+    },
+    "paired_score_comparison": {
+      "path": "outputs/final_synthetic_score_comparison.csv",
+      "sha256": "1b7937abe09be6b46404d6fd2c2a518d18ea1273cf9fb64cc05c4f0f3c663b56"
+    },
+    "figure": "outputs/figures/operational/day22_synthetic_detection_results.png"
+  },
+  "direct_label_definition": "synthetic_anomaly=1 only for deliberately modified original measurements; propagated rows remain reference-negative",
+  "confusion_matrix": {
+    "true_positive": 0,
+    "false_positive": 0,
+    "true_negative": 316,
+    "false_negative": 21
+  },
+  "point_metrics": {
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0,
+    "false_positive_count": 0,
+    "false_positive_rate": 0.0,
+    "accuracy_not_emphasized": 0.9376854599406528
+  },
+  "predicted_alert_context": {
+    "direct": 0,
+    "propagated": 0,
+    "none": 0
+  },
+  "strict_point_metric_limitation": "alerts on propagated-effect rows count as false positives in the strict direct-row confusion matrix",
+  "event_metrics": {
+    "definition": "detected when at least one directly modified event row has anomaly_score > frozen threshold",
+    "total_events": 3,
+    "detected_events": 0,
+    "missed_events": 3,
+    "event_level_recall": 0.0
+  },
+  "per_event_results": [
+    {
+      "event_id": "86b56a024699-01",
+      "anomaly_type": "gradual_power_degradation",
+      "start_timestamp": "2022-04-28 14:44:00",
+      "end_timestamp": "2022-04-28 15:12:00",
+      "direct_row_count": 15,
+      "direct_rows_flagged": 0,
+      "direct_row_detection_coverage": 0.0,
+      "strict_event_detected": false,
+      "maximum_direct_anomaly_score": 0.6743137559379002,
+      "mean_direct_anomaly_score": 0.6563416136219307,
+      "corresponding_baseline_scores": {
+        "minimum": 0.6345094519752155,
+        "maximum": 0.6741616959323871,
+        "mean": 0.6568237118699745
+      },
+      "paired_direct_score_delta": {
+        "count": 15,
+        "minimum": -0.0021539460951370826,
+        "maximum": 0.0024114518020161846,
+        "mean": -0.0004820982480438607,
+        "median": -0.0009435390517209541,
+        "positive_count": 5,
+        "negative_count": 10,
+        "zero_count": 0
+      },
+      "direct_row_score_records": [
+        {
+          "timestamp": "2022-04-28 14:44:00",
+          "synthetic_score": 0.668972488851112,
+          "baseline_score": 0.6685200243029168,
+          "score_delta": 0.0004524645481952527,
+          "flagged": false
+        },
+        {
+          "timestamp": "2022-04-28 14:46:00",
+          "synthetic_score": 0.6743137559379002,
+          "baseline_score": 0.6741616959323871,
+          "score_delta": 0.0001520600055131549,
+          "flagged": false
+        },
+        {
+          "timestamp": "2022-04-28 14:48:00",
+          "synthetic_score": 0.6663987619941532,
+          "baseline_score": 0.6639948780816287,
+          "score_delta": 0.0024038839125244404,
+          "flagged": false
+        },
+        {
+          "timestamp": "2022-04-28 14:50:00",
+          "synthetic_score": 0.6648568906414035,
+          "baseline_score": 0.6647559887526834,
+          "score_delta": 0.00010090188872013961,
+          "flagged": false
+        },
+        {
+          "timestamp": "2022-04-28 14:52:00",
+          "synthetic_score": 0.6646369493133488,
+          "baseline_score": 0.6622254975113326,
+          "score_delta": 0.0024114518020161846,
+          "flagged": false
+        },
+        {
+          "timestamp": "2022-04-28 14:54:00",
+          "synthetic_score": 0.6618747301946489,
+          "baseline_score": 0.6628198499814636,
+          "score_delta": -0.0009451197868146632,
+          "flagged": false
+        },
+        {
+          "timestamp": "2022-04-28 14:56:00",
+          "synthetic_score": 0.6607677291263827,
+          "baseline_score": 0.6617112681781037,
+          "score_delta": -0.0009435390517209541,
+          "flagged": false
+        },
+        {
+          "timestamp": "2022-04-28 14:58:00",
+          "synthetic_score": 0.6637834211343417,
+          "baseline_score": 0.6653347519998679,
+          "score_delta": -0.0015513308655261682,
+          "flagged": false
+        },
+        {
+          "timestamp": "2022-04-28 15:00:00",
+          "synthetic_score": 0.6434485903615376,
+          "baseline_score": 0.6439180376280803,
+          "score_delta": -0.00046944726654274405,
+          "flagged": false
+        },
+        {
+          "timestamp": "2022-04-28 15:02:00",
+          "synthetic_score": 0.6608918467279525,
+          "baseline_score": 0.6630342832019896,
+          "score_delta": -0.0021424364740371127,
+          "flagged": false
+        },
+        {
+          "timestamp": "2022-04-28 15:04:00",
+          "synthetic_score": 0.6334607679931157,
+          "baseline_score": 0.6345094519752155,
+          "score_delta": -0.001048683982099785,
+          "flagged": false
+        },
+        {
+          "timestamp": "2022-04-28 15:06:00",
+          "synthetic_score": 0.6547584106721549,
+          "baseline_score": 0.656912356767292,
+          "score_delta": -0.0021539460951370826,
+          "flagged": false
+        },
+        {
+          "timestamp": "2022-04-28 15:08:00",
+          "synthetic_score": 0.64970167582122,
+          "baseline_score": 0.6509450678487443,
+          "score_delta": -0.001243392027524326,
+          "flagged": false
+        },
+        {
+          "timestamp": "2022-04-28 15:10:00",
+          "synthetic_score": 0.6409710282671837,
+          "baseline_score": 0.641457039380472,
+          "score_delta": -0.0004860111132883871,
+          "flagged": false
+        },
+        {
+          "timestamp": "2022-04-28 15:12:00",
+          "synthetic_score": 0.6362871572925047,
+          "baseline_score": 0.6380554865074406,
+          "score_delta": -0.0017683292149358598,
+          "flagged": false
+        }
+      ],
+      "directly_changed_frozen_features": [
+        "Power_Generated"
+      ],
+      "context_aware_response": {
+        "propagated_effect_row_count": 29,
+        "first_alert_phase": null,
+        "first_alert_timestamp": null,
+        "detection_delay_minutes_from_event_start": null,
+        "last_related_alert_timestamp": null,
+        "propagated_alerts_after_direct_event": 0,
+        "response_category": "not_at_all"
+      },
+      "interpretation": "controlled synthetic response; not evidence of real photovoltaic fault detection"
+    },
+    {
+      "event_id": "86b56a024699-02",
+      "anomaly_type": "sustained_power_reduction",
+      "start_timestamp": "2022-04-28 17:24:00",
+      "end_timestamp": "2022-04-28 17:32:00",
+      "direct_row_count": 5,
+      "direct_rows_flagged": 0,
+      "direct_row_detection_coverage": 0.0,
+      "strict_event_detected": false,
+      "maximum_direct_anomaly_score": 0.5814823080664394,
+      "mean_direct_anomaly_score": 0.5635792676140776,
+      "corresponding_baseline_scores": {
+        "minimum": 0.5328005749088394,
+        "maximum": 0.5755881953049576,
+        "mean": 0.554061875582193
+      },
+      "paired_direct_score_delta": {
+        "count": 5,
+        "minimum": 0.0039932623210607865,
+        "maximum": 0.015159474195348355,
+        "mean": 0.009517392031884665,
+        "median": 0.008168242302818873,
+        "positive_count": 5,
+        "negative_count": 0,
+        "zero_count": 0
+      },
+      "direct_row_score_records": [
+        {
+          "timestamp": "2022-04-28 17:24:00",
+          "synthetic_score": 0.5604592445132934,
+          "baseline_score": 0.5522910022104746,
+          "score_delta": 0.008168242302818873,
+          "flagged": false
+        },
+        {
+          "timestamp": "2022-04-28 17:26:00",
+          "synthetic_score": 0.5780329274066249,
+          "baseline_score": 0.5740396650855641,
+          "score_delta": 0.0039932623210607865,
+          "flagged": false
+        },
+        {
+          "timestamp": "2022-04-28 17:28:00",
+          "synthetic_score": 0.5814823080664394,
+          "baseline_score": 0.5755881953049576,
+          "score_delta": 0.005894112761481773,
+          "flagged": false
+        },
+        {
+          "timestamp": "2022-04-28 17:30:00",
+          "synthetic_score": 0.5499618089798425,
+          "baseline_score": 0.535589940401129,
+          "score_delta": 0.014371868578713531,
+          "flagged": false
+        },
+        {
+          "timestamp": "2022-04-28 17:32:00",
+          "synthetic_score": 0.5479600491041877,
+          "baseline_score": 0.5328005749088394,
+          "score_delta": 0.015159474195348355,
+          "flagged": false
+        }
+      ],
+      "directly_changed_frozen_features": [
+        "Power_Generated"
+      ],
+      "context_aware_response": {
+        "propagated_effect_row_count": 29,
+        "first_alert_phase": null,
+        "first_alert_timestamp": null,
+        "detection_delay_minutes_from_event_start": null,
+        "last_related_alert_timestamp": null,
+        "propagated_alerts_after_direct_event": 0,
+        "response_category": "not_at_all"
+      },
+      "interpretation": "controlled synthetic response; not evidence of real photovoltaic fault detection"
+    },
+    {
+      "event_id": "86b56a024699-03",
+      "anomaly_type": "sensor_excursion",
+      "start_timestamp": "2022-04-29 00:56:00",
+      "end_timestamp": "2022-04-29 00:56:00",
+      "direct_row_count": 1,
+      "direct_rows_flagged": 0,
+      "direct_row_detection_coverage": 0.0,
+      "strict_event_detected": false,
+      "maximum_direct_anomaly_score": 0.4835516869506056,
+      "mean_direct_anomaly_score": 0.4835516869506056,
+      "corresponding_baseline_scores": {
+        "minimum": 0.4580219908196518,
+        "maximum": 0.4580219908196518,
+        "mean": 0.4580219908196518
+      },
+      "paired_direct_score_delta": {
+        "count": 1,
+        "minimum": 0.025529696130953794,
+        "maximum": 0.025529696130953794,
+        "mean": 0.025529696130953794,
+        "median": 0.025529696130953794,
+        "positive_count": 1,
+        "negative_count": 0,
+        "zero_count": 0
+      },
+      "direct_row_score_records": [
+        {
+          "timestamp": "2022-04-29 00:56:00",
+          "synthetic_score": 0.4835516869506056,
+          "baseline_score": 0.4580219908196518,
+          "score_delta": 0.025529696130953794,
+          "flagged": false
+        }
+      ],
+      "directly_changed_frozen_features": [
+        "Relative_Humidity"
+      ],
+      "context_aware_response": {
+        "propagated_effect_row_count": 6,
+        "first_alert_phase": null,
+        "first_alert_timestamp": null,
+        "detection_delay_minutes_from_event_start": null,
+        "last_related_alert_timestamp": null,
+        "propagated_alerts_after_direct_event": 0,
+        "response_category": "not_at_all"
+      },
+      "interpretation": "controlled synthetic response; not evidence of real photovoltaic fault detection"
+    }
+  ],
+  "baseline_vs_synthetic_score_differences": {
+    "overall": {
+      "count": 337,
+      "minimum": -0.0021539460951370826,
+      "maximum": 0.025529696130953794,
+      "mean": 0.00019550499278848428,
+      "median": 0.0,
+      "positive_count": 11,
+      "negative_count": 10,
+      "zero_count": 316
+    },
+    "by_effect_context": {
+      "direct": {
+        "count": 21,
+        "minimum": -0.0021539460951370826,
+        "maximum": 0.025529696130953794,
+        "mean": 0.003137389646177105,
+        "median": 0.00010090188872013961,
+        "positive_count": 11,
+        "negative_count": 10,
+        "zero_count": 0
+      },
+      "propagated": {
+        "count": 64,
+        "minimum": 0.0,
+        "maximum": 0.0,
+        "mean": 0.0,
+        "median": 0.0,
+        "positive_count": 0,
+        "negative_count": 0,
+        "zero_count": 64
+      },
+      "none": {
+        "count": 252,
+        "minimum": 0.0,
+        "maximum": 0.0,
+        "mean": 0.0,
+        "median": 0.0,
+        "positive_count": 0,
+        "negative_count": 0,
+        "zero_count": 252
+      }
+    }
+  },
+  "detector_alert_events": {
+    "event_grouping_rule": "predicted rows exactly two minutes apart belong to the same detector alert event; no smoothing or distant merging",
+    "count": 0,
+    "events": []
+  },
+  "protected_transition_review": {
+    "start": "2022-04-28 16:40:00",
+    "end": "2022-04-28 17:20:00",
+    "row_count": 21,
+    "synthetic_effect_context_counts": {
+      "none": 21
+    },
+    "no_synthetic_effects_present": true,
+    "synthetic_and_baseline_scores_match_exactly": true,
+    "flagged_row_count": 0,
+    "recurring_17_00_transition": {
+      "anomaly_score": 0.5815159631484387,
+      "baseline_score": 0.5815159631484387,
+      "score_delta": 0.0,
+      "flagged": false,
+      "interpretation": "recurring operational transition; not a synthetic event or verified fault"
+    }
+  },
+  "performance_table": {
+    "point_level": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "false_positive_rate": 0.0
+    },
+    "event_level": {
+      "events_detected_over_total": "0/3",
+      "event_level_recall": 0.0
+    }
+  },
+  "validation": {
+    "passed": true,
+    "checks": {
+      "frozen_detector_hashes_verified": true,
+      "frozen_threshold_hashes_verified": true,
+      "no_scaler_or_model_fit_calls": true,
+      "exact_337_timestamps": true,
+      "exact_frozen_seven_feature_order": true,
+      "strict_greater_than_prediction_rule": true,
+      "confusion_matrix_sums_to_337": true,
+      "confusion_matrix_arithmetic": true,
+      "propagated_rows_retain_reference_zero": true,
+      "strict_event_definition_applied": true,
+      "paired_baseline_timestamps_match": true,
+      "prediction_file_columns_exact": true,
+      "threshold_unchanged": true,
+      "synthetic_dataset_unchanged": true,
+      "protected_sources_unchanged": true,
+      "no_retraining_or_new_model_artifact": true,
+      "no_synthetic_regeneration": true
+    }
+  },
+  "protected_artifact_hashes": {
+    "config/frozen_anomaly_detector.yaml": {
+      "before": "825cdc02e000352611de77bc19fce1e550f0dd8c7bd8a791e5cc2f1da79dd8b3",
+      "after": "825cdc02e000352611de77bc19fce1e550f0dd8c7bd8a791e5cc2f1da79dd8b3",
+      "unchanged": true
+    },
+    "config/frozen_anomaly_threshold.yaml": {
+      "before": "019d251482160e64da89e33c7276c6aad864696bfa907a087a7d7c300b0139b7",
+      "after": "019d251482160e64da89e33c7276c6aad864696bfa907a087a7d7c300b0139b7",
+      "unchanged": true
+    },
+    "data/images/.gitkeep": {
+      "before": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "after": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "unchanged": true
+    },
+    "data/model_ready/.gitkeep": {
+      "before": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "after": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "unchanged": true
+    },
+    "data/model_ready/baseline_calibration.csv": {
+      "before": "85a995732639258c3669e700d952621d21e8feb775663649c8004df710a11cc0",
+      "after": "85a995732639258c3669e700d952621d21e8feb775663649c8004df710a11cc0",
+      "unchanged": true
+    },
+    "data/model_ready/baseline_evaluation.csv": {
+      "before": "d52b5ff4ffcb6800d5892663ba6aa4f7b6aac58208854a95b437937d9985a61f",
+      "after": "d52b5ff4ffcb6800d5892663ba6aa4f7b6aac58208854a95b437937d9985a61f",
+      "unchanged": true
+    },
+    "data/model_ready/baseline_train.csv": {
+      "before": "dae881047ec84f35fb8388213e75bf22c510c63f7d2f9931ec5bfbaa7ddd81f8",
+      "after": "dae881047ec84f35fb8388213e75bf22c510c63f7d2f9931ec5bfbaa7ddd81f8",
+      "unchanged": true
+    },
+    "data/model_ready/core_calibration.csv": {
+      "before": "a3cf5824dec0a03da3b4f282a01a20f8e10c366ec0d9b91588509c19bbd30e85",
+      "after": "a3cf5824dec0a03da3b4f282a01a20f8e10c366ec0d9b91588509c19bbd30e85",
+      "unchanged": true
+    },
+    "data/model_ready/core_evaluation_baseline.csv": {
+      "before": "1d65080cad8aeb1ad8ff290084feb63799eb55c6018474824a7133e277da06a2",
+      "after": "1d65080cad8aeb1ad8ff290084feb63799eb55c6018474824a7133e277da06a2",
+      "unchanged": true
+    },
+    "data/model_ready/core_train.csv": {
+      "before": "b9ef9b9b723ef942f208c3d5ded6ef1e52c6b6742bbae68c33eae8222f2655ae",
+      "after": "b9ef9b9b723ef942f208c3d5ded6ef1e52c6b6742bbae68c33eae8222f2655ae",
+      "unchanged": true
+    },
+    "data/model_ready/final_synthetic_evaluation.csv": {
+      "before": "d6dd3985f54bb8cc15113d36f2a511ffcb417de138e05517b82c0bbf7a6a25bf",
+      "after": "d6dd3985f54bb8cc15113d36f2a511ffcb417de138e05517b82c0bbf7a6a25bf",
+      "unchanged": true
+    },
+    "data/model_ready/final_synthetic_evaluation_no_time_7.csv": {
+      "before": "b7e8b550ef0f8ed7f3b93a1aef1a64ca6ffaa1ec7743789e09c083ce163badd0",
+      "after": "b7e8b550ef0f8ed7f3b93a1aef1a64ca6ffaa1ec7743789e09c083ce163badd0",
+      "unchanged": true
+    },
+    "data/model_ready/scaled/core_calibration_scaled.csv": {
+      "before": "969f4badc753a33de361526eb2abdf360a1b4b30cb7bcd983e46ede6c8e97e6e",
+      "after": "969f4badc753a33de361526eb2abdf360a1b4b30cb7bcd983e46ede6c8e97e6e",
+      "unchanged": true
+    },
+    "data/model_ready/scaled/core_evaluation_baseline_scaled.csv": {
+      "before": "125e43309dd7ce629a1ef01c58560b3f36af64d32770c81aed1d142905266963",
+      "after": "125e43309dd7ce629a1ef01c58560b3f36af64d32770c81aed1d142905266963",
+      "unchanged": true
+    },
+    "data/model_ready/scaled/core_train_scaled.csv": {
+      "before": "58b4eabe47d58747f02058c4cef79362217ba5c40d7e20e9f255c9d1a7d93191",
+      "after": "58b4eabe47d58747f02058c4cef79362217ba5c40d7e20e9f255c9d1a7d93191",
+      "unchanged": true
+    },
+    "data/operational/.gitkeep": {
+      "before": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "after": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "unchanged": true
+    },
+    "data/operational/solar-power-dataset/.complete/datasets/s1nister/solar-power-generation-dataset/1/bundle.complete": {
+      "before": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "after": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "unchanged": true
+    },
+    "data/operational/solar-power-dataset/solar_data.csv": {
+      "before": "0615c4d92c7869074f99c4a6552cc201ab6db8152fc77650758664ed2c4ba393",
+      "after": "0615c4d92c7869074f99c4a6552cc201ab6db8152fc77650758664ed2c4ba393",
+      "unchanged": true
+    },
+    "data/processed/.gitkeep": {
+      "before": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "after": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "unchanged": true
+    },
+    "data/processed/operational_cleaned.csv": {
+      "before": "3e440f11bf0a00227a4b2ae3ce29e38de0a03bb647b577daa2ff1f5d098624fc",
+      "after": "3e440f11bf0a00227a4b2ae3ce29e38de0a03bb647b577daa2ff1f5d098624fc",
+      "unchanged": true
+    },
+    "data/processed/operational_features_basic.csv": {
+      "before": "99f9f3a61f4602d518b6b2fa024f415f95acbd988cd9a4e5588f62e1f19dbcd7",
+      "after": "99f9f3a61f4602d518b6b2fa024f415f95acbd988cd9a4e5588f62e1f19dbcd7",
+      "unchanged": true
+    },
+    "data/processed/operational_features_change.csv": {
+      "before": "ca79f6c6bc35e89b194fc6e7c8b051e5784d226246942f6c10b4329f8cb23c1e",
+      "after": "ca79f6c6bc35e89b194fc6e7c8b051e5784d226246942f6c10b4329f8cb23c1e",
+      "unchanged": true
+    },
+    "data/processed/operational_features_rolling.csv": {
+      "before": "bfb29573505add5c5748f44719ae7db0f67fb41ce7f3a8741f215937bc002dfe",
+      "after": "bfb29573505add5c5748f44719ae7db0f67fb41ce7f3a8741f215937bc002dfe",
+      "unchanged": true
+    },
+    "data/processed/operational_synthetic_prototype.csv": {
+      "before": "7339365a248817a0d593eb7de7df481ddd6e5acc250c9d701bc5e4ede2c7e904",
+      "after": "7339365a248817a0d593eb7de7df481ddd6e5acc250c9d701bc5e4ede2c7e904",
+      "unchanged": true
+    },
+    "data/README.md": {
+      "before": "e2bdc3bc2baf6defd7fdaf06efa578183555a492dfa80f457a544aeabe6bd5eb",
+      "after": "e2bdc3bc2baf6defd7fdaf06efa578183555a492dfa80f457a544aeabe6bd5eb",
+      "unchanged": true
+    },
+    "models/.gitkeep": {
+      "before": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "after": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "unchanged": true
+    },
+    "models/comparisons/compact_isolation_forest.joblib": {
+      "before": "20c8d8b004e6782e7b95a3e7d924ea72e36805fff57c0de039915bd21774a26f",
+      "after": "20c8d8b004e6782e7b95a3e7d924ea72e36805fff57c0de039915bd21774a26f",
+      "unchanged": true
+    },
+    "models/comparisons/compact_metadata.json": {
+      "before": "ffbf240a84ea8795a85e68433970f1847f0778449f8b1bc06eaf52a117e1f5d8",
+      "after": "ffbf240a84ea8795a85e68433970f1847f0778449f8b1bc06eaf52a117e1f5d8",
+      "unchanged": true
+    },
+    "models/comparisons/compact_standard_scaler.joblib": {
+      "before": "3278d8f00776966a0e46cfae0a3f10cbb08a703151731952bfca3e1b69089f9f",
+      "after": "3278d8f00776966a0e46cfae0a3f10cbb08a703151731952bfca3e1b69089f9f",
+      "unchanged": true
+    },
+    "models/comparisons/no_rtd_std_isolation_forest.joblib": {
+      "before": "d4577938f087ac93e5cc45ba9eb50008199669648e256acb0db0b8a761bddc0b",
+      "after": "d4577938f087ac93e5cc45ba9eb50008199669648e256acb0db0b8a761bddc0b",
+      "unchanged": true
+    },
+    "models/comparisons/no_rtd_std_metadata.json": {
+      "before": "7c2a75d10030cc7947a41f40adaf0e01cbe4a07891fe6225654a646df3ebf819",
+      "after": "7c2a75d10030cc7947a41f40adaf0e01cbe4a07891fe6225654a646df3ebf819",
+      "unchanged": true
+    },
+    "models/comparisons/no_rtd_std_standard_scaler.joblib": {
+      "before": "e76501b5f370e5d7c70b641d918d9c3f70e7ce236efac2e05187a903475ed851",
+      "after": "e76501b5f370e5d7c70b641d918d9c3f70e7ce236efac2e05187a903475ed851",
+      "unchanged": true
+    },
+    "models/comparisons/no_time_isolation_forest.joblib": {
+      "before": "5eb151856bb1d0776587140bb2eb201ba450f40293d540a90db44b3599ef963c",
+      "after": "5eb151856bb1d0776587140bb2eb201ba450f40293d540a90db44b3599ef963c",
+      "unchanged": true
+    },
+    "models/comparisons/no_time_metadata.json": {
+      "before": "5c52719edb385015b27e4ceff5443b0cc22ac7b9146349cf28e4742c6c43afd6",
+      "after": "5c52719edb385015b27e4ceff5443b0cc22ac7b9146349cf28e4742c6c43afd6",
+      "unchanged": true
+    },
+    "models/comparisons/no_time_standard_scaler.joblib": {
+      "before": "b8b04db85a3bae4a0187b8ede66e859e811b7ee85b995976c9dc808b67b9aefb",
+      "after": "b8b04db85a3bae4a0187b8ede66e859e811b7ee85b995976c9dc808b67b9aefb",
+      "unchanged": true
+    },
+    "models/core_standard_scaler.joblib": {
+      "before": "5959330927318c00a70884f4c1b49d21b3a4aafb9ea534a44262bfaf86c8d5f6",
+      "after": "5959330927318c00a70884f4c1b49d21b3a4aafb9ea534a44262bfaf86c8d5f6",
+      "unchanged": true
+    },
+    "models/frozen_anomaly_detector_metadata.json": {
+      "before": "04c323a6fd8cc4fa05660940162b80e12f493a9e88a6e0a4c62dd84fc607b4a8",
+      "after": "04c323a6fd8cc4fa05660940162b80e12f493a9e88a6e0a4c62dd84fc607b4a8",
+      "unchanged": true
+    },
+    "models/frozen_anomaly_threshold_metadata.json": {
+      "before": "eb5d7ea51827faaa1620b8d7ef5f42da8294dfd30a8a281c5ccfbc3f77c5eec9",
+      "after": "eb5d7ea51827faaa1620b8d7ef5f42da8294dfd30a8a281c5ccfbc3f77c5eec9",
+      "unchanged": true
+    },
+    "models/isolation_forest_core.joblib": {
+      "before": "3b002a49fea3c784063fc83034bc1d20797a75a48a7d77c96e7f14060eb5d626",
+      "after": "3b002a49fea3c784063fc83034bc1d20797a75a48a7d77c96e7f14060eb5d626",
+      "unchanged": true
+    },
+    "models/isolation_forest_core_metadata.json": {
+      "before": "841a7e0dec11879406336818669a8879a0c4e946bfbc664425201b12cc9a2b3e",
+      "after": "841a7e0dec11879406336818669a8879a0c4e946bfbc664425201b12cc9a2b3e",
+      "unchanged": true
+    },
+    "outputs/final_synthetic_evaluation_metadata.json": {
+      "before": "01364f6158b902c0cd727b55637234b3a34d9a15a43107771bc850621a9cbcba",
+      "after": "01364f6158b902c0cd727b55637234b3a34d9a15a43107771bc850621a9cbcba",
+      "unchanged": true
+    }
+  },
+  "limitations": [
+    "only three synthetic events were successfully placed",
+    "synthetic signatures are controlled engineering cases, not verified real photovoltaic faults",
+    "strict point metrics count propagated-tail alerts as false positives",
+    "the source spans approximately 33.6 hours and one complete calendar day",
+    "the threshold remains an internship-prototype calibration, not a validated operational alarm limit"
+  ],
+  "explicitly_not_performed": [
+    "model retraining",
+    "scaler refitting",
+    "feature changes",
+    "threshold changes",
+    "synthetic event regeneration",
+    "parameter tuning",
+    "computer vision",
+    "dashboard work"
+  ],
+  "required_interpretation": "The evaluation uses controlled synthetic anomalies and only three successfully placed events. The results therefore demonstrate prototype behavior and do not establish real-world photovoltaic fault-detection performance."
+}

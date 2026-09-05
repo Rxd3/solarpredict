@@ -1,0 +1,730 @@
+{
+  "stage": "Day 21 final synthetic evaluation dataset generation and validation",
+  "configuration_version": "1.0.0",
+  "seed": 2026,
+  "rng": "PCG64",
+  "generator_version": "1.0.0",
+  "generation_scope": "synthetic direct modifications restricted to frozen evaluation partition",
+  "full_history_policy": {
+    "source_rows": 1009,
+    "method": "inject into complete untouched sequence, recompute causally over full history, then extract evaluation",
+    "isolated_slice_recomputation_not_used": true,
+    "derived_cell_differences_if_isolated_slice_were_used": 1847
+  },
+  "evaluation_output": {
+    "path": "data/model_ready/final_synthetic_evaluation.csv",
+    "sha256": "d6dd3985f54bb8cc15113d36f2a511ffcb417de138e05517b82c0bbf7a6a25bf",
+    "shape": [
+      337,
+      85
+    ],
+    "timestamp_start": "2022-04-28 13:56:00",
+    "timestamp_end": "2022-04-29 01:08:00"
+  },
+  "no_time_7_output": {
+    "path": "data/model_ready/final_synthetic_evaluation_no_time_7.csv",
+    "sha256": "b7e8b550ef0f8ed7f3b93a1aef1a64ca6ffaa1ec7743789e09c083ce163badd0",
+    "shape": [
+      337,
+      12
+    ],
+    "scaled": false,
+    "columns": [
+      "Timestamp",
+      "Power_Generated",
+      "Solar_Radiation",
+      "Air_Temp",
+      "Relative_Humidity",
+      "Wind_Speed",
+      "rtd_mean",
+      "rtd_std",
+      "synthetic_anomaly",
+      "synthetic_anomaly_type",
+      "synthetic_anomaly_id",
+      "synthetic_effect_context"
+    ]
+  },
+  "event_count": 3,
+  "events": [
+    {
+      "id": "86b56a024699-01",
+      "type": "gradual_power_degradation",
+      "seed": 2026,
+      "start_timestamp": "2022-04-28 14:44:00",
+      "end_timestamp": "2022-04-28 15:12:00",
+      "duration_minutes": 30,
+      "row_count": 15,
+      "affected_measurements": [
+        "Power_Generated",
+        "Array_Voltage"
+      ],
+      "severity": {
+        "parameter": "final_reduction_fraction",
+        "value": 0.12684022205131543,
+        "signed_offset": null
+      },
+      "original_summary": {
+        "Power_Generated": {
+          "minimum": 373.3734,
+          "maximum": 377.33904,
+          "mean": 374.9434106666667
+        },
+        "Array_Voltage": {
+          "minimum": 69.734296,
+          "maximum": 70.47496,
+          "mean": 70.0279952
+        }
+      },
+      "modified_summary": {
+        "Power_Generated": {
+          "minimum": 329.47727237776985,
+          "maximum": 371.5570734262168,
+          "mean": 349.5524660830016
+        },
+        "Array_Voltage": {
+          "minimum": 61.535900424542426,
+          "maximum": 69.39856014150263,
+          "mean": 65.28580847583294
+        }
+      },
+      "context_conditions": {
+        "all_required_measurements_finite": true,
+        "continuous_two_minute_sampling": true,
+        "minimum_baseline_solar_radiation": 601.63472,
+        "minimum_baseline_power_generated": 373.3734,
+        "power_context_required": true,
+        "protected_transition_excluded": true
+      },
+      "direct_full_sequence_row_positions": [
+        696,
+        697,
+        698,
+        699,
+        700,
+        701,
+        702,
+        703,
+        704,
+        705,
+        706,
+        707,
+        708,
+        709,
+        710
+      ],
+      "direct_evaluation_row_indices": [
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38
+      ],
+      "direct_timestamps": [
+        "2022-04-28 14:44:00",
+        "2022-04-28 14:46:00",
+        "2022-04-28 14:48:00",
+        "2022-04-28 14:50:00",
+        "2022-04-28 14:52:00",
+        "2022-04-28 14:54:00",
+        "2022-04-28 14:56:00",
+        "2022-04-28 14:58:00",
+        "2022-04-28 15:00:00",
+        "2022-04-28 15:02:00",
+        "2022-04-28 15:04:00",
+        "2022-04-28 15:06:00",
+        "2022-04-28 15:08:00",
+        "2022-04-28 15:10:00",
+        "2022-04-28 15:12:00"
+      ],
+      "propagated_effect_row_count": 29,
+      "propagated_effect_timestamps": [
+        "2022-04-28 15:14:00",
+        "2022-04-28 15:16:00",
+        "2022-04-28 15:18:00",
+        "2022-04-28 15:20:00",
+        "2022-04-28 15:22:00",
+        "2022-04-28 15:24:00",
+        "2022-04-28 15:26:00",
+        "2022-04-28 15:28:00",
+        "2022-04-28 15:30:00",
+        "2022-04-28 15:32:00",
+        "2022-04-28 15:34:00",
+        "2022-04-28 15:36:00",
+        "2022-04-28 15:38:00",
+        "2022-04-28 15:40:00",
+        "2022-04-28 15:42:00",
+        "2022-04-28 15:44:00",
+        "2022-04-28 15:46:00",
+        "2022-04-28 15:48:00",
+        "2022-04-28 15:50:00",
+        "2022-04-28 15:52:00",
+        "2022-04-28 15:54:00",
+        "2022-04-28 15:56:00",
+        "2022-04-28 15:58:00",
+        "2022-04-28 16:00:00",
+        "2022-04-28 16:02:00",
+        "2022-04-28 16:04:00",
+        "2022-04-28 16:06:00",
+        "2022-04-28 16:08:00",
+        "2022-04-28 16:10:00"
+      ],
+      "configured_ranges_respected": true
+    },
+    {
+      "id": "86b56a024699-02",
+      "type": "sustained_power_reduction",
+      "seed": 2026,
+      "start_timestamp": "2022-04-28 17:24:00",
+      "end_timestamp": "2022-04-28 17:32:00",
+      "duration_minutes": 10,
+      "row_count": 5,
+      "affected_measurements": [
+        "Power_Generated",
+        "Array_Voltage"
+      ],
+      "severity": {
+        "parameter": "reduction_fraction",
+        "value": 0.1700902601715228,
+        "signed_offset": null
+      },
+      "original_summary": {
+        "Power_Generated": {
+          "minimum": 279.12922,
+          "maximum": 281.31674,
+          "mean": 280.348184
+        },
+        "Array_Voltage": {
+          "minimum": 51.97432,
+          "maximum": 52.45156,
+          "mean": 52.218730400000005
+        }
+      },
+      "modified_summary": {
+        "Power_Generated": {
+          "minimum": 231.65205834872575,
+          "maximum": 233.46750250279533,
+          "mean": 232.66368844482605
+        },
+        "Array_Voltage": {
+          "minimum": 43.133994388962016,
+          "maximum": 43.53006051319776,
+          "mean": 43.336832960437384
+        }
+      },
+      "context_conditions": {
+        "all_required_measurements_finite": true,
+        "continuous_two_minute_sampling": true,
+        "minimum_baseline_solar_radiation": 118.58246,
+        "minimum_baseline_power_generated": 279.12922,
+        "power_context_required": true,
+        "protected_transition_excluded": true
+      },
+      "direct_full_sequence_row_positions": [
+        776,
+        777,
+        778,
+        779,
+        780
+      ],
+      "direct_evaluation_row_indices": [
+        104,
+        105,
+        106,
+        107,
+        108
+      ],
+      "direct_timestamps": [
+        "2022-04-28 17:24:00",
+        "2022-04-28 17:26:00",
+        "2022-04-28 17:28:00",
+        "2022-04-28 17:30:00",
+        "2022-04-28 17:32:00"
+      ],
+      "propagated_effect_row_count": 29,
+      "propagated_effect_timestamps": [
+        "2022-04-28 17:34:00",
+        "2022-04-28 17:36:00",
+        "2022-04-28 17:38:00",
+        "2022-04-28 17:40:00",
+        "2022-04-28 17:42:00",
+        "2022-04-28 17:44:00",
+        "2022-04-28 17:46:00",
+        "2022-04-28 17:48:00",
+        "2022-04-28 17:50:00",
+        "2022-04-28 17:52:00",
+        "2022-04-28 17:54:00",
+        "2022-04-28 17:56:00",
+        "2022-04-28 17:58:00",
+        "2022-04-28 18:00:00",
+        "2022-04-28 18:02:00",
+        "2022-04-28 18:04:00",
+        "2022-04-28 18:06:00",
+        "2022-04-28 18:08:00",
+        "2022-04-28 18:10:00",
+        "2022-04-28 18:12:00",
+        "2022-04-28 18:14:00",
+        "2022-04-28 18:16:00",
+        "2022-04-28 18:18:00",
+        "2022-04-28 18:20:00",
+        "2022-04-28 18:22:00",
+        "2022-04-28 18:24:00",
+        "2022-04-28 18:26:00",
+        "2022-04-28 18:28:00",
+        "2022-04-28 18:30:00"
+      ],
+      "configured_ranges_respected": true
+    },
+    {
+      "id": "86b56a024699-03",
+      "type": "sensor_excursion",
+      "seed": 2026,
+      "start_timestamp": "2022-04-29 00:56:00",
+      "end_timestamp": "2022-04-29 00:56:00",
+      "duration_minutes": 2,
+      "row_count": 1,
+      "affected_measurements": [
+        "Relative_Humidity"
+      ],
+      "severity": {
+        "parameter": "signed_additive_offset",
+        "value": 4.491513836777846,
+        "signed_offset": 4.491513836777846
+      },
+      "original_summary": {
+        "Relative_Humidity": {
+          "minimum": 41.807048,
+          "maximum": 41.807048,
+          "mean": 41.807048
+        }
+      },
+      "modified_summary": {
+        "Relative_Humidity": {
+          "minimum": 46.29856183677785,
+          "maximum": 46.29856183677785,
+          "mean": 46.29856183677785
+        }
+      },
+      "context_conditions": {
+        "all_required_measurements_finite": true,
+        "continuous_two_minute_sampling": true,
+        "minimum_baseline_solar_radiation": -0.191826,
+        "minimum_baseline_power_generated": 15.259414,
+        "power_context_required": false,
+        "protected_transition_excluded": true
+      },
+      "direct_full_sequence_row_positions": [
+        1002
+      ],
+      "direct_evaluation_row_indices": [
+        330
+      ],
+      "direct_timestamps": [
+        "2022-04-29 00:56:00"
+      ],
+      "propagated_effect_row_count": 6,
+      "propagated_effect_timestamps": [
+        "2022-04-29 00:58:00",
+        "2022-04-29 01:00:00",
+        "2022-04-29 01:02:00",
+        "2022-04-29 01:04:00",
+        "2022-04-29 01:06:00",
+        "2022-04-29 01:08:00"
+      ],
+      "configured_ranges_respected": true
+    }
+  ],
+  "skipped_scenarios": [
+    {
+      "scenario": "radiation_power_inconsistency",
+      "reason": "no_window_meets_context_gap_exclusion_and_tail_rules",
+      "remaining_row_budget": 30,
+      "sampled_severity": 0.1532376001464477,
+      "selected_sensor": null
+    },
+    {
+      "scenario": "sudden_power_drop",
+      "reason": "no_window_meets_context_gap_exclusion_and_tail_rules",
+      "remaining_row_budget": 30,
+      "sampled_severity": 0.258103649170653,
+      "selected_sensor": null
+    },
+    {
+      "scenario": "temporary_near_zero_power",
+      "reason": "no_window_meets_context_gap_exclusion_and_tail_rules",
+      "remaining_row_budget": 30,
+      "sampled_severity": 0.01810287673354348,
+      "selected_sensor": null
+    },
+    {
+      "scenario": "sudden_power_spike",
+      "reason": "no_window_meets_context_gap_exclusion_and_tail_rules",
+      "remaining_row_budget": 30,
+      "sampled_severity": 0.13547063836460974,
+      "selected_sensor": null
+    }
+  ],
+  "distribution_review": {
+    "successful_scenarios": [
+      "gradual_power_degradation",
+      "sustained_power_reduction",
+      "sensor_excursion"
+    ],
+    "direct_rows": 21,
+    "propagated_rows": 64,
+    "none_rows": 252,
+    "anomaly_types_represented": [
+      "gradual_power_degradation",
+      "sensor_excursion",
+      "sustained_power_reduction"
+    ],
+    "direct_daylight_like_rows": 20,
+    "direct_low_light_rows": 1
+  },
+  "effect_context_definitions": {
+    "direct": "original operational or sensor measurement deliberately modified; synthetic_anomaly=1",
+    "propagated": "original measurements untouched but causal engineered features differ; synthetic_anomaly=0",
+    "none": "neither direct nor propagated effect"
+  },
+  "protected_transition": {
+    "start": "2022-04-28 16:40:00",
+    "end": "2022-04-28 17:20:00",
+    "row_count": 21,
+    "original_measurements_unchanged": true,
+    "direct_rows": 0,
+    "effect_context_counts": {
+      "none": 21
+    }
+  },
+  "dependent_feature_recomputation": {
+    "basic_feature_count": 17,
+    "rolling_feature_count": 30,
+    "change_feature_count": 20,
+    "full_pipeline_recalculation_matches": true,
+    "generator_causal_validation_passed": true,
+    "rtd_summary_features_consistent": true
+  },
+  "numerical_consistency": {
+    "expected_nan_counts_by_column": {
+      "solar_radiation_relative_change": 187,
+      "solar_deviation_ratio_30m": 180
+    },
+    "nan_policy": "NaNs are accepted only where reproduced by the existing causal feature pipeline and denominator safeguards.",
+    "infinity_count": 0,
+    "scenario_ranges_respected": {
+      "gradual_power_degradation": true,
+      "sustained_power_reduction": true,
+      "sensor_excursion": true
+    },
+    "values_outside_observed_baseline_range": [],
+    "outside_range_wording": "outside the range observed in the available baseline dataset",
+    "physical_realism_claimed": false
+  },
+  "source_and_configuration_hashes": {
+    "baseline_source": {
+      "path": "data/processed/operational_features_change.csv",
+      "sha256": "ca79f6c6bc35e89b194fc6e7c8b051e5784d226246942f6c10b4329f8cb23c1e"
+    },
+    "baseline_evaluation": {
+      "path": "data/model_ready/baseline_evaluation.csv",
+      "sha256": "d52b5ff4ffcb6800d5892663ba6aa4f7b6aac58208854a95b437937d9985a61f"
+    },
+    "configuration": {
+      "path": "config/final_synthetic_evaluation.yaml",
+      "sha256": "1f59450360b66bb97db316fe1a9ee9333e8901619a5d2941841495096223988d"
+    },
+    "scenario_definition_source": {
+      "path": "config/synthetic_anomaly_scenarios.yaml",
+      "sha256": "4508276d185ed93713a2c96ab2b710d176f489964e2a2a97830ed5bd99e3451b"
+    },
+    "frozen_artifacts": {
+      "config/frozen_anomaly_detector.yaml": {
+        "before": "825cdc02e000352611de77bc19fce1e550f0dd8c7bd8a791e5cc2f1da79dd8b3",
+        "after": "825cdc02e000352611de77bc19fce1e550f0dd8c7bd8a791e5cc2f1da79dd8b3",
+        "unchanged": true
+      },
+      "config/frozen_anomaly_threshold.yaml": {
+        "before": "019d251482160e64da89e33c7276c6aad864696bfa907a087a7d7c300b0139b7",
+        "after": "019d251482160e64da89e33c7276c6aad864696bfa907a087a7d7c300b0139b7",
+        "unchanged": true
+      },
+      "models/frozen_anomaly_detector_metadata.json": {
+        "before": "04c323a6fd8cc4fa05660940162b80e12f493a9e88a6e0a4c62dd84fc607b4a8",
+        "after": "04c323a6fd8cc4fa05660940162b80e12f493a9e88a6e0a4c62dd84fc607b4a8",
+        "unchanged": true
+      },
+      "models/frozen_anomaly_threshold_metadata.json": {
+        "before": "eb5d7ea51827faaa1620b8d7ef5f42da8294dfd30a8a281c5ccfbc3f77c5eec9",
+        "after": "eb5d7ea51827faaa1620b8d7ef5f42da8294dfd30a8a281c5ccfbc3f77c5eec9",
+        "unchanged": true
+      }
+    }
+  },
+  "validation": {
+    "passed": true,
+    "checks": {
+      "fixed_seed_is_2026": true,
+      "all_seven_scenarios_attempted": true,
+      "scenario_definitions_and_ranges_unchanged": true,
+      "full_history_used_for_feature_recomputation": true,
+      "exactly_337_evaluation_rows": true,
+      "evaluation_boundaries_exact": true,
+      "timestamps_identical_to_baseline_evaluation": true,
+      "no_direct_modification_before_evaluation": true,
+      "no_direct_modification_after_evaluation": true,
+      "training_and_calibration_all_features_unchanged": true,
+      "direct_event_windows_do_not_overlap": true,
+      "direct_labels_equal_modified_original_measurement_rows": true,
+      "direct_modifications_match_generator_event_metadata": true,
+      "propagated_rows_keep_direct_label_zero": true,
+      "none_and_propagated_rows_preserve_original_measurements": true,
+      "protected_transition_original_measurements_unchanged": true,
+      "protected_transition_has_no_direct_or_propagated_label": true,
+      "dependent_features_recomputed_causally": true,
+      "electrical_relationship_policy_respected": true,
+      "humidity_within_zero_to_one_hundred": true,
+      "no_infinities": true,
+      "nan_values_match_feature_pipeline": true,
+      "positive_event_durations": true,
+      "saved_full_output_matches_generated_values": true,
+      "unscaled_no_time_7_matrix_has_exact_columns": true,
+      "no_detector_scores_or_predictions_created": true,
+      "protected_sources_unchanged": true,
+      "frozen_scaler_model_and_threshold_hashes_unchanged": true
+    }
+  },
+  "protected_source_hashes": {
+    "config/final_synthetic_evaluation.yaml": {
+      "before": "1f59450360b66bb97db316fe1a9ee9333e8901619a5d2941841495096223988d",
+      "after": "1f59450360b66bb97db316fe1a9ee9333e8901619a5d2941841495096223988d",
+      "unchanged": true
+    },
+    "config/frozen_anomaly_detector.yaml": {
+      "before": "825cdc02e000352611de77bc19fce1e550f0dd8c7bd8a791e5cc2f1da79dd8b3",
+      "after": "825cdc02e000352611de77bc19fce1e550f0dd8c7bd8a791e5cc2f1da79dd8b3",
+      "unchanged": true
+    },
+    "config/frozen_anomaly_threshold.yaml": {
+      "before": "019d251482160e64da89e33c7276c6aad864696bfa907a087a7d7c300b0139b7",
+      "after": "019d251482160e64da89e33c7276c6aad864696bfa907a087a7d7c300b0139b7",
+      "unchanged": true
+    },
+    "config/synthetic_anomaly_scenarios.yaml": {
+      "before": "4508276d185ed93713a2c96ab2b710d176f489964e2a2a97830ed5bd99e3451b",
+      "after": "4508276d185ed93713a2c96ab2b710d176f489964e2a2a97830ed5bd99e3451b",
+      "unchanged": true
+    },
+    "data/images/.gitkeep": {
+      "before": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "after": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "unchanged": true
+    },
+    "data/model_ready/.gitkeep": {
+      "before": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "after": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "unchanged": true
+    },
+    "data/model_ready/baseline_calibration.csv": {
+      "before": "85a995732639258c3669e700d952621d21e8feb775663649c8004df710a11cc0",
+      "after": "85a995732639258c3669e700d952621d21e8feb775663649c8004df710a11cc0",
+      "unchanged": true
+    },
+    "data/model_ready/baseline_evaluation.csv": {
+      "before": "d52b5ff4ffcb6800d5892663ba6aa4f7b6aac58208854a95b437937d9985a61f",
+      "after": "d52b5ff4ffcb6800d5892663ba6aa4f7b6aac58208854a95b437937d9985a61f",
+      "unchanged": true
+    },
+    "data/model_ready/baseline_train.csv": {
+      "before": "dae881047ec84f35fb8388213e75bf22c510c63f7d2f9931ec5bfbaa7ddd81f8",
+      "after": "dae881047ec84f35fb8388213e75bf22c510c63f7d2f9931ec5bfbaa7ddd81f8",
+      "unchanged": true
+    },
+    "data/model_ready/core_calibration.csv": {
+      "before": "a3cf5824dec0a03da3b4f282a01a20f8e10c366ec0d9b91588509c19bbd30e85",
+      "after": "a3cf5824dec0a03da3b4f282a01a20f8e10c366ec0d9b91588509c19bbd30e85",
+      "unchanged": true
+    },
+    "data/model_ready/core_evaluation_baseline.csv": {
+      "before": "1d65080cad8aeb1ad8ff290084feb63799eb55c6018474824a7133e277da06a2",
+      "after": "1d65080cad8aeb1ad8ff290084feb63799eb55c6018474824a7133e277da06a2",
+      "unchanged": true
+    },
+    "data/model_ready/core_train.csv": {
+      "before": "b9ef9b9b723ef942f208c3d5ded6ef1e52c6b6742bbae68c33eae8222f2655ae",
+      "after": "b9ef9b9b723ef942f208c3d5ded6ef1e52c6b6742bbae68c33eae8222f2655ae",
+      "unchanged": true
+    },
+    "data/model_ready/scaled/core_calibration_scaled.csv": {
+      "before": "969f4badc753a33de361526eb2abdf360a1b4b30cb7bcd983e46ede6c8e97e6e",
+      "after": "969f4badc753a33de361526eb2abdf360a1b4b30cb7bcd983e46ede6c8e97e6e",
+      "unchanged": true
+    },
+    "data/model_ready/scaled/core_evaluation_baseline_scaled.csv": {
+      "before": "125e43309dd7ce629a1ef01c58560b3f36af64d32770c81aed1d142905266963",
+      "after": "125e43309dd7ce629a1ef01c58560b3f36af64d32770c81aed1d142905266963",
+      "unchanged": true
+    },
+    "data/model_ready/scaled/core_train_scaled.csv": {
+      "before": "58b4eabe47d58747f02058c4cef79362217ba5c40d7e20e9f255c9d1a7d93191",
+      "after": "58b4eabe47d58747f02058c4cef79362217ba5c40d7e20e9f255c9d1a7d93191",
+      "unchanged": true
+    },
+    "data/operational/.gitkeep": {
+      "before": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "after": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "unchanged": true
+    },
+    "data/operational/solar-power-dataset/.complete/datasets/s1nister/solar-power-generation-dataset/1/bundle.complete": {
+      "before": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "after": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "unchanged": true
+    },
+    "data/operational/solar-power-dataset/solar_data.csv": {
+      "before": "0615c4d92c7869074f99c4a6552cc201ab6db8152fc77650758664ed2c4ba393",
+      "after": "0615c4d92c7869074f99c4a6552cc201ab6db8152fc77650758664ed2c4ba393",
+      "unchanged": true
+    },
+    "data/processed/.gitkeep": {
+      "before": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "after": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "unchanged": true
+    },
+    "data/processed/operational_cleaned.csv": {
+      "before": "3e440f11bf0a00227a4b2ae3ce29e38de0a03bb647b577daa2ff1f5d098624fc",
+      "after": "3e440f11bf0a00227a4b2ae3ce29e38de0a03bb647b577daa2ff1f5d098624fc",
+      "unchanged": true
+    },
+    "data/processed/operational_features_basic.csv": {
+      "before": "99f9f3a61f4602d518b6b2fa024f415f95acbd988cd9a4e5588f62e1f19dbcd7",
+      "after": "99f9f3a61f4602d518b6b2fa024f415f95acbd988cd9a4e5588f62e1f19dbcd7",
+      "unchanged": true
+    },
+    "data/processed/operational_features_change.csv": {
+      "before": "ca79f6c6bc35e89b194fc6e7c8b051e5784d226246942f6c10b4329f8cb23c1e",
+      "after": "ca79f6c6bc35e89b194fc6e7c8b051e5784d226246942f6c10b4329f8cb23c1e",
+      "unchanged": true
+    },
+    "data/processed/operational_features_rolling.csv": {
+      "before": "bfb29573505add5c5748f44719ae7db0f67fb41ce7f3a8741f215937bc002dfe",
+      "after": "bfb29573505add5c5748f44719ae7db0f67fb41ce7f3a8741f215937bc002dfe",
+      "unchanged": true
+    },
+    "data/processed/operational_synthetic_prototype.csv": {
+      "before": "7339365a248817a0d593eb7de7df481ddd6e5acc250c9d701bc5e4ede2c7e904",
+      "after": "7339365a248817a0d593eb7de7df481ddd6e5acc250c9d701bc5e4ede2c7e904",
+      "unchanged": true
+    },
+    "data/README.md": {
+      "before": "e2bdc3bc2baf6defd7fdaf06efa578183555a492dfa80f457a544aeabe6bd5eb",
+      "after": "e2bdc3bc2baf6defd7fdaf06efa578183555a492dfa80f457a544aeabe6bd5eb",
+      "unchanged": true
+    },
+    "models/.gitkeep": {
+      "before": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "after": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "unchanged": true
+    },
+    "models/comparisons/compact_isolation_forest.joblib": {
+      "before": "20c8d8b004e6782e7b95a3e7d924ea72e36805fff57c0de039915bd21774a26f",
+      "after": "20c8d8b004e6782e7b95a3e7d924ea72e36805fff57c0de039915bd21774a26f",
+      "unchanged": true
+    },
+    "models/comparisons/compact_metadata.json": {
+      "before": "ffbf240a84ea8795a85e68433970f1847f0778449f8b1bc06eaf52a117e1f5d8",
+      "after": "ffbf240a84ea8795a85e68433970f1847f0778449f8b1bc06eaf52a117e1f5d8",
+      "unchanged": true
+    },
+    "models/comparisons/compact_standard_scaler.joblib": {
+      "before": "3278d8f00776966a0e46cfae0a3f10cbb08a703151731952bfca3e1b69089f9f",
+      "after": "3278d8f00776966a0e46cfae0a3f10cbb08a703151731952bfca3e1b69089f9f",
+      "unchanged": true
+    },
+    "models/comparisons/no_rtd_std_isolation_forest.joblib": {
+      "before": "d4577938f087ac93e5cc45ba9eb50008199669648e256acb0db0b8a761bddc0b",
+      "after": "d4577938f087ac93e5cc45ba9eb50008199669648e256acb0db0b8a761bddc0b",
+      "unchanged": true
+    },
+    "models/comparisons/no_rtd_std_metadata.json": {
+      "before": "7c2a75d10030cc7947a41f40adaf0e01cbe4a07891fe6225654a646df3ebf819",
+      "after": "7c2a75d10030cc7947a41f40adaf0e01cbe4a07891fe6225654a646df3ebf819",
+      "unchanged": true
+    },
+    "models/comparisons/no_rtd_std_standard_scaler.joblib": {
+      "before": "e76501b5f370e5d7c70b641d918d9c3f70e7ce236efac2e05187a903475ed851",
+      "after": "e76501b5f370e5d7c70b641d918d9c3f70e7ce236efac2e05187a903475ed851",
+      "unchanged": true
+    },
+    "models/comparisons/no_time_isolation_forest.joblib": {
+      "before": "5eb151856bb1d0776587140bb2eb201ba450f40293d540a90db44b3599ef963c",
+      "after": "5eb151856bb1d0776587140bb2eb201ba450f40293d540a90db44b3599ef963c",
+      "unchanged": true
+    },
+    "models/comparisons/no_time_metadata.json": {
+      "before": "5c52719edb385015b27e4ceff5443b0cc22ac7b9146349cf28e4742c6c43afd6",
+      "after": "5c52719edb385015b27e4ceff5443b0cc22ac7b9146349cf28e4742c6c43afd6",
+      "unchanged": true
+    },
+    "models/comparisons/no_time_standard_scaler.joblib": {
+      "before": "b8b04db85a3bae4a0187b8ede66e859e811b7ee85b995976c9dc808b67b9aefb",
+      "after": "b8b04db85a3bae4a0187b8ede66e859e811b7ee85b995976c9dc808b67b9aefb",
+      "unchanged": true
+    },
+    "models/core_standard_scaler.joblib": {
+      "before": "5959330927318c00a70884f4c1b49d21b3a4aafb9ea534a44262bfaf86c8d5f6",
+      "after": "5959330927318c00a70884f4c1b49d21b3a4aafb9ea534a44262bfaf86c8d5f6",
+      "unchanged": true
+    },
+    "models/frozen_anomaly_detector_metadata.json": {
+      "before": "04c323a6fd8cc4fa05660940162b80e12f493a9e88a6e0a4c62dd84fc607b4a8",
+      "after": "04c323a6fd8cc4fa05660940162b80e12f493a9e88a6e0a4c62dd84fc607b4a8",
+      "unchanged": true
+    },
+    "models/frozen_anomaly_threshold_metadata.json": {
+      "before": "eb5d7ea51827faaa1620b8d7ef5f42da8294dfd30a8a281c5ccfbc3f77c5eec9",
+      "after": "eb5d7ea51827faaa1620b8d7ef5f42da8294dfd30a8a281c5ccfbc3f77c5eec9",
+      "unchanged": true
+    },
+    "models/isolation_forest_core.joblib": {
+      "before": "3b002a49fea3c784063fc83034bc1d20797a75a48a7d77c96e7f14060eb5d626",
+      "after": "3b002a49fea3c784063fc83034bc1d20797a75a48a7d77c96e7f14060eb5d626",
+      "unchanged": true
+    },
+    "models/isolation_forest_core_metadata.json": {
+      "before": "841a7e0dec11879406336818669a8879a0c4e946bfbc664425201b12cc9a2b3e",
+      "after": "841a7e0dec11879406336818669a8879a0c4e946bfbc664425201b12cc9a2b3e",
+      "unchanged": true
+    },
+    "src/data_processing/engineer_basic_features.py": {
+      "before": "be19794a1564172ef3c5601d91b3112f748416cd854a0dedf8314b31009077a2",
+      "after": "be19794a1564172ef3c5601d91b3112f748416cd854a0dedf8314b31009077a2",
+      "unchanged": true
+    },
+    "src/data_processing/engineer_change_features.py": {
+      "before": "0f2b26429388ae4ba6b247a99fc93b4aa4ea66ff22dbb717ffc5dfee72fd4ccf",
+      "after": "0f2b26429388ae4ba6b247a99fc93b4aa4ea66ff22dbb717ffc5dfee72fd4ccf",
+      "unchanged": true
+    },
+    "src/data_processing/engineer_rolling_features.py": {
+      "before": "3787d225bcf7ffd554c68370be78e120a80fae640dd98927dec864fa4a075884",
+      "after": "3787d225bcf7ffd554c68370be78e120a80fae640dd98927dec864fa4a075884",
+      "unchanged": true
+    }
+  },
+  "explicitly_not_performed": [
+    "StandardScaler fitting",
+    "Isolation Forest fitting or scoring",
+    "threshold changes",
+    "detector application to synthetic evaluation",
+    "precision/recall/F1 or detection-performance calculation"
+  ],
+  "interpretation": "This dataset provides controlled synthetic evaluation cases. It does not establish that the simulated signatures are equivalent to verified real photovoltaic faults."
+}

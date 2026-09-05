@@ -1,0 +1,46 @@
+# Day 16 initial baseline detector. The final operational threshold is deferred.
+schema_version: 1
+experiment_name: initial_core_isolation_forest
+random_state: 42
+
+inputs:
+  training: data/model_ready/core_train.csv
+  calibration: data/model_ready/core_calibration.csv
+  evaluation_baseline: data/model_ready/core_evaluation_baseline.csv
+  chronological_split_config: config/chronological_split.yaml
+
+core_features:
+  - Power_Generated
+  - Solar_Radiation
+  - Air_Temp
+  - Relative_Humidity
+  - Wind_Speed
+  - rtd_mean
+  - rtd_std
+  - minute_of_day_sin
+  - minute_of_day_cos
+
+scaler:
+  type: StandardScaler
+  with_mean: true
+  with_std: true
+  fit_scope: training_only
+
+model:
+  type: IsolationForest
+  parameters:
+    n_estimators: 300
+    max_samples: auto
+    max_features: 1.0
+    bootstrap: false
+    contamination: auto
+    random_state: 42
+    n_jobs: -1
+
+scoring:
+  convention: negative_score_samples
+  formula: anomaly_score = -IsolationForest.score_samples(X_scaled)
+  interpretation: higher values indicate more isolated observations
+  create_final_labels: false
+  final_operational_threshold: deferred_to_separate_calibration_stage
+

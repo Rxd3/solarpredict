@@ -1,0 +1,49 @@
+schema_version: 1
+status: prototype_frozen
+configuration_name: NO_TIME_7_standard_scaler_isolation_forest
+feature_order:
+- Power_Generated
+- Solar_Radiation
+- Air_Temp
+- Relative_Humidity
+- Wind_Speed
+- rtd_mean
+- rtd_std
+scaler:
+  type: StandardScaler
+  fit_scope: training_only
+  artifact: models/comparisons/no_time_standard_scaler.joblib
+model:
+  type: IsolationForest
+  parameters:
+    n_estimators: 300
+    max_samples: auto
+    max_features: 1.0
+    bootstrap: false
+    contamination: auto
+    random_state: 42
+    n_jobs: -1
+  artifact: models/comparisons/no_time_isolation_forest.joblib
+training_partition:
+  rows: 336
+  start: '2022-04-27 15:32:00'
+  end: '2022-04-28 02:42:00'
+calibration_partition:
+  rows: 336
+  start: '2022-04-28 02:44:00'
+  end: '2022-04-28 13:54:00'
+stability_review_seeds:
+- 7
+- 21
+- 42
+- 84
+- 123
+production_prototype_seed: 42
+known_limitations:
+- approximately 33.6 hours and one complete calendar day
+- adjacent chronological partitions are not independent days
+- RTD placement and units are unconfirmed
+- seed review is a stability check, not hyperparameter tuning
+- no threshold is selected in this stage
+rtd_uncertainty: RTD placement and units are unconfirmed; calibration contains 16
+  rows with absolute training-scaled rtd_std above 5.

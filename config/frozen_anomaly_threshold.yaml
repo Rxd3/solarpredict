@@ -1,0 +1,42 @@
+schema_version: 1
+status: prototype_frozen
+configuration_name: NO_TIME_7_calibration_threshold
+frozen_detector_config: config/frozen_anomaly_detector.yaml
+frozen_detector_config_sha256: 825cdc02e000352611de77bc19fce1e550f0dd8c7bd8a791e5cc2f1da79dd8b3
+threshold:
+  strategy: calibration_percentile
+  value: 0.7135242760182695
+  comparison_operator: strictly_greater_than
+  calibration_statistic:
+    percentile: 97.5
+calibration_partition:
+  path: data/model_ready/core_calibration.csv
+  rows: 336
+  start: '2022-04-28 02:44:00'
+  end: '2022-04-28 13:54:00'
+  baseline_flagged_observations: 9
+  baseline_flagged_percentage: 2.6785714285714284
+  alert_event_count: 4
+  daylight_like_flagged_count: 9
+  low_light_flagged_count: 0
+  extreme_rtd_std_flagged_count: 7
+  other_flagged_count: 2
+event_grouping:
+  expected_sampling_minutes: 2
+  same_event_gap_minutes: 2
+  smoothing: false
+  merge_nonconsecutive_events: false
+selection:
+  scope: calibration only
+  evaluation_baseline_used: false
+  candidate_config: config/anomaly_threshold_calibration.yaml
+  rationale: Passed every predeclared alert-rate, fragmentation, and RTD-concentration
+    gate and was closest to the predeclared 2.5% calibration baseline alert-rate target;
+    the highest threshold was not automatically preferred.
+known_limitations:
+- calibration contains baseline observations but is not independently verified fault-free
+- the source record covers approximately 33.6 hours and one complete calendar day
+- training and calibration are adjacent parts of the same short record
+- calibration operating conditions are not fully represented in training
+- RTD placement and units are unconfirmed
+- this prototype threshold is not a generally validated operational alarm limit

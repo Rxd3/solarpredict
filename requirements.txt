@@ -17,3 +17,4 @@ streamlit>=1.32
 
 # Testing
 pytest>=8.0
+PyYAML>=6.0

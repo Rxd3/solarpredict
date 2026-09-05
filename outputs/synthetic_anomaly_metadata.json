@@ -1,0 +1,2324 @@
+{
+  "generator_version": "1.0.0",
+  "seed": 42,
+  "rng": "PCG64",
+  "run_id": "6c1a54b3359e",
+  "scope": "unsplit_generator_validation_prototype_not_final_model_test",
+  "overrides": {
+    "explicit_scenario_enable_list": [
+      "sudden_power_drop",
+      "sustained_power_reduction",
+      "temporary_near_zero_power",
+      "sudden_power_spike",
+      "gradual_power_degradation",
+      "radiation_power_inconsistency",
+      "sensor_excursion"
+    ],
+    "mixed_families_in_one_copy": true,
+    "use_full_baseline_without_final_split": true
+  },
+  "configuration": {
+    "schema_version": 1,
+    "stage": "design_only",
+    "enabled": false,
+    "random_seed": 42,
+    "sampling_interval_seconds": 120,
+    "baseline_path": "data/processed/operational_features_change.csv",
+    "baseline_measurement_path": "data/processed/operational_cleaned.csv",
+    "core_features": [
+      "Power_Generated",
+      "Solar_Radiation",
+      "Air_Temp",
+      "Relative_Humidity",
+      "Wind_Speed",
+      "rtd_mean",
+      "rtd_std",
+      "minute_of_day_sin",
+      "minute_of_day_cos"
+    ],
+    "context": {
+      "eligible_split": "evaluation_only",
+      "eligibility_reference": "untouched_baseline",
+      "require_finite_inputs": true,
+      "require_contiguous_sampling": true,
+      "low_light_threshold_w_m2": 5.0,
+      "power_event_min_radiation_w_m2": 100.0,
+      "power_event_min_power_w": 50.0,
+      "require_entire_window_eligible": true,
+      "overlap_allowed": false,
+      "minimum_gap_minutes": 60,
+      "max_modified_row_fraction_per_copy": 0.05,
+      "insufficient_eligible_windows": "skip_and_record_reason",
+      "known_transition_exclusions": {
+        "half_window_minutes": 20,
+        "timestamps": [
+          "2022-04-27 17:00:00",
+          "2022-04-28 17:00:00"
+        ]
+      },
+      "start_position": {
+        "method": "seeded_choice_from_sorted_eligible_start_rows",
+        "manual_override": null
+      },
+      "duration_semantics": "inclusive_integer_sample_count_times_two_minutes",
+      "power_consistency_policy": "scale_power_and_voltage_by_same_factor_keep_current",
+      "derived_feature_policy": "recompute_causally_in_evaluation_copy",
+      "feature_tail_policy": "record_influence_mask_keep_direct_labels_unchanged",
+      "evaluation_copies": "one_scenario_family_per_copy_initially"
+    },
+    "labels": {
+      "synthetic_anomaly": {
+        "dtype": "int8",
+        "baseline_value": 0,
+        "modified_value": 1
+      },
+      "synthetic_anomaly_type": {
+        "dtype": "string",
+        "baseline_value": "none",
+        "modified_value": "scenario_id"
+      },
+      "synthetic_anomaly_id": {
+        "dtype": "nullable_string",
+        "baseline_value": null,
+        "modified_value": "deterministic_run_and_event_id"
+      }
+    },
+    "reproducibility": {
+      "proposed_rng": "numpy.random.Generator(PCG64)",
+      "parameter_sampling": "uniform_inclusive_integer_samples_and_uniform_continuous_severity",
+      "metadata_required": [
+        "baseline_sha256",
+        "config_sha256",
+        "generator_version",
+        "dependency_versions",
+        "seed_and_rng",
+        "split_boundaries",
+        "scenario_id",
+        "event_id",
+        "source_row_positions_and_timestamps",
+        "affected_variables",
+        "sampled_parameters",
+        "original_and_modified_values",
+        "context_checks",
+        "skipped_event_reasons",
+        "derived_feature_influence_rows",
+        "output_sha256"
+      ]
+    },
+    "evaluation": {
+      "split_policy": "chronological_train_calibration_evaluation_disjoint_rows",
+      "split_boundaries": null,
+      "scaler_fit_scope": "baseline_training_only",
+      "detector_fit_scope": "baseline_training_only",
+      "threshold_selection_scope": "baseline_calibration_only",
+      "final_test_labels_used_for_tuning": false,
+      "point_metrics": [
+        "precision",
+        "recall",
+        "f1",
+        "false_positive_count",
+        "false_positive_rate"
+      ],
+      "event_metrics": [
+        "detected_events",
+        "missed_events",
+        "event_recall",
+        "detection_delay",
+        "within_event_coverage"
+      ],
+      "event_hit_rule": "at_least_one_detection_on_a_directly_modified_row",
+      "early_late_tolerance_samples": 0,
+      "paired_untouched_control": true,
+      "report_by": [
+        "scenario",
+        "severity",
+        "duration",
+        "seed",
+        "daylight_context"
+      ]
+    },
+    "scenarios": {
+      "sudden_power_drop": {
+        "enabled": false,
+        "category": "operational",
+        "affected_variables": [
+          "Power_Generated",
+          "Array_Voltage"
+        ],
+        "severity": {
+          "parameter": "reduction_fraction",
+          "range": [
+            0.1,
+            0.3
+          ]
+        },
+        "duration_samples": [
+          1,
+          3
+        ],
+        "duration_minutes": [
+          2,
+          6
+        ],
+        "transformation": "P_new = P * (1 - reduction_fraction); V_new = V * (1 - reduction_fraction)",
+        "context_rule": "power_daylight"
+      },
+      "sustained_power_reduction": {
+        "enabled": false,
+        "category": "operational",
+        "affected_variables": [
+          "Power_Generated",
+          "Array_Voltage"
+        ],
+        "severity": {
+          "parameter": "reduction_fraction",
+          "range": [
+            0.1,
+            0.25
+          ]
+        },
+        "duration_samples": [
+          5,
+          15
+        ],
+        "duration_minutes": [
+          10,
+          30
+        ],
+        "transformation": "P_new = P * (1 - reduction_fraction); V_new = V * (1 - reduction_fraction)",
+        "context_rule": "power_daylight"
+      },
+      "temporary_near_zero_power": {
+        "enabled": false,
+        "category": "operational_or_sensor",
+        "affected_variables": [
+          "Power_Generated",
+          "Array_Voltage"
+        ],
+        "severity": {
+          "parameter": "retained_fraction",
+          "range": [
+            0.0,
+            0.02
+          ]
+        },
+        "duration_samples": [
+          1,
+          3
+        ],
+        "duration_minutes": [
+          2,
+          6
+        ],
+        "transformation": "P_new = P * retained_fraction; V_new = V * retained_fraction",
+        "context_rule": "power_daylight"
+      },
+      "sudden_power_spike": {
+        "enabled": false,
+        "category": "operational_or_sensor",
+        "affected_variables": [
+          "Power_Generated",
+          "Array_Voltage"
+        ],
+        "severity": {
+          "parameter": "increase_fraction",
+          "range": [
+            0.1,
+            0.3
+          ]
+        },
+        "duration_samples": [
+          1,
+          2
+        ],
+        "duration_minutes": [
+          2,
+          4
+        ],
+        "transformation": "P_new = P * (1 + increase_fraction); V_new = V * (1 + increase_fraction)",
+        "context_rule": "power_daylight"
+      },
+      "gradual_power_degradation": {
+        "enabled": false,
+        "category": "operational",
+        "affected_variables": [
+          "Power_Generated",
+          "Array_Voltage"
+        ],
+        "severity": {
+          "parameter": "final_reduction_fraction",
+          "range": [
+            0.1,
+            0.25
+          ]
+        },
+        "duration_samples": [
+          15,
+          30
+        ],
+        "duration_minutes": [
+          30,
+          60
+        ],
+        "transformation": "factor_j = 1 - final_reduction_fraction * j / n; P_new_j = P_j * factor_j; V_new_j = V_j * factor_j; j = 1..n",
+        "context_rule": "power_daylight"
+      },
+      "radiation_power_inconsistency": {
+        "enabled": false,
+        "category": "sensor_or_relational",
+        "affected_variables": [
+          "Solar_Radiation"
+        ],
+        "severity": {
+          "parameter": "radiation_increase_fraction",
+          "range": [
+            0.1,
+            0.25
+          ]
+        },
+        "duration_samples": [
+          3,
+          10
+        ],
+        "duration_minutes": [
+          6,
+          20
+        ],
+        "transformation": "S_new = S * (1 + radiation_increase_fraction); power, voltage, and current unchanged",
+        "context_rule": "power_daylight"
+      },
+      "sensor_excursion": {
+        "enabled": false,
+        "category": "sensor",
+        "affected_variables": [
+          "Air_Temp",
+          "Relative_Humidity"
+        ],
+        "variable_selection": "exactly_one_per_event",
+        "severity": {
+          "parameter": "signed_additive_offset",
+          "direction_choices": [
+            -1,
+            1
+          ],
+          "magnitude_ranges": {
+            "Air_Temp": {
+              "range": [
+                1.0,
+                3.0
+              ],
+              "unit": "degrees_Celsius"
+            },
+            "Relative_Humidity": {
+              "range": [
+                3.0,
+                8.0
+              ],
+              "unit": "percentage_points_RH"
+            }
+          }
+        },
+        "duration_samples": [
+          1,
+          3
+        ],
+        "duration_minutes": [
+          2,
+          6
+        ],
+        "transformation": "x_new = x + direction * magnitude; reject humidity candidate outside [0, 100]",
+        "context_rule": "finite_sensor_any_light"
+      }
+    }
+  },
+  "configuration_content_sha256": "25970b0fb54b790a14d0b354f073eda1c9d1035f63794c10fbdf3e6c8e3794fc",
+  "baseline_frame_identity": "93c8cb3109a7b5b014b34910b914d75128f11f476668cc19385f27728c8d8dc7",
+  "dependency_versions": {
+    "python": "3.12.4",
+    "numpy": "2.5.2",
+    "pandas": "3.0.5",
+    "pyyaml": "6.0.3"
+  },
+  "scenario_processing_order": [
+    "gradual_power_degradation",
+    "sustained_power_reduction",
+    "radiation_power_inconsistency",
+    "sudden_power_drop",
+    "temporary_near_zero_power",
+    "sudden_power_spike",
+    "sensor_excursion"
+  ],
+  "sampling_policy": "severity then uniform feasible duration then uniform sorted eligible start; reserve later minimum durations",
+  "events": [
+    {
+      "anomaly_id": "6c1a54b3359e-01",
+      "anomaly_type": "gradual_power_degradation",
+      "random_seed": 42,
+      "start_timestamp": "2022-04-28 10:38:00",
+      "end_timestamp": "2022-04-28 11:26:00",
+      "end_exclusive": "2022-04-28 11:28:00",
+      "row_positions": [
+        573,
+        574,
+        575,
+        576,
+        577,
+        578,
+        579,
+        580,
+        581,
+        582,
+        583,
+        584,
+        585,
+        586,
+        587,
+        588,
+        589,
+        590,
+        591,
+        592,
+        593,
+        594,
+        595,
+        596,
+        597
+      ],
+      "affected_row_count": 25,
+      "duration_minutes": 50,
+      "severity": {
+        "parameter": "final_reduction_fraction",
+        "value": 0.2160934072833945,
+        "signed_offset": null
+      },
+      "affected_variables": [
+        "Power_Generated",
+        "Array_Voltage"
+      ],
+      "original_values": [
+        {
+          "row_position": 573,
+          "timestamp": "2022-04-28 10:38:00",
+          "Power_Generated": 403.42476,
+          "Array_Voltage": 75.276
+        },
+        {
+          "row_position": 574,
+          "timestamp": "2022-04-28 10:40:00",
+          "Power_Generated": 402.8008,
+          "Array_Voltage": 75.15576
+        },
+        {
+          "row_position": 575,
+          "timestamp": "2022-04-28 10:42:00",
+          "Power_Generated": 403.1998,
+          "Array_Voltage": 75.215056
+        },
+        {
+          "row_position": 576,
+          "timestamp": "2022-04-28 10:44:00",
+          "Power_Generated": 402.46044,
+          "Array_Voltage": 75.09712
+        },
+        {
+          "row_position": 577,
+          "timestamp": "2022-04-28 10:46:00",
+          "Power_Generated": 403.08684,
+          "Array_Voltage": 75.214008
+        },
+        {
+          "row_position": 578,
+          "timestamp": "2022-04-28 10:48:00",
+          "Power_Generated": 403.8806,
+          "Array_Voltage": 75.359576
+        },
+        {
+          "row_position": 579,
+          "timestamp": "2022-04-28 10:50:00",
+          "Power_Generated": 403.48812,
+          "Array_Voltage": 75.274952
+        },
+        {
+          "row_position": 580,
+          "timestamp": "2022-04-28 10:52:00",
+          "Power_Generated": 402.8256,
+          "Array_Voltage": 75.148816
+        },
+        {
+          "row_position": 581,
+          "timestamp": "2022-04-28 10:54:00",
+          "Power_Generated": 402.03272,
+          "Array_Voltage": 75.004744
+        },
+        {
+          "row_position": 582,
+          "timestamp": "2022-04-28 10:56:00",
+          "Power_Generated": 402.46196,
+          "Array_Voltage": 75.1184
+        },
+        {
+          "row_position": 583,
+          "timestamp": "2022-04-28 10:58:00",
+          "Power_Generated": 402.2596,
+          "Array_Voltage": 75.074336
+        },
+        {
+          "row_position": 584,
+          "timestamp": "2022-04-28 11:00:00",
+          "Power_Generated": 401.82608,
+          "Array_Voltage": 74.992152
+        },
+        {
+          "row_position": 585,
+          "timestamp": "2022-04-28 11:02:00",
+          "Power_Generated": 402.41188,
+          "Array_Voltage": 75.120328
+        },
+        {
+          "row_position": 586,
+          "timestamp": "2022-04-28 11:04:00",
+          "Power_Generated": 401.02404,
+          "Array_Voltage": 74.849912
+        },
+        {
+          "row_position": 587,
+          "timestamp": "2022-04-28 11:06:00",
+          "Power_Generated": 399.64272,
+          "Array_Voltage": 74.583344
+        },
+        {
+          "row_position": 588,
+          "timestamp": "2022-04-28 11:08:00",
+          "Power_Generated": 400.3004,
+          "Array_Voltage": 74.7048
+        },
+        {
+          "row_position": 589,
+          "timestamp": "2022-04-28 11:10:00",
+          "Power_Generated": 398.20608,
+          "Array_Voltage": 74.302704
+        },
+        {
+          "row_position": 590,
+          "timestamp": "2022-04-28 11:12:00",
+          "Power_Generated": 396.0378,
+          "Array_Voltage": 73.935688
+        },
+        {
+          "row_position": 591,
+          "timestamp": "2022-04-28 11:14:00",
+          "Power_Generated": 394.79168,
+          "Array_Voltage": 73.7018
+        },
+        {
+          "row_position": 592,
+          "timestamp": "2022-04-28 11:16:00",
+          "Power_Generated": 394.24572,
+          "Array_Voltage": 73.58876
+        },
+        {
+          "row_position": 593,
+          "timestamp": "2022-04-28 11:18:00",
+          "Power_Generated": 394.03792,
+          "Array_Voltage": 73.546248
+        },
+        {
+          "row_position": 594,
+          "timestamp": "2022-04-28 11:20:00",
+          "Power_Generated": 392.78732,
+          "Array_Voltage": 73.336032
+        },
+        {
+          "row_position": 595,
+          "timestamp": "2022-04-28 11:22:00",
+          "Power_Generated": 393.23808,
+          "Array_Voltage": 73.417728
+        },
+        {
+          "row_position": 596,
+          "timestamp": "2022-04-28 11:24:00",
+          "Power_Generated": 393.07068,
+          "Array_Voltage": 73.38028
+        },
+        {
+          "row_position": 597,
+          "timestamp": "2022-04-28 11:26:00",
+          "Power_Generated": 391.50804,
+          "Array_Voltage": 73.078736
+        }
+      ],
+      "modified_values": [
+        {
+          "row_position": 573,
+          "timestamp": "2022-04-28 10:38:00",
+          "Power_Generated": 399.9376627611646,
+          "Array_Voltage": 74.62533410693341
+        },
+        {
+          "row_position": 574,
+          "timestamp": "2022-04-28 10:40:00",
+          "Power_Generated": 395.8373922137218,
+          "Array_Voltage": 73.85650685957016
+        },
+        {
+          "row_position": 575,
+          "timestamp": "2022-04-28 10:42:00",
+          "Power_Generated": 392.744341768242,
+          "Array_Voltage": 73.26463867239384
+        },
+        {
+          "row_position": 576,
+          "timestamp": "2022-04-28 10:44:00",
+          "Power_Generated": 388.54539235578017,
+          "Array_Voltage": 72.5006411939248
+        },
+        {
+          "row_position": 577,
+          "timestamp": "2022-04-28 10:46:00",
+          "Power_Generated": 385.66595826266075,
+          "Array_Voltage": 71.96335774716792
+        },
+        {
+          "row_position": 578,
+          "timestamp": "2022-04-28 10:48:00",
+          "Power_Generated": 382.93437560248117,
+          "Array_Voltage": 71.45124618817474
+        },
+        {
+          "row_position": 579,
+          "timestamp": "2022-04-28 10:50:00",
+          "Power_Generated": 379.0746056582321,
+          "Array_Voltage": 70.72035415898328
+        },
+        {
+          "row_position": 580,
+          "timestamp": "2022-04-28 10:52:00",
+          "Power_Generated": 374.97025393760714,
+          "Array_Voltage": 69.95228361511909
+        },
+        {
+          "row_position": 581,
+          "timestamp": "2022-04-28 10:54:00",
+          "Power_Generated": 370.75713669048406,
+          "Array_Voltage": 69.16985295038366
+        },
+        {
+          "row_position": 582,
+          "timestamp": "2022-04-28 10:56:00",
+          "Power_Generated": 367.6742095046587,
+          "Array_Voltage": 68.62536359772922
+        },
+        {
+          "row_position": 583,
+          "timestamp": "2022-04-28 10:58:00",
+          "Power_Generated": 364.01231506635963,
+          "Array_Voltage": 67.93618561105751
+        },
+        {
+          "row_position": 584,
+          "timestamp": "2022-04-28 11:00:00",
+          "Power_Generated": 360.1467359539856,
+          "Array_Voltage": 67.21360337030677
+        },
+        {
+          "row_position": 585,
+          "timestamp": "2022-04-28 11:02:00",
+          "Power_Generated": 357.19343177413145,
+          "Array_Voltage": 66.67916403044158
+        },
+        {
+          "row_position": 586,
+          "timestamp": "2022-04-28 11:04:00",
+          "Power_Generated": 352.49519532455474,
+          "Array_Voltage": 65.79215138939236
+        },
+        {
+          "row_position": 587,
+          "timestamp": "2022-04-28 11:06:00",
+          "Power_Generated": 347.8266257635178,
+          "Array_Voltage": 64.91316264107029
+        },
+        {
+          "row_position": 588,
+          "timestamp": "2022-04-28 11:08:00",
+          "Power_Generated": 344.93894248134035,
+          "Array_Voltage": 64.3731425456483
+        },
+        {
+          "row_position": 589,
+          "timestamp": "2022-04-28 11:10:00",
+          "Power_Generated": 339.6922781328485,
+          "Array_Voltage": 63.384403355143945
+        },
+        {
+          "row_position": 590,
+          "timestamp": "2022-04-28 11:12:00",
+          "Power_Generated": 334.41936651718595,
+          "Array_Voltage": 62.43223738737137
+        },
+        {
+          "row_position": 591,
+          "timestamp": "2022-04-28 11:14:00",
+          "Power_Generated": 329.95465173326494,
+          "Array_Voltage": 61.597680455461344
+        },
+        {
+          "row_position": 592,
+          "timestamp": "2022-04-28 11:16:00",
+          "Power_Generated": 326.09059924664393,
+          "Array_Voltage": 60.86712329107202
+        },
+        {
+          "row_position": 593,
+          "timestamp": "2022-04-28 11:18:00",
+          "Power_Generated": 322.51276274540425,
+          "Array_Voltage": 60.19624616848719
+        },
+        {
+          "row_position": 594,
+          "timestamp": "2022-04-28 11:20:00",
+          "Power_Generated": 318.0940197214686,
+          "Array_Voltage": 59.39029093225884
+        },
+        {
+          "row_position": 595,
+          "timestamp": "2022-04-28 11:22:00",
+          "Power_Generated": 315.0600159456824,
+          "Array_Voltage": 58.82184796135656
+        },
+        {
+          "row_position": 596,
+          "timestamp": "2022-04-28 11:24:00",
+          "Power_Generated": 311.5282967573752,
+          "Array_Voltage": 58.15756505669486
+        },
+        {
+          "row_position": 597,
+          "timestamp": "2022-04-28 11:26:00",
+          "Power_Generated": 306.9057336575565,
+          "Array_Voltage": 57.286902937796334
+        }
+      ],
+      "baseline_context": [
+        {
+          "row_position": 571,
+          "timestamp": "2022-04-28 10:34:00",
+          "Power_Generated": 400.41896,
+          "Solar_Radiation": 940.28328,
+          "Array_Current": 5.360567,
+          "low_light_context": 0.0
+        },
+        {
+          "row_position": 572,
+          "timestamp": "2022-04-28 10:36:00",
+          "Power_Generated": 400.59788,
+          "Solar_Radiation": 941.32448,
+          "Array_Current": 5.35956,
+          "low_light_context": 0.0
+        },
+        {
+          "row_position": 573,
+          "timestamp": "2022-04-28 10:38:00",
+          "Power_Generated": 403.42476,
+          "Solar_Radiation": 962.92936,
+          "Array_Current": 5.359275,
+          "low_light_context": 0.0
+        },
+        {
+          "row_position": 574,
+          "timestamp": "2022-04-28 10:40:00",
+          "Power_Generated": 402.8008,
+          "Solar_Radiation": 957.57144,
+          "Array_Current": 5.359546,
+          "low_light_context": 0.0
+        },
+        {
+          "row_position": 575,
+          "timestamp": "2022-04-28 10:42:00",
+          "Power_Generated": 403.1998,
+          "Solar_Radiation": 974.26096,
+          "Array_Current": 5.360626,
+          "low_light_context": 0.0
+        },
+        {
+          "row_position": 576,
+          "timestamp": "2022-04-28 10:44:00",
+          "Power_Generated": 402.46044,
+          "Solar_Radiation": 965.12576,
+          "Array_Current": 5.3592,
+          "low_light_context": 0.0
+        },
+        {
+          "row_position": 577,
+          "timestamp": "2022-04-28 10:46:00",
+          "Power_Generated": 403.08684,
+          "Solar_Radiation": 984.44904,
+          "Array_Current": 5.3592,
+          "low_light_context": 0.0
+        },
+        {
+          "row_position": 578,
+          "timestamp": "2022-04-28 10:48:00",
+          "Power_Generated": 403.8806,
+          "Solar_Radiation": 995.51872,
+          "Array_Current": 5.35938,
+          "low_light_context": 0.0
+        },
+        {
+          "row_position": 579,
+          "timestamp": "2022-04-28 10:50:00",
+          "Power_Generated": 403.48812,
+          "Solar_Radiation": 1007.3886,
+          "Array_Current": 5.360192,
+          "low_light_context": 0.0
+        },
+        {
+          "row_position": 580,
+          "timestamp": "2022-04-28 10:52:00",
+          "Power_Generated": 402.8256,
+          "Solar_Radiation": 1016.8936,
+          "Array_Current": 5.360372,
+          "low_light_context": 0.0
+        },
+        {
+          "row_position": 581,
+          "timestamp": "2022-04-28 10:54:00",
+          "Power_Generated": 402.03272,
+          "Solar_Radiation": 1008.3974,
+          "Array_Current": 5.360097,
+          "low_light_context": 0.0
+        },
+        {
+          "row_position": 582,
+          "timestamp": "2022-04-28 10:56:00",
+          "Power_Generated": 402.46196,
+          "Solar_Radiation": 1019.7762,
+          "Array_Current": 5.357702,
+          "low_light_context": 0.0
+        },
+        {
+          "row_position": 583,
+          "timestamp": "2022-04-28 10:58:00",
+          "Power_Generated": 402.2596,
+          "Solar_Radiation": 1042.2306,
+          "Array_Current": 5.358151,
+          "low_light_context": 0.0
+        },
+        {
+          "row_position": 584,
+          "timestamp": "2022-04-28 11:00:00",
+          "Power_Generated": 401.82608,
+          "Solar_Radiation": 1034.6886,
+          "Array_Current": 5.358242,
+          "low_light_context": 0.0
+        },
+        {
+          "row_position": 585,
+          "timestamp": "2022-04-28 11:02:00",
+          "Power_Generated": 402.41188,
+          "Solar_Radiation": 1025.7376,
+          "Array_Current": 5.356897,
+          "low_light_context": 0.0
+        },
+        {
+          "row_position": 586,
+          "timestamp": "2022-04-28 11:04:00",
+          "Power_Generated": 401.02404,
+          "Solar_Radiation": 1029.4884,
+          "Array_Current": 5.357709,
+          "low_light_context": 0.0
+        },
+        {
+          "row_position": 587,
+          "timestamp": "2022-04-28 11:06:00",
+          "Power_Generated": 399.64272,
+          "Solar_Radiation": 1023.2348,
+          "Array_Current": 5.358338,
+          "low_light_context": 0.0
+        },
+        {
+          "row_position": 588,
+          "timestamp": "2022-04-28 11:08:00",
+          "Power_Generated": 400.3004,
+          "Solar_Radiation": 1045.0538,
+          "Array_Current": 5.358429,
+          "low_light_context": 0.0
+        },
+        {
+          "row_position": 589,
+          "timestamp": "2022-04-28 11:10:00",
+          "Power_Generated": 398.20608,
+          "Solar_Radiation": 1039.581,
+          "Array_Current": 5.359241,
+          "low_light_context": 0.0
+        },
+        {
+          "row_position": 590,
+          "timestamp": "2022-04-28 11:12:00",
+          "Power_Generated": 396.0378,
+          "Solar_Radiation": 1029.2918,
+          "Array_Current": 5.356518,
+          "low_light_context": 0.0
+        },
+        {
+          "row_position": 591,
+          "timestamp": "2022-04-28 11:14:00",
+          "Power_Generated": 394.79168,
+          "Solar_Radiation": 1036.4516,
+          "Array_Current": 5.356609,
+          "low_light_context": 0.0
+        },
+        {
+          "row_position": 592,
+          "timestamp": "2022-04-28 11:16:00",
+          "Power_Generated": 394.24572,
+          "Solar_Radiation": 1043.5104,
+          "Array_Current": 5.357418,
+          "low_light_context": 0.0
+        },
+        {
+          "row_position": 593,
+          "timestamp": "2022-04-28 11:18:00",
+          "Power_Generated": 394.03792,
+          "Solar_Radiation": 1049.9426,
+          "Array_Current": 5.357689,
+          "low_light_context": 0.0
+        },
+        {
+          "row_position": 594,
+          "timestamp": "2022-04-28 11:20:00",
+          "Power_Generated": 392.78732,
+          "Solar_Radiation": 1058.5416,
+          "Array_Current": 5.355994,
+          "low_light_context": 0.0
+        },
+        {
+          "row_position": 595,
+          "timestamp": "2022-04-28 11:22:00",
+          "Power_Generated": 393.23808,
+          "Solar_Radiation": 1064.8198,
+          "Array_Current": 5.356174,
+          "low_light_context": 0.0
+        },
+        {
+          "row_position": 596,
+          "timestamp": "2022-04-28 11:24:00",
+          "Power_Generated": 393.07068,
+          "Solar_Radiation": 1050.389,
+          "Array_Current": 5.356626,
+          "low_light_context": 0.0
+        },
+        {
+          "row_position": 597,
+          "timestamp": "2022-04-28 11:26:00",
+          "Power_Generated": 391.50804,
+          "Solar_Radiation": 1061.8976,
+          "Array_Current": 5.357346,
+          "low_light_context": 0.0
+        },
+        {
+          "row_position": 598,
+          "timestamp": "2022-04-28 11:28:00",
+          "Power_Generated": 392.15592,
+          "Solar_Radiation": 1074.4436,
+          "Array_Current": 5.357526,
+          "low_light_context": 0.0
+        },
+        {
+          "row_position": 599,
+          "timestamp": "2022-04-28 11:30:00",
+          "Power_Generated": 390.81508,
+          "Solar_Radiation": 1077.0958,
+          "Array_Current": 5.355519,
+          "low_light_context": 0.0
+        }
+      ],
+      "eligible_start_count_for_duration": 225,
+      "feasible_duration_samples": [
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30
+      ],
+      "derived_feature_influence_rows": [
+        573,
+        574,
+        575,
+        576,
+        577,
+        578,
+        579,
+        580,
+        581,
+        582,
+        583,
+        584,
+        585,
+        586,
+        587,
+        588,
+        589,
+        590,
+        591,
+        592,
+        593,
+        594,
+        595,
+        596,
+        597,
+        598,
+        599,
+        600,
+        601,
+        602,
+        603,
+        604,
+        605,
+        606,
+        607,
+        608,
+        609,
+        610,
+        611,
+        612,
+        613,
+        614,
+        615,
+        616,
+        617,
+        618,
+        619,
+        620,
+        621,
+        622,
+        623,
+        624,
+        625,
+        626
+      ],
+      "derived_only_tail_rows": [
+        598,
+        599,
+        600,
+        601,
+        602,
+        603,
+        604,
+        605,
+        606,
+        607,
+        608,
+        609,
+        610,
+        611,
+        612,
+        613,
+        614,
+        615,
+        616,
+        617,
+        618,
+        619,
+        620,
+        621,
+        622,
+        623,
+        624,
+        625,
+        626
+      ]
+    },
+    {
+      "anomaly_id": "6c1a54b3359e-02",
+      "anomaly_type": "sustained_power_reduction",
+      "random_seed": 42,
+      "start_timestamp": "2022-04-28 14:00:00",
+      "end_timestamp": "2022-04-28 14:08:00",
+      "end_exclusive": "2022-04-28 14:10:00",
+      "row_positions": [
+        674,
+        675,
+        676,
+        677,
+        678
+      ],
+      "affected_row_count": 5,
+      "duration_minutes": 10,
+      "severity": {
+        "parameter": "reduction_fraction",
+        "value": 0.22878968798670737,
+        "signed_offset": null
+      },
+      "affected_variables": [
+        "Power_Generated",
+        "Array_Voltage"
+      ],
+      "original_values": [
+        {
+          "row_position": 674,
+          "timestamp": "2022-04-28 14:00:00",
+          "Power_Generated": 373.68816,
+          "Array_Voltage": 69.804824
+        },
+        {
+          "row_position": 675,
+          "timestamp": "2022-04-28 14:02:00",
+          "Power_Generated": 373.99956,
+          "Array_Voltage": 69.86412
+        },
+        {
+          "row_position": 676,
+          "timestamp": "2022-04-28 14:04:00",
+          "Power_Generated": 374.60076,
+          "Array_Voltage": 69.974104
+        },
+        {
+          "row_position": 677,
+          "timestamp": "2022-04-28 14:06:00",
+          "Power_Generated": 374.69988,
+          "Array_Voltage": 69.993824
+        },
+        {
+          "row_position": 678,
+          "timestamp": "2022-04-28 14:08:00",
+          "Power_Generated": 375.32552,
+          "Array_Voltage": 70.113056
+        }
+      ],
+      "modified_values": [
+        {
+          "row_position": 674,
+          "timestamp": "2022-04-28 14:00:00",
+          "Power_Generated": 288.19216246927317,
+          "Array_Voltage": 53.83420009707297
+        },
+        {
+          "row_position": 675,
+          "timestamp": "2022-04-28 14:02:00",
+          "Power_Generated": 288.4323173604341,
+          "Array_Voltage": 53.87992978373411
+        },
+        {
+          "row_position": 676,
+          "timestamp": "2022-04-28 14:04:00",
+          "Power_Generated": 288.8959690000165,
+          "Array_Voltage": 53.964750578690584
+        },
+        {
+          "row_position": 677,
+          "timestamp": "2022-04-28 14:06:00",
+          "Power_Generated": 288.9724113661433,
+          "Array_Voltage": 53.97995884604349
+        },
+        {
+          "row_position": 678,
+          "timestamp": "2022-04-28 14:08:00",
+          "Power_Generated": 289.4549113857513,
+          "Array_Voltage": 54.071911793965455
+        }
+      ],
+      "baseline_context": [
+        {
+          "row_position": 672,
+          "timestamp": "2022-04-28 13:56:00",
+          "Power_Generated": 373.28292,
+          "Solar_Radiation": 979.1392,
+          "Array_Current": 5.353063,
+          "low_light_context": 0.0
+        },
+        {
+          "row_position": 673,
+          "timestamp": "2022-04-28 13:58:00",
+          "Power_Generated": 373.33244,
+          "Solar_Radiation": 959.26712,
+          "Array_Current": 5.353508,
+          "low_light_context": 0.0
+        },
+        {
+          "row_position": 674,
+          "timestamp": "2022-04-28 14:00:00",
+          "Power_Generated": 373.68816,
+          "Solar_Radiation": 951.99064,
+          "Array_Current": 5.353328,
+          "low_light_context": 0.0
+        },
+        {
+          "row_position": 675,
+          "timestamp": "2022-04-28 14:02:00",
+          "Power_Generated": 373.99956,
+          "Solar_Radiation": 945.96544,
+          "Array_Current": 5.353243,
+          "low_light_context": 0.0
+        },
+        {
+          "row_position": 676,
+          "timestamp": "2022-04-28 14:04:00",
+          "Power_Generated": 374.60076,
+          "Solar_Radiation": 953.53584,
+          "Array_Current": 5.35342,
+          "low_light_context": 0.0
+        },
+        {
+          "row_position": 677,
+          "timestamp": "2022-04-28 14:06:00",
+          "Power_Generated": 374.69988,
+          "Solar_Radiation": 960.76104,
+          "Array_Current": 5.353328,
+          "low_light_context": 0.0
+        },
+        {
+          "row_position": 678,
+          "timestamp": "2022-04-28 14:08:00",
+          "Power_Generated": 375.32552,
+          "Solar_Radiation": 927.71656,
+          "Array_Current": 5.353148,
+          "low_light_context": 0.0
+        },
+        {
+          "row_position": 679,
+          "timestamp": "2022-04-28 14:10:00",
+          "Power_Generated": 375.33012,
+          "Solar_Radiation": 919.93376,
+          "Array_Current": 5.353148,
+          "low_light_context": 0.0
+        },
+        {
+          "row_position": 680,
+          "timestamp": "2022-04-28 14:12:00",
+          "Power_Generated": 375.99604,
+          "Solar_Radiation": 928.39096,
+          "Array_Current": 5.353688,
+          "low_light_context": 0.0
+        }
+      ],
+      "eligible_start_count_for_duration": 166,
+      "feasible_duration_samples": [
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "derived_feature_influence_rows": [
+        674,
+        675,
+        676,
+        677,
+        678,
+        679,
+        680,
+        681,
+        682,
+        683,
+        684,
+        685,
+        686,
+        687,
+        688,
+        689,
+        690,
+        691,
+        692,
+        693,
+        694,
+        695,
+        696,
+        697,
+        698,
+        699,
+        700,
+        701,
+        702,
+        703,
+        704,
+        705,
+        706,
+        707
+      ],
+      "derived_only_tail_rows": [
+        679,
+        680,
+        681,
+        682,
+        683,
+        684,
+        685,
+        686,
+        687,
+        688,
+        689,
+        690,
+        691,
+        692,
+        693,
+        694,
+        695,
+        696,
+        697,
+        698,
+        699,
+        700,
+        701,
+        702,
+        703,
+        704,
+        705,
+        706,
+        707
+      ]
+    },
+    {
+      "anomaly_id": "6c1a54b3359e-03",
+      "anomaly_type": "radiation_power_inconsistency",
+      "random_seed": 42,
+      "start_timestamp": "2022-04-28 17:22:00",
+      "end_timestamp": "2022-04-28 17:34:00",
+      "end_exclusive": "2022-04-28 17:36:00",
+      "row_positions": [
+        775,
+        776,
+        777,
+        778,
+        779,
+        780,
+        781
+      ],
+      "affected_row_count": 7,
+      "duration_minutes": 14,
+      "severity": {
+        "parameter": "radiation_increase_fraction",
+        "value": 0.11412660218314744,
+        "signed_offset": null
+      },
+      "affected_variables": [
+        "Solar_Radiation"
+      ],
+      "original_values": [
+        {
+          "row_position": 775,
+          "timestamp": "2022-04-28 17:22:00",
+          "Solar_Radiation": 139.88244
+        },
+        {
+          "row_position": 776,
+          "timestamp": "2022-04-28 17:24:00",
+          "Solar_Radiation": 129.5473
+        },
+        {
+          "row_position": 777,
+          "timestamp": "2022-04-28 17:26:00",
+          "Solar_Radiation": 139.12222
+        },
+        {
+          "row_position": 778,
+          "timestamp": "2022-04-28 17:28:00",
+          "Solar_Radiation": 134.19802
+        },
+        {
+          "row_position": 779,
+          "timestamp": "2022-04-28 17:30:00",
+          "Solar_Radiation": 124.26068
+        },
+        {
+          "row_position": 780,
+          "timestamp": "2022-04-28 17:32:00",
+          "Solar_Radiation": 118.58246
+        },
+        {
+          "row_position": 781,
+          "timestamp": "2022-04-28 17:34:00",
+          "Solar_Radiation": 113.15028
+        }
+      ],
+      "modified_values": [
+        {
+          "row_position": 775,
+          "timestamp": "2022-04-28 17:22:00",
+          "Solar_Radiation": 155.846747582288
+        },
+        {
+          "row_position": 776,
+          "timestamp": "2022-04-28 17:24:00",
+          "Solar_Radiation": 144.33209317100088
+        },
+        {
+          "row_position": 777,
+          "timestamp": "2022-04-28 17:26:00",
+          "Solar_Radiation": 154.99976625677633
+        },
+        {
+          "row_position": 778,
+          "timestamp": "2022-04-28 17:28:00",
+          "Solar_Radiation": 149.5135840423061
+        },
+        {
+          "row_position": 779,
+          "timestamp": "2022-04-28 17:30:00",
+          "Solar_Radiation": 138.44212919336738
+        },
+        {
+          "row_position": 780,
+          "timestamp": "2022-04-28 17:32:00",
+          "Solar_Radiation": 132.115873238319
+        },
+        {
+          "row_position": 781,
+          "timestamp": "2022-04-28 17:34:00",
+          "Solar_Radiation": 126.06373699247175
+        }
+      ],
+      "baseline_context": [
+        {
+          "row_position": 773,
+          "timestamp": "2022-04-28 17:18:00",
+          "Power_Generated": 279.6297,
+          "Solar_Radiation": 171.30558,
+          "Array_Current": 5.363183,
+          "low_light_context": 0.0
+        },
+        {
+          "row_position": 774,
+          "timestamp": "2022-04-28 17:20:00",
+          "Power_Generated": 283.16668,
+          "Solar_Radiation": 166.32652,
+          "Array_Current": 5.363095,
+          "low_light_context": 0.0
+        },
+        {
+          "row_position": 775,
+          "timestamp": "2022-04-28 17:22:00",
+          "Power_Generated": 282.13794,
+          "Solar_Radiation": 139.88244,
+          "Array_Current": 5.363183,
+          "low_light_context": 0.0
+        },
+        {
+          "row_position": 776,
+          "timestamp": "2022-04-28 17:24:00",
+          "Power_Generated": 281.31674,
+          "Solar_Radiation": 129.5473,
+          "Array_Current": 5.363363,
+          "low_light_context": 0.0
+        },
+        {
+          "row_position": 777,
+          "timestamp": "2022-04-28 17:26:00",
+          "Power_Generated": 281.23422,
+          "Solar_Radiation": 139.12222,
+          "Array_Current": 5.369457,
+          "low_light_context": 0.0
+        },
+        {
+          "row_position": 778,
+          "timestamp": "2022-04-28 17:28:00",
+          "Power_Generated": 280.78614,
+          "Solar_Radiation": 134.19802,
+          "Array_Current": 5.369637,
+          "low_light_context": 0.0
+        },
+        {
+          "row_position": 779,
+          "timestamp": "2022-04-28 17:30:00",
+          "Power_Generated": 279.2746,
+          "Solar_Radiation": 124.26068,
+          "Array_Current": 5.370702,
+          "low_light_context": 0.0
+        },
+        {
+          "row_position": 780,
+          "timestamp": "2022-04-28 17:32:00",
+          "Power_Generated": 279.12922,
+          "Solar_Radiation": 118.58246,
+          "Array_Current": 5.370522,
+          "low_light_context": 0.0
+        },
+        {
+          "row_position": 781,
+          "timestamp": "2022-04-28 17:34:00",
+          "Power_Generated": 278.581,
+          "Solar_Radiation": 113.15028,
+          "Array_Current": 5.370162,
+          "low_light_context": 0.0
+        },
+        {
+          "row_position": 782,
+          "timestamp": "2022-04-28 17:36:00",
+          "Power_Generated": 278.21002,
+          "Solar_Radiation": 108.60642,
+          "Array_Current": 5.371707,
+          "low_light_context": 0.0
+        },
+        {
+          "row_position": 783,
+          "timestamp": "2022-04-28 17:38:00",
+          "Power_Generated": 278.03546,
+          "Solar_Radiation": 103.52292,
+          "Array_Current": 5.371526,
+          "low_light_context": 0.0
+        }
+      ],
+      "eligible_start_count_for_duration": 87,
+      "feasible_duration_samples": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "derived_feature_influence_rows": [
+        775,
+        776,
+        777,
+        778,
+        779,
+        780,
+        781,
+        782,
+        783,
+        784,
+        785,
+        786,
+        787,
+        788,
+        789,
+        790,
+        791,
+        792,
+        793,
+        794,
+        795,
+        796,
+        797,
+        798,
+        799,
+        800,
+        801,
+        802,
+        803,
+        804,
+        805,
+        806,
+        807,
+        808,
+        809,
+        810
+      ],
+      "derived_only_tail_rows": [
+        782,
+        783,
+        784,
+        785,
+        786,
+        787,
+        788,
+        789,
+        790,
+        791,
+        792,
+        793,
+        794,
+        795,
+        796,
+        797,
+        798,
+        799,
+        800,
+        801,
+        802,
+        803,
+        804,
+        805,
+        806,
+        807,
+        808,
+        809,
+        810
+      ]
+    },
+    {
+      "anomaly_id": "6c1a54b3359e-04",
+      "anomaly_type": "sudden_power_drop",
+      "random_seed": 42,
+      "start_timestamp": "2022-04-28 12:38:00",
+      "end_timestamp": "2022-04-28 12:42:00",
+      "end_exclusive": "2022-04-28 12:44:00",
+      "row_positions": [
+        633,
+        634,
+        635
+      ],
+      "affected_row_count": 3,
+      "duration_minutes": 6,
+      "severity": {
+        "parameter": "reduction_fraction",
+        "value": 0.2522279403980706,
+        "signed_offset": null
+      },
+      "affected_variables": [
+        "Power_Generated",
+        "Array_Voltage"
+      ],
+      "original_values": [
+        {
+          "row_position": 633,
+          "timestamp": "2022-04-28 12:38:00",
+          "Power_Generated": 373.85456,
+          "Array_Voltage": 69.821168
+        },
+        {
+          "row_position": 634,
+          "timestamp": "2022-04-28 12:40:00",
+          "Power_Generated": 374.36696,
+          "Array_Voltage": 69.915712
+        },
+        {
+          "row_position": 635,
+          "timestamp": "2022-04-28 12:42:00",
+          "Power_Generated": 374.00848,
+          "Array_Voltage": 69.845216
+        }
+      ],
+      "modified_values": [
+        {
+          "row_position": 633,
+          "timestamp": "2022-04-28 12:38:00",
+          "Power_Generated": 279.5579943227731,
+          "Array_Voltage": 52.210318599172325
+        },
+        {
+          "row_position": 634,
+          "timestamp": "2022-04-28 12:40:00",
+          "Power_Generated": 279.9411527261131,
+          "Array_Voltage": 52.28101596077533
+        },
+        {
+          "row_position": 635,
+          "timestamp": "2022-04-28 12:42:00",
+          "Power_Generated": 279.673091398187,
+          "Array_Voltage": 52.22830102166163
+        }
+      ],
+      "baseline_context": [
+        {
+          "row_position": 631,
+          "timestamp": "2022-04-28 12:34:00",
+          "Power_Generated": 374.97044,
+          "Solar_Radiation": 1112.1024,
+          "Array_Current": 5.354368,
+          "low_light_context": 0.0
+        },
+        {
+          "row_position": 632,
+          "timestamp": "2022-04-28 12:36:00",
+          "Power_Generated": 374.23672,
+          "Solar_Radiation": 1103.7692,
+          "Array_Current": 5.354728,
+          "low_light_context": 0.0
+        },
+        {
+          "row_position": 633,
+          "timestamp": "2022-04-28 12:38:00",
+          "Power_Generated": 373.85456,
+          "Solar_Radiation": 1094.6996,
+          "Array_Current": 5.354459,
+          "low_light_context": 0.0
+        },
+        {
+          "row_position": 634,
+          "timestamp": "2022-04-28 12:40:00",
+          "Power_Generated": 374.36696,
+          "Solar_Radiation": 1085.7202,
+          "Array_Current": 5.354547,
+          "low_light_context": 0.0
+        },
+        {
+          "row_position": 635,
+          "timestamp": "2022-04-28 12:42:00",
+          "Power_Generated": 374.00848,
+          "Solar_Radiation": 1092.457,
+          "Array_Current": 5.354819,
+          "low_light_context": 0.0
+        },
+        {
+          "row_position": 636,
+          "timestamp": "2022-04-28 12:44:00",
+          "Power_Generated": 374.24312,
+          "Solar_Radiation": 1080.3164,
+          "Array_Current": 5.354819,
+          "low_light_context": 0.0
+        },
+        {
+          "row_position": 637,
+          "timestamp": "2022-04-28 12:46:00",
+          "Power_Generated": 374.56412,
+          "Solar_Radiation": 1075.5338,
+          "Array_Current": 5.354999,
+          "low_light_context": 0.0
+        }
+      ],
+      "eligible_start_count_for_duration": 102,
+      "feasible_duration_samples": [
+        1,
+        2,
+        3
+      ],
+      "derived_feature_influence_rows": [
+        633,
+        634,
+        635,
+        636,
+        637,
+        638,
+        639,
+        640,
+        641,
+        642,
+        643,
+        644,
+        645,
+        646,
+        647,
+        648,
+        649,
+        650,
+        651,
+        652,
+        653,
+        654,
+        655,
+        656,
+        657,
+        658,
+        659,
+        660,
+        661,
+        662,
+        663,
+        664
+      ],
+      "derived_only_tail_rows": [
+        636,
+        637,
+        638,
+        639,
+        640,
+        641,
+        642,
+        643,
+        644,
+        645,
+        646,
+        647,
+        648,
+        649,
+        650,
+        651,
+        652,
+        653,
+        654,
+        655,
+        656,
+        657,
+        658,
+        659,
+        660,
+        661,
+        662,
+        663,
+        664
+      ]
+    },
+    {
+      "anomaly_id": "6c1a54b3359e-05",
+      "anomaly_type": "temporary_near_zero_power",
+      "random_seed": 42,
+      "start_timestamp": "2022-04-28 08:22:00",
+      "end_timestamp": "2022-04-28 08:26:00",
+      "end_exclusive": "2022-04-28 08:28:00",
+      "row_positions": [
+        505,
+        506,
+        507
+      ],
+      "affected_row_count": 3,
+      "duration_minutes": 6,
+      "severity": {
+        "parameter": "retained_fraction",
+        "value": 0.0025622726535109177,
+        "signed_offset": null
+      },
+      "affected_variables": [
+        "Power_Generated",
+        "Array_Voltage"
+      ],
+      "original_values": [
+        {
+          "row_position": 505,
+          "timestamp": "2022-04-28 08:22:00",
+          "Power_Generated": 300.0874,
+          "Array_Voltage": 55.645652
+        },
+        {
+          "row_position": 506,
+          "timestamp": "2022-04-28 08:24:00",
+          "Power_Generated": 299.89954,
+          "Array_Voltage": 55.624412
+        },
+        {
+          "row_position": 507,
+          "timestamp": "2022-04-28 08:26:00",
+          "Power_Generated": 300.26184,
+          "Array_Voltage": 55.692528
+        }
+      ],
+      "modified_values": [
+        {
+          "row_position": 505,
+          "timestamp": "2022-04-28 08:22:00",
+          "Power_Generated": 0.7689057386831921,
+          "Array_Voltage": 0.1425793324063851
+        },
+        {
+          "row_position": 506,
+          "timestamp": "2022-04-28 08:24:00",
+          "Power_Generated": 0.7684243901425036,
+          "Array_Voltage": 0.14252490973522453
+        },
+        {
+          "row_position": 507,
+          "timestamp": "2022-04-28 08:26:00",
+          "Power_Generated": 0.7693527015248706,
+          "Array_Voltage": 0.1426994414992911
+        }
+      ],
+      "baseline_context": [
+        {
+          "row_position": 503,
+          "timestamp": "2022-04-28 08:18:00",
+          "Power_Generated": 300.69882,
+          "Solar_Radiation": 160.23566,
+          "Array_Current": 5.391839,
+          "low_light_context": 0.0
+        },
+        {
+          "row_position": 504,
+          "timestamp": "2022-04-28 08:20:00",
+          "Power_Generated": 299.1253,
+          "Solar_Radiation": 165.20234,
+          "Array_Current": 5.392923,
+          "low_light_context": 0.0
+        },
+        {
+          "row_position": 505,
+          "timestamp": "2022-04-28 08:22:00",
+          "Power_Generated": 300.0874,
+          "Solar_Radiation": 164.55096,
+          "Array_Current": 5.392828,
+          "low_light_context": 0.0
+        },
+        {
+          "row_position": 506,
+          "timestamp": "2022-04-28 08:24:00",
+          "Power_Generated": 299.89954,
+          "Solar_Radiation": 165.72162,
+          "Array_Current": 5.39151,
+          "low_light_context": 0.0
+        },
+        {
+          "row_position": 507,
+          "timestamp": "2022-04-28 08:26:00",
+          "Power_Generated": 300.26184,
+          "Solar_Radiation": 167.72882,
+          "Array_Current": 5.391421,
+          "low_light_context": 0.0
+        },
+        {
+          "row_position": 508,
+          "timestamp": "2022-04-28 08:28:00",
+          "Power_Generated": 301.2164,
+          "Solar_Radiation": 172.19104,
+          "Array_Current": 5.390878,
+          "low_light_context": 0.0
+        },
+        {
+          "row_position": 509,
+          "timestamp": "2022-04-28 08:30:00",
+          "Power_Generated": 301.3832,
+          "Solar_Radiation": 178.8295,
+          "Array_Current": 5.390066,
+          "low_light_context": 0.0
+        }
+      ],
+      "eligible_start_count_for_duration": 88,
+      "feasible_duration_samples": [
+        1,
+        2,
+        3
+      ],
+      "derived_feature_influence_rows": [
+        505,
+        506,
+        507,
+        508,
+        509,
+        510,
+        511,
+        512,
+        513,
+        514,
+        515,
+        516,
+        517,
+        518,
+        519,
+        520,
+        521,
+        522,
+        523,
+        524,
+        525,
+        526,
+        527,
+        528,
+        529,
+        530,
+        531,
+        532,
+        533,
+        534,
+        535,
+        536
+      ],
+      "derived_only_tail_rows": [
+        508,
+        509,
+        510,
+        511,
+        512,
+        513,
+        514,
+        515,
+        516,
+        517,
+        518,
+        519,
+        520,
+        521,
+        522,
+        523,
+        524,
+        525,
+        526,
+        527,
+        528,
+        529,
+        530,
+        531,
+        532,
+        533,
+        534,
+        535,
+        536
+      ]
+    },
+    {
+      "anomaly_id": "6c1a54b3359e-06",
+      "anomaly_type": "sudden_power_spike",
+      "random_seed": 42,
+      "start_timestamp": "2022-04-28 15:34:00",
+      "end_timestamp": "2022-04-28 15:34:00",
+      "end_exclusive": "2022-04-28 15:36:00",
+      "row_positions": [
+        721
+      ],
+      "affected_row_count": 1,
+      "duration_minutes": 2,
+      "severity": {
+        "parameter": "increase_fraction",
+        "value": 0.17415960484651624,
+        "signed_offset": null
+      },
+      "affected_variables": [
+        "Power_Generated",
+        "Array_Voltage"
+      ],
+      "original_values": [
+        {
+          "row_position": 721,
+          "timestamp": "2022-04-28 15:34:00",
+          "Power_Generated": 389.0694,
+          "Array_Voltage": 72.665816
+        }
+      ],
+      "modified_values": [
+        {
+          "row_position": 721,
+          "timestamp": "2022-04-28 15:34:00",
+          "Power_Generated": 456.8295729618711,
+          "Array_Voltage": 85.32126580040966
+        }
+      ],
+      "baseline_context": [
+        {
+          "row_position": 719,
+          "timestamp": "2022-04-28 15:30:00",
+          "Power_Generated": 388.00172,
+          "Solar_Radiation": 569.93188,
+          "Array_Current": 5.35396,
+          "low_light_context": 0.0
+        },
+        {
+          "row_position": 720,
+          "timestamp": "2022-04-28 15:32:00",
+          "Power_Generated": 388.36672,
+          "Solar_Radiation": 557.26032,
+          "Array_Current": 5.35432,
+          "low_light_context": 0.0
+        },
+        {
+          "row_position": 721,
+          "timestamp": "2022-04-28 15:34:00",
+          "Power_Generated": 389.0694,
+          "Solar_Radiation": 556.47444,
+          "Array_Current": 5.354229,
+          "low_light_context": 0.0
+        },
+        {
+          "row_position": 722,
+          "timestamp": "2022-04-28 15:36:00",
+          "Power_Generated": 388.67452,
+          "Solar_Radiation": 549.39612,
+          "Array_Current": 5.35396,
+          "low_light_context": 0.0
+        },
+        {
+          "row_position": 723,
+          "timestamp": "2022-04-28 15:38:00",
+          "Power_Generated": 388.70448,
+          "Solar_Radiation": 539.94776,
+          "Array_Current": 5.353868,
+          "low_light_context": 0.0
+        }
+      ],
+      "eligible_start_count_for_duration": 35,
+      "feasible_duration_samples": [
+        1,
+        2
+      ],
+      "derived_feature_influence_rows": [
+        721,
+        722,
+        723,
+        724,
+        725,
+        726,
+        727,
+        728,
+        729,
+        730,
+        731,
+        732,
+        733,
+        734,
+        735,
+        736,
+        737,
+        738,
+        739,
+        740,
+        741,
+        742,
+        743,
+        744,
+        745,
+        746,
+        747,
+        748,
+        749,
+        750
+      ],
+      "derived_only_tail_rows": [
+        722,
+        723,
+        724,
+        725,
+        726,
+        727,
+        728,
+        729,
+        730,
+        731,
+        732,
+        733,
+        734,
+        735,
+        736,
+        737,
+        738,
+        739,
+        740,
+        741,
+        742,
+        743,
+        744,
+        745,
+        746,
+        747,
+        748,
+        749,
+        750
+      ]
+    },
+    {
+      "anomaly_id": "6c1a54b3359e-07",
+      "anomaly_type": "sensor_excursion",
+      "random_seed": 42,
+      "start_timestamp": "2022-04-28 02:26:00",
+      "end_timestamp": "2022-04-28 02:28:00",
+      "end_exclusive": "2022-04-28 02:30:00",
+      "row_positions": [
+        327,
+        328
+      ],
+      "affected_row_count": 2,
+      "duration_minutes": 4,
+      "severity": {
+        "parameter": "signed_additive_offset",
+        "value": 7.113808066354149,
+        "signed_offset": 7.113808066354149
+      },
+      "affected_variables": [
+        "Relative_Humidity"
+      ],
+      "original_values": [
+        {
+          "row_position": 327,
+          "timestamp": "2022-04-28 02:26:00",
+          "Relative_Humidity": 43.42042
+        },
+        {
+          "row_position": 328,
+          "timestamp": "2022-04-28 02:28:00",
+          "Relative_Humidity": 43.560464
+        }
+      ],
+      "modified_values": [
+        {
+          "row_position": 327,
+          "timestamp": "2022-04-28 02:26:00",
+          "Relative_Humidity": 50.534228066354146
+        },
+        {
+          "row_position": 328,
+          "timestamp": "2022-04-28 02:28:00",
+          "Relative_Humidity": 50.67427206635415
+        }
+      ],
+      "baseline_context": [
+        {
+          "row_position": 325,
+          "timestamp": "2022-04-28 02:22:00",
+          "Power_Generated": 13.733616,
+          "Solar_Radiation": -0.535652,
+          "Array_Current": 5.402552,
+          "low_light_context": 1.0
+        },
+        {
+          "row_position": 326,
+          "timestamp": "2022-04-28 02:24:00",
+          "Power_Generated": 13.766064,
+          "Solar_Radiation": -0.636543,
+          "Array_Current": 5.402281,
+          "low_light_context": 1.0
+        },
+        {
+          "row_position": 327,
+          "timestamp": "2022-04-28 02:26:00",
+          "Power_Generated": 13.783868,
+          "Solar_Radiation": -0.686104,
+          "Array_Current": 5.402733,
+          "low_light_context": 1.0
+        },
+        {
+          "row_position": 328,
+          "timestamp": "2022-04-28 02:28:00",
+          "Power_Generated": 13.81149,
+          "Solar_Radiation": -0.636543,
+          "Array_Current": 5.402638,
+          "low_light_context": 1.0
+        },
+        {
+          "row_position": 329,
+          "timestamp": "2022-04-28 02:30:00",
+          "Power_Generated": 13.783176,
+          "Solar_Radiation": -0.788765,
+          "Array_Current": 5.402461,
+          "low_light_context": 1.0
+        },
+        {
+          "row_position": 330,
+          "timestamp": "2022-04-28 02:32:00",
+          "Power_Generated": 13.79462,
+          "Solar_Radiation": -0.686104,
+          "Array_Current": 5.402552,
+          "low_light_context": 1.0
+        }
+      ],
+      "eligible_start_count_for_duration": 622,
+      "feasible_duration_samples": [
+        1,
+        2,
+        3
+      ],
+      "derived_feature_influence_rows": [
+        327,
+        328,
+        329,
+        330,
+        331,
+        332,
+        333,
+        334,
+        335,
+        336,
+        337,
+        338,
+        339,
+        340,
+        341,
+        342,
+        343,
+        344,
+        345,
+        346,
+        347,
+        348,
+        349,
+        350,
+        351,
+        352,
+        353,
+        354,
+        355,
+        356,
+        357
+      ],
+      "derived_only_tail_rows": [
+        329,
+        330,
+        331,
+        332,
+        333,
+        334,
+        335,
+        336,
+        337,
+        338,
+        339,
+        340,
+        341,
+        342,
+        343,
+        344,
+        345,
+        346,
+        347,
+        348,
+        349,
+        350,
+        351,
+        352,
+        353,
+        354,
+        355,
+        356,
+        357
+      ]
+    }
+  ],
+  "skipped_scenarios": [],
+  "disabled_scenarios": [],
+  "shape": [
+    1009,
+    84
+  ],
+  "event_count": 7,
+  "directly_modified_rows": 46,
+  "row_budget": 50,
+  "derived_only_rows": 203,
+  "interpretation": "Controlled prototype cases, not verified real photovoltaic fault signatures.",
+  "validation": {
+    "row_count_preserved": true,
+    "columns_preserved": true,
+    "timestamps_and_order_preserved": true,
+    "event_ids_unique_and_nonoverlapping": true,
+    "labels_match_direct_measurement_changes": true,
+    "no_unintended_original_measurement_changes": true,
+    "duration_and_cadence_valid": true,
+    "context_gap_and_tail_guards_valid": true,
+    "excluded_windows_all_81_columns_unchanged": true,
+    "electrical_scaling_consistent": true,
+    "no_infinities": true,
+    "dependent_features_recomputed": true,
+    "cells_outside_dependency_support_unchanged": true,
+    "modified_row_budget_respected": true
+  },
+  "saved_csv_validation": {
+    "row_count_preserved": true,
+    "columns_preserved": true,
+    "timestamps_and_order_preserved": true,
+    "event_ids_unique_and_nonoverlapping": true,
+    "labels_match_direct_measurement_changes": true,
+    "no_unintended_original_measurement_changes": true,
+    "duration_and_cadence_valid": true,
+    "context_gap_and_tail_guards_valid": true,
+    "excluded_windows_all_81_columns_unchanged": true,
+    "electrical_scaling_consistent": true,
+    "no_infinities": true,
+    "dependent_features_recomputed": true,
+    "cells_outside_dependency_support_unchanged": true,
+    "modified_row_budget_respected": true,
+    "unaffected_original_csv_fields_verbatim": true
+  },
+  "baseline_path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\processed\\operational_features_change.csv",
+  "baseline_sha256": "ca79f6c6bc35e89b194fc6e7c8b051e5784d226246942f6c10b4329f8cb23c1e",
+  "config_file_sha256": "4508276d185ed93713a2c96ab2b710d176f489964e2a2a97830ed5bd99e3451b",
+  "output_sha256": "7339365a248817a0d593eb7de7df481ddd6e5acc250c9d701bc5e4ede2c7e904",
+  "generator_source_sha256": "0b02fdbfbc0610b952ebb32a865af965e52ae4d078af88c8247a014d2d3e2597",
+  "feature_utility_sha256": {
+    "engineer_basic_features.py": "be19794a1564172ef3c5601d91b3112f748416cd854a0dedf8314b31009077a2",
+    "engineer_rolling_features.py": "3787d225bcf7ffd554c68370be78e120a80fae640dd98927dec864fa4a075884",
+    "engineer_change_features.py": "0f2b26429388ae4ba6b247a99fc93b4aa4ea66ff22dbb717ffc5dfee72fd4ccf"
+  },
+  "protected_source_hashes": {
+    "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\config\\synthetic_anomaly_scenarios.yaml": "4508276d185ed93713a2c96ab2b710d176f489964e2a2a97830ed5bd99e3451b",
+    "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\operational\\solar-power-dataset\\solar_data.csv": "0615c4d92c7869074f99c4a6552cc201ab6db8152fc77650758664ed2c4ba393",
+    "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\processed\\operational_cleaned.csv": "3e440f11bf0a00227a4b2ae3ce29e38de0a03bb647b577daa2ff1f5d098624fc",
+    "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\processed\\operational_features_basic.csv": "99f9f3a61f4602d518b6b2fa024f415f95acbd988cd9a4e5588f62e1f19dbcd7",
+    "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\processed\\operational_features_change.csv": "ca79f6c6bc35e89b194fc6e7c8b051e5784d226246942f6c10b4329f8cb23c1e",
+    "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\processed\\operational_features_rolling.csv": "bfb29573505add5c5748f44719ae7db0f67fb41ce7f3a8741f215937bc002dfe"
+  },
+  "protected_sources_unchanged": true,
+  "models_unchanged": true
+}

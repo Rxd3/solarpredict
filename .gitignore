@@ -41,14 +41,31 @@ data/images/*
 !data/images/.gitkeep
 data/processed/*
 !data/processed/.gitkeep
+data/model_ready/*
+!data/model_ready/.gitkeep
+data/vision/**
+!data/vision/
+!data/vision/solar_panel_defects/
+!data/vision/solar_panel_defects/.gitkeep
+!data/vision/solar_panel_defects/train/
+!data/vision/solar_panel_defects/train/.gitkeep
+!data/vision/solar_panel_defects/valid/
+!data/vision/solar_panel_defects/valid/.gitkeep
+!data/vision/solar_panel_defects/test/
+!data/vision/solar_panel_defects/test/.gitkeep
 
 # Generated models and outputs
+*.pt
 models/*
 !models/.gitkeep
+!models/computer_vision/
+models/computer_vision/*
+!models/computer_vision/.gitkeep
 outputs/figures/*
 !outputs/figures/.gitkeep
 outputs/predictions/*
 !outputs/predictions/.gitkeep
+outputs/computer_vision/training/
 
 # Common experiment output directories
 runs/

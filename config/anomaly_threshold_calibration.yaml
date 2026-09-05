@@ -1,0 +1,75 @@
+# Day 20 candidates and selection rules are fixed before computing results.
+schema_version: 1
+calibration_name: frozen_no_time_7_threshold
+detector_config: config/frozen_anomaly_detector.yaml
+detector_metadata: models/frozen_anomaly_detector_metadata.json
+calibration_partition: data/model_ready/core_calibration.csv
+evaluation_baseline_partition: data/model_ready/core_evaluation_baseline.csv
+
+score_convention: higher_is_more_anomalous
+comparison_operator: strictly_greater_than
+
+candidate_rules:
+  - id: calibration_percentile_95
+    strategy: calibration_percentile
+    percentile: 95.0
+  - id: calibration_percentile_97_5
+    strategy: calibration_percentile
+    percentile: 97.5
+  - id: calibration_percentile_99
+    strategy: calibration_percentile
+    percentile: 99.0
+  - id: calibration_median_plus_1_5_mad
+    strategy: calibration_median_plus_k_mad
+    k: 1.5
+  - id: calibration_median_plus_2_mad
+    strategy: calibration_median_plus_k_mad
+    k: 2.0
+  - id: calibration_median_plus_2_5_mad
+    strategy: calibration_median_plus_k_mad
+    k: 2.5
+
+context_rule:
+  low_light_column: Solar_Radiation
+  low_light_maximum_inclusive: 5.0
+  low_light_unit: W/m^2
+  daylight_label: daylight_like
+  low_light_label: low_light
+
+extreme_rtd_rule:
+  feature: rtd_std
+  absolute_training_scaled_value_strictly_greater_than: 5.0
+  expected_calibration_count: 16
+
+event_grouping:
+  expected_sampling_minutes: 2
+  same_event_gap_minutes: 2
+  smoothing: false
+  merge_nonconsecutive_events: false
+
+# A candidate is eligible only if all gates below pass. Selection then targets
+# a modest 2.5% baseline alert rate instead of automatically taking the most
+# restrictive threshold. Remaining ties use the stated deterministic order.
+selection_criteria:
+  minimum_flagged_rows: 4
+  maximum_flagged_rows: 18
+  minimum_baseline_alert_percentage: 1.0
+  maximum_baseline_alert_percentage: 5.5
+  maximum_isolated_event_fraction: 0.75
+  maximum_extreme_rtd_fraction_of_flagged_rows: 0.80
+  target_baseline_alert_percentage: 2.5
+  tie_break_order:
+    - absolute_distance_from_target_alert_percentage
+    - isolated_event_fraction
+    - extreme_rtd_fraction_of_flagged_rows
+    - candidate_declaration_order
+  require_calibration_only_selection: true
+  require_reproducible_rule: true
+
+known_limitations:
+  - calibration contains baseline observations but is not independently verified fault-free
+  - the source record covers approximately 33.6 hours and one complete calendar day
+  - training and calibration are adjacent parts of the same short record
+  - calibration operating conditions are not fully represented in training
+  - RTD placement and units are unconfirmed
+  - this prototype threshold is not a generally validated operational alarm limit

@@ -1,0 +1,41 @@
+# Day 19 criteria fixed before seed-stability results are generated.
+schema_version: 1
+review_name: no_time_7_seed_stability
+selected_variant: NO_TIME_7
+production_prototype_seed: 42
+review_seeds: [7, 21, 42, 84, 123]
+
+feature_order:
+  - Power_Generated
+  - Solar_Radiation
+  - Air_Temp
+  - Relative_Humidity
+  - Wind_Speed
+  - rtd_mean
+  - rtd_std
+
+isolation_forest_parameters:
+  n_estimators: 300
+  max_samples: auto
+  max_features: 1.0
+  bootstrap: false
+  contamination: auto
+  random_state: 42  # Replaced only by each declared review seed in memory.
+  n_jobs: -1
+
+freeze_criteria:
+  minimum_pairwise_calibration_spearman: 0.95
+  minimum_mean_top_10_overlap_fraction: 0.50
+  minimum_mean_top_20_overlap_fraction: 0.65
+  require_every_seed_shift_below_core_9_reference: true
+  maximum_extreme_rtd_rows_in_seed_42_top_10: 9
+  require_no_time_shift_below_compact_6: true
+  require_six_operational_base_features: true
+
+limitations:
+  - approximately 33.6 hours and one complete calendar day
+  - adjacent chronological partitions are not independent days
+  - RTD placement and units are unconfirmed
+  - seed review is a stability check, not hyperparameter tuning
+  - no threshold is selected in this stage
+

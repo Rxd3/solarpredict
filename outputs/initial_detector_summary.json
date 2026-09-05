@@ -1,0 +1,452 @@
+{
+  "stage": "Day 16 training-only scaling and initial unsupervised anomaly detector",
+  "feature_order": [
+    "Power_Generated",
+    "Solar_Radiation",
+    "Air_Temp",
+    "Relative_Humidity",
+    "Wind_Speed",
+    "rtd_mean",
+    "rtd_std",
+    "minute_of_day_sin",
+    "minute_of_day_cos"
+  ],
+  "scaler": {
+    "fit_partition": "training",
+    "fit_row_count": 336,
+    "timestamp_excluded": true,
+    "feature_order": [
+      "Power_Generated",
+      "Solar_Radiation",
+      "Air_Temp",
+      "Relative_Humidity",
+      "Wind_Speed",
+      "rtd_mean",
+      "rtd_std",
+      "minute_of_day_sin",
+      "minute_of_day_cos"
+    ],
+    "training_means_before_scaling": {
+      "Power_Generated": 122.19035089880953,
+      "Solar_Radiation": 83.65551462797619,
+      "Air_Temp": 21.96086107142857,
+      "Relative_Humidity": 31.914777666666666,
+      "Wind_Speed": 0.15079365773809522,
+      "rtd_mean": 36.315455873809526,
+      "rtd_std": 0.6979322708470571,
+      "minute_of_day_sin": -0.46479949385061725,
+      "minute_of_day_cos": 0.49409641353701705
+    },
+    "training_population_std_before_scaling": {
+      "Power_Generated": 157.70842195198105,
+      "Solar_Radiation": 178.3676706961571,
+      "Air_Temp": 8.408721375757034,
+      "Relative_Humidity": 12.191329298474013,
+      "Wind_Speed": 0.4288065626320918,
+      "rtd_mean": 23.970220066140236,
+      "rtd_std": 0.5826607522875717,
+      "minute_of_day_sin": 0.530845554705709,
+      "minute_of_day_cos": 0.5079696464310196
+    },
+    "fitted_mean": {
+      "Power_Generated": 122.19035089880953,
+      "Solar_Radiation": 83.65551462797619,
+      "Air_Temp": 21.96086107142857,
+      "Relative_Humidity": 31.914777666666666,
+      "Wind_Speed": 0.15079365773809522,
+      "rtd_mean": 36.315455873809526,
+      "rtd_std": 0.6979322708470571,
+      "minute_of_day_sin": -0.46479949385061725,
+      "minute_of_day_cos": 0.49409641353701705
+    },
+    "fitted_scale": {
+      "Power_Generated": 157.70842195198105,
+      "Solar_Radiation": 178.3676706961571,
+      "Air_Temp": 8.408721375757034,
+      "Relative_Humidity": 12.191329298474013,
+      "Wind_Speed": 0.4288065626320918,
+      "rtd_mean": 23.970220066140236,
+      "rtd_std": 0.5826607522875717,
+      "minute_of_day_sin": 0.530845554705709,
+      "minute_of_day_cos": 0.5079696464310196
+    },
+    "scaled_training_means": {
+      "Power_Generated": -8.458842092382145e-17,
+      "Solar_Radiation": 4.229421046191072e-17,
+      "Air_Temp": 0.0,
+      "Relative_Humidity": 0.0,
+      "Wind_Speed": 8.458842092382145e-17,
+      "rtd_mean": -4.229421046191072e-17,
+      "rtd_std": -8.458842092382145e-17,
+      "minute_of_day_sin": 0.0,
+      "minute_of_day_cos": 8.458842092382145e-17
+    },
+    "scaled_training_population_std": {
+      "Power_Generated": 1.0,
+      "Solar_Radiation": 1.0,
+      "Air_Temp": 0.9999999999999999,
+      "Relative_Humidity": 1.0,
+      "Wind_Speed": 1.0,
+      "rtd_mean": 1.0,
+      "rtd_std": 0.9999999999999998,
+      "minute_of_day_sin": 1.0,
+      "minute_of_day_cos": 0.9999999999999999
+    },
+    "transformed_partition_ranges": {
+      "training": {
+        "Power_Generated": {
+          "minimum": -0.6956367043746926,
+          "maximum": 2.006021524947587
+        },
+        "Solar_Radiation": {
+          "minimum": -0.473706026984612,
+          "maximum": 3.5141332671197367
+        },
+        "Air_Temp": {
+          "minimum": -0.8471584148294179,
+          "maximum": 2.6599324592982803
+        },
+        "Relative_Humidity": {
+          "minimum": -1.7444044981484181,
+          "maximum": 1.234182258961431
+        },
+        "Wind_Speed": {
+          "minimum": -0.3516589317395159,
+          "maximum": 6.3335629137562295
+        },
+        "rtd_mean": {
+          "minimum": -0.5889382006029571,
+          "maximum": 2.7325562112262034
+        },
+        "rtd_std": {
+          "minimum": -0.5912025405951338,
+          "maximum": 5.282191843071888
+        },
+        "minute_of_day_sin": {
+          "minimum": -1.0082038012847032,
+          "maximum": 2.0990051292762906
+        },
+        "minute_of_day_cos": {
+          "minimum": -2.157434886885286,
+          "maximum": 0.9959327097936801
+        }
+      },
+      "calibration": {
+        "Power_Generated": {
+          "minimum": -0.6862110948758378,
+          "maximum": 1.786145886279677
+        },
+        "Solar_Radiation": {
+          "minimum": -0.4729654891983391,
+          "maximum": 5.878155392621905
+        },
+        "Air_Temp": {
+          "minimum": -1.1756107295847453,
+          "maximum": 3.2907080270667484
+        },
+        "Relative_Humidity": {
+          "minimum": -1.4250007723801863,
+          "maximum": 1.6055947513273594
+        },
+        "Wind_Speed": {
+          "minimum": -0.3516589317395159,
+          "maximum": 6.489033948506225
+        },
+        "rtd_mean": {
+          "minimum": -0.6550810226390209,
+          "maximum": 3.166010321006223
+        },
+        "rtd_std": {
+          "minimum": -0.8918375622698447,
+          "maximum": 13.100142673074798
+        },
+        "minute_of_day_sin": {
+          "minimum": -0.023282226439369738,
+          "maximum": 2.7593703683977817
+        },
+        "minute_of_day_cos": {
+          "minimum": -2.941310418908878,
+          "maximum": 0.5130486998914516
+        }
+      },
+      "evaluation_baseline": {
+        "Power_Generated": {
+          "minimum": -0.7209831757331919,
+          "maximum": 1.7866135848279667
+        },
+        "Solar_Radiation": {
+          "minimum": -0.4728538490119629,
+          "maximum": 5.0204371783127
+        },
+        "Air_Temp": {
+          "minimum": -0.6901366821547366,
+          "maximum": 2.5799393224178897
+        },
+        "Relative_Humidity": {
+          "minimum": -1.657487479170624,
+          "maximum": 1.016021635547468
+        },
+        "Wind_Speed": {
+          "minimum": -0.3516589317395159,
+          "maximum": 5.089801631917849
+        },
+        "rtd_mean": {
+          "minimum": -0.4915561326219738,
+          "maximum": 3.144542015810023
+        },
+        "rtd_std": {
+          "minimum": -0.7930408136844379,
+          "maximum": 3.4238090177530567
+        },
+        "minute_of_day_sin": {
+          "minimum": -1.0082038012847032,
+          "maximum": 1.4263493248862482
+        },
+        "minute_of_day_cos": {
+          "minimum": -2.694484070638814,
+          "maximum": 0.9959327097936801
+        }
+      }
+    },
+    "no_missing_or_infinite_values": true,
+    "calibration_or_evaluation_used_for_fit": false
+  },
+  "isolation_forest": {
+    "parameters": {
+      "bootstrap": false,
+      "contamination": "auto",
+      "max_features": 1.0,
+      "max_samples": "auto",
+      "n_estimators": 300,
+      "n_jobs": -1,
+      "random_state": 42,
+      "verbose": 0,
+      "warm_start": false
+    },
+    "training_partition": "training",
+    "training_shape": [
+      336,
+      9
+    ],
+    "score_convention": {
+      "convention": "negative_score_samples",
+      "formula": "anomaly_score = -IsolationForest.score_samples(X_scaled)",
+      "interpretation": "higher values indicate more isolated observations",
+      "create_final_labels": false,
+      "final_operational_threshold": "deferred_to_separate_calibration_stage"
+    },
+    "final_threshold_selected": false
+  },
+  "partition_score_statistics": {
+    "training": {
+      "row_count": 336,
+      "minimum": 0.41285719106858915,
+      "maximum": 0.6667323640965139,
+      "mean": 0.4696847868289896,
+      "median": 0.4480861034869482,
+      "population_standard_deviation": 0.05540336697886545,
+      "percentiles": {
+        "90": 0.5603953772580145,
+        "95": 0.5829517131949036,
+        "97.5": 0.6089958025680103,
+        "99": 0.643569415927039
+      },
+      "mean_difference_from_training": 0.0,
+      "training_standardized_mean_difference": 0.0
+    },
+    "calibration": {
+      "row_count": 336,
+      "minimum": 0.5018088510703417,
+      "maximum": 0.7054871449074755,
+      "mean": 0.6253193942151795,
+      "median": 0.6452602256800011,
+      "population_standard_deviation": 0.05816162220145257,
+      "percentiles": {
+        "90": 0.6814593415266479,
+        "95": 0.6958931124183911,
+        "97.5": 0.7006603162475875,
+        "99": 0.7010191237960841
+      },
+      "mean_difference_from_training": 0.15563460738618984,
+      "training_standardized_mean_difference": 2.809118215605187
+    },
+    "evaluation_baseline": {
+      "row_count": 337,
+      "minimum": 0.43417210698527187,
+      "maximum": 0.6728454174009991,
+      "mean": 0.5223049036371152,
+      "median": 0.4955492948081388,
+      "population_standard_deviation": 0.07341538300425157,
+      "percentiles": {
+        "90": 0.6512128454807542,
+        "95": 0.6646433100287877,
+        "97.5": 0.6685876717240764,
+        "99": 0.6716424193152759
+      },
+      "mean_difference_from_training": 0.05262011680812562,
+      "training_standardized_mean_difference": 0.9497638803829097
+    }
+  },
+  "distribution_shift_review": {
+    "calibration_mean_score_higher_than_training": true,
+    "evaluation_mean_score_higher_than_training": true,
+    "interpretation": "Differences are descriptive and can reflect time-of-day and operating-regime shift in the short chronological record. Calibration/evaluation are not added to model or scaler fitting."
+  },
+  "recurring_transition_scores": {
+    "2022-04-27 17:00:00": {
+      "partition": "training",
+      "anomaly_score": 0.5869216962331365,
+      "nearby_window_minutes": 10,
+      "nearby_row_count_excluding_transition": 10,
+      "nearby_minimum": 0.551322969081267,
+      "nearby_maximum": 0.5848138048775252,
+      "nearby_mean": 0.5704388730266914,
+      "nearby_median": 0.5722522542043006,
+      "classified_as_fault": false,
+      "interpretation": "Known recurring operational transition; review neutrally during later false-positive analysis."
+    },
+    "2022-04-28 17:00:00": {
+      "partition": "evaluation_baseline",
+      "anomaly_score": 0.5716149036192744,
+      "nearby_window_minutes": 10,
+      "nearby_row_count_excluding_transition": 10,
+      "nearby_minimum": 0.5511796130792783,
+      "nearby_maximum": 0.6072370727034198,
+      "nearby_mean": 0.5811927796534067,
+      "nearby_median": 0.5801336854240471,
+      "classified_as_fault": false,
+      "interpretation": "Known recurring operational transition; review neutrally during later false-positive analysis."
+    }
+  },
+  "artifacts": {
+    "scaler": {
+      "path": "models/core_standard_scaler.joblib",
+      "sha256": "5959330927318c00a70884f4c1b49d21b3a4aafb9ea534a44262bfaf86c8d5f6"
+    },
+    "model": {
+      "path": "models/isolation_forest_core.joblib",
+      "sha256": "3b002a49fea3c784063fc83034bc1d20797a75a48a7d77c96e7f14060eb5d626"
+    },
+    "metadata": {
+      "path": "models/isolation_forest_core_metadata.json",
+      "sha256": "841a7e0dec11879406336818669a8879a0c4e946bfbc664425201b12cc9a2b3e"
+    },
+    "scaled_matrices": {
+      "training": {
+        "path": "data/model_ready/scaled/core_train_scaled.csv",
+        "sha256": "58b4eabe47d58747f02058c4cef79362217ba5c40d7e20e9f255c9d1a7d93191"
+      },
+      "calibration": {
+        "path": "data/model_ready/scaled/core_calibration_scaled.csv",
+        "sha256": "969f4badc753a33de361526eb2abdf360a1b4b30cb7bcd983e46ede6c8e97e6e"
+      },
+      "evaluation_baseline": {
+        "path": "data/model_ready/scaled/core_evaluation_baseline_scaled.csv",
+        "sha256": "125e43309dd7ce629a1ef01c58560b3f36af64d32770c81aed1d142905266963"
+      }
+    },
+    "score_files": {
+      "training": {
+        "path": "outputs/anomaly_scores_train.csv",
+        "sha256": "aba573eeaec6a9e0a77c6e30f2b7d162b5bdee3a746dea621f4dc053c4b34f8f"
+      },
+      "calibration": {
+        "path": "outputs/anomaly_scores_calibration.csv",
+        "sha256": "6e8fed095360f545fb1a9752c7973a5c6c1c77a7d275ddb8f2bb0923c0898d3f"
+      },
+      "evaluation_baseline": {
+        "path": "outputs/anomaly_scores_evaluation_baseline.csv",
+        "sha256": "c60a69408b5f5979f6d95ee0c455b9caed07aa8487a8cc56f1a0fd9b6b01d2b2"
+      }
+    },
+    "figure": "outputs/figures/operational/day16_baseline_anomaly_scores.png"
+  },
+  "source_hashes_before_and_after": {
+    "data/model_ready/baseline_calibration.csv": {
+      "before": "85a995732639258c3669e700d952621d21e8feb775663649c8004df710a11cc0",
+      "after": "85a995732639258c3669e700d952621d21e8feb775663649c8004df710a11cc0",
+      "unchanged": true
+    },
+    "data/model_ready/baseline_evaluation.csv": {
+      "before": "d52b5ff4ffcb6800d5892663ba6aa4f7b6aac58208854a95b437937d9985a61f",
+      "after": "d52b5ff4ffcb6800d5892663ba6aa4f7b6aac58208854a95b437937d9985a61f",
+      "unchanged": true
+    },
+    "data/model_ready/baseline_train.csv": {
+      "before": "dae881047ec84f35fb8388213e75bf22c510c63f7d2f9931ec5bfbaa7ddd81f8",
+      "after": "dae881047ec84f35fb8388213e75bf22c510c63f7d2f9931ec5bfbaa7ddd81f8",
+      "unchanged": true
+    },
+    "data/model_ready/core_calibration.csv": {
+      "before": "a3cf5824dec0a03da3b4f282a01a20f8e10c366ec0d9b91588509c19bbd30e85",
+      "after": "a3cf5824dec0a03da3b4f282a01a20f8e10c366ec0d9b91588509c19bbd30e85",
+      "unchanged": true
+    },
+    "data/model_ready/core_evaluation_baseline.csv": {
+      "before": "1d65080cad8aeb1ad8ff290084feb63799eb55c6018474824a7133e277da06a2",
+      "after": "1d65080cad8aeb1ad8ff290084feb63799eb55c6018474824a7133e277da06a2",
+      "unchanged": true
+    },
+    "data/model_ready/core_train.csv": {
+      "before": "b9ef9b9b723ef942f208c3d5ded6ef1e52c6b6742bbae68c33eae8222f2655ae",
+      "after": "b9ef9b9b723ef942f208c3d5ded6ef1e52c6b6742bbae68c33eae8222f2655ae",
+      "unchanged": true
+    },
+    "data/operational/solar-power-dataset/solar_data.csv": {
+      "before": "0615c4d92c7869074f99c4a6552cc201ab6db8152fc77650758664ed2c4ba393",
+      "after": "0615c4d92c7869074f99c4a6552cc201ab6db8152fc77650758664ed2c4ba393",
+      "unchanged": true
+    },
+    "data/processed/operational_cleaned.csv": {
+      "before": "3e440f11bf0a00227a4b2ae3ce29e38de0a03bb647b577daa2ff1f5d098624fc",
+      "after": "3e440f11bf0a00227a4b2ae3ce29e38de0a03bb647b577daa2ff1f5d098624fc",
+      "unchanged": true
+    },
+    "data/processed/operational_features_basic.csv": {
+      "before": "99f9f3a61f4602d518b6b2fa024f415f95acbd988cd9a4e5588f62e1f19dbcd7",
+      "after": "99f9f3a61f4602d518b6b2fa024f415f95acbd988cd9a4e5588f62e1f19dbcd7",
+      "unchanged": true
+    },
+    "data/processed/operational_features_change.csv": {
+      "before": "ca79f6c6bc35e89b194fc6e7c8b051e5784d226246942f6c10b4329f8cb23c1e",
+      "after": "ca79f6c6bc35e89b194fc6e7c8b051e5784d226246942f6c10b4329f8cb23c1e",
+      "unchanged": true
+    },
+    "data/processed/operational_features_rolling.csv": {
+      "before": "bfb29573505add5c5748f44719ae7db0f67fb41ce7f3a8741f215937bc002dfe",
+      "after": "bfb29573505add5c5748f44719ae7db0f67fb41ce7f3a8741f215937bc002dfe",
+      "unchanged": true
+    },
+    "data/processed/operational_synthetic_prototype.csv": {
+      "before": "7339365a248817a0d593eb7de7df481ddd6e5acc250c9d701bc5e4ede2c7e904",
+      "after": "7339365a248817a0d593eb7de7df481ddd6e5acc250c9d701bc5e4ede2c7e904",
+      "unchanged": true
+    }
+  },
+  "validation": {
+    "passed": true,
+    "checks": {
+      "scaler_fit_count_is_336": true,
+      "scaler_fitted_on_training_only": true,
+      "exact_core_feature_order": true,
+      "timestamp_excluded_from_scaler_and_model": true,
+      "all_transformed_values_finite": true,
+      "model_fit_input_is_336_by_9": true,
+      "fixed_seed_outputs_are_deterministic": true,
+      "score_files_have_only_timestamp_and_continuous_score": true,
+      "score_timestamps_match_source_partitions": true,
+      "no_final_anomaly_labels_created": true,
+      "no_new_synthetic_evaluation_dataset": true,
+      "source_datasets_unchanged": true,
+      "serialized_scaler_and_model_reproduce_scores": true,
+      "model_metadata_consistent": true,
+      "only_expected_model_artifacts_created": true
+    }
+  },
+  "explicitly_not_performed": [
+    "final threshold calibration",
+    "synthetic evaluation generation",
+    "precision/recall/F1 calculation",
+    "model comparison or tuning"
+  ]
+}

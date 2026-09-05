@@ -1,0 +1,60 @@
+# Day 15 adopted split for the short internship-prototype dataset.
+schema_version: 1
+split_name: option_b_balanced_chronological
+status: adopted_for_internship_prototype
+
+dataset:
+  name: Solar Power Dataset
+  source_url: https://www.kaggle.com/datasets/s1nister/solar-power-generation-dataset
+  feature_file: data/processed/operational_features_change.csv
+  timestamp_column: Timestamp
+  timezone: not specified by source; timestamps kept timezone-naive
+  expected_rows: 1009
+  expected_columns: 81
+
+# Boundaries are inclusive and correspond to observed two-minute samples.
+partitions:
+  training:
+    start: '2022-04-27 15:32:00'
+    end: '2022-04-28 02:42:00'
+    expected_rows: 336
+  calibration:
+    start: '2022-04-28 02:44:00'
+    end: '2022-04-28 13:54:00'
+    expected_rows: 336
+  evaluation_baseline:
+    start: '2022-04-28 13:56:00'
+    end: '2022-04-29 01:08:00'
+    expected_rows: 337
+
+split_policy:
+  method: chronological_inclusive_timestamp_boundaries
+  random_shuffle: false
+  reason: >-
+    Chronological splitting preserves temporal order and prevents the same time
+    segment, rolling history, or future information from leaking across model
+    development partitions.
+  temporal_limitation: >-
+    The source covers only approximately 33.6 hours and contains one complete
+    calendar day. These adjacent partitions are suitable only for the current
+    internship prototype and are not independent daily samples. Revisit the
+    split when more independent operational data becomes available.
+
+context:
+  low_light_rule: Solar_Radiation <= 5 W/m^2
+  low_light_threshold_w_m2: 5.0
+  recurring_transition_timestamps:
+    - '2022-04-27 17:00:00'
+    - '2022-04-28 17:00:00'
+
+core_features:
+  - Power_Generated
+  - Solar_Radiation
+  - Air_Temp
+  - Relative_Humidity
+  - Wind_Speed
+  - rtd_mean
+  - rtd_std
+  - minute_of_day_sin
+  - minute_of_day_cos
+

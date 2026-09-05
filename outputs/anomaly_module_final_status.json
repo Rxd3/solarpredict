@@ -1,0 +1,112 @@
+{
+  "status": "operational_module_complete_for_prototype",
+  "frozen_configuration": {
+    "features": [
+      "Power_Generated",
+      "Solar_Radiation",
+      "Air_Temp",
+      "Relative_Humidity",
+      "Wind_Speed",
+      "rtd_mean",
+      "rtd_std"
+    ],
+    "model": "IsolationForest",
+    "model_parameters": {
+      "n_estimators": 300,
+      "max_samples": "auto",
+      "max_features": 1.0,
+      "bootstrap": false,
+      "contamination": "auto",
+      "random_state": 42,
+      "n_jobs": -1
+    },
+    "threshold": 0.7135242760182695,
+    "threshold_rule": "anomaly_score > threshold",
+    "score_convention": "anomaly_score = -IsolationForest.score_samples; higher is more isolated"
+  },
+  "day22_evaluation_summary": {
+    "rows": 337,
+    "directly_modified_rows": 21,
+    "synthetic_events": 3,
+    "predicted_alert_rows": 0,
+    "detected_events": 0,
+    "false_positive_rate": 0.0,
+    "interpretation": "moderate controlled synthetic evaluation; not evidence of real fault performance"
+  },
+  "known_limitations": [
+    "not validated for real photovoltaic fault classification",
+    "did not detect any of the three moderate Day 22 synthetic events",
+    "training coverage is approximately 33.6 hours at one source/site",
+    "seasonal and cross-site robustness are unverified",
+    "RTD sensor placement and units are unconfirmed",
+    "the seven-feature model does not consume rolling or change features",
+    "the threshold is a conservative prototype limit, not a generally validated alarm boundary"
+  ],
+  "inference_interface": {
+    "module": "src/anomaly_detection/inference.py",
+    "functions": [
+      "load_frozen_detector",
+      "score_observation",
+      "score_dataframe",
+      "group_alert_events"
+    ]
+  },
+  "dashboard_feed": {
+    "path": "outputs/dashboard_anomaly_feed_example.csv",
+    "source": "untouched evaluation baseline",
+    "rows": 337,
+    "alert_rows": 0,
+    "alert_events": 0,
+    "schema": [
+      "Timestamp",
+      "Power_Generated",
+      "Solar_Radiation",
+      "anomaly_score",
+      "threshold",
+      "threshold_margin",
+      "status"
+    ],
+    "sha256": "7bfa2a1c2a9a8a6cf827a91f5d8fcfac4f0fee75f56af89c7f022e5d38803955",
+    "alerts_preserved_without_fabrication": true
+  },
+  "artifact_hashes": {
+    "scaler": {
+      "path": "models/comparisons/no_time_standard_scaler.joblib",
+      "sha256": "b8b04db85a3bae4a0187b8ede66e859e811b7ee85b995976c9dc808b67b9aefb"
+    },
+    "model": {
+      "path": "models/comparisons/no_time_isolation_forest.joblib",
+      "sha256": "5eb151856bb1d0776587140bb2eb201ba450f40293d540a90db44b3599ef963c"
+    },
+    "detector_config": {
+      "path": "config/frozen_anomaly_detector.yaml",
+      "sha256": "825cdc02e000352611de77bc19fce1e550f0dd8c7bd8a791e5cc2f1da79dd8b3"
+    },
+    "detector_metadata": {
+      "path": "models/frozen_anomaly_detector_metadata.json",
+      "sha256": "04c323a6fd8cc4fa05660940162b80e12f493a9e88a6e0a4c62dd84fc607b4a8"
+    },
+    "threshold_config": {
+      "path": "config/frozen_anomaly_threshold.yaml",
+      "sha256": "019d251482160e64da89e33c7276c6aad864696bfa907a087a7d7c300b0139b7"
+    },
+    "threshold_metadata": {
+      "path": "models/frozen_anomaly_threshold_metadata.json",
+      "sha256": "eb5d7ea51827faaa1620b8d7ef5f42da8294dfd30a8a281c5ccfbc3f77c5eec9"
+    },
+    "protected_day22_outputs": {
+      "outputs/final_anomaly_detector_evaluation.json": "e275debda93cbc9196109c3a8b06c822768d6428c9e4d86e9e309980045dbe4a",
+      "outputs/final_synthetic_anomaly_predictions.csv": "6ea5fa316221317c5e50257df14227651f333b929f347c35b36551be17adc177",
+      "outputs/final_synthetic_score_comparison.csv": "1b7937abe09be6b46404d6fd2c2a518d18ea1273cf9fb64cc05c4f0f3c663b56",
+      "outputs/final_synthetic_evaluation_metadata.json": "01364f6158b902c0cd727b55637234b3a34d9a15a43107771bc850621a9cbcba"
+    }
+  },
+  "validation": {
+    "frozen_artifacts_hash_verified": true,
+    "day22_files_unchanged": true,
+    "fit_called": false,
+    "strict_threshold_rule": true,
+    "feed_matches_inference_output": true,
+    "new_training_performed": false
+  }
+}

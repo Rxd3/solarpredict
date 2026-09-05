@@ -1,0 +1,31 @@
+schema_version: 1
+status: prepared_not_trained
+task: detect
+pretrained_model: yolo11n.pt
+dataset_yaml: data/vision/solar_panel_defects/data.yaml
+image_size: 640
+epochs: 50
+batch_size: 8
+patience: 10
+device: cpu
+workers: 0
+random_seed: 42
+deterministic: true
+output_project: outputs/computer_vision/training
+run_name: yolo11n_solar_panel_defects_prototype
+exist_ok: false
+notes:
+- CPU-safe defaults selected because CUDA is unavailable in the verified environment.
+- Real data.yaml paths and all six classes were verified against the downloaded version 1 export.
+- Resolve the documented train/test duplicate-image leakage before starting training.
+- Running the dry run may download the public pretrained checkpoint but never calls model.train().
+day25_cpu_recommendation:
+  rationale: Reduce CPU cost while retaining every source image and annotation.
+  pretrained_model: yolo11n.pt
+  image_size: 512
+  epochs: 30
+  batch_size: 8
+  patience: 8
+  device: cpu
+  workers: 0
+  random_seed: 42

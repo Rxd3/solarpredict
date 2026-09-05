@@ -1,0 +1,88 @@
+# Day 18 predeclared comparison. Do not add variants or tune model parameters.
+schema_version: 1
+comparison_name: controlled_core_feature_ablation
+
+feature_sets:
+  CORE_9:
+    reuse_day16_artifacts: true
+    artifact_stem: core_reference
+    features:
+      - Power_Generated
+      - Solar_Radiation
+      - Air_Temp
+      - Relative_Humidity
+      - Wind_Speed
+      - rtd_mean
+      - rtd_std
+      - minute_of_day_sin
+      - minute_of_day_cos
+  NO_TIME_7:
+    reuse_day16_artifacts: false
+    artifact_stem: no_time
+    features:
+      - Power_Generated
+      - Solar_Radiation
+      - Air_Temp
+      - Relative_Humidity
+      - Wind_Speed
+      - rtd_mean
+      - rtd_std
+  NO_RTD_STD_8:
+    reuse_day16_artifacts: false
+    artifact_stem: no_rtd_std
+    features:
+      - Power_Generated
+      - Solar_Radiation
+      - Air_Temp
+      - Relative_Humidity
+      - Wind_Speed
+      - rtd_mean
+      - minute_of_day_sin
+      - minute_of_day_cos
+  COMPACT_6:
+    reuse_day16_artifacts: false
+    artifact_stem: compact
+    features:
+      - Power_Generated
+      - Solar_Radiation
+      - Air_Temp
+      - Relative_Humidity
+      - Wind_Speed
+      - rtd_mean
+
+isolation_forest_parameters:
+  n_estimators: 300
+  max_samples: auto
+  max_features: 1.0
+  bootstrap: false
+  contamination: auto
+  random_state: 42
+  n_jobs: -1
+
+# Fixed before comparison results. Evaluation-baseline scores are excluded.
+selection_rule:
+  eligible_score_std_minimum: 0.01
+  eligible_p99_minus_p90_minimum: 0.01
+  unsupported_or_coverage_limited_features:
+    - rtd_std
+    - minute_of_day_sin
+    - minute_of_day_cos
+  unsupported_extreme_boundary: 5.0
+  components:
+    absolute_calibration_shift_z_weight: 0.45
+    mean_context_shift_z_weight: 0.35
+    unsupported_extreme_fraction_weight: 0.15
+    compactness_penalty_weight: 0.05
+  compactness_minimum_features: 6
+  compactness_reference_features: 9
+  tie_break_order:
+    - lower_component_score
+    - fewer_features
+    - feature_set_declaration_order
+  principles:
+    - reduce unnecessary calibration-versus-training score shift
+    - avoid extreme sensitivity to unsupported or unconfirmed features
+    - retain the six predeclared meaningful operational features
+    - remain compact and interpretable
+    - never use evaluation-baseline results for selection
+

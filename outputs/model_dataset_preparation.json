@@ -1,0 +1,798 @@
+{
+  "stage": "Day 15 final chronological split creation and model dataset preparation",
+  "adopted_split": {
+    "name": "option_b_balanced_chronological",
+    "status": "adopted_for_internship_prototype",
+    "boundaries_are_inclusive": true,
+    "partitions": {
+      "training": {
+        "start": "2022-04-27 15:32:00",
+        "end": "2022-04-28 02:42:00",
+        "row_count": 336,
+        "baseline_file": "data/model_ready/baseline_train.csv",
+        "core_file": "data/model_ready/core_train.csv"
+      },
+      "calibration": {
+        "start": "2022-04-28 02:44:00",
+        "end": "2022-04-28 13:54:00",
+        "row_count": 336,
+        "baseline_file": "data/model_ready/baseline_calibration.csv",
+        "core_file": "data/model_ready/core_calibration.csv"
+      },
+      "evaluation_baseline": {
+        "start": "2022-04-28 13:56:00",
+        "end": "2022-04-29 01:08:00",
+        "row_count": 337,
+        "baseline_file": "data/model_ready/baseline_evaluation.csv",
+        "core_file": "data/model_ready/core_evaluation_baseline.csv"
+      }
+    },
+    "reason": "Chronological splitting preserves temporal order and prevents the same time segment, rolling history, or future information from leaking across model development partitions.",
+    "temporal_limitation": "The source covers only approximately 33.6 hours and contains one complete calendar day. These adjacent partitions are suitable only for the current internship prototype and are not independent daily samples. Revisit the split when more independent operational data becomes available."
+  },
+  "coverage_validation": {
+    "expected_total_rows": 1009,
+    "partition_row_sum": 1009,
+    "every_source_row_assigned_exactly_once": true,
+    "no_overlap": true,
+    "no_row_loss": true,
+    "no_duplicate_source_positions": true,
+    "no_duplicate_timestamps": true,
+    "chronological_source_order": true,
+    "all_81_columns_preserved": true,
+    "saved_partitions_reconstruct_source_within_csv_precision": true
+  },
+  "daylight_low_light_coverage": {
+    "training": {
+      "daylight_count": 100,
+      "low_light_count": 236,
+      "threshold_w_m2": 5.0,
+      "stored_context_matches_recalculation": true
+    },
+    "calibration": {
+      "daylight_count": 242,
+      "low_light_count": 94,
+      "threshold_w_m2": 5.0,
+      "stored_context_matches_recalculation": true
+    },
+    "evaluation_baseline": {
+      "daylight_count": 149,
+      "low_light_count": 188,
+      "threshold_w_m2": 5.0,
+      "stored_context_matches_recalculation": true
+    }
+  },
+  "core_feature_statistics": {
+    "training": {
+      "shape": [
+        336,
+        10
+      ],
+      "timestamp_start": "2022-04-27 15:32:00",
+      "timestamp_end": "2022-04-28 02:42:00",
+      "features": {
+        "Power_Generated": {
+          "missing_count": 0,
+          "infinite_count": 0,
+          "finite_count": 336,
+          "minimum": 12.482584,
+          "maximum": 438.55684,
+          "mean": 122.19035089880953,
+          "median": 15.226296,
+          "population_standard_deviation": 157.70842195198105,
+          "population_variance": 24871.946354584103,
+          "positive_variance": true,
+          "usable": true
+        },
+        "Solar_Radiation": {
+          "missing_count": 0,
+          "infinite_count": 0,
+          "finite_count": 336,
+          "minimum": -0.838326,
+          "maximum": 710.46328,
+          "mean": 83.65551462797619,
+          "median": 0.06748199999999999,
+          "population_standard_deviation": 178.3676706961571,
+          "population_variance": 31815.02594957274,
+          "positive_variance": true,
+          "usable": true
+        },
+        "Air_Temp": {
+          "missing_count": 0,
+          "infinite_count": 0,
+          "finite_count": 336,
+          "minimum": 14.837342,
+          "maximum": 44.327492,
+          "mean": 21.96086107142857,
+          "median": 18.059026,
+          "population_standard_deviation": 8.408721375757034,
+          "population_variance": 70.70659517511326,
+          "positive_variance": true,
+          "usable": true
+        },
+        "Relative_Humidity": {
+          "missing_count": 0,
+          "infinite_count": 0,
+          "finite_count": 336,
+          "minimum": 10.648168,
+          "maximum": 46.9611,
+          "mean": 31.914777666666666,
+          "median": 35.024788,
+          "population_standard_deviation": 12.191329298474013,
+          "population_variance": 148.62851006383087,
+          "positive_variance": true,
+          "usable": true
+        },
+        "Wind_Speed": {
+          "missing_count": 0,
+          "infinite_count": 0,
+          "finite_count": 336,
+          "minimum": 0.0,
+          "maximum": 2.866667,
+          "mean": 0.15079365773809522,
+          "median": 0.0,
+          "population_standard_deviation": 0.4288065626320918,
+          "population_variance": 0.18387506815635007,
+          "positive_variance": true,
+          "usable": true
+        },
+        "rtd_mean": {
+          "missing_count": 0,
+          "infinite_count": 0,
+          "finite_count": 336,
+          "minimum": 22.1984776,
+          "maximum": 101.8154296,
+          "mean": 36.315455873809526,
+          "median": 25.8652262,
+          "population_standard_deviation": 23.970220066140236,
+          "population_variance": 574.5714500191921,
+          "positive_variance": true,
+          "usable": true
+        },
+        "rtd_std": {
+          "missing_count": 0,
+          "infinite_count": 0,
+          "finite_count": 336,
+          "minimum": 0.3534617537895728,
+          "maximum": 3.7756581438585983,
+          "mean": 0.6979322708470571,
+          "median": 0.47732991645441347,
+          "population_standard_deviation": 0.5826607522875717,
+          "population_variance": 0.339493552256319,
+          "positive_variance": true,
+          "usable": true
+        },
+        "minute_of_day_sin": {
+          "missing_count": 0,
+          "infinite_count": 0,
+          "finite_count": 336,
+          "minimum": -1.0,
+          "maximum": 0.6494480483301837,
+          "mean": -0.46479949385061725,
+          "median": -0.6851764678781261,
+          "population_standard_deviation": 0.530845554705709,
+          "population_variance": 0.28179700295081195,
+          "positive_variance": true,
+          "usable": true
+        },
+        "minute_of_day_cos": {
+          "missing_count": 0,
+          "infinite_count": 0,
+          "finite_count": 336,
+          "minimum": -0.6018150231520483,
+          "maximum": 1.0,
+          "mean": 0.49409641353701705,
+          "median": 0.7283640363157291,
+          "population_standard_deviation": 0.5079696464310196,
+          "population_variance": 0.25803316169525503,
+          "positive_variance": true,
+          "usable": true
+        }
+      },
+      "all_core_features_usable": true
+    },
+    "calibration": {
+      "shape": [
+        336,
+        10
+      ],
+      "timestamp_start": "2022-04-28 02:44:00",
+      "timestamp_end": "2022-04-28 13:54:00",
+      "features": {
+        "Power_Generated": {
+          "missing_count": 0,
+          "infinite_count": 0,
+          "finite_count": 336,
+          "minimum": 13.969082,
+          "maximum": 403.8806,
+          "mean": 259.79906670238097,
+          "median": 299.99347,
+          "population_standard_deviation": 142.85472086293598,
+          "population_variance": 20407.47127282736,
+          "positive_variance": true,
+          "usable": true
+        },
+        "Solar_Radiation": {
+          "missing_count": 0,
+          "infinite_count": 0,
+          "finite_count": 336,
+          "minimum": -0.706238,
+          "maximum": 1132.1284,
+          "mean": 412.7423057321428,
+          "median": 163.4457,
+          "population_standard_deviation": 461.73299737709846,
+          "population_variance": 213197.3608668396,
+          "positive_variance": true,
+          "usable": true
+        },
+        "Air_Temp": {
+          "missing_count": 0,
+          "infinite_count": 0,
+          "finite_count": 336,
+          "minimum": 12.075478,
+          "maximum": 49.631508,
+          "mean": 27.92963544642857,
+          "median": 22.400843000000002,
+          "population_standard_deviation": 14.448461609441702,
+          "population_variance": 208.75804287951073,
+          "positive_variance": true,
+          "usable": true
+        },
+        "Relative_Humidity": {
+          "missing_count": 0,
+          "infinite_count": 0,
+          "finite_count": 336,
+          "minimum": 14.542124,
+          "maximum": 51.489112,
+          "mean": 34.61673444047619,
+          "median": 35.126282,
+          "population_standard_deviation": 12.809553669068132,
+          "population_variance": 164.08466520073685,
+          "positive_variance": true,
+          "usable": true
+        },
+        "Wind_Speed": {
+          "missing_count": 0,
+          "infinite_count": 0,
+          "finite_count": 336,
+          "minimum": 0.0,
+          "maximum": 2.933334,
+          "mean": 0.23313494345238092,
+          "median": 0.0,
+          "population_standard_deviation": 0.4685054561338663,
+          "population_variance": 0.21949736242720214,
+          "positive_variance": true,
+          "usable": true
+        },
+        "rtd_mean": {
+          "missing_count": 0,
+          "infinite_count": 0,
+          "finite_count": 336,
+          "minimum": 20.6130196,
+          "maximum": 112.20541999999998,
+          "mean": 54.002513325,
+          "median": 39.4987536,
+          "population_standard_deviation": 34.09244128425191,
+          "population_variance": 1162.2945527201643,
+          "positive_variance": true,
+          "usable": true
+        },
+        "rtd_std": {
+          "missing_count": 0,
+          "infinite_count": 0,
+          "finite_count": 336,
+          "minimum": 0.1782935258965953,
+          "maximum": 8.33087125581534,
+          "mean": 1.6319795152634544,
+          "median": 0.8933936455507463,
+          "population_standard_deviation": 1.5369732982212265,
+          "population_variance": 2.3622869194450353,
+          "positive_variance": true,
+          "usable": true
+        },
+        "minute_of_day_sin": {
+          "missing_count": 0,
+          "infinite_count": 0,
+          "finite_count": 336,
+          "minimum": -0.4771587602596084,
+          "maximum": 1.0,
+          "mean": 0.5573709304977406,
+          "median": 0.7431448254773942,
+          "population_standard_deviation": 0.44917031387687417,
+          "population_variance": 0.20175397086824964,
+          "positive_variance": true,
+          "usable": true
+        },
+        "minute_of_day_cos": {
+          "missing_count": 0,
+          "infinite_count": 0,
+          "finite_count": 336,
+          "minimum": -1.0,
+          "maximum": 0.754709580222772,
+          "mean": -0.38666197277469105,
+          "median": -0.5699913366379392,
+          "population_standard_deviation": 0.5814431990984306,
+          "population_variance": 0.3380761937778172,
+          "positive_variance": true,
+          "usable": true
+        }
+      },
+      "all_core_features_usable": true
+    },
+    "evaluation_baseline": {
+      "shape": [
+        337,
+        10
+      ],
+      "timestamp_start": "2022-04-28 13:56:00",
+      "timestamp_end": "2022-04-29 01:08:00",
+      "features": {
+        "Power_Generated": {
+          "missing_count": 0,
+          "infinite_count": 0,
+          "finite_count": 337,
+          "minimum": 8.485232,
+          "maximum": 403.95436,
+          "mean": 167.5119562551929,
+          "median": 15.29813,
+          "population_standard_deviation": 166.63612361623177,
+          "population_variance": 27767.597693844076,
+          "positive_variance": true,
+          "usable": true
+        },
+        "Solar_Radiation": {
+          "missing_count": 0,
+          "infinite_count": 0,
+          "finite_count": 337,
+          "minimum": -0.686325,
+          "maximum": 979.1392,
+          "mean": 175.89861605637984,
+          "median": 0.282097,
+          "population_standard_deviation": 284.0681925044054,
+          "population_variance": 80694.73799271992,
+          "positive_variance": true,
+          "usable": true
+        },
+        "Air_Temp": {
+          "missing_count": 0,
+          "infinite_count": 0,
+          "finite_count": 337,
+          "minimum": 16.157694,
+          "maximum": 43.654852,
+          "mean": 26.168770629080118,
+          "median": 20.537464,
+          "population_standard_deviation": 9.6788557758417,
+          "population_variance": 93.68024912954425,
+          "positive_variance": true,
+          "usable": true
+        },
+        "Relative_Humidity": {
+          "missing_count": 0,
+          "infinite_count": 0,
+          "finite_count": 337,
+          "minimum": 11.707802,
+          "maximum": 44.301432,
+          "mean": 28.895507780415436,
+          "median": 34.749916,
+          "population_standard_deviation": 11.23517860781593,
+          "population_variance": 126.22923834952472,
+          "positive_variance": true,
+          "usable": true
+        },
+        "Wind_Speed": {
+          "missing_count": 0,
+          "infinite_count": 0,
+          "finite_count": 337,
+          "minimum": 0.0,
+          "maximum": 2.333334,
+          "mean": 0.15529180118694363,
+          "median": 0.0,
+          "population_standard_deviation": 0.39795788633953083,
+          "population_variance": 0.15837047929982695,
+          "positive_variance": true,
+          "usable": true
+        },
+        "rtd_mean": {
+          "missing_count": 0,
+          "infinite_count": 0,
+          "finite_count": 337,
+          "minimum": 24.5327472,
+          "maximum": 111.69082,
+          "mean": 49.77917673353116,
+          "median": 28.584164800000003,
+          "population_standard_deviation": 34.18259683863599,
+          "population_variance": 1168.4499266327268,
+          "positive_variance": true,
+          "usable": true
+        },
+        "rtd_std": {
+          "missing_count": 0,
+          "infinite_count": 0,
+          "finite_count": 337,
+          "minimum": 0.2358585137509345,
+          "maximum": 2.692851408820025,
+          "mean": 0.8832289469484074,
+          "median": 0.463888361863757,
+          "population_standard_deviation": 0.7307747344827432,
+          "population_variance": 0.5340317125583238,
+          "positive_variance": true,
+          "usable": true
+        },
+        "minute_of_day_sin": {
+          "missing_count": 0,
+          "infinite_count": 0,
+          "finite_count": 337,
+          "minimum": -1.0,
+          "maximum": 0.2923717047227367,
+          "mean": -0.6228586829563196,
+          "median": -0.743144825477394,
+          "population_standard_deviation": 0.36823019677047564,
+          "population_variance": 0.13559347781362321,
+          "positive_variance": true,
+          "usable": true
+        },
+        "minute_of_day_cos": {
+          "missing_count": 0,
+          "infinite_count": 0,
+          "finite_count": 337,
+          "minimum": -0.8746197071393959,
+          "maximum": 1.0,
+          "mean": 0.26438782497244007,
+          "median": 0.3907311284892735,
+          "population_standard_deviation": 0.6376148220192486,
+          "population_variance": 0.40655266125863804,
+          "positive_variance": true,
+          "usable": true
+        }
+      },
+      "all_core_features_usable": true
+    }
+  },
+  "distribution_comparison": {
+    "method": "Partition mean minus training mean, divided by training population standard deviation; descriptive only, not a population hypothesis test.",
+    "notable_rule": "absolute training-standardized mean difference >= 0.5",
+    "by_feature": {
+      "Power_Generated": {
+        "calibration": {
+          "training_mean": 122.19035089880953,
+          "partition_mean": 259.79906670238097,
+          "mean_difference": 137.60871580357144,
+          "training_standardized_mean_difference": 0.8725514725235818,
+          "absolute_standardized_difference": 0.8725514725235818
+        },
+        "evaluation_baseline": {
+          "training_mean": 122.19035089880953,
+          "partition_mean": 167.5119562551929,
+          "mean_difference": 45.32160535638337,
+          "training_standardized_mean_difference": 0.2873759358912542,
+          "absolute_standardized_difference": 0.2873759358912542
+        }
+      },
+      "Solar_Radiation": {
+        "calibration": {
+          "training_mean": 83.65551462797619,
+          "partition_mean": 412.7423057321428,
+          "mean_difference": 329.08679110416665,
+          "training_standardized_mean_difference": 1.84499124656258,
+          "absolute_standardized_difference": 1.84499124656258
+        },
+        "evaluation_baseline": {
+          "training_mean": 83.65551462797619,
+          "partition_mean": 175.89861605637984,
+          "mean_difference": 92.24310142840365,
+          "training_standardized_mean_difference": 0.5171514606227967,
+          "absolute_standardized_difference": 0.5171514606227967
+        }
+      },
+      "Air_Temp": {
+        "calibration": {
+          "training_mean": 21.96086107142857,
+          "partition_mean": 27.92963544642857,
+          "mean_difference": 5.968774374999999,
+          "training_standardized_mean_difference": 0.7098313891346688,
+          "absolute_standardized_difference": 0.7098313891346688
+        },
+        "evaluation_baseline": {
+          "training_mean": 21.96086107142857,
+          "partition_mean": 26.168770629080118,
+          "mean_difference": 4.207909557651547,
+          "training_standardized_mean_difference": 0.5004220463034085,
+          "absolute_standardized_difference": 0.5004220463034085
+        }
+      },
+      "Relative_Humidity": {
+        "calibration": {
+          "training_mean": 31.914777666666666,
+          "partition_mean": 34.61673444047619,
+          "mean_difference": 2.7019567738095276,
+          "training_standardized_mean_difference": 0.2216293816415681,
+          "absolute_standardized_difference": 0.2216293816415681
+        },
+        "evaluation_baseline": {
+          "training_mean": 31.914777666666666,
+          "partition_mean": 28.895507780415436,
+          "mean_difference": -3.01926988625123,
+          "training_standardized_mean_difference": -0.24765715143377776,
+          "absolute_standardized_difference": 0.24765715143377776
+        }
+      },
+      "Wind_Speed": {
+        "calibration": {
+          "training_mean": 0.15079365773809522,
+          "partition_mean": 0.23313494345238092,
+          "mean_difference": 0.0823412857142857,
+          "training_standardized_mean_difference": 0.19202431326810876,
+          "absolute_standardized_difference": 0.19202431326810876
+        },
+        "evaluation_baseline": {
+          "training_mean": 0.15079365773809522,
+          "partition_mean": 0.15529180118694363,
+          "mean_difference": 0.004498143448848413,
+          "training_standardized_mean_difference": 0.010489912797131646,
+          "absolute_standardized_difference": 0.010489912797131646
+        }
+      },
+      "rtd_mean": {
+        "calibration": {
+          "training_mean": 36.315455873809526,
+          "partition_mean": 54.002513325,
+          "mean_difference": 17.687057451190476,
+          "training_standardized_mean_difference": 0.7378763066165919,
+          "absolute_standardized_difference": 0.7378763066165919
+        },
+        "evaluation_baseline": {
+          "training_mean": 36.315455873809526,
+          "partition_mean": 49.77917673353116,
+          "mean_difference": 13.463720859721633,
+          "training_standardized_mean_difference": 0.5616853254818535,
+          "absolute_standardized_difference": 0.5616853254818535
+        }
+      },
+      "rtd_std": {
+        "calibration": {
+          "training_mean": 0.6979322708470571,
+          "partition_mean": 1.6319795152634544,
+          "mean_difference": 0.9340472444163973,
+          "training_standardized_mean_difference": 1.6030721835120259,
+          "absolute_standardized_difference": 1.6030721835120259
+        },
+        "evaluation_baseline": {
+          "training_mean": 0.6979322708470571,
+          "partition_mean": 0.8832289469484074,
+          "mean_difference": 0.18529667610135026,
+          "training_standardized_mean_difference": 0.31801811838854943,
+          "absolute_standardized_difference": 0.31801811838854943
+        }
+      },
+      "minute_of_day_sin": {
+        "calibration": {
+          "training_mean": -0.46479949385061725,
+          "partition_mean": 0.5573709304977406,
+          "mean_difference": 1.0221704243483578,
+          "training_standardized_mean_difference": 1.9255514438941288,
+          "absolute_standardized_difference": 1.9255514438941288
+        },
+        "evaluation_baseline": {
+          "training_mean": -0.46479949385061725,
+          "partition_mean": -0.6228586829563196,
+          "mean_difference": -0.15805918910570238,
+          "training_standardized_mean_difference": -0.29774985907780177,
+          "absolute_standardized_difference": 0.29774985907780177
+        }
+      },
+      "minute_of_day_cos": {
+        "calibration": {
+          "training_mean": 0.49409641353701705,
+          "partition_mean": -0.38666197277469105,
+          "mean_difference": -0.8807583863117081,
+          "training_standardized_mean_difference": -1.7338799522764632,
+          "absolute_standardized_difference": 1.7338799522764632
+        },
+        "evaluation_baseline": {
+          "training_mean": 0.49409641353701705,
+          "partition_mean": 0.26438782497244007,
+          "mean_difference": -0.229708588564577,
+          "training_standardized_mean_difference": -0.4522092809649219,
+          "absolute_standardized_difference": 0.4522092809649219
+        }
+      }
+    },
+    "notable_differences": [
+      {
+        "feature": "minute_of_day_sin",
+        "partition": "calibration",
+        "training_mean": -0.46479949385061725,
+        "partition_mean": 0.5573709304977406,
+        "mean_difference": 1.0221704243483578,
+        "training_standardized_mean_difference": 1.9255514438941288,
+        "absolute_standardized_difference": 1.9255514438941288
+      },
+      {
+        "feature": "Solar_Radiation",
+        "partition": "calibration",
+        "training_mean": 83.65551462797619,
+        "partition_mean": 412.7423057321428,
+        "mean_difference": 329.08679110416665,
+        "training_standardized_mean_difference": 1.84499124656258,
+        "absolute_standardized_difference": 1.84499124656258
+      },
+      {
+        "feature": "minute_of_day_cos",
+        "partition": "calibration",
+        "training_mean": 0.49409641353701705,
+        "partition_mean": -0.38666197277469105,
+        "mean_difference": -0.8807583863117081,
+        "training_standardized_mean_difference": -1.7338799522764632,
+        "absolute_standardized_difference": 1.7338799522764632
+      },
+      {
+        "feature": "rtd_std",
+        "partition": "calibration",
+        "training_mean": 0.6979322708470571,
+        "partition_mean": 1.6319795152634544,
+        "mean_difference": 0.9340472444163973,
+        "training_standardized_mean_difference": 1.6030721835120259,
+        "absolute_standardized_difference": 1.6030721835120259
+      },
+      {
+        "feature": "Power_Generated",
+        "partition": "calibration",
+        "training_mean": 122.19035089880953,
+        "partition_mean": 259.79906670238097,
+        "mean_difference": 137.60871580357144,
+        "training_standardized_mean_difference": 0.8725514725235818,
+        "absolute_standardized_difference": 0.8725514725235818
+      },
+      {
+        "feature": "rtd_mean",
+        "partition": "calibration",
+        "training_mean": 36.315455873809526,
+        "partition_mean": 54.002513325,
+        "mean_difference": 17.687057451190476,
+        "training_standardized_mean_difference": 0.7378763066165919,
+        "absolute_standardized_difference": 0.7378763066165919
+      },
+      {
+        "feature": "Air_Temp",
+        "partition": "calibration",
+        "training_mean": 21.96086107142857,
+        "partition_mean": 27.92963544642857,
+        "mean_difference": 5.968774374999999,
+        "training_standardized_mean_difference": 0.7098313891346688,
+        "absolute_standardized_difference": 0.7098313891346688
+      },
+      {
+        "feature": "rtd_mean",
+        "partition": "evaluation_baseline",
+        "training_mean": 36.315455873809526,
+        "partition_mean": 49.77917673353116,
+        "mean_difference": 13.463720859721633,
+        "training_standardized_mean_difference": 0.5616853254818535,
+        "absolute_standardized_difference": 0.5616853254818535
+      },
+      {
+        "feature": "Solar_Radiation",
+        "partition": "evaluation_baseline",
+        "training_mean": 83.65551462797619,
+        "partition_mean": 175.89861605637984,
+        "mean_difference": 92.24310142840365,
+        "training_standardized_mean_difference": 0.5171514606227967,
+        "absolute_standardized_difference": 0.5171514606227967
+      },
+      {
+        "feature": "Air_Temp",
+        "partition": "evaluation_baseline",
+        "training_mean": 21.96086107142857,
+        "partition_mean": 26.168770629080118,
+        "mean_difference": 4.207909557651547,
+        "training_standardized_mean_difference": 0.5004220463034085,
+        "absolute_standardized_difference": 0.5004220463034085
+      }
+    ]
+  },
+  "recurring_transition_locations": {
+    "2022-04-27 17:00:00": {
+      "partition": "training",
+      "present_exactly_once": true,
+      "removed": false,
+      "labelled_as_anomaly": false,
+      "interpretation": "Known recurring operational transition; retain and interpret carefully during later false-positive analysis."
+    },
+    "2022-04-28 17:00:00": {
+      "partition": "evaluation_baseline",
+      "present_exactly_once": true,
+      "removed": false,
+      "labelled_as_anomaly": false,
+      "interpretation": "Known recurring operational transition; retain and interpret carefully during later false-positive analysis."
+    }
+  },
+  "future_model_preprocessing_policy": [
+    "Load the Core training matrix.",
+    "Fit a scaler only on training features.",
+    "Transform training with that fitted scaler.",
+    "Apply the same already-fitted scaler to calibration.",
+    "Train an unsupervised detector using training data only.",
+    "Use untouched calibration data to study normal scores and freeze a threshold.",
+    "Generate a new synthetic copy only within the evaluation period.",
+    "Recompute dependent features for the synthetic evaluation copy.",
+    "Extract the same Core features.",
+    "Apply the training-fitted scaler.",
+    "Evaluate using the frozen detector and threshold."
+  ],
+  "leakage_policy": {
+    "scaler_fit_scope": "training features only",
+    "detector_fit_scope": "training features only",
+    "threshold_selection_scope": "untouched calibration only",
+    "synthetic_labels_used_for_training": false
+  },
+  "source_hashes": {
+    "source_file": "data/processed/operational_features_change.csv",
+    "source_sha256_before": "ca79f6c6bc35e89b194fc6e7c8b051e5784d226246942f6c10b4329f8cb23c1e",
+    "source_sha256_after": "ca79f6c6bc35e89b194fc6e7c8b051e5784d226246942f6c10b4329f8cb23c1e",
+    "source_unchanged": true,
+    "configuration_file": "config/chronological_split.yaml",
+    "configuration_sha256": "f5ae7eda10eeaff2e3f0d334bf0fc23d0a644efc04bb7bed8584d912259ce4e6",
+    "created_files": {
+      "baseline_training": {
+        "path": "data/model_ready/baseline_train.csv",
+        "sha256": "dae881047ec84f35fb8388213e75bf22c510c63f7d2f9931ec5bfbaa7ddd81f8"
+      },
+      "baseline_calibration": {
+        "path": "data/model_ready/baseline_calibration.csv",
+        "sha256": "85a995732639258c3669e700d952621d21e8feb775663649c8004df710a11cc0"
+      },
+      "baseline_evaluation_baseline": {
+        "path": "data/model_ready/baseline_evaluation.csv",
+        "sha256": "d52b5ff4ffcb6800d5892663ba6aa4f7b6aac58208854a95b437937d9985a61f"
+      },
+      "core_training": {
+        "path": "data/model_ready/core_train.csv",
+        "sha256": "b9ef9b9b723ef942f208c3d5ded6ef1e52c6b6742bbae68c33eae8222f2655ae"
+      },
+      "core_calibration": {
+        "path": "data/model_ready/core_calibration.csv",
+        "sha256": "a3cf5824dec0a03da3b4f282a01a20f8e10c366ec0d9b91588509c19bbd30e85"
+      },
+      "core_evaluation_baseline": {
+        "path": "data/model_ready/core_evaluation_baseline.csv",
+        "sha256": "1d65080cad8aeb1ad8ff290084feb63799eb55c6018474824a7133e277da06a2"
+      }
+    }
+  },
+  "models_directory": {
+    "before": {
+      ".gitkeep": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    "after": {
+      ".gitkeep": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    "unchanged": true,
+    "forbidden_artifacts": []
+  },
+  "validation": {
+    "passed": true,
+    "checks": {
+      "every_source_row_assigned_exactly_once": true,
+      "no_overlap": true,
+      "no_row_loss": true,
+      "no_duplicate_source_positions": true,
+      "no_duplicate_timestamps": true,
+      "chronological_source_order": true,
+      "all_81_columns_preserved": true,
+      "saved_partitions_reconstruct_source_within_csv_precision": true,
+      "all_core_features_usable": true,
+      "all_context_counts_match_stored_flag": true,
+      "source_file_unchanged": true,
+      "models_directory_unchanged": true,
+      "no_model_or_scaler_artifacts": true,
+      "no_synthetic_labels_in_baseline_or_core_files": true
+    }
+  },
+  "explicitly_not_performed": [
+    "scaler fitting",
+    "synthetic anomaly injection",
+    "detector training",
+    "threshold calibration",
+    "model-performance evaluation"
+  ]
+}

@@ -1,0 +1,2044 @@
+{
+  "stage": "Day 17 baseline anomaly-score review and distribution-shift investigation",
+  "scope": "descriptive baseline diagnostics using saved Day 16 artifacts only",
+  "score_convention": "anomaly_score = -IsolationForest.score_samples(X_scaled); higher is more isolated",
+  "artifact_reproduction": {
+    "training": {
+      "row_count": 336,
+      "maximum_absolute_score_difference": 5.551115123125783e-17,
+      "exact_match": false,
+      "within_csv_precision": true
+    },
+    "calibration": {
+      "row_count": 336,
+      "maximum_absolute_score_difference": 0.0,
+      "exact_match": true,
+      "within_csv_precision": true
+    },
+    "evaluation_baseline": {
+      "row_count": 337,
+      "maximum_absolute_score_difference": 5.551115123125783e-17,
+      "exact_match": false,
+      "within_csv_precision": true
+    }
+  },
+  "per_feature_distribution_review": {
+    "Power_Generated": {
+      "training_raw_range": {
+        "minimum": 12.482584,
+        "maximum": 438.55684
+      },
+      "partitions": {
+        "training": {
+          "raw": {
+            "minimum": 12.482584,
+            "maximum": 438.55684,
+            "mean": 122.19035089880953,
+            "median": 15.226296,
+            "population_standard_deviation": 157.70842195198105
+          },
+          "training_scaled": {
+            "minimum": -0.6956367043746926,
+            "maximum": 2.006021524947587,
+            "mean": -8.458842092382145e-17,
+            "population_standard_deviation": 1.0
+          },
+          "counts_relative_to_training": {
+            "below_training_minimum": 0,
+            "above_training_maximum": 0,
+            "absolute_scaled_value_above_2": 1,
+            "absolute_scaled_value_above_3": 0,
+            "absolute_scaled_value_above_5": 0
+          }
+        },
+        "calibration": {
+          "raw": {
+            "minimum": 13.969082,
+            "maximum": 403.8806,
+            "mean": 259.79906670238097,
+            "median": 299.99347,
+            "population_standard_deviation": 142.85472086293598
+          },
+          "training_scaled": {
+            "minimum": -0.6862110948758378,
+            "maximum": 1.786145886279677,
+            "mean": 0.8725514725235817,
+            "population_standard_deviation": 0.9058154225044005
+          },
+          "counts_relative_to_training": {
+            "below_training_minimum": 0,
+            "above_training_maximum": 0,
+            "absolute_scaled_value_above_2": 0,
+            "absolute_scaled_value_above_3": 0,
+            "absolute_scaled_value_above_5": 0
+          }
+        },
+        "evaluation_baseline": {
+          "raw": {
+            "minimum": 8.485232,
+            "maximum": 403.95436,
+            "mean": 167.5119562551929,
+            "median": 15.29813,
+            "population_standard_deviation": 166.63612361623177
+          },
+          "training_scaled": {
+            "minimum": -0.7209831757331919,
+            "maximum": 1.7866135848279667,
+            "mean": 0.28737593589125404,
+            "population_standard_deviation": 1.0566089087301187
+          },
+          "counts_relative_to_training": {
+            "below_training_minimum": 67,
+            "above_training_maximum": 0,
+            "absolute_scaled_value_above_2": 0,
+            "absolute_scaled_value_above_3": 0,
+            "absolute_scaled_value_above_5": 0
+          }
+        }
+      }
+    },
+    "Solar_Radiation": {
+      "training_raw_range": {
+        "minimum": -0.838326,
+        "maximum": 710.46328
+      },
+      "partitions": {
+        "training": {
+          "raw": {
+            "minimum": -0.838326,
+            "maximum": 710.46328,
+            "mean": 83.65551462797619,
+            "median": 0.06748199999999999,
+            "population_standard_deviation": 178.3676706961571
+          },
+          "training_scaled": {
+            "minimum": -0.473706026984612,
+            "maximum": 3.5141332671197367,
+            "mean": 4.229421046191072e-17,
+            "population_standard_deviation": 1.0
+          },
+          "counts_relative_to_training": {
+            "below_training_minimum": 0,
+            "above_training_maximum": 0,
+            "absolute_scaled_value_above_2": 28,
+            "absolute_scaled_value_above_3": 11,
+            "absolute_scaled_value_above_5": 0
+          }
+        },
+        "calibration": {
+          "raw": {
+            "minimum": -0.706238,
+            "maximum": 1132.1284,
+            "mean": 412.7423057321428,
+            "median": 163.4457,
+            "population_standard_deviation": 461.73299737709846
+          },
+          "training_scaled": {
+            "minimum": -0.4729654891983391,
+            "maximum": 5.878155392621905,
+            "mean": 1.84499124656258,
+            "population_standard_deviation": 2.588658558891224
+          },
+          "counts_relative_to_training": {
+            "below_training_minimum": 0,
+            "above_training_maximum": 118,
+            "absolute_scaled_value_above_2": 119,
+            "absolute_scaled_value_above_3": 118,
+            "absolute_scaled_value_above_5": 95
+          }
+        },
+        "evaluation_baseline": {
+          "raw": {
+            "minimum": -0.686325,
+            "maximum": 979.1392,
+            "mean": 175.89861605637984,
+            "median": 0.282097,
+            "population_standard_deviation": 284.0681925044054
+          },
+          "training_scaled": {
+            "minimum": -0.4728538490119629,
+            "maximum": 5.0204371783127,
+            "mean": 0.5171514606227966,
+            "population_standard_deviation": 1.5925991038381915
+          },
+          "counts_relative_to_training": {
+            "below_training_minimum": 0,
+            "above_training_maximum": 31,
+            "absolute_scaled_value_above_2": 64,
+            "absolute_scaled_value_above_3": 38,
+            "absolute_scaled_value_above_5": 1
+          }
+        }
+      }
+    },
+    "Air_Temp": {
+      "training_raw_range": {
+        "minimum": 14.837342,
+        "maximum": 44.327492
+      },
+      "partitions": {
+        "training": {
+          "raw": {
+            "minimum": 14.837342,
+            "maximum": 44.327492,
+            "mean": 21.96086107142857,
+            "median": 18.059026,
+            "population_standard_deviation": 8.408721375757034
+          },
+          "training_scaled": {
+            "minimum": -0.8471584148294179,
+            "maximum": 2.6599324592982803,
+            "mean": 0.0,
+            "population_standard_deviation": 0.9999999999999999
+          },
+          "counts_relative_to_training": {
+            "below_training_minimum": 0,
+            "above_training_maximum": 0,
+            "absolute_scaled_value_above_2": 17,
+            "absolute_scaled_value_above_3": 0,
+            "absolute_scaled_value_above_5": 0
+          }
+        },
+        "calibration": {
+          "raw": {
+            "minimum": 12.075478,
+            "maximum": 49.631508,
+            "mean": 27.92963544642857,
+            "median": 22.400843000000002,
+            "population_standard_deviation": 14.448461609441702
+          },
+          "training_scaled": {
+            "minimum": -1.1756107295847453,
+            "maximum": 3.2907080270667484,
+            "mean": 0.7098313891346691,
+            "population_standard_deviation": 1.7182709432016248
+          },
+          "counts_relative_to_training": {
+            "below_training_minimum": 121,
+            "above_training_maximum": 104,
+            "absolute_scaled_value_above_2": 115,
+            "absolute_scaled_value_above_3": 59,
+            "absolute_scaled_value_above_5": 0
+          }
+        },
+        "evaluation_baseline": {
+          "raw": {
+            "minimum": 16.157694,
+            "maximum": 43.654852,
+            "mean": 26.168770629080118,
+            "median": 20.537464,
+            "population_standard_deviation": 9.6788557758417
+          },
+          "training_scaled": {
+            "minimum": -0.6901366821547366,
+            "maximum": 2.5799393224178897,
+            "mean": 0.5004220463034085,
+            "population_standard_deviation": 1.1510496475417247
+          },
+          "counts_relative_to_training": {
+            "below_training_minimum": 0,
+            "above_training_maximum": 0,
+            "absolute_scaled_value_above_2": 57,
+            "absolute_scaled_value_above_3": 0,
+            "absolute_scaled_value_above_5": 0
+          }
+        }
+      }
+    },
+    "Relative_Humidity": {
+      "training_raw_range": {
+        "minimum": 10.648168,
+        "maximum": 46.9611
+      },
+      "partitions": {
+        "training": {
+          "raw": {
+            "minimum": 10.648168,
+            "maximum": 46.9611,
+            "mean": 31.914777666666666,
+            "median": 35.024788,
+            "population_standard_deviation": 12.191329298474013
+          },
+          "training_scaled": {
+            "minimum": -1.7444044981484181,
+            "maximum": 1.234182258961431,
+            "mean": 0.0,
+            "population_standard_deviation": 1.0
+          },
+          "counts_relative_to_training": {
+            "below_training_minimum": 0,
+            "above_training_maximum": 0,
+            "absolute_scaled_value_above_2": 0,
+            "absolute_scaled_value_above_3": 0,
+            "absolute_scaled_value_above_5": 0
+          }
+        },
+        "calibration": {
+          "raw": {
+            "minimum": 14.542124,
+            "maximum": 51.489112,
+            "mean": 34.61673444047619,
+            "median": 35.126282,
+            "population_standard_deviation": 12.809553669068132
+          },
+          "training_scaled": {
+            "minimum": -1.4250007723801863,
+            "maximum": 1.6055947513273594,
+            "mean": 0.2216293816415678,
+            "population_standard_deviation": 1.050710169125815
+          },
+          "counts_relative_to_training": {
+            "below_training_minimum": 0,
+            "above_training_maximum": 103,
+            "absolute_scaled_value_above_2": 0,
+            "absolute_scaled_value_above_3": 0,
+            "absolute_scaled_value_above_5": 0
+          }
+        },
+        "evaluation_baseline": {
+          "raw": {
+            "minimum": 11.707802,
+            "maximum": 44.301432,
+            "mean": 28.895507780415436,
+            "median": 34.749916,
+            "population_standard_deviation": 11.23517860781593
+          },
+          "training_scaled": {
+            "minimum": -1.657487479170624,
+            "maximum": 1.016021635547468,
+            "mean": -0.24765715143377814,
+            "population_standard_deviation": 0.9215712522195784
+          },
+          "counts_relative_to_training": {
+            "below_training_minimum": 0,
+            "above_training_maximum": 0,
+            "absolute_scaled_value_above_2": 0,
+            "absolute_scaled_value_above_3": 0,
+            "absolute_scaled_value_above_5": 0
+          }
+        }
+      }
+    },
+    "Wind_Speed": {
+      "training_raw_range": {
+        "minimum": 0.0,
+        "maximum": 2.866667
+      },
+      "partitions": {
+        "training": {
+          "raw": {
+            "minimum": 0.0,
+            "maximum": 2.866667,
+            "mean": 0.15079365773809522,
+            "median": 0.0,
+            "population_standard_deviation": 0.4288065626320918
+          },
+          "training_scaled": {
+            "minimum": -0.3516589317395159,
+            "maximum": 6.3335629137562295,
+            "mean": 8.458842092382145e-17,
+            "population_standard_deviation": 1.0
+          },
+          "counts_relative_to_training": {
+            "below_training_minimum": 0,
+            "above_training_maximum": 0,
+            "absolute_scaled_value_above_2": 19,
+            "absolute_scaled_value_above_3": 10,
+            "absolute_scaled_value_above_5": 2
+          }
+        },
+        "calibration": {
+          "raw": {
+            "minimum": 0.0,
+            "maximum": 2.933334,
+            "mean": 0.23313494345238092,
+            "median": 0.0,
+            "population_standard_deviation": 0.4685054561338663
+          },
+          "training_scaled": {
+            "minimum": -0.3516589317395159,
+            "maximum": 6.489033948506225,
+            "mean": 0.1920243132681088,
+            "population_standard_deviation": 1.092579957867472
+          },
+          "counts_relative_to_training": {
+            "below_training_minimum": 0,
+            "above_training_maximum": 1,
+            "absolute_scaled_value_above_2": 27,
+            "absolute_scaled_value_above_3": 11,
+            "absolute_scaled_value_above_5": 3
+          }
+        },
+        "evaluation_baseline": {
+          "raw": {
+            "minimum": 0.0,
+            "maximum": 2.333334,
+            "mean": 0.15529180118694363,
+            "median": 0.0,
+            "population_standard_deviation": 0.39795788633953083
+          },
+          "training_scaled": {
+            "minimum": -0.3516589317395159,
+            "maximum": 5.089801631917849,
+            "mean": 0.010489912797131623,
+            "population_standard_deviation": 0.9280592253457917
+          },
+          "counts_relative_to_training": {
+            "below_training_minimum": 0,
+            "above_training_maximum": 0,
+            "absolute_scaled_value_above_2": 15,
+            "absolute_scaled_value_above_3": 10,
+            "absolute_scaled_value_above_5": 1
+          }
+        }
+      }
+    },
+    "rtd_mean": {
+      "training_raw_range": {
+        "minimum": 22.1984776,
+        "maximum": 101.8154296
+      },
+      "partitions": {
+        "training": {
+          "raw": {
+            "minimum": 22.1984776,
+            "maximum": 101.8154296,
+            "mean": 36.315455873809526,
+            "median": 25.8652262,
+            "population_standard_deviation": 23.970220066140236
+          },
+          "training_scaled": {
+            "minimum": -0.5889382006029571,
+            "maximum": 2.7325562112262034,
+            "mean": -4.229421046191072e-17,
+            "population_standard_deviation": 1.0
+          },
+          "counts_relative_to_training": {
+            "below_training_minimum": 0,
+            "above_training_maximum": 0,
+            "absolute_scaled_value_above_2": 44,
+            "absolute_scaled_value_above_3": 0,
+            "absolute_scaled_value_above_5": 0
+          }
+        },
+        "calibration": {
+          "raw": {
+            "minimum": 20.6130196,
+            "maximum": 112.20541999999998,
+            "mean": 54.002513325,
+            "median": 39.4987536,
+            "population_standard_deviation": 34.09244128425191
+          },
+          "training_scaled": {
+            "minimum": -0.6550810226390209,
+            "maximum": 3.166010321006223,
+            "mean": 0.7378763066165919,
+            "population_standard_deviation": 1.4222831993274057
+          },
+          "counts_relative_to_training": {
+            "below_training_minimum": 101,
+            "above_training_maximum": 59,
+            "absolute_scaled_value_above_2": 91,
+            "absolute_scaled_value_above_3": 22,
+            "absolute_scaled_value_above_5": 0
+          }
+        },
+        "evaluation_baseline": {
+          "raw": {
+            "minimum": 24.5327472,
+            "maximum": 111.69082,
+            "mean": 49.77917673353116,
+            "median": 28.584164800000003,
+            "population_standard_deviation": 34.18259683863599
+          },
+          "training_scaled": {
+            "minimum": -0.4915561326219738,
+            "maximum": 3.144542015810023,
+            "mean": 0.5616853254818533,
+            "population_standard_deviation": 1.4260443477079925
+          },
+          "counts_relative_to_training": {
+            "below_training_minimum": 0,
+            "above_training_maximum": 66,
+            "absolute_scaled_value_above_2": 92,
+            "absolute_scaled_value_above_3": 38,
+            "absolute_scaled_value_above_5": 0
+          }
+        }
+      }
+    },
+    "rtd_std": {
+      "training_raw_range": {
+        "minimum": 0.3534617537895728,
+        "maximum": 3.7756581438585983
+      },
+      "partitions": {
+        "training": {
+          "raw": {
+            "minimum": 0.3534617537895728,
+            "maximum": 3.7756581438585983,
+            "mean": 0.6979322708470571,
+            "median": 0.47732991645441347,
+            "population_standard_deviation": 0.5826607522875717
+          },
+          "training_scaled": {
+            "minimum": -0.5912025405951338,
+            "maximum": 5.282191843071888,
+            "mean": -8.458842092382145e-17,
+            "population_standard_deviation": 0.9999999999999998
+          },
+          "counts_relative_to_training": {
+            "below_training_minimum": 0,
+            "above_training_maximum": 0,
+            "absolute_scaled_value_above_2": 30,
+            "absolute_scaled_value_above_3": 8,
+            "absolute_scaled_value_above_5": 1
+          }
+        },
+        "calibration": {
+          "raw": {
+            "minimum": 0.1782935258965953,
+            "maximum": 8.33087125581534,
+            "mean": 1.6319795152634544,
+            "median": 0.8933936455507463,
+            "population_standard_deviation": 1.5369732982212265
+          },
+          "training_scaled": {
+            "minimum": -0.8918375622698447,
+            "maximum": 13.100142673074798,
+            "mean": 1.603072183512026,
+            "population_standard_deviation": 2.6378528023158396
+          },
+          "counts_relative_to_training": {
+            "below_training_minimum": 15,
+            "above_training_maximum": 15,
+            "absolute_scaled_value_above_2": 144,
+            "absolute_scaled_value_above_3": 92,
+            "absolute_scaled_value_above_5": 16
+          }
+        },
+        "evaluation_baseline": {
+          "raw": {
+            "minimum": 0.2358585137509345,
+            "maximum": 2.692851408820025,
+            "mean": 0.8832289469484074,
+            "median": 0.463888361863757,
+            "population_standard_deviation": 0.7307747344827432
+          },
+          "training_scaled": {
+            "minimum": -0.7930408136844379,
+            "maximum": 3.4238090177530567,
+            "mean": 0.3180181183885492,
+            "population_standard_deviation": 1.2542027785699732
+          },
+          "counts_relative_to_training": {
+            "below_training_minimum": 2,
+            "above_training_maximum": 0,
+            "absolute_scaled_value_above_2": 54,
+            "absolute_scaled_value_above_3": 20,
+            "absolute_scaled_value_above_5": 0
+          }
+        }
+      }
+    },
+    "minute_of_day_sin": {
+      "training_raw_range": {
+        "minimum": -1.0,
+        "maximum": 0.6494480483301837
+      },
+      "partitions": {
+        "training": {
+          "raw": {
+            "minimum": -1.0,
+            "maximum": 0.6494480483301837,
+            "mean": -0.46479949385061725,
+            "median": -0.6851764678781261,
+            "population_standard_deviation": 0.530845554705709
+          },
+          "training_scaled": {
+            "minimum": -1.0082038012847032,
+            "maximum": 2.0990051292762906,
+            "mean": 0.0,
+            "population_standard_deviation": 1.0
+          },
+          "counts_relative_to_training": {
+            "below_training_minimum": 0,
+            "above_training_maximum": 0,
+            "absolute_scaled_value_above_2": 8,
+            "absolute_scaled_value_above_3": 0,
+            "absolute_scaled_value_above_5": 0
+          }
+        },
+        "calibration": {
+          "raw": {
+            "minimum": -0.4771587602596084,
+            "maximum": 1.0,
+            "mean": 0.5573709304977406,
+            "median": 0.7431448254773942,
+            "population_standard_deviation": 0.44917031387687417
+          },
+          "training_scaled": {
+            "minimum": -0.023282226439369738,
+            "maximum": 2.7593703683977817,
+            "mean": 1.925551443894129,
+            "population_standard_deviation": 0.8461412361753426
+          },
+          "counts_relative_to_training": {
+            "below_training_minimum": 0,
+            "above_training_maximum": 198,
+            "absolute_scaled_value_above_2": 205,
+            "absolute_scaled_value_above_3": 0,
+            "absolute_scaled_value_above_5": 0
+          }
+        },
+        "evaluation_baseline": {
+          "raw": {
+            "minimum": -1.0,
+            "maximum": 0.2923717047227367,
+            "mean": -0.6228586829563196,
+            "median": -0.743144825477394,
+            "population_standard_deviation": 0.36823019677047564
+          },
+          "training_scaled": {
+            "minimum": -1.0082038012847032,
+            "maximum": 1.4263493248862482,
+            "mean": -0.29774985907780177,
+            "population_standard_deviation": 0.6936672889247715
+          },
+          "counts_relative_to_training": {
+            "below_training_minimum": 0,
+            "above_training_maximum": 0,
+            "absolute_scaled_value_above_2": 0,
+            "absolute_scaled_value_above_3": 0,
+            "absolute_scaled_value_above_5": 0
+          }
+        }
+      }
+    },
+    "minute_of_day_cos": {
+      "training_raw_range": {
+        "minimum": -0.6018150231520483,
+        "maximum": 1.0
+      },
+      "partitions": {
+        "training": {
+          "raw": {
+            "minimum": -0.6018150231520483,
+            "maximum": 1.0,
+            "mean": 0.49409641353701705,
+            "median": 0.7283640363157291,
+            "population_standard_deviation": 0.5079696464310196
+          },
+          "training_scaled": {
+            "minimum": -2.157434886885286,
+            "maximum": 0.9959327097936801,
+            "mean": 8.458842092382145e-17,
+            "population_standard_deviation": 0.9999999999999999
+          },
+          "counts_relative_to_training": {
+            "below_training_minimum": 0,
+            "above_training_maximum": 0,
+            "absolute_scaled_value_above_2": 12,
+            "absolute_scaled_value_above_3": 0,
+            "absolute_scaled_value_above_5": 0
+          }
+        },
+        "calibration": {
+          "raw": {
+            "minimum": -1.0,
+            "maximum": 0.754709580222772,
+            "mean": -0.38666197277469105,
+            "median": -0.5699913366379392,
+            "population_standard_deviation": 0.5814431990984306
+          },
+          "training_scaled": {
+            "minimum": -2.941310418908878,
+            "maximum": 0.5130486998914516,
+            "mean": -1.733879952276463,
+            "population_standard_deviation": 1.1446416201905647
+          },
+          "counts_relative_to_training": {
+            "below_training_minimum": 164,
+            "above_training_maximum": 0,
+            "absolute_scaled_value_above_2": 175,
+            "absolute_scaled_value_above_3": 0,
+            "absolute_scaled_value_above_5": 0
+          }
+        },
+        "evaluation_baseline": {
+          "raw": {
+            "minimum": -0.8746197071393959,
+            "maximum": 1.0,
+            "mean": 0.26438782497244007,
+            "median": 0.3907311284892735,
+            "population_standard_deviation": 0.6376148220192486
+          },
+          "training_scaled": {
+            "minimum": -2.694484070638814,
+            "maximum": 0.9959327097936801,
+            "mean": -0.45220928096492186,
+            "population_standard_deviation": 1.2552222883770956
+          },
+          "counts_relative_to_training": {
+            "below_training_minimum": 48,
+            "above_training_maximum": 0,
+            "absolute_scaled_value_above_2": 60,
+            "absolute_scaled_value_above_3": 0,
+            "absolute_scaled_value_above_5": 0
+          }
+        }
+      }
+    }
+  },
+  "rtd_std_review": {
+    "training": {
+      "raw_minimum": 0.3534617537895728,
+      "raw_maximum": 3.7756581438585983,
+      "raw_median": 0.47732991645441347,
+      "raw_percentiles": {
+        "90": 1.675873590256261,
+        "95": 2.0553531753280923,
+        "97.5": 2.3967179934249474,
+        "99": 3.0126733700008512
+      },
+      "scaled_minimum": -0.5912025405951338,
+      "scaled_maximum": 5.282191843071888
+    },
+    "calibration": {
+      "raw_minimum": 0.1782935258965953,
+      "raw_maximum": 8.33087125581534,
+      "raw_median": 0.8933936455507463,
+      "raw_percentiles": {
+        "90": 2.8802967979854515,
+        "95": 3.5395948444716643,
+        "97.5": 6.297427164383404,
+        "99": 8.190036205906155
+      },
+      "scaled_minimum": -0.8918375622698447,
+      "scaled_maximum": 13.100142673074798
+    },
+    "evaluation_baseline": {
+      "raw_minimum": 0.2358585137509345,
+      "raw_maximum": 2.692851408820025,
+      "raw_median": 0.463888361863757,
+      "raw_percentiles": {
+        "90": 2.223022844261335,
+        "95": 2.457041510562247,
+        "97.5": 2.558172837999029,
+        "99": 2.6252630454937886
+      },
+      "scaled_minimum": -0.7930408136844379,
+      "scaled_maximum": 3.4238090177530567
+    },
+    "calibration_context_association": {
+      "rtd_std_solar_radiation_pearson_correlation": 0.6232807361462611,
+      "daylight_like_rtd_std_mean": 2.0794026881026544,
+      "low_light_rtd_std_mean": 0.48010283625189787,
+      "top_10_daylight_like_count": 10,
+      "top_10_radiation_above_100_w_m2_count": 10,
+      "interpretation_limit": "Descriptive association only; RTD placement and units remain unconfirmed."
+    },
+    "highest_calibration_observations": [
+      {
+        "timestamp": "2022-04-28 10:54:00",
+        "clock_time": "10:54",
+        "rtd_std": 8.33087125581534,
+        "rtd_std_training_scaled": 13.100142673074798,
+        "rtd_mean": 84.4941376,
+        "Solar_Radiation": 1008.3974,
+        "Power_Generated": 402.03272,
+        "Air_Temp": 48.730084,
+        "Relative_Humidity": 24.888944,
+        "light_context": "daylight_like",
+        "nearby_10_minute_means_excluding_observation": {
+          "rtd_std": 5.747366300364656,
+          "rtd_mean": 85.42634208000001,
+          "Solar_Radiation": 1012.1297119999999,
+          "Power_Generated": 402.572516,
+          "Air_Temp": 48.197255600000005,
+          "Relative_Humidity": 22.870480399999998
+        }
+      },
+      {
+        "timestamp": "2022-04-28 10:56:00",
+        "clock_time": "10:56",
+        "rtd_std": 8.301015813596369,
+        "rtd_std_training_scaled": 13.048902835653525,
+        "rtd_mean": 84.6027712,
+        "Solar_Radiation": 1019.7762,
+        "Power_Generated": 402.46196,
+        "Air_Temp": 47.67878,
+        "Relative_Humidity": 22.857528,
+        "light_context": "daylight_like",
+        "nearby_10_minute_means_excluding_observation": {
+          "rtd_std": 5.219008162660516,
+          "rtd_mean": 86.75602544,
+          "Solar_Radiation": 1016.802736,
+          "Power_Generated": 402.24781999999993,
+          "Air_Temp": 48.15135840000001,
+          "Relative_Humidity": 22.867133799999998
+        }
+      },
+      {
+        "timestamp": "2022-04-28 10:50:00",
+        "clock_time": "10:50",
+        "rtd_std": 8.288538496755683,
+        "rtd_std_training_scaled": 13.027488458948557,
+        "rtd_mean": 80.2480192,
+        "Solar_Radiation": 1007.3886,
+        "Power_Generated": 403.48812,
+        "Air_Temp": 48.68526,
+        "Relative_Humidity": 22.98768,
+        "light_context": "daylight_like",
+        "nearby_10_minute_means_excluding_observation": {
+          "rtd_std": 6.548653952359404,
+          "rtd_mean": 82.83056495999999,
+          "Solar_Radiation": 999.891232,
+          "Power_Generated": 402.683444,
+          "Air_Temp": 48.5850176,
+          "Relative_Humidity": 23.390804600000003
+        }
+      },
+      {
+        "timestamp": "2022-04-28 10:52:00",
+        "clock_time": "10:52",
+        "rtd_std": 8.192809396718523,
+        "rtd_std_training_scaled": 12.863191997137255,
+        "rtd_mean": 83.8978192,
+        "Solar_Radiation": 1016.8936,
+        "Power_Generated": 402.8256,
+        "Air_Temp": 48.782212,
+        "Relative_Humidity": 22.44964,
+        "light_context": "daylight_like",
+        "nearby_10_minute_means_excluding_observation": {
+          "rtd_std": 6.171006635366262,
+          "rtd_mean": 83.93282543999999,
+          "Solar_Radiation": 1005.7573480000001,
+          "Power_Generated": 402.71080399999994,
+          "Air_Temp": 48.4025536,
+          "Relative_Humidity": 23.2057854
+        }
+      },
+      {
+        "timestamp": "2022-04-28 10:48:00",
+        "clock_time": "10:48",
+        "rtd_std": 8.18488599439747,
+        "rtd_std_training_scaled": 12.849593342534307,
+        "rtd_mean": 79.8939584,
+        "Solar_Radiation": 995.51872,
+        "Power_Generated": 403.8806,
+        "Air_Temp": 48.609972,
+        "Relative_Humidity": 23.111326,
+        "light_context": "daylight_like",
+        "nearby_10_minute_means_excluding_observation": {
+          "rtd_std": 6.948763971218571,
+          "rtd_mean": 81.45520416,
+          "Solar_Radiation": 993.902296,
+          "Power_Generated": 402.80406400000004,
+          "Air_Temp": 48.765332799999996,
+          "Relative_Humidity": 23.6744304
+        }
+      },
+      {
+        "timestamp": "2022-04-28 10:46:00",
+        "clock_time": "10:46",
+        "rtd_std": 7.891724574287515,
+        "rtd_std_training_scaled": 12.346450786666281,
+        "rtd_mean": 80.28090239999999,
+        "Solar_Radiation": 984.44904,
+        "Power_Generated": 403.08684,
+        "Air_Temp": 48.73298,
+        "Relative_Humidity": 24.02352,
+        "light_context": "daylight_like",
+        "nearby_10_minute_means_excluding_observation": {
+          "rtd_std": 7.3657108671688905,
+          "rtd_mean": 80.04372240000001,
+          "Solar_Radiation": 984.918652,
+          "Power_Generated": 402.717268,
+          "Air_Temp": 48.772886799999995,
+          "Relative_Humidity": 23.7442898
+        }
+      },
+      {
+        "timestamp": "2022-04-28 10:44:00",
+        "clock_time": "10:44",
+        "rtd_std": 7.675500042596586,
+        "rtd_std_training_scaled": 11.97535228579418,
+        "rtd_mean": 79.9918032,
+        "Solar_Radiation": 965.12576,
+        "Power_Generated": 402.46044,
+        "Air_Temp": 48.95426,
+        "Relative_Humidity": 24.159464,
+        "light_context": "daylight_like",
+        "nearby_10_minute_means_excluding_observation": {
+          "rtd_std": 7.092771485004825,
+          "rtd_mean": 78.40176912000001,
+          "Solar_Radiation": 978.9016879999999,
+          "Power_Generated": 402.575608,
+          "Air_Temp": 48.67506039999999,
+          "Relative_Humidity": 23.7378646
+        }
+      },
+      {
+        "timestamp": "2022-04-28 10:28:00",
+        "clock_time": "10:28",
+        "rtd_std": 6.653006922491318,
+        "rtd_std_training_scaled": 10.220483580306674,
+        "rtd_mean": 76.1437136,
+        "Solar_Radiation": 927.52808,
+        "Power_Generated": 399.49968,
+        "Air_Temp": 47.825768,
+        "Relative_Humidity": 24.200048,
+        "light_context": "daylight_like",
+        "nearby_10_minute_means_excluding_observation": {
+          "rtd_std": 3.48738640473548,
+          "rtd_mean": 71.2723732,
+          "Solar_Radiation": 927.6786399999999,
+          "Power_Generated": 400.03018,
+          "Air_Temp": 48.5825876,
+          "Relative_Humidity": 24.088082000000004
+        }
+      },
+      {
+        "timestamp": "2022-04-28 10:42:00",
+        "clock_time": "10:42",
+        "rtd_std": 6.366040289444861,
+        "rtd_std_training_scaled": 9.727972917936153,
+        "rtd_mean": 77.142072,
+        "Solar_Radiation": 974.26096,
+        "Power_Generated": 403.1998,
+        "Air_Temp": 49.454256,
+        "Relative_Humidity": 23.292184,
+        "light_context": "daylight_like",
+        "nearby_10_minute_means_excluding_observation": {
+          "rtd_std": 6.953116929561131,
+          "rtd_mean": 77.03354488,
+          "Solar_Radiation": 970.864836,
+          "Power_Generated": 402.304284,
+          "Air_Temp": 48.634502000000005,
+          "Relative_Humidity": 23.660054600000002
+        }
+      },
+      {
+        "timestamp": "2022-04-28 10:40:00",
+        "clock_time": "10:40",
+        "rtd_std": 6.183071955947642,
+        "rtd_std_training_scaled": 9.413950851443994,
+        "rtd_mean": 76.8534064,
+        "Solar_Radiation": 957.57144,
+        "Power_Generated": 402.8008,
+        "Air_Temp": 49.3612,
+        "Relative_Humidity": 23.87272,
+        "light_context": "daylight_like",
+        "nearby_10_minute_means_excluding_observation": {
+          "rtd_std": 6.721767735794185,
+          "rtd_mean": 75.41854744,
+          "Solar_Radiation": 965.2718520000001,
+          "Power_Generated": 401.948956,
+          "Air_Temp": 48.6481776,
+          "Relative_Humidity": 23.752418
+        }
+      }
+    ]
+  },
+  "time_of_day_coverage": {
+    "observations_per_clock_hour": {
+      "training": {
+        "0": 30,
+        "1": 30,
+        "2": 22,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0,
+        "9": 0,
+        "10": 0,
+        "11": 0,
+        "12": 0,
+        "13": 0,
+        "14": 0,
+        "15": 14,
+        "16": 30,
+        "17": 30,
+        "18": 30,
+        "19": 30,
+        "20": 30,
+        "21": 30,
+        "22": 30,
+        "23": 30
+      },
+      "calibration": {
+        "0": 0,
+        "1": 0,
+        "2": 8,
+        "3": 30,
+        "4": 30,
+        "5": 30,
+        "6": 30,
+        "7": 30,
+        "8": 30,
+        "9": 30,
+        "10": 30,
+        "11": 30,
+        "12": 30,
+        "13": 28,
+        "14": 0,
+        "15": 0,
+        "16": 0,
+        "17": 0,
+        "18": 0,
+        "19": 0,
+        "20": 0,
+        "21": 0,
+        "22": 0,
+        "23": 0
+      },
+      "evaluation_baseline": {
+        "0": 30,
+        "1": 5,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0,
+        "9": 0,
+        "10": 0,
+        "11": 0,
+        "12": 0,
+        "13": 2,
+        "14": 30,
+        "15": 30,
+        "16": 30,
+        "17": 30,
+        "18": 30,
+        "19": 30,
+        "20": 30,
+        "21": 30,
+        "22": 30,
+        "23": 30
+      }
+    },
+    "hours_represented": {
+      "training": [
+        0,
+        1,
+        2,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23
+      ],
+      "calibration": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "evaluation_baseline": [
+        0,
+        1,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23
+      ]
+    },
+    "later_partition_comparison_to_training": {
+      "calibration": {
+        "hours_absent_from_training": [
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13
+        ],
+        "hours_not_fully_represented_in_training": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13
+        ],
+        "definition_of_not_fully_represented": "fewer than 30 two-minute observations in the training clock hour"
+      },
+      "evaluation_baseline": {
+        "hours_absent_from_training": [
+          13,
+          14
+        ],
+        "hours_not_fully_represented_in_training": [
+          13,
+          14,
+          15
+        ],
+        "definition_of_not_fully_represented": "fewer than 30 two-minute observations in the training clock hour"
+      }
+    },
+    "cyclical_feature_note": "Calibration includes many clock hours absent from training, so sine/cosine time coordinates can contribute to isolation scores. They are retained unchanged for future comparison."
+  },
+  "daylight_low_light_score_review": {
+    "training": {
+      "daylight_like": {
+        "count": 100,
+        "minimum": 0.4659508369823009,
+        "maximum": 0.6667323640965139,
+        "mean": 0.5386165293124427,
+        "median": 0.5414513796073046,
+        "population_standard_deviation": 0.04924491957412575,
+        "90th_percentile": 0.5957290003280996,
+        "95th_percentile": 0.6385984419286816
+      },
+      "low_light": {
+        "count": 236,
+        "minimum": 0.4128571910685891,
+        "maximum": 0.5925864212273535,
+        "mean": 0.4404764213698994,
+        "median": 0.4345949120248389,
+        "population_standard_deviation": 0.021819758306842015,
+        "90th_percentile": 0.4672528306032522,
+        "95th_percentile": 0.47507962372569545
+      },
+      "context_rule": "Solar_Radiation <= 5 W/m^2 defines low light for exploration only"
+    },
+    "calibration": {
+      "daylight_like": {
+        "count": 242,
+        "minimum": 0.5928708399702677,
+        "maximum": 0.7054871449074755,
+        "mean": 0.657304123081113,
+        "median": 0.6689172556785032,
+        "population_standard_deviation": 0.028341873583975302,
+        "90th_percentile": 0.6845217902848952,
+        "95th_percentile": 0.6986759964257285
+      },
+      "low_light": {
+        "count": 94,
+        "minimum": 0.5018088510703417,
+        "maximum": 0.5938910321146035,
+        "mean": 0.5429757305390531,
+        "median": 0.5428705419564432,
+        "population_standard_deviation": 0.02468659953138107,
+        "90th_percentile": 0.5830718795505919,
+        "95th_percentile": 0.5882034414602557
+      },
+      "context_rule": "Solar_Radiation <= 5 W/m^2 defines low light for exploration only"
+    },
+    "evaluation_baseline": {
+      "daylight_like": {
+        "count": 149,
+        "minimum": 0.487985271414639,
+        "maximum": 0.6728454174009991,
+        "mean": 0.587517341615848,
+        "median": 0.5947592061362087,
+        "population_standard_deviation": 0.06344353351615246,
+        "90th_percentile": 0.6652883952246044,
+        "95th_percentile": 0.6694402940115783
+      },
+      "low_light": {
+        "count": 188,
+        "minimum": 0.4341721069852718,
+        "maximum": 0.5504048422172358,
+        "mean": 0.4706205777922684,
+        "median": 0.4666960959988017,
+        "population_standard_deviation": 0.020729551654695116,
+        "90th_percentile": 0.49763239594915865,
+        "95th_percentile": 0.5010230258670586
+      },
+      "context_rule": "Solar_Radiation <= 5 W/m^2 defines low light for exploration only"
+    }
+  },
+  "score_extremeness_correlations": {
+    "training": {
+      "max_absolute_scaled_feature_value": {
+        "pearson": 0.8371099659157283,
+        "spearman": 0.7501849657762819
+      },
+      "core_feature_count_abs_z_above_2": {
+        "pearson": 0.7469535624479354,
+        "spearman": 0.6099175730739274
+      },
+      "core_feature_count_abs_z_above_3": {
+        "pearson": 0.585384669816689,
+        "spearman": 0.3806724064568289
+      },
+      "core_feature_count_abs_z_above_5": {
+        "pearson": 0.30601588064799556,
+        "spearman": 0.16097472133842053
+      }
+    },
+    "calibration": {
+      "max_absolute_scaled_feature_value": {
+        "pearson": 0.6705561855164266,
+        "spearman": 0.8593465580764211
+      },
+      "core_feature_count_abs_z_above_2": {
+        "pearson": 0.76496035443148,
+        "spearman": 0.8541649140331545
+      },
+      "core_feature_count_abs_z_above_3": {
+        "pearson": 0.6805181482868703,
+        "spearman": 0.8515589509932434
+      },
+      "core_feature_count_abs_z_above_5": {
+        "pearson": 0.613283211314502,
+        "spearman": 0.7238954336681434
+      }
+    },
+    "evaluation_baseline": {
+      "max_absolute_scaled_feature_value": {
+        "pearson": 0.9442559303962864,
+        "spearman": 0.9223019559375056
+      },
+      "core_feature_count_abs_z_above_2": {
+        "pearson": 0.892893704972855,
+        "spearman": 0.7804460310799438
+      },
+      "core_feature_count_abs_z_above_3": {
+        "pearson": 0.6978485976980259,
+        "spearman": 0.582463640502662
+      },
+      "core_feature_count_abs_z_above_5": {
+        "pearson": 0.13052902014043455,
+        "spearman": 0.10603188792581492
+      }
+    }
+  },
+  "top_10_high_score_baseline_observations": {
+    "training": [
+      {
+        "timestamp": "2022-04-27 15:36:00",
+        "clock_time": "15:36",
+        "anomaly_score": 0.6667323640965139,
+        "Power_Generated": 430.24568,
+        "Solar_Radiation": 695.51016,
+        "Air_Temp": 43.28658,
+        "Relative_Humidity": 11.047298,
+        "Wind_Speed": 2.866667,
+        "rtd_mean": 93.40987200000002,
+        "rtd_std": 2.8651013485739028,
+        "light_context": "daylight_like",
+        "largest_absolute_scaled_feature": "Wind_Speed",
+        "largest_absolute_scaled_value": 6.3335629137562295,
+        "core_feature_count_abs_z_above_2": 6,
+        "core_feature_count_abs_z_above_3": 3,
+        "core_feature_count_abs_z_above_5": 1,
+        "interpretation": "high-score baseline observation; not a confirmed anomaly or fault"
+      },
+      {
+        "timestamp": "2022-04-27 15:32:00",
+        "clock_time": "15:32",
+        "anomaly_score": 0.6570413555276998,
+        "Power_Generated": 430.14572,
+        "Solar_Radiation": 707.53384,
+        "Air_Temp": 43.349172,
+        "Relative_Humidity": 12.790256,
+        "Wind_Speed": 0.533333,
+        "rtd_mean": 93.8106576,
+        "rtd_std": 2.9576188128388425,
+        "light_context": "daylight_like",
+        "largest_absolute_scaled_feature": "rtd_std",
+        "largest_absolute_scaled_value": 3.878219930070936,
+        "core_feature_count_abs_z_above_2": 5,
+        "core_feature_count_abs_z_above_3": 2,
+        "core_feature_count_abs_z_above_5": 0,
+        "interpretation": "high-score baseline observation; not a confirmed anomaly or fault"
+      },
+      {
+        "timestamp": "2022-04-27 15:40:00",
+        "clock_time": "15:40",
+        "anomaly_score": 0.6466480493206016,
+        "Power_Generated": 431.89576,
+        "Solar_Radiation": 674.05752,
+        "Air_Temp": 43.728656,
+        "Relative_Humidity": 10.72233,
+        "Wind_Speed": 2.266667,
+        "rtd_mean": 96.8701792,
+        "rtd_std": 3.093012987507838,
+        "light_context": "daylight_like",
+        "largest_absolute_scaled_feature": "Wind_Speed",
+        "largest_absolute_scaled_value": 4.934330597167855,
+        "core_feature_count_abs_z_above_2": 6,
+        "core_feature_count_abs_z_above_3": 3,
+        "core_feature_count_abs_z_above_5": 0,
+        "interpretation": "high-score baseline observation; not a confirmed anomaly or fault"
+      },
+      {
+        "timestamp": "2022-04-27 17:50:00",
+        "clock_time": "17:50",
+        "anomaly_score": 0.6453645130624674,
+        "Power_Generated": 349.33592,
+        "Solar_Radiation": 84.05004,
+        "Air_Temp": 28.7684,
+        "Relative_Humidity": 14.139926,
+        "Wind_Speed": 0.0,
+        "rtd_mean": 38.789272800000006,
+        "rtd_std": 3.7756581438585983,
+        "light_context": "daylight_like",
+        "largest_absolute_scaled_feature": "rtd_std",
+        "largest_absolute_scaled_value": 5.282191843071888,
+        "core_feature_count_abs_z_above_2": 1,
+        "core_feature_count_abs_z_above_3": 1,
+        "core_feature_count_abs_z_above_5": 1,
+        "interpretation": "high-score baseline observation; not a confirmed anomaly or fault"
+      },
+      {
+        "timestamp": "2022-04-27 15:34:00",
+        "clock_time": "15:34",
+        "anomaly_score": 0.6402356641041006,
+        "Power_Generated": 430.71452,
+        "Solar_Radiation": 710.46328,
+        "Air_Temp": 43.43398,
+        "Relative_Humidity": 11.468986,
+        "Wind_Speed": 1.866667,
+        "rtd_mean": 93.9261632,
+        "rtd_std": 2.866293168405382,
+        "light_context": "daylight_like",
+        "largest_absolute_scaled_feature": "Wind_Speed",
+        "largest_absolute_scaled_value": 4.001509052775605,
+        "core_feature_count_abs_z_above_2": 6,
+        "core_feature_count_abs_z_above_3": 3,
+        "core_feature_count_abs_z_above_5": 0,
+        "interpretation": "high-score baseline observation; not a confirmed anomaly or fault"
+      },
+      {
+        "timestamp": "2022-04-27 15:38:00",
+        "clock_time": "15:38",
+        "anomaly_score": 0.6385122723405017,
+        "Power_Generated": 433.06504,
+        "Solar_Radiation": 696.24472,
+        "Air_Temp": 43.52302,
+        "Relative_Humidity": 12.058292,
+        "Wind_Speed": 0.0,
+        "rtd_mean": 96.7681824,
+        "rtd_std": 3.0282177736109825,
+        "light_context": "daylight_like",
+        "largest_absolute_scaled_feature": "rtd_std",
+        "largest_absolute_scaled_value": 3.999386424458902,
+        "core_feature_count_abs_z_above_2": 5,
+        "core_feature_count_abs_z_above_3": 2,
+        "core_feature_count_abs_z_above_5": 0,
+        "interpretation": "high-score baseline observation; not a confirmed anomaly or fault"
+      },
+      {
+        "timestamp": "2022-04-27 15:48:00",
+        "clock_time": "15:48",
+        "anomaly_score": 0.6328317069906167,
+        "Power_Generated": 437.42476,
+        "Solar_Radiation": 649.33388,
+        "Air_Temp": 43.999404,
+        "Relative_Humidity": 11.751626,
+        "Wind_Speed": 2.333334,
+        "rtd_mean": 101.2810328,
+        "rtd_std": 2.3945830412527704,
+        "light_context": "daylight_like",
+        "largest_absolute_scaled_feature": "Wind_Speed",
+        "largest_absolute_scaled_value": 5.089801631917849,
+        "core_feature_count_abs_z_above_2": 6,
+        "core_feature_count_abs_z_above_3": 2,
+        "core_feature_count_abs_z_above_5": 1,
+        "interpretation": "high-score baseline observation; not a confirmed anomaly or fault"
+      },
+      {
+        "timestamp": "2022-04-27 15:44:00",
+        "clock_time": "15:44",
+        "anomaly_score": 0.6211370850839055,
+        "Power_Generated": 432.27208,
+        "Solar_Radiation": 657.94148,
+        "Air_Temp": 43.484084,
+        "Relative_Humidity": 10.859,
+        "Wind_Speed": 0.933333,
+        "rtd_mean": 96.7574912,
+        "rtd_std": 3.1077067551650632,
+        "light_context": "daylight_like",
+        "largest_absolute_scaled_feature": "rtd_std",
+        "largest_absolute_scaled_value": 4.135810546457853,
+        "core_feature_count_abs_z_above_2": 5,
+        "core_feature_count_abs_z_above_3": 2,
+        "core_feature_count_abs_z_above_5": 0,
+        "interpretation": "high-score baseline observation; not a confirmed anomaly or fault"
+      },
+      {
+        "timestamp": "2022-04-27 15:46:00",
+        "clock_time": "15:46",
+        "anomaly_score": 0.6093779544124518,
+        "Power_Generated": 438.55684,
+        "Solar_Radiation": 660.13984,
+        "Air_Temp": 44.08314,
+        "Relative_Humidity": 11.728756,
+        "Wind_Speed": 1.2,
+        "rtd_mean": 101.8154296,
+        "rtd_std": 2.28359419761407,
+        "light_context": "daylight_like",
+        "largest_absolute_scaled_feature": "Solar_Radiation",
+        "largest_absolute_scaled_value": 3.232000076706973,
+        "core_feature_count_abs_z_above_2": 7,
+        "core_feature_count_abs_z_above_3": 1,
+        "core_feature_count_abs_z_above_5": 0,
+        "interpretation": "high-score baseline observation; not a confirmed anomaly or fault"
+      },
+      {
+        "timestamp": "2022-04-27 15:54:00",
+        "clock_time": "15:54",
+        "anomaly_score": 0.6083588828272747,
+        "Power_Generated": 434.65944,
+        "Solar_Radiation": 610.6076,
+        "Air_Temp": 44.066384,
+        "Relative_Humidity": 12.802054,
+        "Wind_Speed": 0.0,
+        "rtd_mean": 100.5956184,
+        "rtd_std": 2.229926901161167,
+        "light_context": "daylight_like",
+        "largest_absolute_scaled_feature": "Solar_Radiation",
+        "largest_absolute_scaled_value": 2.954302667716437,
+        "core_feature_count_abs_z_above_2": 5,
+        "core_feature_count_abs_z_above_3": 0,
+        "core_feature_count_abs_z_above_5": 0,
+        "interpretation": "high-score baseline observation; not a confirmed anomaly or fault"
+      }
+    ],
+    "calibration": [
+      {
+        "timestamp": "2022-04-28 11:58:00",
+        "clock_time": "11:58",
+        "anomaly_score": 0.7054871449074755,
+        "Power_Generated": 382.72216,
+        "Solar_Radiation": 1124.447,
+        "Air_Temp": 47.356092,
+        "Relative_Humidity": 18.84846,
+        "Wind_Speed": 2.6,
+        "rtd_mean": 101.9971712,
+        "rtd_std": 2.7245590698925506,
+        "light_context": "daylight_like",
+        "largest_absolute_scaled_feature": "Solar_Radiation",
+        "largest_absolute_scaled_value": 5.835090413581588,
+        "core_feature_count_abs_z_above_2": 6,
+        "core_feature_count_abs_z_above_3": 4,
+        "core_feature_count_abs_z_above_5": 2,
+        "interpretation": "high-score baseline observation; not a confirmed anomaly or fault"
+      },
+      {
+        "timestamp": "2022-04-28 10:54:00",
+        "clock_time": "10:54",
+        "anomaly_score": 0.7017069978494508,
+        "Power_Generated": 402.03272,
+        "Solar_Radiation": 1008.3974,
+        "Air_Temp": 48.730084,
+        "Relative_Humidity": 24.888944,
+        "Wind_Speed": 0.066667,
+        "rtd_mean": 84.4941376,
+        "rtd_std": 8.33087125581534,
+        "light_context": "daylight_like",
+        "largest_absolute_scaled_feature": "rtd_std",
+        "largest_absolute_scaled_value": 13.100142673074798,
+        "core_feature_count_abs_z_above_2": 5,
+        "core_feature_count_abs_z_above_3": 3,
+        "core_feature_count_abs_z_above_5": 2,
+        "interpretation": "high-score baseline observation; not a confirmed anomaly or fault"
+      },
+      {
+        "timestamp": "2022-04-28 10:42:00",
+        "clock_time": "10:42",
+        "anomaly_score": 0.7011706964430666,
+        "Power_Generated": 403.1998,
+        "Solar_Radiation": 974.26096,
+        "Air_Temp": 49.454256,
+        "Relative_Humidity": 23.292184,
+        "Wind_Speed": 0.0,
+        "rtd_mean": 77.142072,
+        "rtd_std": 6.366040289444861,
+        "light_context": "daylight_like",
+        "largest_absolute_scaled_feature": "rtd_std",
+        "largest_absolute_scaled_value": 9.727972917936153,
+        "core_feature_count_abs_z_above_2": 4,
+        "core_feature_count_abs_z_above_3": 3,
+        "core_feature_count_abs_z_above_5": 1,
+        "interpretation": "high-score baseline observation; not a confirmed anomaly or fault"
+      },
+      {
+        "timestamp": "2022-04-28 13:42:00",
+        "clock_time": "13:42",
+        "anomaly_score": 0.701022647320591,
+        "Power_Generated": 374.17152,
+        "Solar_Radiation": 1050.2214,
+        "Air_Temp": 41.97744,
+        "Relative_Humidity": 14.994606,
+        "Wind_Speed": 2.933334,
+        "rtd_mean": 111.645108,
+        "rtd_std": 2.6217010455839547,
+        "light_context": "daylight_like",
+        "largest_absolute_scaled_feature": "Wind_Speed",
+        "largest_absolute_scaled_value": 6.489033948506225,
+        "core_feature_count_abs_z_above_2": 6,
+        "core_feature_count_abs_z_above_3": 4,
+        "core_feature_count_abs_z_above_5": 2,
+        "interpretation": "high-score baseline observation; not a confirmed anomaly or fault"
+      },
+      {
+        "timestamp": "2022-04-28 10:36:00",
+        "clock_time": "10:36",
+        "anomaly_score": 0.7010125801077141,
+        "Power_Generated": 400.59788,
+        "Solar_Radiation": 941.32448,
+        "Air_Temp": 47.841336,
+        "Relative_Humidity": 24.467146,
+        "Wind_Speed": 0.0,
+        "rtd_mean": 76.73280159999999,
+        "rtd_std": 6.052712997345425,
+        "light_context": "daylight_like",
+        "largest_absolute_scaled_feature": "rtd_std",
+        "largest_absolute_scaled_value": 9.190220390639112,
+        "core_feature_count_abs_z_above_2": 4,
+        "core_feature_count_abs_z_above_3": 3,
+        "core_feature_count_abs_z_above_5": 1,
+        "interpretation": "high-score baseline observation; not a confirmed anomaly or fault"
+      },
+      {
+        "timestamp": "2022-04-28 10:44:00",
+        "clock_time": "10:44",
+        "anomaly_score": 0.7010125801077141,
+        "Power_Generated": 402.46044,
+        "Solar_Radiation": 965.12576,
+        "Air_Temp": 48.95426,
+        "Relative_Humidity": 24.159464,
+        "Wind_Speed": 0.0,
+        "rtd_mean": 79.9918032,
+        "rtd_std": 7.675500042596586,
+        "light_context": "daylight_like",
+        "largest_absolute_scaled_feature": "rtd_std",
+        "largest_absolute_scaled_value": 11.97535228579418,
+        "core_feature_count_abs_z_above_2": 4,
+        "core_feature_count_abs_z_above_3": 3,
+        "core_feature_count_abs_z_above_5": 1,
+        "interpretation": "high-score baseline observation; not a confirmed anomaly or fault"
+      },
+      {
+        "timestamp": "2022-04-28 10:52:00",
+        "clock_time": "10:52",
+        "anomaly_score": 0.7008941932195522,
+        "Power_Generated": 402.8256,
+        "Solar_Radiation": 1016.8936,
+        "Air_Temp": 48.782212,
+        "Relative_Humidity": 22.44964,
+        "Wind_Speed": 0.0,
+        "rtd_mean": 83.8978192,
+        "rtd_std": 8.192809396718523,
+        "light_context": "daylight_like",
+        "largest_absolute_scaled_feature": "rtd_std",
+        "largest_absolute_scaled_value": 12.863191997137255,
+        "core_feature_count_abs_z_above_2": 4,
+        "core_feature_count_abs_z_above_3": 3,
+        "core_feature_count_abs_z_above_5": 2,
+        "interpretation": "high-score baseline observation; not a confirmed anomaly or fault"
+      },
+      {
+        "timestamp": "2022-04-28 10:56:00",
+        "clock_time": "10:56",
+        "anomaly_score": 0.7008941932195522,
+        "Power_Generated": 402.46196,
+        "Solar_Radiation": 1019.7762,
+        "Air_Temp": 47.67878,
+        "Relative_Humidity": 22.857528,
+        "Wind_Speed": 0.0,
+        "rtd_mean": 84.6027712,
+        "rtd_std": 8.301015813596369,
+        "light_context": "daylight_like",
+        "largest_absolute_scaled_feature": "rtd_std",
+        "largest_absolute_scaled_value": 13.048902835653525,
+        "core_feature_count_abs_z_above_2": 5,
+        "core_feature_count_abs_z_above_3": 3,
+        "core_feature_count_abs_z_above_5": 2,
+        "interpretation": "high-score baseline observation; not a confirmed anomaly or fault"
+      },
+      {
+        "timestamp": "2022-04-28 10:48:00",
+        "clock_time": "10:48",
+        "anomaly_score": 0.7006964543962544,
+        "Power_Generated": 403.8806,
+        "Solar_Radiation": 995.51872,
+        "Air_Temp": 48.609972,
+        "Relative_Humidity": 23.111326,
+        "Wind_Speed": 0.0,
+        "rtd_mean": 79.8939584,
+        "rtd_std": 8.18488599439747,
+        "light_context": "daylight_like",
+        "largest_absolute_scaled_feature": "rtd_std",
+        "largest_absolute_scaled_value": 12.849593342534307,
+        "core_feature_count_abs_z_above_2": 4,
+        "core_feature_count_abs_z_above_3": 3,
+        "core_feature_count_abs_z_above_5": 2,
+        "interpretation": "high-score baseline observation; not a confirmed anomaly or fault"
+      },
+      {
+        "timestamp": "2022-04-28 10:40:00",
+        "clock_time": "10:40",
+        "anomaly_score": 0.7006000859998094,
+        "Power_Generated": 402.8008,
+        "Solar_Radiation": 957.57144,
+        "Air_Temp": 49.3612,
+        "Relative_Humidity": 23.87272,
+        "Wind_Speed": 0.066667,
+        "rtd_mean": 76.8534064,
+        "rtd_std": 6.183071955947642,
+        "light_context": "daylight_like",
+        "largest_absolute_scaled_feature": "rtd_std",
+        "largest_absolute_scaled_value": 9.413950851443994,
+        "core_feature_count_abs_z_above_2": 4,
+        "core_feature_count_abs_z_above_3": 3,
+        "core_feature_count_abs_z_above_5": 1,
+        "interpretation": "high-score baseline observation; not a confirmed anomaly or fault"
+      }
+    ],
+    "evaluation_baseline": [
+      {
+        "timestamp": "2022-04-28 14:16:00",
+        "clock_time": "14:16",
+        "anomaly_score": 0.6728454174009991,
+        "Power_Generated": 374.32284,
+        "Solar_Radiation": 908.2888,
+        "Air_Temp": 43.254608,
+        "Relative_Humidity": 13.963288,
+        "Wind_Speed": 0.066667,
+        "rtd_mean": 111.293084,
+        "rtd_std": 2.564928270011463,
+        "light_context": "daylight_like",
+        "largest_absolute_scaled_feature": "Solar_Radiation",
+        "largest_absolute_scaled_value": 4.623221697931779,
+        "core_feature_count_abs_z_above_2": 5,
+        "core_feature_count_abs_z_above_3": 3,
+        "core_feature_count_abs_z_above_5": 0,
+        "interpretation": "high-score baseline observation; not a confirmed anomaly or fault"
+      },
+      {
+        "timestamp": "2022-04-28 14:04:00",
+        "clock_time": "14:04",
+        "anomaly_score": 0.6724609403448851,
+        "Power_Generated": 374.60076,
+        "Solar_Radiation": 953.53584,
+        "Air_Temp": 42.950936,
+        "Relative_Humidity": 13.67035,
+        "Wind_Speed": 0.2,
+        "rtd_mean": 110.96524399999998,
+        "rtd_std": 2.591410848272424,
+        "light_context": "daylight_like",
+        "largest_absolute_scaled_feature": "Solar_Radiation",
+        "largest_absolute_scaled_value": 4.876894573870585,
+        "core_feature_count_abs_z_above_2": 5,
+        "core_feature_count_abs_z_above_3": 3,
+        "core_feature_count_abs_z_above_5": 0,
+        "interpretation": "high-score baseline observation; not a confirmed anomaly or fault"
+      },
+      {
+        "timestamp": "2022-04-28 14:14:00",
+        "clock_time": "14:14",
+        "anomaly_score": 0.671858039133581,
+        "Power_Generated": 375.8322,
+        "Solar_Radiation": 930.46896,
+        "Air_Temp": 42.955076,
+        "Relative_Humidity": 13.663348,
+        "Wind_Speed": 0.0,
+        "rtd_mean": 111.176244,
+        "rtd_std": 2.5299293609553613,
+        "light_context": "daylight_like",
+        "largest_absolute_scaled_feature": "Solar_Radiation",
+        "largest_absolute_scaled_value": 4.747572483662356,
+        "core_feature_count_abs_z_above_2": 5,
+        "core_feature_count_abs_z_above_3": 3,
+        "core_feature_count_abs_z_above_5": 0,
+        "interpretation": "high-score baseline observation; not a confirmed anomaly or fault"
+      },
+      {
+        "timestamp": "2022-04-28 14:02:00",
+        "clock_time": "14:02",
+        "anomaly_score": 0.6718433254324624,
+        "Power_Generated": 373.99956,
+        "Solar_Radiation": 945.96544,
+        "Air_Temp": 42.70524,
+        "Relative_Humidity": 14.265266,
+        "Wind_Speed": 0.0,
+        "rtd_mean": 110.44016,
+        "rtd_std": 2.5258983863964115,
+        "light_context": "daylight_like",
+        "largest_absolute_scaled_feature": "Solar_Radiation",
+        "largest_absolute_scaled_value": 4.834451904913518,
+        "core_feature_count_abs_z_above_2": 5,
+        "core_feature_count_abs_z_above_3": 3,
+        "core_feature_count_abs_z_above_5": 0,
+        "interpretation": "high-score baseline observation; not a confirmed anomaly or fault"
+      },
+      {
+        "timestamp": "2022-04-28 14:24:00",
+        "clock_time": "14:24",
+        "anomaly_score": 0.6712852528847223,
+        "Power_Generated": 374.6218,
+        "Solar_Radiation": 869.20328,
+        "Air_Temp": 43.2851,
+        "Relative_Humidity": 12.946974,
+        "Wind_Speed": 0.066667,
+        "rtd_mean": 110.626968,
+        "rtd_std": 2.6038111300046296,
+        "light_context": "daylight_like",
+        "largest_absolute_scaled_feature": "Solar_Radiation",
+        "largest_absolute_scaled_value": 4.404092750138426,
+        "core_feature_count_abs_z_above_2": 5,
+        "core_feature_count_abs_z_above_3": 3,
+        "core_feature_count_abs_z_above_5": 0,
+        "interpretation": "high-score baseline observation; not a confirmed anomaly or fault"
+      },
+      {
+        "timestamp": "2022-04-28 14:06:00",
+        "clock_time": "14:06",
+        "anomaly_score": 0.6705547098431537,
+        "Power_Generated": 374.69988,
+        "Solar_Radiation": 960.76104,
+        "Air_Temp": 42.881548,
+        "Relative_Humidity": 13.38393,
+        "Wind_Speed": 0.133333,
+        "rtd_mean": 110.704452,
+        "rtd_std": 2.560800320949681,
+        "light_context": "daylight_like",
+        "largest_absolute_scaled_feature": "Solar_Radiation",
+        "largest_absolute_scaled_value": 4.917401914532715,
+        "core_feature_count_abs_z_above_2": 5,
+        "core_feature_count_abs_z_above_3": 3,
+        "core_feature_count_abs_z_above_5": 0,
+        "interpretation": "high-score baseline observation; not a confirmed anomaly or fault"
+      },
+      {
+        "timestamp": "2022-04-28 14:18:00",
+        "clock_time": "14:18",
+        "anomaly_score": 0.6703067744601512,
+        "Power_Generated": 375.007,
+        "Solar_Radiation": 910.74736,
+        "Air_Temp": 43.55378,
+        "Relative_Humidity": 13.078956,
+        "Wind_Speed": 0.0,
+        "rtd_mean": 111.588692,
+        "rtd_std": 2.5290900759158434,
+        "light_context": "daylight_like",
+        "largest_absolute_scaled_feature": "Solar_Radiation",
+        "largest_absolute_scaled_value": 4.637005361700019,
+        "core_feature_count_abs_z_above_2": 5,
+        "core_feature_count_abs_z_above_3": 3,
+        "core_feature_count_abs_z_above_5": 0,
+        "interpretation": "high-score baseline observation; not a confirmed anomaly or fault"
+      },
+      {
+        "timestamp": "2022-04-28 14:46:00",
+        "clock_time": "14:46",
+        "anomaly_score": 0.6698498324344915,
+        "Power_Generated": 374.34688,
+        "Solar_Radiation": 800.54952,
+        "Air_Temp": 43.55516,
+        "Relative_Humidity": 14.56886,
+        "Wind_Speed": 0.0,
+        "rtd_mean": 111.07406799999998,
+        "rtd_std": 2.45171820389212,
+        "light_context": "daylight_like",
+        "largest_absolute_scaled_feature": "Solar_Radiation",
+        "largest_absolute_scaled_value": 4.0191925059851625,
+        "core_feature_count_abs_z_above_2": 5,
+        "core_feature_count_abs_z_above_3": 3,
+        "core_feature_count_abs_z_above_5": 0,
+        "interpretation": "high-score baseline observation; not a confirmed anomaly or fault"
+      },
+      {
+        "timestamp": "2022-04-28 14:28:00",
+        "clock_time": "14:28",
+        "anomaly_score": 0.6688259863772087,
+        "Power_Generated": 375.65732,
+        "Solar_Radiation": 858.4504,
+        "Air_Temp": 43.264272,
+        "Relative_Humidity": 13.241956,
+        "Wind_Speed": 0.333333,
+        "rtd_mean": 110.630536,
+        "rtd_std": 2.692851408820025,
+        "light_context": "daylight_like",
+        "largest_absolute_scaled_feature": "Solar_Radiation",
+        "largest_absolute_scaled_value": 4.343807834390902,
+        "core_feature_count_abs_z_above_2": 5,
+        "core_feature_count_abs_z_above_3": 3,
+        "core_feature_count_abs_z_above_5": 0,
+        "interpretation": "high-score baseline observation; not a confirmed anomaly or fault"
+      },
+      {
+        "timestamp": "2022-04-28 14:30:00",
+        "clock_time": "14:30",
+        "anomaly_score": 0.6682301997443779,
+        "Power_Generated": 374.7424,
+        "Solar_Radiation": 839.628,
+        "Air_Temp": 43.4001,
+        "Relative_Humidity": 14.42569,
+        "Wind_Speed": 0.0,
+        "rtd_mean": 110.838256,
+        "rtd_std": 2.389150298475172,
+        "light_context": "daylight_like",
+        "largest_absolute_scaled_feature": "Solar_Radiation",
+        "largest_absolute_scaled_value": 4.238281984742604,
+        "core_feature_count_abs_z_above_2": 5,
+        "core_feature_count_abs_z_above_3": 2,
+        "core_feature_count_abs_z_above_5": 0,
+        "interpretation": "high-score baseline observation; not a confirmed anomaly or fault"
+      }
+    ]
+  },
+  "recurring_transition_diagnostics": {
+    "2022-04-27 17:00:00": {
+      "partition": "training",
+      "anomaly_score": 0.5869216962331365,
+      "highest_score_rank_in_partition": 13,
+      "score_percentile_within_partition": 96.42857142857143,
+      "largest_absolute_scaled_feature": "Wind_Speed",
+      "largest_absolute_scaled_value": 1.6694551917949796,
+      "nearby_10_minute_scores_excluding_transition": {
+        "count": 10,
+        "minimum": 0.551322969081267,
+        "maximum": 0.5848138048775252,
+        "mean": 0.5704388730266914,
+        "median": 0.5722522542043006,
+        "population_standard_deviation": 0.010052677300273096,
+        "90th_percentile": 0.5825985166914237,
+        "95th_percentile": 0.5837061607844745
+      },
+      "interpretation": "recurring operational transition; not classified as a fault"
+    },
+    "2022-04-28 17:00:00": {
+      "partition": "evaluation_baseline",
+      "anomaly_score": 0.5716149036192744,
+      "highest_score_rank_in_partition": 94,
+      "score_percentile_within_partition": 72.40356083086054,
+      "largest_absolute_scaled_feature": "minute_of_day_cos",
+      "largest_absolute_scaled_value": 1.4822056080112276,
+      "nearby_10_minute_scores_excluding_transition": {
+        "count": 10,
+        "minimum": 0.5511796130792783,
+        "maximum": 0.6072370727034198,
+        "mean": 0.5811927796534067,
+        "median": 0.5801336854240471,
+        "population_standard_deviation": 0.016617757753691464,
+        "90th_percentile": 0.5968680306745219,
+        "95th_percentile": 0.6020525516889709
+      },
+      "interpretation": "recurring operational transition; not classified as a fault"
+    }
+  },
+  "recommendations_for_next_stage": [
+    "Retain the current Day 16 model as a fixed reference; do not reinterpret high baseline scores as faults.",
+    "Prioritize collecting more independent days with representative daylight and low-light coverage for training.",
+    "Compare a prespecified model without minute_of_day_sin and minute_of_day_cos to quantify time-context sensitivity.",
+    "Compare a prespecified model without rtd_std and separately review the five RTD channels before assigning physical meaning.",
+    "Keep the current Core definition unchanged until controlled comparison models are evaluated on the same frozen partitions."
+  ],
+  "threshold_planning_note": {
+    "reason_to_defer": "Baseline score distributions differ substantially by chronological operating regime; selecting a threshold now could encode the short record's time coverage rather than a stable operating policy.",
+    "future_strategies_to_compare_without_selection": [
+      "a predeclared calibration-score percentile",
+      "a robust calibration statistic such as median plus a multiple of MAD",
+      "a threshold chosen to meet a predefined acceptable baseline false-positive rate"
+    ],
+    "threshold_selected": false
+  },
+  "protected_artifact_hashes": {
+    "data/images/.gitkeep": {
+      "before": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "after": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "unchanged": true
+    },
+    "data/model_ready/.gitkeep": {
+      "before": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "after": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "unchanged": true
+    },
+    "data/model_ready/baseline_calibration.csv": {
+      "before": "85a995732639258c3669e700d952621d21e8feb775663649c8004df710a11cc0",
+      "after": "85a995732639258c3669e700d952621d21e8feb775663649c8004df710a11cc0",
+      "unchanged": true
+    },
+    "data/model_ready/baseline_evaluation.csv": {
+      "before": "d52b5ff4ffcb6800d5892663ba6aa4f7b6aac58208854a95b437937d9985a61f",
+      "after": "d52b5ff4ffcb6800d5892663ba6aa4f7b6aac58208854a95b437937d9985a61f",
+      "unchanged": true
+    },
+    "data/model_ready/baseline_train.csv": {
+      "before": "dae881047ec84f35fb8388213e75bf22c510c63f7d2f9931ec5bfbaa7ddd81f8",
+      "after": "dae881047ec84f35fb8388213e75bf22c510c63f7d2f9931ec5bfbaa7ddd81f8",
+      "unchanged": true
+    },
+    "data/model_ready/core_calibration.csv": {
+      "before": "a3cf5824dec0a03da3b4f282a01a20f8e10c366ec0d9b91588509c19bbd30e85",
+      "after": "a3cf5824dec0a03da3b4f282a01a20f8e10c366ec0d9b91588509c19bbd30e85",
+      "unchanged": true
+    },
+    "data/model_ready/core_evaluation_baseline.csv": {
+      "before": "1d65080cad8aeb1ad8ff290084feb63799eb55c6018474824a7133e277da06a2",
+      "after": "1d65080cad8aeb1ad8ff290084feb63799eb55c6018474824a7133e277da06a2",
+      "unchanged": true
+    },
+    "data/model_ready/core_train.csv": {
+      "before": "b9ef9b9b723ef942f208c3d5ded6ef1e52c6b6742bbae68c33eae8222f2655ae",
+      "after": "b9ef9b9b723ef942f208c3d5ded6ef1e52c6b6742bbae68c33eae8222f2655ae",
+      "unchanged": true
+    },
+    "data/model_ready/scaled/core_calibration_scaled.csv": {
+      "before": "969f4badc753a33de361526eb2abdf360a1b4b30cb7bcd983e46ede6c8e97e6e",
+      "after": "969f4badc753a33de361526eb2abdf360a1b4b30cb7bcd983e46ede6c8e97e6e",
+      "unchanged": true
+    },
+    "data/model_ready/scaled/core_evaluation_baseline_scaled.csv": {
+      "before": "125e43309dd7ce629a1ef01c58560b3f36af64d32770c81aed1d142905266963",
+      "after": "125e43309dd7ce629a1ef01c58560b3f36af64d32770c81aed1d142905266963",
+      "unchanged": true
+    },
+    "data/model_ready/scaled/core_train_scaled.csv": {
+      "before": "58b4eabe47d58747f02058c4cef79362217ba5c40d7e20e9f255c9d1a7d93191",
+      "after": "58b4eabe47d58747f02058c4cef79362217ba5c40d7e20e9f255c9d1a7d93191",
+      "unchanged": true
+    },
+    "data/operational/.gitkeep": {
+      "before": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "after": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "unchanged": true
+    },
+    "data/operational/solar-power-dataset/.complete/datasets/s1nister/solar-power-generation-dataset/1/bundle.complete": {
+      "before": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "after": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "unchanged": true
+    },
+    "data/operational/solar-power-dataset/solar_data.csv": {
+      "before": "0615c4d92c7869074f99c4a6552cc201ab6db8152fc77650758664ed2c4ba393",
+      "after": "0615c4d92c7869074f99c4a6552cc201ab6db8152fc77650758664ed2c4ba393",
+      "unchanged": true
+    },
+    "data/processed/.gitkeep": {
+      "before": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "after": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "unchanged": true
+    },
+    "data/processed/operational_cleaned.csv": {
+      "before": "3e440f11bf0a00227a4b2ae3ce29e38de0a03bb647b577daa2ff1f5d098624fc",
+      "after": "3e440f11bf0a00227a4b2ae3ce29e38de0a03bb647b577daa2ff1f5d098624fc",
+      "unchanged": true
+    },
+    "data/processed/operational_features_basic.csv": {
+      "before": "99f9f3a61f4602d518b6b2fa024f415f95acbd988cd9a4e5588f62e1f19dbcd7",
+      "after": "99f9f3a61f4602d518b6b2fa024f415f95acbd988cd9a4e5588f62e1f19dbcd7",
+      "unchanged": true
+    },
+    "data/processed/operational_features_change.csv": {
+      "before": "ca79f6c6bc35e89b194fc6e7c8b051e5784d226246942f6c10b4329f8cb23c1e",
+      "after": "ca79f6c6bc35e89b194fc6e7c8b051e5784d226246942f6c10b4329f8cb23c1e",
+      "unchanged": true
+    },
+    "data/processed/operational_features_rolling.csv": {
+      "before": "bfb29573505add5c5748f44719ae7db0f67fb41ce7f3a8741f215937bc002dfe",
+      "after": "bfb29573505add5c5748f44719ae7db0f67fb41ce7f3a8741f215937bc002dfe",
+      "unchanged": true
+    },
+    "data/processed/operational_synthetic_prototype.csv": {
+      "before": "7339365a248817a0d593eb7de7df481ddd6e5acc250c9d701bc5e4ede2c7e904",
+      "after": "7339365a248817a0d593eb7de7df481ddd6e5acc250c9d701bc5e4ede2c7e904",
+      "unchanged": true
+    },
+    "data/README.md": {
+      "before": "e2bdc3bc2baf6defd7fdaf06efa578183555a492dfa80f457a544aeabe6bd5eb",
+      "after": "e2bdc3bc2baf6defd7fdaf06efa578183555a492dfa80f457a544aeabe6bd5eb",
+      "unchanged": true
+    },
+    "models/.gitkeep": {
+      "before": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "after": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "unchanged": true
+    },
+    "models/core_standard_scaler.joblib": {
+      "before": "5959330927318c00a70884f4c1b49d21b3a4aafb9ea534a44262bfaf86c8d5f6",
+      "after": "5959330927318c00a70884f4c1b49d21b3a4aafb9ea534a44262bfaf86c8d5f6",
+      "unchanged": true
+    },
+    "models/isolation_forest_core.joblib": {
+      "before": "3b002a49fea3c784063fc83034bc1d20797a75a48a7d77c96e7f14060eb5d626",
+      "after": "3b002a49fea3c784063fc83034bc1d20797a75a48a7d77c96e7f14060eb5d626",
+      "unchanged": true
+    },
+    "models/isolation_forest_core_metadata.json": {
+      "before": "841a7e0dec11879406336818669a8879a0c4e946bfbc664425201b12cc9a2b3e",
+      "after": "841a7e0dec11879406336818669a8879a0c4e946bfbc664425201b12cc9a2b3e",
+      "unchanged": true
+    },
+    "outputs/anomaly_scores_train.csv": {
+      "before": "aba573eeaec6a9e0a77c6e30f2b7d162b5bdee3a746dea621f4dc053c4b34f8f",
+      "after": "aba573eeaec6a9e0a77c6e30f2b7d162b5bdee3a746dea621f4dc053c4b34f8f",
+      "unchanged": true
+    },
+    "outputs/anomaly_scores_calibration.csv": {
+      "before": "6e8fed095360f545fb1a9752c7973a5c6c1c77a7d275ddb8f2bb0923c0898d3f",
+      "after": "6e8fed095360f545fb1a9752c7973a5c6c1c77a7d275ddb8f2bb0923c0898d3f",
+      "unchanged": true
+    },
+    "outputs/anomaly_scores_evaluation_baseline.csv": {
+      "before": "c60a69408b5f5979f6d95ee0c455b9caed07aa8487a8cc56f1a0fd9b6b01d2b2",
+      "after": "c60a69408b5f5979f6d95ee0c455b9caed07aa8487a8cc56f1a0fd9b6b01d2b2",
+      "unchanged": true
+    }
+  },
+  "new_artifacts": {
+    "report": "outputs/baseline_score_investigation.json",
+    "figure": "outputs/figures/operational/day17_score_context_review.png"
+  },
+  "validation": {
+    "passed": true,
+    "checks": {
+      "saved_scores_reproduced_with_existing_artifacts": true,
+      "no_scaler_or_model_refitting_performed": true,
+      "all_nine_core_features_reviewed": true,
+      "partition_timestamps_unchanged": true,
+      "context_counts_cover_each_partition": true,
+      "no_anomaly_label_columns_created": true,
+      "all_protected_data_model_and_score_files_unchanged": true,
+      "saved_artifact_feature_order_matches": true
+    }
+  },
+  "explicitly_not_performed": [
+    "scaler fitting",
+    "model fitting or replacement",
+    "threshold selection",
+    "final anomaly labels",
+    "synthetic evaluation generation",
+    "precision/recall/F1 calculation"
+  ]
+}

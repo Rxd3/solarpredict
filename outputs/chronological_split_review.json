@@ -1,0 +1,1326 @@
+{
+  "stage": "Day 14 synthetic prototype review and chronological split planning",
+  "generated_at_utc": "2026-09-05T09:19:15.423938+00:00",
+  "timezone": "Not specified by dataset source; timestamps kept timezone-naive.",
+  "dataset_coverage": {
+    "row_count": 1009,
+    "start_timestamp": "2022-04-27 15:32:00",
+    "end_timestamp": "2022-04-29 01:08:00",
+    "inclusive_timestamp_span_hours": 33.6,
+    "sample_support_hours": 33.63333333333333,
+    "complete_daily_cycles_available": 1,
+    "first_and_last_calendar_days_incomplete": true
+  },
+  "prototype": {
+    "shape": [
+      1009,
+      84
+    ],
+    "seed": 42,
+    "event_count": 7,
+    "generator_validation_only": true,
+    "automatic_final_test_reuse_allowed": false,
+    "policy": "Choose and freeze chronological boundaries first, then regenerate synthetic events only inside the untouched evaluation region using predeclared seeds."
+  },
+  "event_reviews": [
+    {
+      "anomaly_id": "6c1a54b3359e-01",
+      "scenario_type": "gradual_power_degradation",
+      "start_timestamp": "2022-04-28 10:38:00",
+      "end_timestamp": "2022-04-28 11:26:00",
+      "directly_modified_row_count": 25,
+      "affected_variables": [
+        "Power_Generated",
+        "Array_Voltage"
+      ],
+      "baseline_ranges": {
+        "Power_Generated": {
+          "minimum": 391.50804,
+          "maximum": 403.8806
+        },
+        "Array_Voltage": {
+          "minimum": 73.078736,
+          "maximum": 75.359576
+        }
+      },
+      "synthetic_ranges": {
+        "Power_Generated": {
+          "minimum": 306.9057336575565,
+          "maximum": 399.9376627611646
+        },
+        "Array_Voltage": {
+          "minimum": 57.286902937796334,
+          "maximum": 74.62533410693341
+        }
+      },
+      "downstream_features_affected": true,
+      "downstream_changed_feature_count": 22,
+      "downstream_changed_features": [
+        "electrical_power_product",
+        "power_consistency_residual",
+        "power_consistency_abs_error",
+        "power_generated_roll_mean_10m",
+        "power_generated_roll_std_10m",
+        "power_generated_roll_min_10m",
+        "power_generated_roll_max_10m",
+        "power_generated_roll_mean_30m",
+        "power_generated_roll_std_30m",
+        "power_generated_roll_min_30m",
+        "power_generated_roll_max_30m",
+        "power_generated_roll_mean_60m",
+        "power_generated_roll_std_60m",
+        "power_generated_roll_min_60m",
+        "power_generated_roll_max_60m",
+        "power_generated_diff",
+        "array_voltage_diff",
+        "power_generated_rate_per_min",
+        "array_voltage_rate_per_min",
+        "power_generated_relative_change",
+        "power_deviation_from_30m_mean",
+        "power_deviation_ratio_30m"
+      ],
+      "propagated_row_count": 29,
+      "propagated_start_timestamp": "2022-04-28 11:28:00",
+      "propagated_end_timestamp": "2022-04-28 12:24:00",
+      "special_observation": "Twenty-five-row causal ramp followed by an artificial return to the untouched trajectory."
+    },
+    {
+      "anomaly_id": "6c1a54b3359e-02",
+      "scenario_type": "sustained_power_reduction",
+      "start_timestamp": "2022-04-28 14:00:00",
+      "end_timestamp": "2022-04-28 14:08:00",
+      "directly_modified_row_count": 5,
+      "affected_variables": [
+        "Power_Generated",
+        "Array_Voltage"
+      ],
+      "baseline_ranges": {
+        "Power_Generated": {
+          "minimum": 373.68816,
+          "maximum": 375.32552
+        },
+        "Array_Voltage": {
+          "minimum": 69.804824,
+          "maximum": 70.113056
+        }
+      },
+      "synthetic_ranges": {
+        "Power_Generated": {
+          "minimum": 288.1921624692732,
+          "maximum": 289.4549113857513
+        },
+        "Array_Voltage": {
+          "minimum": 53.83420009707297,
+          "maximum": 54.071911793965455
+        }
+      },
+      "downstream_features_affected": true,
+      "downstream_changed_feature_count": 21,
+      "downstream_changed_features": [
+        "electrical_power_product",
+        "power_consistency_residual",
+        "power_consistency_abs_error",
+        "power_generated_roll_mean_10m",
+        "power_generated_roll_std_10m",
+        "power_generated_roll_min_10m",
+        "power_generated_roll_max_10m",
+        "power_generated_roll_mean_30m",
+        "power_generated_roll_std_30m",
+        "power_generated_roll_min_30m",
+        "power_generated_roll_max_30m",
+        "power_generated_roll_mean_60m",
+        "power_generated_roll_std_60m",
+        "power_generated_roll_min_60m",
+        "power_generated_diff",
+        "array_voltage_diff",
+        "power_generated_rate_per_min",
+        "array_voltage_rate_per_min",
+        "power_generated_relative_change",
+        "power_deviation_from_30m_mean",
+        "power_deviation_ratio_30m"
+      ],
+      "propagated_row_count": 29,
+      "propagated_start_timestamp": "2022-04-28 14:10:00",
+      "propagated_end_timestamp": "2022-04-28 15:06:00",
+      "special_observation": "Five-row persistent reduction followed by a recovery edge."
+    },
+    {
+      "anomaly_id": "6c1a54b3359e-03",
+      "scenario_type": "radiation_power_inconsistency",
+      "start_timestamp": "2022-04-28 17:22:00",
+      "end_timestamp": "2022-04-28 17:34:00",
+      "directly_modified_row_count": 7,
+      "affected_variables": [
+        "Solar_Radiation"
+      ],
+      "baseline_ranges": {
+        "Solar_Radiation": {
+          "minimum": 113.15028,
+          "maximum": 139.88244
+        }
+      },
+      "synthetic_ranges": {
+        "Solar_Radiation": {
+          "minimum": 126.06373699247176,
+          "maximum": 155.846747582288
+        }
+      },
+      "downstream_features_affected": true,
+      "downstream_changed_feature_count": 17,
+      "downstream_changed_features": [
+        "solar_radiation_roll_mean_10m",
+        "solar_radiation_roll_std_10m",
+        "solar_radiation_roll_min_10m",
+        "solar_radiation_roll_max_10m",
+        "solar_radiation_roll_mean_30m",
+        "solar_radiation_roll_std_30m",
+        "solar_radiation_roll_min_30m",
+        "solar_radiation_roll_max_30m",
+        "solar_radiation_roll_mean_60m",
+        "solar_radiation_roll_std_60m",
+        "solar_radiation_roll_min_60m",
+        "solar_radiation_roll_max_60m",
+        "solar_radiation_diff",
+        "solar_radiation_rate_per_min",
+        "solar_radiation_relative_change",
+        "solar_deviation_from_30m_mean",
+        "solar_deviation_ratio_30m"
+      ],
+      "propagated_row_count": 29,
+      "propagated_start_timestamp": "2022-04-28 17:36:00",
+      "propagated_end_timestamp": "2022-04-28 18:32:00",
+      "special_observation": "Radiation changes while power, voltage, and current retain their baseline values."
+    },
+    {
+      "anomaly_id": "6c1a54b3359e-04",
+      "scenario_type": "sudden_power_drop",
+      "start_timestamp": "2022-04-28 12:38:00",
+      "end_timestamp": "2022-04-28 12:42:00",
+      "directly_modified_row_count": 3,
+      "affected_variables": [
+        "Power_Generated",
+        "Array_Voltage"
+      ],
+      "baseline_ranges": {
+        "Power_Generated": {
+          "minimum": 373.85456,
+          "maximum": 374.36696
+        },
+        "Array_Voltage": {
+          "minimum": 69.821168,
+          "maximum": 69.915712
+        }
+      },
+      "synthetic_ranges": {
+        "Power_Generated": {
+          "minimum": 279.5579943227731,
+          "maximum": 279.9411527261131
+        },
+        "Array_Voltage": {
+          "minimum": 52.210318599172325,
+          "maximum": 52.28101596077533
+        }
+      },
+      "downstream_features_affected": true,
+      "downstream_changed_feature_count": 20,
+      "downstream_changed_features": [
+        "electrical_power_product",
+        "power_consistency_residual",
+        "power_consistency_abs_error",
+        "power_generated_roll_mean_10m",
+        "power_generated_roll_std_10m",
+        "power_generated_roll_min_10m",
+        "power_generated_roll_max_10m",
+        "power_generated_roll_mean_30m",
+        "power_generated_roll_std_30m",
+        "power_generated_roll_min_30m",
+        "power_generated_roll_mean_60m",
+        "power_generated_roll_std_60m",
+        "power_generated_roll_min_60m",
+        "power_generated_diff",
+        "array_voltage_diff",
+        "power_generated_rate_per_min",
+        "array_voltage_rate_per_min",
+        "power_generated_relative_change",
+        "power_deviation_from_30m_mean",
+        "power_deviation_ratio_30m"
+      ],
+      "propagated_row_count": 29,
+      "propagated_start_timestamp": "2022-04-28 12:44:00",
+      "propagated_end_timestamp": "2022-04-28 13:40:00",
+      "special_observation": "Short three-row step reduction; power and voltage use the same factor."
+    },
+    {
+      "anomaly_id": "6c1a54b3359e-05",
+      "scenario_type": "temporary_near_zero_power",
+      "start_timestamp": "2022-04-28 08:22:00",
+      "end_timestamp": "2022-04-28 08:26:00",
+      "directly_modified_row_count": 3,
+      "affected_variables": [
+        "Power_Generated",
+        "Array_Voltage"
+      ],
+      "baseline_ranges": {
+        "Power_Generated": {
+          "minimum": 299.89954,
+          "maximum": 300.26184
+        },
+        "Array_Voltage": {
+          "minimum": 55.624412,
+          "maximum": 55.692528
+        }
+      },
+      "synthetic_ranges": {
+        "Power_Generated": {
+          "minimum": 0.7684243901425036,
+          "maximum": 0.7693527015248706
+        },
+        "Array_Voltage": {
+          "minimum": 0.1425249097352245,
+          "maximum": 0.1426994414992911
+        }
+      },
+      "downstream_features_affected": true,
+      "downstream_changed_feature_count": 19,
+      "downstream_changed_features": [
+        "electrical_power_product",
+        "power_consistency_residual",
+        "power_consistency_abs_error",
+        "power_generated_roll_mean_10m",
+        "power_generated_roll_std_10m",
+        "power_generated_roll_min_10m",
+        "power_generated_roll_mean_30m",
+        "power_generated_roll_std_30m",
+        "power_generated_roll_min_30m",
+        "power_generated_roll_mean_60m",
+        "power_generated_roll_std_60m",
+        "power_generated_roll_min_60m",
+        "power_generated_diff",
+        "array_voltage_diff",
+        "power_generated_rate_per_min",
+        "array_voltage_rate_per_min",
+        "power_generated_relative_change",
+        "power_deviation_from_30m_mean",
+        "power_deviation_ratio_30m"
+      ],
+      "propagated_row_count": 29,
+      "propagated_start_timestamp": "2022-04-28 08:28:00",
+      "propagated_end_timestamp": "2022-04-28 09:24:00",
+      "special_observation": "Creates three expected extra NaNs in safeguarded power relative change."
+    },
+    {
+      "anomaly_id": "6c1a54b3359e-06",
+      "scenario_type": "sudden_power_spike",
+      "start_timestamp": "2022-04-28 15:34:00",
+      "end_timestamp": "2022-04-28 15:34:00",
+      "directly_modified_row_count": 1,
+      "affected_variables": [
+        "Power_Generated",
+        "Array_Voltage"
+      ],
+      "baseline_ranges": {
+        "Power_Generated": {
+          "minimum": 389.0694,
+          "maximum": 389.0694
+        },
+        "Array_Voltage": {
+          "minimum": 72.665816,
+          "maximum": 72.665816
+        }
+      },
+      "synthetic_ranges": {
+        "Power_Generated": {
+          "minimum": 456.8295729618711,
+          "maximum": 456.8295729618711
+        },
+        "Array_Voltage": {
+          "minimum": 85.32126580040966,
+          "maximum": 85.32126580040966
+        }
+      },
+      "downstream_features_affected": true,
+      "downstream_changed_feature_count": 19,
+      "downstream_changed_features": [
+        "electrical_power_product",
+        "power_consistency_residual",
+        "power_consistency_abs_error",
+        "power_generated_roll_mean_10m",
+        "power_generated_roll_std_10m",
+        "power_generated_roll_max_10m",
+        "power_generated_roll_mean_30m",
+        "power_generated_roll_std_30m",
+        "power_generated_roll_max_30m",
+        "power_generated_roll_mean_60m",
+        "power_generated_roll_std_60m",
+        "power_generated_roll_max_60m",
+        "power_generated_diff",
+        "array_voltage_diff",
+        "power_generated_rate_per_min",
+        "array_voltage_rate_per_min",
+        "power_generated_relative_change",
+        "power_deviation_from_30m_mean",
+        "power_deviation_ratio_30m"
+      ],
+      "propagated_row_count": 29,
+      "propagated_start_timestamp": "2022-04-28 15:36:00",
+      "propagated_end_timestamp": "2022-04-28 16:32:00",
+      "special_observation": "Synthetic value is above the maximum observed in the available baseline dataset; equipment capacity is unknown."
+    },
+    {
+      "anomaly_id": "6c1a54b3359e-07",
+      "scenario_type": "sensor_excursion",
+      "start_timestamp": "2022-04-28 02:26:00",
+      "end_timestamp": "2022-04-28 02:28:00",
+      "directly_modified_row_count": 2,
+      "affected_variables": [
+        "Relative_Humidity"
+      ],
+      "baseline_ranges": {
+        "Relative_Humidity": {
+          "minimum": 43.42042,
+          "maximum": 43.560464
+        }
+      },
+      "synthetic_ranges": {
+        "Relative_Humidity": {
+          "minimum": 50.53422806635415,
+          "maximum": 50.67427206635415
+        }
+      },
+      "downstream_features_affected": true,
+      "downstream_changed_feature_count": 4,
+      "downstream_changed_features": [
+        "relative_humidity_roll_mean_30m",
+        "relative_humidity_roll_mean_60m",
+        "relative_humidity_diff",
+        "relative_humidity_rate_per_min"
+      ],
+      "propagated_row_count": 29,
+      "propagated_start_timestamp": "2022-04-28 02:30:00",
+      "propagated_end_timestamp": "2022-04-28 03:26:00",
+      "special_observation": "The seed-42 event selected Relative_Humidity; other original measurements remain unchanged."
+    }
+  ],
+  "direct_vs_propagated_effects": {
+    "definitions": {
+      "direct": "At least one original operational or sensor measurement was deliberately modified; synthetic_anomaly remains 1.",
+      "propagated": "Original measurements are untouched, but one or more causal rolling/change features differ because of an earlier synthetic event.",
+      "none": "Neither original measurements nor engineered features differ from the baseline."
+    },
+    "proposed_future_field": {
+      "name": "synthetic_effect_context",
+      "allowed_values": [
+        "none",
+        "direct",
+        "propagated"
+      ],
+      "precedence": "direct takes precedence if both a measurement and derived context are affected",
+      "current_prototype_modified": false
+    },
+    "row_counts": {
+      "none": 760,
+      "direct": 46,
+      "propagated": 203
+    },
+    "metadata_reported_direct_rows": 46,
+    "metadata_reported_derived_only_rows": 203,
+    "direct_labels_equal_measurement_changes": true,
+    "propagated_positions_equal_metadata_tail_union": true,
+    "propagated_first_timestamp": "2022-04-28 02:30:00",
+    "propagated_last_timestamp": "2022-04-28 18:32:00",
+    "evaluation_note": "A detector using rolling/change features can alert on propagated rows even though the strict point label is 0. Keep primary point metrics against direct labels and report alerts in propagated context separately rather than relabeling them after seeing scores."
+  },
+  "spike_review": {
+    "timestamp": "2022-04-28 15:34:00",
+    "baseline_value_w": 389.0694,
+    "synthetic_value_w": 456.8295729618711,
+    "sampled_increase_fraction": 0.17415960484651624,
+    "recalculated_increase_fraction": 0.17415960484651616,
+    "configured_increase_fraction_range": [
+      0.1,
+      0.3
+    ],
+    "mathematically_consistent_with_configuration": true,
+    "historical_distribution_w": {
+      "mean": 183.1516090901883,
+      "population_standard_deviation": 166.216591025133,
+      "median": 276.00158,
+      "90th_percentile": 392.80164,
+      "95th_percentile": 403.154616,
+      "99th_percentile": 432.2698336,
+      "maximum": 438.55684
+    },
+    "excess_above_historical_maximum_w": 18.2727329618711,
+    "percentage_above_historical_maximum": 4.166559792311331,
+    "population_standard_deviations_above_mean": 1.6465141186194885,
+    "nearby_baseline_window": {
+      "half_window_minutes": 10,
+      "excluded_event_row": true,
+      "row_count": 10,
+      "minimum_w": 384.942,
+      "maximum_w": 390.54484,
+      "mean_w": 388.215848
+    },
+    "neutral_result": "above the maximum observed in the available baseline dataset.",
+    "capacity_interpretation": "Physical equipment capacity is unknown; no capacity claim is made."
+  },
+  "near_zero_nan_review": {
+    "anomaly_id": "6c1a54b3359e-05",
+    "relative_change_feature": "power_generated_relative_change",
+    "denominator_floor_w": 1.0,
+    "baseline_nan_count": 1,
+    "synthetic_nan_count": 4,
+    "additional_nan_count": 3,
+    "additional_nan_rows": [
+      {
+        "row_position": 506,
+        "timestamp": "2022-04-28 08:24:00",
+        "previous_synthetic_power_w": 0.7689057386831921,
+        "current_synthetic_power_w": 0.7684243901425036,
+        "reason": "absolute previous synthetic power is below the 1 W denominator floor",
+        "direct_label": 1
+      },
+      {
+        "row_position": 507,
+        "timestamp": "2022-04-28 08:26:00",
+        "previous_synthetic_power_w": 0.7684243901425036,
+        "current_synthetic_power_w": 0.7693527015248706,
+        "reason": "absolute previous synthetic power is below the 1 W denominator floor",
+        "direct_label": 1
+      },
+      {
+        "row_position": 508,
+        "timestamp": "2022-04-28 08:28:00",
+        "previous_synthetic_power_w": 0.7693527015248706,
+        "current_synthetic_power_w": 301.2164,
+        "reason": "absolute previous synthetic power is below the 1 W denominator floor",
+        "direct_label": 0
+      }
+    ],
+    "infinity_count_in_complete_synthetic_dataset": 0,
+    "follows_existing_safeguard_policy": true,
+    "core_model_recommendation": "Keep power and solar relative-change/ratio features outside the first Core model. The established Core nine features contain none of these ratios."
+  },
+  "split_options": {
+    "option_a_larger_training": {
+      "display_name": "Option A: larger training period",
+      "partitions": {
+        "training": {
+          "start_row_position": 0,
+          "end_row_position_inclusive": 599,
+          "start_timestamp": "2022-04-27 15:32:00",
+          "end_timestamp": "2022-04-28 11:30:00",
+          "next_boundary_timestamp": "2022-04-28 11:32:00",
+          "row_count": 600,
+          "sample_support_hours": 20.0,
+          "inclusive_timestamp_span_hours": 19.966666666666665,
+          "daylight_row_count": 270,
+          "low_light_row_count": 330,
+          "radiation_above_100_w_m2_row_count": 191,
+          "first_daylight_timestamp": "2022-04-27 15:32:00",
+          "last_daylight_timestamp": "2022-04-28 11:30:00",
+          "first_low_light_timestamp": "2022-04-27 18:52:00",
+          "last_low_light_timestamp": "2022-04-28 05:50:00",
+          "core_feature_readiness": {
+            "Power_Generated": {
+              "missing_count": 0,
+              "finite_count": 600,
+              "population_variance": 26001.62129934948,
+              "minimum": 12.482584,
+              "maximum": 438.55684,
+              "variability_status": "variable",
+              "coefficient_of_variation": 0.9560400964124028,
+              "dominant_value_fraction": 0.0033333333333333335
+            },
+            "Solar_Radiation": {
+              "missing_count": 0,
+              "finite_count": 600,
+              "population_variance": 77219.55237821529,
+              "minimum": -0.838326,
+              "maximum": 1077.0958,
+              "variability_status": "variable",
+              "coefficient_of_variation": 1.8533398553767984,
+              "dominant_value_fraction": 0.008333333333333333
+            },
+            "Air_Temp": {
+              "missing_count": 0,
+              "finite_count": 600,
+              "population_variance": 104.58160340199146,
+              "minimum": 12.075478,
+              "maximum": 49.631508,
+              "variability_status": "variable",
+              "coefficient_of_variation": 0.45701619619263445,
+              "dominant_value_fraction": 0.005
+            },
+            "Relative_Humidity": {
+              "missing_count": 0,
+              "finite_count": 600,
+              "population_variance": 144.12092038065495,
+              "minimum": 10.648168,
+              "maximum": 51.489112,
+              "variability_status": "variable",
+              "coefficient_of_variation": 0.34166166228477135,
+              "dominant_value_fraction": 0.005
+            },
+            "Wind_Speed": {
+              "missing_count": 0,
+              "finite_count": 600,
+              "population_variance": 0.13223212074569396,
+              "minimum": 0.0,
+              "maximum": 2.866667,
+              "variability_status": "variable",
+              "coefficient_of_variation": 2.8213241167299876,
+              "dominant_value_fraction": 0.8233333333333334
+            },
+            "rtd_mean": {
+              "missing_count": 0,
+              "finite_count": 600,
+              "population_variance": 559.4634445383091,
+              "minimum": 20.6130196,
+              "maximum": 101.8154296,
+              "variability_status": "variable",
+              "coefficient_of_variation": 0.624962248408967,
+              "dominant_value_fraction": 0.0016666666666666668
+            },
+            "rtd_std": {
+              "missing_count": 0,
+              "finite_count": 600,
+              "population_variance": 1.512456949324127,
+              "minimum": 0.1782935258965953,
+              "maximum": 8.33087125581534,
+              "variability_status": "variable",
+              "coefficient_of_variation": 1.2246941402993818,
+              "dominant_value_fraction": 0.0016666666666666668
+            },
+            "minute_of_day_sin": {
+              "missing_count": 0,
+              "finite_count": 600,
+              "population_variance": 0.5525106697477531,
+              "minimum": -1.0,
+              "maximum": 1.0,
+              "variability_status": "variable",
+              "coefficient_of_variation": 10.064242582587676,
+              "dominant_value_fraction": 0.0033333333333333335
+            },
+            "minute_of_day_cos": {
+              "missing_count": 0,
+              "finite_count": 600,
+              "population_variance": 0.41101347265864235,
+              "minimum": -0.9914448613738104,
+              "maximum": 1.0,
+              "variability_status": "variable",
+              "coefficient_of_variation": 3.639985869608697,
+              "dominant_value_fraction": 0.0033333333333333335
+            }
+          },
+          "all_core_features_complete_finite_and_variable": true
+        },
+        "calibration": {
+          "start_row_position": 600,
+          "end_row_position_inclusive": 689,
+          "start_timestamp": "2022-04-28 11:32:00",
+          "end_timestamp": "2022-04-28 14:30:00",
+          "next_boundary_timestamp": "2022-04-28 14:32:00",
+          "row_count": 90,
+          "sample_support_hours": 3.0,
+          "inclusive_timestamp_span_hours": 2.966666666666667,
+          "daylight_row_count": 90,
+          "low_light_row_count": 0,
+          "radiation_above_100_w_m2_row_count": 90,
+          "first_daylight_timestamp": "2022-04-28 11:32:00",
+          "last_daylight_timestamp": "2022-04-28 14:30:00",
+          "first_low_light_timestamp": null,
+          "last_low_light_timestamp": null,
+          "core_feature_readiness": {
+            "Power_Generated": {
+              "missing_count": 0,
+              "finite_count": 90,
+              "population_variance": 21.618454249809567,
+              "minimum": 372.1638,
+              "maximum": 390.33008,
+              "variability_status": "variable",
+              "coefficient_of_variation": 0.012346115456873577,
+              "dominant_value_fraction": 0.011111111111111112
+            },
+            "Solar_Radiation": {
+              "missing_count": 0,
+              "finite_count": 90,
+              "population_variance": 5232.92813869787,
+              "minimum": 839.628,
+              "maximum": 1132.1284,
+              "variability_status": "variable",
+              "coefficient_of_variation": 0.06976581066862973,
+              "dominant_value_fraction": 0.011111111111111112
+            },
+            "Air_Temp": {
+              "missing_count": 0,
+              "finite_count": 90,
+              "population_variance": 3.927076644583553,
+              "minimum": 41.90824,
+              "maximum": 48.00498,
+              "variability_status": "variable",
+              "coefficient_of_variation": 0.0433803233230079,
+              "dominant_value_fraction": 0.022222222222222223
+            },
+            "Relative_Humidity": {
+              "missing_count": 0,
+              "finite_count": 90,
+              "population_variance": 5.116195001236887,
+              "minimum": 12.356806,
+              "maximum": 21.644586,
+              "variability_status": "variable",
+              "coefficient_of_variation": 0.13415182409180382,
+              "dominant_value_fraction": 0.022222222222222223
+            },
+            "Wind_Speed": {
+              "missing_count": 0,
+              "finite_count": 90,
+              "population_variance": 0.44825307162696837,
+              "minimum": 0.0,
+              "maximum": 2.933334,
+              "variability_status": "variable",
+              "coefficient_of_variation": 0.9899757939960427,
+              "dominant_value_fraction": 0.2111111111111111
+            },
+            "rtd_mean": {
+              "missing_count": 0,
+              "finite_count": 90,
+              "population_variance": 15.478078502333807,
+              "minimum": 98.79658,
+              "maximum": 112.20541999999998,
+              "variability_status": "variable",
+              "coefficient_of_variation": 0.03675334640680775,
+              "dominant_value_fraction": 0.011111111111111112
+            },
+            "rtd_std": {
+              "missing_count": 0,
+              "finite_count": 90,
+              "population_variance": 0.025624803418871935,
+              "minimum": 2.160831480309153,
+              "maximum": 2.962075461246023,
+              "variability_status": "variable",
+              "coefficient_of_variation": 0.06367846836343911,
+              "dominant_value_fraction": 0.011111111111111112
+            },
+            "minute_of_day_sin": {
+              "missing_count": 0,
+              "finite_count": 90,
+              "population_variance": 0.046423938892044506,
+              "minimum": -0.6087614290087207,
+              "maximum": 0.1218693434051475,
+              "variability_status": "variable",
+              "coefficient_of_variation": 0.840586768982353,
+              "dominant_value_fraction": 0.011111111111111112
+            },
+            "minute_of_day_cos": {
+              "missing_count": 0,
+              "finite_count": 90,
+              "population_variance": 0.00392883092378355,
+              "minimum": -1.0,
+              "maximum": -0.7933533402912352,
+              "variability_status": "variable",
+              "coefficient_of_variation": 0.06666823046759483,
+              "dominant_value_fraction": 0.022222222222222223
+            }
+          },
+          "all_core_features_complete_finite_and_variable": true
+        },
+        "synthetic_evaluation": {
+          "start_row_position": 690,
+          "end_row_position_inclusive": 1008,
+          "start_timestamp": "2022-04-28 14:32:00",
+          "end_timestamp": "2022-04-29 01:08:00",
+          "next_boundary_timestamp": "2022-04-29 01:10:00",
+          "row_count": 319,
+          "sample_support_hours": 10.633333333333333,
+          "inclusive_timestamp_span_hours": 10.6,
+          "daylight_row_count": 131,
+          "low_light_row_count": 188,
+          "radiation_above_100_w_m2_row_count": 94,
+          "first_daylight_timestamp": "2022-04-28 14:32:00",
+          "last_daylight_timestamp": "2022-04-28 18:52:00",
+          "first_low_light_timestamp": "2022-04-28 18:54:00",
+          "last_low_light_timestamp": "2022-04-29 01:08:00",
+          "core_feature_readiness": {
+            "Power_Generated": {
+              "missing_count": 0,
+              "finite_count": 319,
+              "population_variance": 26775.663838419303,
+              "minimum": 8.485232,
+              "maximum": 403.95436,
+              "variability_status": "variable",
+              "coefficient_of_variation": 1.050129516132352,
+              "dominant_value_fraction": 0.006269592476489028
+            },
+            "Solar_Radiation": {
+              "missing_count": 0,
+              "finite_count": 319,
+              "population_variance": 52491.87660808406,
+              "minimum": -0.686325,
+              "maximum": 839.82272,
+              "variability_status": "variable",
+              "coefficient_of_variation": 1.7081901731465303,
+              "dominant_value_fraction": 0.012539184952978056
+            },
+            "Air_Temp": {
+              "missing_count": 0,
+              "finite_count": 319,
+              "population_variance": 82.05480164007759,
+              "minimum": 16.157694,
+              "maximum": 43.654852,
+              "variability_status": "variable",
+              "coefficient_of_variation": 0.3591965556609541,
+              "dominant_value_fraction": 0.006269592476489028
+            },
+            "Relative_Humidity": {
+              "missing_count": 0,
+              "finite_count": 319,
+              "population_variance": 119.40921492590292,
+              "minimum": 11.707802,
+              "maximum": 44.301432,
+              "variability_status": "variable",
+              "coefficient_of_variation": 0.36721912879397123,
+              "dominant_value_fraction": 0.006269592476489028
+            },
+            "Wind_Speed": {
+              "missing_count": 0,
+              "finite_count": 319,
+              "population_variance": 0.14510272405780136,
+              "minimum": 0.0,
+              "maximum": 2.333334,
+              "variability_status": "variable",
+              "coefficient_of_variation": 2.8171853248721574,
+              "dominant_value_fraction": 0.8338557993730408
+            },
+            "rtd_mean": {
+              "missing_count": 0,
+              "finite_count": 319,
+              "population_variance": 1012.0331304385321,
+              "minimum": 24.5327472,
+              "maximum": 111.69082,
+              "variability_status": "variable",
+              "coefficient_of_variation": 0.68660420259184,
+              "dominant_value_fraction": 0.003134796238244514
+            },
+            "rtd_std": {
+              "missing_count": 0,
+              "finite_count": 319,
+              "population_variance": 0.3980950741520797,
+              "minimum": 0.2358585137509345,
+              "maximum": 2.5266513234904395,
+              "variability_status": "variable",
+              "coefficient_of_variation": 0.7995192369243019,
+              "dominant_value_fraction": 0.003134796238244514
+            },
+            "minute_of_day_sin": {
+              "missing_count": 0,
+              "finite_count": 319,
+              "population_variance": 0.142827266616501,
+              "minimum": -1.0,
+              "maximum": 0.2923717047227367,
+              "variability_status": "variable",
+              "coefficient_of_variation": 0.6026570751664431,
+              "dominant_value_fraction": 0.006269592476489028
+            },
+            "minute_of_day_cos": {
+              "missing_count": 0,
+              "finite_count": 319,
+              "population_variance": 0.3573537372457493,
+              "minimum": -0.7880107536067222,
+              "maximum": 1.0,
+              "variability_status": "variable",
+              "coefficient_of_variation": 1.8312059273664447,
+              "dominant_value_fraction": 0.006269592476489028
+            }
+          },
+          "all_core_features_complete_finite_and_variable": true
+        }
+      },
+      "advantages": [
+        "Uses 600 normal-like rows for detector and scaler fitting.",
+        "Training spans daylight, night, and the following morning.",
+        "The evaluation region contains afternoon daylight, the second 17:00 transition, and night."
+      ],
+      "disadvantages": [
+        "Calibration has only 90 rows (3 hours) and is entirely daylight.",
+        "A threshold calibrated only at midday may not transfer well to the low-light portion of evaluation.",
+        "The regions still come from one complete daily cycle plus partial boundaries."
+      ],
+      "coverage_validation": {
+        "covers_all_rows_exactly_once": true,
+        "no_row_duplication": true,
+        "no_uncovered_rows": true,
+        "chronological_non_overlapping_boundaries": true
+      },
+      "recurring_transition_partition": {
+        "2022-04-27 17:00:00": "training",
+        "2022-04-28 17:00:00": "synthetic_evaluation"
+      },
+      "current_validation_prototype_event_partition": {
+        "6c1a54b3359e-01": "training",
+        "6c1a54b3359e-02": "calibration",
+        "6c1a54b3359e-03": "synthetic_evaluation",
+        "6c1a54b3359e-04": "calibration",
+        "6c1a54b3359e-05": "training",
+        "6c1a54b3359e-06": "synthetic_evaluation",
+        "6c1a54b3359e-07": "training"
+      }
+    },
+    "option_b_balanced": {
+      "display_name": "Option B: approximately balanced thirds",
+      "partitions": {
+        "training": {
+          "start_row_position": 0,
+          "end_row_position_inclusive": 335,
+          "start_timestamp": "2022-04-27 15:32:00",
+          "end_timestamp": "2022-04-28 02:42:00",
+          "next_boundary_timestamp": "2022-04-28 02:44:00",
+          "row_count": 336,
+          "sample_support_hours": 11.2,
+          "inclusive_timestamp_span_hours": 11.166666666666666,
+          "daylight_row_count": 100,
+          "low_light_row_count": 236,
+          "radiation_above_100_w_m2_row_count": 64,
+          "first_daylight_timestamp": "2022-04-27 15:32:00",
+          "last_daylight_timestamp": "2022-04-27 18:50:00",
+          "first_low_light_timestamp": "2022-04-27 18:52:00",
+          "last_low_light_timestamp": "2022-04-28 02:42:00",
+          "core_feature_readiness": {
+            "Power_Generated": {
+              "missing_count": 0,
+              "finite_count": 336,
+              "population_variance": 24871.946354584103,
+              "minimum": 12.482584,
+              "maximum": 438.55684,
+              "variability_status": "variable",
+              "coefficient_of_variation": 1.29067819833487,
+              "dominant_value_fraction": 0.005952380952380952
+            },
+            "Solar_Radiation": {
+              "missing_count": 0,
+              "finite_count": 336,
+              "population_variance": 31815.02594957274,
+              "minimum": -0.838326,
+              "maximum": 710.46328,
+              "variability_status": "variable",
+              "coefficient_of_variation": 2.1321687098498483,
+              "dominant_value_fraction": 0.008928571428571428
+            },
+            "Air_Temp": {
+              "missing_count": 0,
+              "finite_count": 336,
+              "population_variance": 70.70659517511326,
+              "minimum": 14.837342,
+              "maximum": 44.327492,
+              "variability_status": "variable",
+              "coefficient_of_variation": 0.38289579577081856,
+              "dominant_value_fraction": 0.008928571428571428
+            },
+            "Relative_Humidity": {
+              "missing_count": 0,
+              "finite_count": 336,
+              "population_variance": 148.62851006383087,
+              "minimum": 10.648168,
+              "maximum": 46.9611,
+              "variability_status": "variable",
+              "coefficient_of_variation": 0.3819963725207845,
+              "dominant_value_fraction": 0.005952380952380952
+            },
+            "Wind_Speed": {
+              "missing_count": 0,
+              "finite_count": 336,
+              "population_variance": 0.18387506815635007,
+              "minimum": 0.0,
+              "maximum": 2.866667,
+              "variability_status": "variable",
+              "coefficient_of_variation": 2.8436644422861677,
+              "dominant_value_fraction": 0.8363095238095238
+            },
+            "rtd_mean": {
+              "missing_count": 0,
+              "finite_count": 336,
+              "population_variance": 574.5714500191921,
+              "minimum": 22.1984776,
+              "maximum": 101.8154296,
+              "variability_status": "variable",
+              "coefficient_of_variation": 0.6600556013790096,
+              "dominant_value_fraction": 0.002976190476190476
+            },
+            "rtd_std": {
+              "missing_count": 0,
+              "finite_count": 336,
+              "population_variance": 0.339493552256319,
+              "minimum": 0.3534617537895728,
+              "maximum": 3.7756581438585983,
+              "variability_status": "variable",
+              "coefficient_of_variation": 0.8348385317968116,
+              "dominant_value_fraction": 0.002976190476190476
+            },
+            "minute_of_day_sin": {
+              "missing_count": 0,
+              "finite_count": 336,
+              "population_variance": 0.28179700295081195,
+              "minimum": -1.0,
+              "maximum": 0.6494480483301837,
+              "variability_status": "variable",
+              "coefficient_of_variation": 1.1420958106213395,
+              "dominant_value_fraction": 0.005952380952380952
+            },
+            "minute_of_day_cos": {
+              "missing_count": 0,
+              "finite_count": 336,
+              "population_variance": 0.25803316169525503,
+              "minimum": -0.6018150231520483,
+              "maximum": 1.0,
+              "variability_status": "variable",
+              "coefficient_of_variation": 1.0280779874411357,
+              "dominant_value_fraction": 0.005952380952380952
+            }
+          },
+          "all_core_features_complete_finite_and_variable": true
+        },
+        "calibration": {
+          "start_row_position": 336,
+          "end_row_position_inclusive": 671,
+          "start_timestamp": "2022-04-28 02:44:00",
+          "end_timestamp": "2022-04-28 13:54:00",
+          "next_boundary_timestamp": "2022-04-28 13:56:00",
+          "row_count": 336,
+          "sample_support_hours": 11.2,
+          "inclusive_timestamp_span_hours": 11.166666666666666,
+          "daylight_row_count": 242,
+          "low_light_row_count": 94,
+          "radiation_above_100_w_m2_row_count": 199,
+          "first_daylight_timestamp": "2022-04-28 05:52:00",
+          "last_daylight_timestamp": "2022-04-28 13:54:00",
+          "first_low_light_timestamp": "2022-04-28 02:44:00",
+          "last_low_light_timestamp": "2022-04-28 05:50:00",
+          "core_feature_readiness": {
+            "Power_Generated": {
+              "missing_count": 0,
+              "finite_count": 336,
+              "population_variance": 20407.47127282736,
+              "minimum": 13.969082,
+              "maximum": 403.8806,
+              "variability_status": "variable",
+              "coefficient_of_variation": 0.5498661818773453,
+              "dominant_value_fraction": 0.005952380952380952
+            },
+            "Solar_Radiation": {
+              "missing_count": 0,
+              "finite_count": 336,
+              "population_variance": 213197.3608668396,
+              "minimum": -0.706238,
+              "maximum": 1132.1284,
+              "variability_status": "variable",
+              "coefficient_of_variation": 1.1186955903588645,
+              "dominant_value_fraction": 0.01488095238095238
+            },
+            "Air_Temp": {
+              "missing_count": 0,
+              "finite_count": 336,
+              "population_variance": 208.75804287951073,
+              "minimum": 12.075478,
+              "maximum": 49.631508,
+              "variability_status": "variable",
+              "coefficient_of_variation": 0.5173165126754012,
+              "dominant_value_fraction": 0.005952380952380952
+            },
+            "Relative_Humidity": {
+              "missing_count": 0,
+              "finite_count": 336,
+              "population_variance": 164.08466520073685,
+              "minimum": 14.542124,
+              "maximum": 51.489112,
+              "variability_status": "variable",
+              "coefficient_of_variation": 0.37003934299736685,
+              "dominant_value_fraction": 0.008928571428571428
+            },
+            "Wind_Speed": {
+              "missing_count": 0,
+              "finite_count": 336,
+              "population_variance": 0.21949736242720214,
+              "minimum": 0.0,
+              "maximum": 2.933334,
+              "variability_status": "variable",
+              "coefficient_of_variation": 2.009589164095262,
+              "dominant_value_fraction": 0.6785714285714286
+            },
+            "rtd_mean": {
+              "missing_count": 0,
+              "finite_count": 336,
+              "population_variance": 1162.2945527201643,
+              "minimum": 20.6130196,
+              "maximum": 112.20541999999998,
+              "variability_status": "variable",
+              "coefficient_of_variation": 0.6313121220687539,
+              "dominant_value_fraction": 0.002976190476190476
+            },
+            "rtd_std": {
+              "missing_count": 0,
+              "finite_count": 336,
+              "population_variance": 2.3622869194450353,
+              "minimum": 0.1782935258965953,
+              "maximum": 8.33087125581534,
+              "variability_status": "variable",
+              "coefficient_of_variation": 0.9417846755099185,
+              "dominant_value_fraction": 0.002976190476190476
+            },
+            "minute_of_day_sin": {
+              "missing_count": 0,
+              "finite_count": 336,
+              "population_variance": 0.20175397086824964,
+              "minimum": -0.4771587602596084,
+              "maximum": 1.0,
+              "variability_status": "variable",
+              "coefficient_of_variation": 0.8058732332447951,
+              "dominant_value_fraction": 0.005952380952380952
+            },
+            "minute_of_day_cos": {
+              "missing_count": 0,
+              "finite_count": 336,
+              "population_variance": 0.3380761937778172,
+              "minimum": -1.0,
+              "maximum": 0.754709580222772,
+              "variability_status": "variable",
+              "coefficient_of_variation": 1.5037506660559017,
+              "dominant_value_fraction": 0.005952380952380952
+            }
+          },
+          "all_core_features_complete_finite_and_variable": true
+        },
+        "synthetic_evaluation": {
+          "start_row_position": 672,
+          "end_row_position_inclusive": 1008,
+          "start_timestamp": "2022-04-28 13:56:00",
+          "end_timestamp": "2022-04-29 01:08:00",
+          "next_boundary_timestamp": "2022-04-29 01:10:00",
+          "row_count": 337,
+          "sample_support_hours": 11.233333333333333,
+          "inclusive_timestamp_span_hours": 11.2,
+          "daylight_row_count": 149,
+          "low_light_row_count": 188,
+          "radiation_above_100_w_m2_row_count": 112,
+          "first_daylight_timestamp": "2022-04-28 13:56:00",
+          "last_daylight_timestamp": "2022-04-28 18:52:00",
+          "first_low_light_timestamp": "2022-04-28 18:54:00",
+          "last_low_light_timestamp": "2022-04-29 01:08:00",
+          "core_feature_readiness": {
+            "Power_Generated": {
+              "missing_count": 0,
+              "finite_count": 337,
+              "population_variance": 27767.597693844076,
+              "minimum": 8.485232,
+              "maximum": 403.95436,
+              "variability_status": "variable",
+              "coefficient_of_variation": 0.9947715216361819,
+              "dominant_value_fraction": 0.005934718100890208
+            },
+            "Solar_Radiation": {
+              "missing_count": 0,
+              "finite_count": 337,
+              "population_variance": 80694.73799271992,
+              "minimum": -0.686325,
+              "maximum": 979.1392,
+              "variability_status": "variable",
+              "coefficient_of_variation": 1.6149541075033502,
+              "dominant_value_fraction": 0.011869436201780416
+            },
+            "Air_Temp": {
+              "missing_count": 0,
+              "finite_count": 337,
+              "population_variance": 93.68024912954425,
+              "minimum": 16.157694,
+              "maximum": 43.654852,
+              "variability_status": "variable",
+              "coefficient_of_variation": 0.3698628381528189,
+              "dominant_value_fraction": 0.005934718100890208
+            },
+            "Relative_Humidity": {
+              "missing_count": 0,
+              "finite_count": 337,
+              "population_variance": 126.22923834952472,
+              "minimum": 11.707802,
+              "maximum": 44.301432,
+              "variability_status": "variable",
+              "coefficient_of_variation": 0.38882094383649557,
+              "dominant_value_fraction": 0.005934718100890208
+            },
+            "Wind_Speed": {
+              "missing_count": 0,
+              "finite_count": 337,
+              "population_variance": 0.15837047929982695,
+              "minimum": 0.0,
+              "maximum": 2.333334,
+              "variability_status": "variable",
+              "coefficient_of_variation": 2.562645827389564,
+              "dominant_value_fraction": 0.8011869436201781
+            },
+            "rtd_mean": {
+              "missing_count": 0,
+              "finite_count": 337,
+              "population_variance": 1168.4499266327268,
+              "minimum": 24.5327472,
+              "maximum": 111.69082,
+              "variability_status": "variable",
+              "coefficient_of_variation": 0.6866846557470416,
+              "dominant_value_fraction": 0.002967359050445104
+            },
+            "rtd_std": {
+              "missing_count": 0,
+              "finite_count": 337,
+              "population_variance": 0.5340317125583238,
+              "minimum": 0.2358585137509345,
+              "maximum": 2.692851408820025,
+              "variability_status": "variable",
+              "coefficient_of_variation": 0.8273899276145785,
+              "dominant_value_fraction": 0.002967359050445104
+            },
+            "minute_of_day_sin": {
+              "missing_count": 0,
+              "finite_count": 337,
+              "population_variance": 0.13559347781362321,
+              "minimum": -1.0,
+              "maximum": 0.2923717047227367,
+              "variability_status": "variable",
+              "coefficient_of_variation": 0.5911938082370752,
+              "dominant_value_fraction": 0.005934718100890208
+            },
+            "minute_of_day_cos": {
+              "missing_count": 0,
+              "finite_count": 337,
+              "population_variance": 0.40655266125863804,
+              "minimum": -0.8746197071393959,
+              "maximum": 1.0,
+              "variability_status": "variable",
+              "coefficient_of_variation": 2.411664841547503,
+              "dominant_value_fraction": 0.005934718100890208
+            }
+          },
+          "all_core_features_complete_finite_and_variable": true
+        }
+      },
+      "advantages": [
+        "Provides 336, 336, and 337 rows with daylight and low-light observations in every region.",
+        "Calibration covers pre-dawn, sunrise, morning, and midday rather than one narrow regime.",
+        "The evaluation region includes afternoon, the second recurring 17:00 transition, and night."
+      ],
+      "disadvantages": [
+        "Only 336 rows remain for model fitting.",
+        "Training daylight is limited to the late-afternoon portion of April 27.",
+        "Adjacent regions from this short record are not independent daily samples."
+      ],
+      "coverage_validation": {
+        "covers_all_rows_exactly_once": true,
+        "no_row_duplication": true,
+        "no_uncovered_rows": true,
+        "chronological_non_overlapping_boundaries": true
+      },
+      "recurring_transition_partition": {
+        "2022-04-27 17:00:00": "training",
+        "2022-04-28 17:00:00": "synthetic_evaluation"
+      },
+      "current_validation_prototype_event_partition": {
+        "6c1a54b3359e-01": "calibration",
+        "6c1a54b3359e-02": "synthetic_evaluation",
+        "6c1a54b3359e-03": "synthetic_evaluation",
+        "6c1a54b3359e-04": "calibration",
+        "6c1a54b3359e-05": "calibration",
+        "6c1a54b3359e-06": "synthetic_evaluation",
+        "6c1a54b3359e-07": "training"
+      }
+    }
+  },
+  "recommended_split": {
+    "option_id": "option_b_balanced",
+    "reason": "All three regions contain daylight and low-light rows, and calibration covers more operating regimes than Option A. This is preferable for a prototype threshold review even though training has only 336 rows.",
+    "limitation": "The regions are adjacent parts of approximately 33.6 hours with only one complete daily cycle; they are chronological but not independent days.",
+    "status": "planning recommendation only; no split datasets created"
+  },
+  "future_model_data_policy": [
+    "Choose and freeze chronological boundaries.",
+    "Use untouched baseline rows from the training region.",
+    "Reserve a separate untouched baseline calibration region.",
+    "Fit the scaler using training data only.",
+    "Train the unsupervised detector using training data only.",
+    "Select and freeze the alert threshold using calibration data only.",
+    "Regenerate synthetic copies using only the evaluation region and new predeclared seeds.",
+    "Evaluate the frozen pipeline against direct synthetic labels and report propagated-context alerts separately."
+  ],
+  "interpretation_limit": "Synthetic events are controlled prototype cases, not verified photovoltaic faults, and no detector-performance result is produced in this stage.",
+  "validation": {
+    "passed": true,
+    "checks": {
+      "prototype_shape_is_1009_by_84": true,
+      "metadata_seed_is_42": true,
+      "seven_events_reviewed": true,
+      "direct_row_accounting_matches": true,
+      "propagated_row_accounting_matches": true,
+      "effect_context_covers_all_rows": true,
+      "direct_labels_equal_measurement_changes": true,
+      "propagated_rows_match_generator_metadata": true,
+      "spike_matches_configured_math": true,
+      "near_zero_nan_safeguard_verified": true,
+      "no_infinities": true,
+      "all_split_options_cover_rows_once": true,
+      "all_core_features_ready_in_every_partition": true,
+      "prototype_validation_still_passes": true,
+      "all_source_csvs_and_generator_metadata_unchanged": true,
+      "models_directory_unchanged": true,
+      "no_trained_model_files_present": true
+    }
+  },
+  "artifacts": {
+    "baseline_file": "data/processed/operational_features_change.csv",
+    "synthetic_prototype_file": "data/processed/operational_synthetic_prototype.csv",
+    "generator_metadata_file": "outputs/synthetic_anomaly_metadata.json",
+    "timeline_figure": "outputs/figures/operational/day14_split_timeline.png"
+  },
+  "protected_source_files": {
+    "data/operational/solar-power-dataset/solar_data.csv": {
+      "sha256_before": "0615c4d92c7869074f99c4a6552cc201ab6db8152fc77650758664ed2c4ba393",
+      "sha256_after": "0615c4d92c7869074f99c4a6552cc201ab6db8152fc77650758664ed2c4ba393",
+      "unchanged": true
+    },
+    "data/processed/operational_cleaned.csv": {
+      "sha256_before": "3e440f11bf0a00227a4b2ae3ce29e38de0a03bb647b577daa2ff1f5d098624fc",
+      "sha256_after": "3e440f11bf0a00227a4b2ae3ce29e38de0a03bb647b577daa2ff1f5d098624fc",
+      "unchanged": true
+    },
+    "data/processed/operational_features_basic.csv": {
+      "sha256_before": "99f9f3a61f4602d518b6b2fa024f415f95acbd988cd9a4e5588f62e1f19dbcd7",
+      "sha256_after": "99f9f3a61f4602d518b6b2fa024f415f95acbd988cd9a4e5588f62e1f19dbcd7",
+      "unchanged": true
+    },
+    "data/processed/operational_features_change.csv": {
+      "sha256_before": "ca79f6c6bc35e89b194fc6e7c8b051e5784d226246942f6c10b4329f8cb23c1e",
+      "sha256_after": "ca79f6c6bc35e89b194fc6e7c8b051e5784d226246942f6c10b4329f8cb23c1e",
+      "unchanged": true
+    },
+    "data/processed/operational_features_rolling.csv": {
+      "sha256_before": "bfb29573505add5c5748f44719ae7db0f67fb41ce7f3a8741f215937bc002dfe",
+      "sha256_after": "bfb29573505add5c5748f44719ae7db0f67fb41ce7f3a8741f215937bc002dfe",
+      "unchanged": true
+    },
+    "data/processed/operational_synthetic_prototype.csv": {
+      "sha256_before": "7339365a248817a0d593eb7de7df481ddd6e5acc250c9d701bc5e4ede2c7e904",
+      "sha256_after": "7339365a248817a0d593eb7de7df481ddd6e5acc250c9d701bc5e4ede2c7e904",
+      "unchanged": true
+    },
+    "outputs/synthetic_anomaly_metadata.json": {
+      "sha256_before": "68fb37495a2b167b99c57a37c93c892f8bd169f61ced838133dc14bc6c8a064b",
+      "sha256_after": "68fb37495a2b167b99c57a37c93c892f8bd169f61ced838133dc14bc6c8a064b",
+      "unchanged": true
+    }
+  },
+  "models_directory": {
+    "before": {
+      ".gitkeep": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    "after": {
+      ".gitkeep": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    "unchanged": true,
+    "contains_only_placeholder": true
+  }
+}

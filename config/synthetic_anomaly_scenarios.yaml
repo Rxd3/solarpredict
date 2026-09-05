@@ -1,0 +1,173 @@
+# Day 12 disabled design template; consumed by the Day 13 prototype generator.
+# Explicit --prototype --scenarios all enables a run without changing these switches.
+schema_version: 1
+stage: design_only
+enabled: false
+random_seed: 42
+sampling_interval_seconds: 120
+baseline_path: data/processed/operational_features_change.csv
+baseline_measurement_path: data/processed/operational_cleaned.csv
+core_features:
+  - Power_Generated
+  - Solar_Radiation
+  - Air_Temp
+  - Relative_Humidity
+  - Wind_Speed
+  - rtd_mean
+  - rtd_std
+  - minute_of_day_sin
+  - minute_of_day_cos
+
+# Day 13 enforces placement/consistency rules. Final split/evaluation remains planned.
+context:
+  eligible_split: evaluation_only
+  eligibility_reference: untouched_baseline
+  require_finite_inputs: true
+  require_contiguous_sampling: true
+  low_light_threshold_w_m2: 5.0
+  power_event_min_radiation_w_m2: 100.0
+  power_event_min_power_w: 50.0
+  require_entire_window_eligible: true
+  overlap_allowed: false
+  minimum_gap_minutes: 60
+  max_modified_row_fraction_per_copy: 0.05
+  insufficient_eligible_windows: skip_and_record_reason
+  known_transition_exclusions:
+    half_window_minutes: 20
+    timestamps:
+      - '2022-04-27 17:00:00'
+      - '2022-04-28 17:00:00'
+  start_position:
+    method: seeded_choice_from_sorted_eligible_start_rows
+    manual_override: null
+  duration_semantics: inclusive_integer_sample_count_times_two_minutes
+  power_consistency_policy: scale_power_and_voltage_by_same_factor_keep_current
+  derived_feature_policy: recompute_causally_in_evaluation_copy
+  feature_tail_policy: record_influence_mask_keep_direct_labels_unchanged
+  evaluation_copies: one_scenario_family_per_copy_initially
+
+labels:
+  synthetic_anomaly:
+    dtype: int8
+    baseline_value: 0
+    modified_value: 1
+  synthetic_anomaly_type:
+    dtype: string
+    baseline_value: none
+    modified_value: scenario_id
+  synthetic_anomaly_id:
+    dtype: nullable_string
+    baseline_value: null
+    modified_value: deterministic_run_and_event_id
+
+reproducibility:
+  proposed_rng: numpy.random.Generator(PCG64)
+  parameter_sampling: uniform_inclusive_integer_samples_and_uniform_continuous_severity
+  metadata_required:
+    - baseline_sha256
+    - config_sha256
+    - generator_version
+    - dependency_versions
+    - seed_and_rng
+    - split_boundaries
+    - scenario_id
+    - event_id
+    - source_row_positions_and_timestamps
+    - affected_variables
+    - sampled_parameters
+    - original_and_modified_values
+    - context_checks
+    - skipped_event_reasons
+    - derived_feature_influence_rows
+    - output_sha256
+
+evaluation:
+  split_policy: chronological_train_calibration_evaluation_disjoint_rows
+  split_boundaries: null  # Choose after checking daylight coverage; do not fit today.
+  scaler_fit_scope: baseline_training_only
+  detector_fit_scope: baseline_training_only
+  threshold_selection_scope: baseline_calibration_only
+  final_test_labels_used_for_tuning: false
+  point_metrics: [precision, recall, f1, false_positive_count, false_positive_rate]
+  event_metrics: [detected_events, missed_events, event_recall, detection_delay, within_event_coverage]
+  event_hit_rule: at_least_one_detection_on_a_directly_modified_row
+  early_late_tolerance_samples: 0
+  paired_untouched_control: true
+  report_by: [scenario, severity, duration, seed, daylight_context]
+
+scenarios:
+  sudden_power_drop:
+    enabled: false
+    category: operational
+    affected_variables: [Power_Generated, Array_Voltage]
+    severity: {parameter: reduction_fraction, range: [0.10, 0.30]}
+    duration_samples: [1, 3]
+    duration_minutes: [2, 6]
+    transformation: 'P_new = P * (1 - reduction_fraction); V_new = V * (1 - reduction_fraction)'
+    context_rule: power_daylight
+
+  sustained_power_reduction:
+    enabled: false
+    category: operational
+    affected_variables: [Power_Generated, Array_Voltage]
+    severity: {parameter: reduction_fraction, range: [0.10, 0.25]}
+    duration_samples: [5, 15]
+    duration_minutes: [10, 30]
+    transformation: 'P_new = P * (1 - reduction_fraction); V_new = V * (1 - reduction_fraction)'
+    context_rule: power_daylight
+
+  temporary_near_zero_power:
+    enabled: false
+    category: operational_or_sensor
+    affected_variables: [Power_Generated, Array_Voltage]
+    severity: {parameter: retained_fraction, range: [0.0, 0.02]}
+    duration_samples: [1, 3]
+    duration_minutes: [2, 6]
+    transformation: 'P_new = P * retained_fraction; V_new = V * retained_fraction'
+    context_rule: power_daylight
+
+  sudden_power_spike:
+    enabled: false
+    category: operational_or_sensor
+    affected_variables: [Power_Generated, Array_Voltage]
+    severity: {parameter: increase_fraction, range: [0.10, 0.30]}
+    duration_samples: [1, 2]
+    duration_minutes: [2, 4]
+    transformation: 'P_new = P * (1 + increase_fraction); V_new = V * (1 + increase_fraction)'
+    context_rule: power_daylight
+
+  gradual_power_degradation:
+    enabled: false
+    category: operational
+    affected_variables: [Power_Generated, Array_Voltage]
+    severity: {parameter: final_reduction_fraction, range: [0.10, 0.25]}
+    duration_samples: [15, 30]
+    duration_minutes: [30, 60]
+    transformation: 'factor_j = 1 - final_reduction_fraction * j / n; P_new_j = P_j * factor_j; V_new_j = V_j * factor_j; j = 1..n'
+    context_rule: power_daylight
+
+  radiation_power_inconsistency:
+    enabled: false
+    category: sensor_or_relational
+    affected_variables: [Solar_Radiation]
+    severity: {parameter: radiation_increase_fraction, range: [0.10, 0.25]}
+    duration_samples: [3, 10]
+    duration_minutes: [6, 20]
+    transformation: 'S_new = S * (1 + radiation_increase_fraction); power, voltage, and current unchanged'
+    context_rule: power_daylight
+
+  sensor_excursion:
+    enabled: false
+    category: sensor
+    affected_variables: [Air_Temp, Relative_Humidity]
+    variable_selection: exactly_one_per_event
+    severity:
+      parameter: signed_additive_offset
+      direction_choices: [-1, 1]
+      magnitude_ranges:
+        Air_Temp: {range: [1.0, 3.0], unit: degrees_Celsius}
+        Relative_Humidity: {range: [3.0, 8.0], unit: percentage_points_RH}
+    duration_samples: [1, 3]
+    duration_minutes: [2, 6]
+    transformation: 'x_new = x + direction * magnitude; reject humidity candidate outside [0, 100]'
+    context_rule: finite_sensor_any_light
