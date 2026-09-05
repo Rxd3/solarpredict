@@ -54,15 +54,15 @@ Inspection Result
 Future Dashboard
 ```
 
-The real six-class dataset, all 821 image/label pairs, and all 5,760 boxes have
-been inspected. Annotation syntax is valid and the ground-truth contact sheet is
-complete. Training/evaluation entry points are prepared, but the documented
-train/test duplicate must be resolved before model fitting.
+The active six-class dataset, all 820 image/label pairs, and all 5,751 boxes have
+been inspected after recoverable duplicate quarantine. Annotation syntax is
+valid and the ground-truth contact sheet is complete. Training/evaluation entry
+points are prepared; 25 empty labels remain queued for human approval.
 
 ## Remaining integration placeholders
 
-- **Computer-vision model:** resolve the split-integrity issue, then train and
-  evaluate with per-class reporting that reflects the observed imbalance.
+- **Computer-vision model:** obtain human approval for empty-label handling,
+  then train and evaluate with per-class reporting that reflects the imbalance.
 - **Drone video processing:** retain source-video identity and keep every frame
   from a video entirely within one dataset split.
 - **Dashboard integration:** combine operational scores/events and visual

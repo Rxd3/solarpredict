@@ -9,8 +9,8 @@ ground-truth visualization, training dry run, and future evaluation interface.
 It does not fit a model, process video, perform trained-model inference, or build
 the dashboard.
 
-The downloaded version 1 dataset has 821 images, 821 label files, six classes,
-and 5,760 valid boxes. Its exact class mapping and split findings are documented
+The active version 1 dataset has 820 images, 820 label files, six classes,
+and 5,751 valid boxes after quarantine. Its exact class mapping and split findings are documented
 in [computer_vision_dataset.md](computer_vision_dataset.md).
 
 ## Verified environment and dry run
@@ -29,8 +29,8 @@ in [computer_vision_dataset.md](computer_vision_dataset.md).
 
 The real dry run completed successfully with no errors and reported
 `ready_for_training: true` for technical configuration/path checks. It does not
-assess dataset leakage; the duplicated train/test image remains a separate
-quality gate.
+assess semantic label quality; the cross-split duplicate has been removed from
+the active test split and preserved in recoverable quarantine.
 
 ## CPU feasibility and Day 25 recommendation
 
@@ -71,15 +71,13 @@ predictions.
 
 Before model fitting:
 
-1. manually resolve the one exact train/test duplicate image and its differing
-   labels without random split redesign;
-2. review the 25 empty label files to confirm they are intentional negative
+1. review the 25 empty label files to confirm they are intentional negative
    samples;
-3. rerun the inspector, visualization, dry run, and complete tests; and
-4. record the approved Day 25 CPU configuration.
+2. rerun the inspector, visualization, dry run, and complete tests if any
+   human-approved dataset change is made; and
+3. record the approved Day 25 CPU configuration.
 
-The 8.98:1 largest/smallest box imbalance must be reflected in later per-class
+The 8.93:1 largest/smallest box imbalance must be reflected in later per-class
 evaluation. Generalization to drone altitude, glare, motion, new sites, and new
 panel types remains unverified. The original split should otherwise remain
 unchanged, and all future frames from one source video must inherit one split.
-

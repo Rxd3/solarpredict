@@ -9,6 +9,7 @@ from pathlib import Path
 
 import cv2
 import numpy as np
+import pandas as pd
 import pytest
 import yaml
 
@@ -174,25 +175,36 @@ def test_evaluation_requires_real_trained_weights(tiny_dataset: Path, tmp_path: 
 
 def test_real_project_summary_matches_downloaded_dataset() -> None:
     summary = json.loads(DEFAULT_SUMMARY.read_text(encoding="utf-8"))
-    assert summary["status"] == "inspection_complete"
+    assert summary["status"] == "inspection_complete_after_quarantine"
     assert summary["class_names"] == [
         "bird-drop", "clean", "dusty", "electrical-damage",
         "physical-damage", "snow-covered",
     ]
     assert summary["class_count"] == 6
-    assert summary["total_images"] == 821
-    assert summary["total_annotation_files"] == 821
-    assert summary["total_bounding_boxes"] == 5760
-    assert sum(split["images"] for split in summary["splits"].values()) == 821
-    assert sum(split["labels"] for split in summary["splits"].values()) == 821
-    assert sum(split["boxes"] for split in summary["splits"].values()) == 5760
-    assert sum(item["bounding_box_count"] for item in summary["classes"]) == 5760
+    assert {key: summary["splits"][key]["images"] for key in ("train", "val", "test")} == {
+        "train": 600, "val": 120, "test": 100,
+    }
+    assert summary["total_images"] == 820
+    assert summary["total_annotation_files"] == 820
+    assert summary["total_bounding_boxes"] == 5751
+    assert sum(split["images"] for split in summary["splits"].values()) == 820
+    assert sum(split["labels"] for split in summary["splits"].values()) == 820
+    assert sum(split["boxes"] for split in summary["splits"].values()) == 5751
+    assert sum(item["bounding_box_count"] for item in summary["classes"]) == 5751
+    assert [item["bounding_box_count"] for item in summary["classes"]] == [
+        1509, 1107, 1460, 207, 169, 1299,
+    ]
     assert summary["invalid_labels"]["count"] == 0
     assert summary["images_without_labels"]["count"] == 0
     assert summary["labels_without_images"]["count"] == 0
     assert summary["unreadable_images"]["count"] == 0
     assert summary["images_with_empty_label_files"]["count"] == 25
-    assert len(summary["duplicates"]["exact_duplicate_images_across_splits"]) == 1
+    assert len(summary["duplicates"]["exact_duplicate_images_across_splits"]) == 0
+    assert len(summary["duplicates"]["duplicate_filenames_across_splits"]) == 0
+    assert summary["dataset_cleanup"]["removed_box_count"] == 9
+    assert summary["empty_label_review"]["likely_background"] == 0
+    assert summary["empty_label_review"]["needs_manual_review"] == 25
+    assert summary["training_quality_gate"]["blocked"]
     assert summary["environment"]["cuda_available"] is False
 
 
@@ -208,6 +220,27 @@ def test_real_data_yaml_paths_and_contact_sheet_exist() -> None:
     assert cv2.imread(str(figure)) is not None
 
 
+def test_quarantine_and_review_artifacts_are_complete() -> None:
+    stem = "Bird-184-_jpg.rf.4929f26fc5a5f175af527f49cefe25b3"
+    active_image = ROOT / f"data/vision/solar_panel_defects/test/images/{stem}.jpg"
+    active_label = ROOT / f"data/vision/solar_panel_defects/test/labels/{stem}.txt"
+    quarantine = ROOT / "data/vision/quarantine/cross_split_duplicate"
+    image = quarantine / f"images/{stem}.jpg"
+    label = quarantine / f"labels/{stem}.txt"
+    assert not active_image.exists() and not active_label.exists()
+    assert _sha256(image) == "c6c7d608c8e1ed598fa95fe95a54df7ed5eeaeb5f73fc6bd823d9cab4a2361bc"
+    assert _sha256(label) == "5ce3c28c8f1fb24f08e62661a6290add1f144b6643c9f5debeb0f86196c8900f"
+    assert (quarantine / "README.md").is_file()
+    review = pd.read_csv(ROOT / "outputs/computer_vision/empty_label_review.csv")
+    assert len(review) == 25
+    assert review.empty_label.eq(True).all()
+    assert review.review_status.eq("NEEDS_MANUAL_REVIEW").all()
+    assert len(list((ROOT / "outputs/computer_vision/figures").glob(
+        "day24_empty_labels_review_*.png"
+    ))) == 3
+    assert (ROOT / "outputs/computer_vision/figures/day24_duplicate_review.png").is_file()
+
+
 def test_real_dry_run_succeeds_without_trained_weights() -> None:
     weights_before = sorted(ROOT.rglob("best.pt")) + sorted(ROOT.rglob("last.pt"))
     report, model = training.validate_training_setup(training.DEFAULT_CONFIG)
@@ -215,6 +248,11 @@ def test_real_dry_run_succeeds_without_trained_weights() -> None:
     assert model is not None
     assert report["checks"]["ready_for_training"]
     assert report["checks"]["test_path_exists"] is True
+    assert report["checks"]["split_image_counts"] == {"train": 600, "val": 120, "test": 100}
+    assert report["checks"]["total_active_images"] == 820
+    assert report["checks"]["class_count"] == 6
+    assert report["checks"]["invalid_label_count"] == 0
+    assert report["checks"]["cross_split_duplicate_image_groups"] == 0
     assert report["checks"]["training_started"] is False
     assert report["errors"] == []
     assert weights_before == weights_after == []

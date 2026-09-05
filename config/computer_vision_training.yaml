@@ -17,7 +17,8 @@ exist_ok: false
 notes:
 - CPU-safe defaults selected because CUDA is unavailable in the verified environment.
 - Real data.yaml paths and all six classes were verified against the downloaded version 1 export.
-- Resolve the documented train/test duplicate-image leakage before starting training.
+- The documented train/test duplicate was quarantined; active cross-split image hashes are now unique.
+- Review the 25 empty labels before starting training; no annotations were invented.
 - Running the dry run may download the public pretrained checkpoint but never calls model.train().
 day25_cpu_recommendation:
   rationale: Reduce CPU cost while retaining every source image and annotation.

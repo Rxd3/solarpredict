@@ -13,7 +13,7 @@ import ultralytics
 import yaml
 from ultralytics import YOLO
 
-from src.computer_vision.inspect_vision_dataset import load_dataset_yaml
+from src.computer_vision.inspect_vision_dataset import inspect_dataset, load_dataset_yaml
 
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -76,6 +76,7 @@ def validate_training_setup(
     dataset = None
     try:
         dataset = load_dataset_yaml(data_yaml)
+        inventory = inspect_dataset(dataset)
         checks["data_yaml_loaded"] = True
         checks["train_path_exists"] = bool(dataset.split_paths["train"].is_dir())
         checks["validation_path_exists"] = bool(dataset.split_paths["val"].is_dir())
@@ -86,6 +87,15 @@ def validate_training_setup(
             errors.append("Configured training image path does not exist.")
         if not checks["validation_path_exists"]:
             errors.append("Configured validation image path does not exist.")
+        checks["split_image_counts"] = {
+            key: inventory["splits"][key]["images"] for key in ("train", "val", "test")
+        }
+        checks["total_active_images"] = inventory["total_images"]
+        checks["class_count"] = inventory["class_count"]
+        checks["invalid_label_count"] = inventory["invalid_labels"]["count"]
+        checks["cross_split_duplicate_image_groups"] = len(
+            inventory["duplicates"]["exact_duplicate_images_across_splits"]
+        )
     except (FileNotFoundError, ValueError) as error:
         errors.append(str(error))
 

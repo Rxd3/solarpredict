@@ -53,6 +53,9 @@ data/vision/**
 !data/vision/solar_panel_defects/valid/.gitkeep
 !data/vision/solar_panel_defects/test/
 !data/vision/solar_panel_defects/test/.gitkeep
+!data/vision/quarantine/
+!data/vision/quarantine/cross_split_duplicate/
+!data/vision/quarantine/cross_split_duplicate/README.md
 
 # Generated models and outputs
 *.pt

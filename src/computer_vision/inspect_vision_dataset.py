@@ -393,6 +393,49 @@ def build_project_summary(
         "planned_training_device": str(training["device"]),
     }
     summary["planned_training_configuration"] = training
+    quarantine_root = ROOT / "data/vision/quarantine/cross_split_duplicate"
+    quarantine_image = quarantine_root / "images/Bird-184-_jpg.rf.4929f26fc5a5f175af527f49cefe25b3.jpg"
+    quarantine_label = quarantine_root / "labels/Bird-184-_jpg.rf.4929f26fc5a5f175af527f49cefe25b3.txt"
+    if quarantine_image.is_file() and quarantine_label.is_file():
+        summary["status"] = "inspection_complete_after_quarantine"
+        summary["dataset_cleanup"] = {
+            "action": "test duplicate moved to recoverable quarantine; retained train copy unchanged",
+            "before_split_images": {"train": 600, "val": 120, "test": 101, "total": 821},
+            "after_split_images": {
+                "train": summary["splits"]["train"]["images"],
+                "val": summary["splits"]["val"]["images"],
+                "test": summary["splits"]["test"]["images"],
+                "total": summary["total_images"],
+            },
+            "quarantined_image": {"path": str(quarantine_image), "sha256": _sha256(quarantine_image)},
+            "quarantined_label": {"path": str(quarantine_label), "sha256": _sha256(quarantine_label)},
+            "removed_box_count": 9,
+            "removed_box_class": {"class_id": 0, "class_name": "bird-drop"},
+            "annotations_rewritten": False,
+        }
+    review_path = ROOT / "outputs/computer_vision/empty_label_review.csv"
+    if review_path.is_file():
+        import pandas as pd
+
+        review = pd.read_csv(review_path)
+        summary["empty_label_review"] = {
+            "path": str(review_path),
+            "rows": len(review),
+            "likely_background": int(review["review_status"].eq("LIKELY_BACKGROUND").sum()),
+            "needs_manual_review": int(review["review_status"].eq("NEEDS_MANUAL_REVIEW").sum()),
+            "annotations_added": False,
+        }
+    needs_review = summary.get("empty_label_review", {}).get("needs_manual_review", 0)
+    active_duplicates = len(
+        (summary.get("duplicates") or {}).get("exact_duplicate_images_across_splits", [])
+    )
+    summary["training_quality_gate"] = {
+        "blocked": bool(active_duplicates or needs_review),
+        "reasons": [
+            *(["active cross-split exact image duplicates remain"] if active_duplicates else []),
+            *([f"{needs_review} empty-label images require human approval"] if needs_review else []),
+        ],
+    }
     return summary
 
 

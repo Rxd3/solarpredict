@@ -40,10 +40,11 @@ parameter was changed in response to the evaluation. The next major component
 is **COMPUTER VISION SOLAR-PANEL INSPECTION**. Day 24 prepares its YOLO dataset
 inspector, label validator, ground-truth visualization, CPU-safe training
 configuration, dry-run entry point, and evaluation interface. The downloaded
-Roboflow export has now been inspected: 821 images and labels, six actual
-classes, and 5,760 valid boxes. One exact train/test duplicate image remains a
-pre-training quality gate; no computer-vision model, video pipeline, or full
-dashboard has been implemented.
+Roboflow export has now been inspected and cleaned conservatively: 820 active
+image/label pairs, six actual classes, and 5,751 valid boxes. The one exact
+train/test duplicate was moved to recoverable quarantine; 25 empty labels remain
+for human review. No computer-vision model, video pipeline, or full dashboard
+has been implemented.
 
 The repository directory name is **`solarpredict`**. The project and display
 name remains **Solar Panel Monitoring and Fault Detection System**.
@@ -193,8 +194,7 @@ Completed in the operational-data stage:
 
 Not completed yet:
 
-- manual resolution of the documented train/test duplicate image and review of
-  25 empty labels;
+- human approval or source correction of 25 empty labels;
 - YOLO model training, evaluation, and image inference;
 - video analysis;
 - dashboard integration;
@@ -215,9 +215,11 @@ Completed: acquisition, actual class/split discovery, validation of every YOLO
 line, image/annotation inventory, class distribution, cross-split hash review,
 real ground-truth sample visualization, CPU/Ultralytics verification,
 lightweight YOLO11n configuration, successful non-training dry run, and a future
-evaluation interface. Before training, resolve one exact train/test duplicate
-with differing annotations and review 25 empty label files. Model training,
-evaluation, inference, video, and dashboard integration remain pending.
+evaluation interface. The exact train/test duplicate and its differing label
+were documented, compared visually, and the test pair was moved intact to
+quarantine. All 25 empty-label images remain `NEEDS_MANUAL_REVIEW`; no boxes were
+invented. Model training, evaluation, inference, video, and dashboard
+integration remain pending.
 
 Operational-stage artifacts:
 
@@ -302,6 +304,7 @@ Operational-stage artifacts:
 - [Final operational-module status](outputs/anomaly_module_final_status.json)
 - [Dashboard anomaly-feed example](outputs/dashboard_anomaly_feed_example.csv)
 - [Day 24 verified dataset inventory and integrity review](docs/computer_vision_dataset.md)
+- [Day 24 dataset cleanup and quarantine audit](docs/computer_vision_dataset_cleanup.md)
 - [Day 24 computer-vision setup](docs/computer_vision_setup.md)
 - [YOLO prototype training configuration](config/computer_vision_training.yaml)
 - [Machine-readable CV dataset/setup status](outputs/computer_vision/dataset_summary.json)
