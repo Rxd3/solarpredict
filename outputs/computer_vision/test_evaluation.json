@@ -1,0 +1,166 @@
+{
+  "checkpoint": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\models\\computer_vision\\solar_panel_detector_best.pt",
+  "checkpoint_sha256": "b7ad8d7fca947527b30fb24f8c11e9135fbe62aa1e7f44e8a54100933141cd89",
+  "dataset_yaml": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\data.yaml",
+  "evaluated_split": "test",
+  "test_split_used": true,
+  "class_names": [
+    "bird-drop",
+    "clean",
+    "dusty",
+    "electrical-damage",
+    "physical-damage",
+    "snow-covered"
+  ],
+  "overall": {
+    "precision": 0.3877669172444366,
+    "recall": 0.23559344875121271,
+    "map50": 0.2182599317621913,
+    "map50_95": 0.10623760918586599
+  },
+  "per_class": [
+    {
+      "class_id": 0,
+      "class_name": "bird-drop",
+      "precision": 0.24567526959748187,
+      "recall": 0.15668202764976957,
+      "map50": 0.12985621360040703,
+      "map50_95": 0.039929684415823355
+    },
+    {
+      "class_id": 1,
+      "class_name": "clean",
+      "precision": 0.33932585147079025,
+      "recall": 0.7875,
+      "map50": 0.6017245264632552,
+      "map50_95": 0.36335990147702557
+    },
+    {
+      "class_id": 2,
+      "class_name": "dusty",
+      "precision": 0.5255794221417407,
+      "recall": 0.022092841513055066,
+      "map50": 0.09101621179211739,
+      "map50_95": 0.0338486080462939
+    },
+    {
+      "class_id": 3,
+      "class_name": "electrical-damage",
+      "precision": 0.292211578886516,
+      "recall": 0.10088885747845942,
+      "map50": 0.0892541628671524,
+      "map50_95": 0.031681760202718026
+    },
+    {
+      "class_id": 4,
+      "class_name": "physical-damage",
+      "precision": 0.668155660292775,
+      "recall": 0.14285714285714285,
+      "map50": 0.23607068774056678,
+      "map50_95": 0.11378104262287567
+    },
+    {
+      "class_id": 5,
+      "class_name": "snow-covered",
+      "precision": 0.2556537210773158,
+      "recall": 0.20353982300884957,
+      "map50": 0.16163778810964907,
+      "map50_95": 0.054824658350459396
+    }
+  ],
+  "speed_milliseconds_per_image": {
+    "preprocess": 0.4827408120036125,
+    "inference": 24.02376223887716,
+    "loss": 0.00017040589710279387,
+    "postprocess": 4.1008734723971205
+  },
+  "results_dict": {
+    "metrics/precision(B)": 0.3877669172444366,
+    "metrics/recall(B)": 0.23559344875121271,
+    "metrics/mAP50(B)": 0.2182599317621913,
+    "metrics/mAP50-95(B)": 0.10623760918586599,
+    "fitness": 0.10623760918586599
+  },
+  "confusion_matrix": {
+    "orientation": "rows are predicted classes; columns are true classes",
+    "labels": [
+      "bird-drop",
+      "clean",
+      "dusty",
+      "electrical-damage",
+      "physical-damage",
+      "snow-covered",
+      "background"
+    ],
+    "counts": [
+      [
+        37.0,
+        0.0,
+        0.0,
+        0.0,
+        5.0,
+        0.0,
+        52.0
+      ],
+      [
+        0.0,
+        65.0,
+        5.0,
+        0.0,
+        0.0,
+        0.0,
+        104.0
+      ],
+      [
+        0.0,
+        0.0,
+        4.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        2.0,
+        0.0,
+        0.0,
+        4.0,
+        0.0,
+        0.0,
+        6.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        4.0,
+        0.0,
+        1.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        21.0,
+        44.0
+      ],
+      [
+        178.0,
+        15.0,
+        143.0,
+        37.0,
+        19.0,
+        92.0,
+        0.0
+      ]
+    ]
+  },
+  "prediction_summary": {
+    "path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\outputs\\computer_vision\\test_prediction_summary.json",
+    "image_count": 98,
+    "detection_count": 324
+  }
+}

@@ -3,70 +3,70 @@
 ## Operational anomaly path — prototype complete
 
 ```text
-Operational CSV / future monitoring row
+Operational Dataset Replay
                   |
                   v
-Conservative preprocessing (raw source retained)
+Operational Processing / validated seven-feature rows
                   |
                   v
-Feature preparation (exact NO_TIME_7 contract)
+Frozen Anomaly Detector + Threshold
                   |
                   v
-Frozen training-only StandardScaler
+Score / NORMAL / ALERT ----> Exact-2-minute event grouping
                   |
                   v
-Frozen Isolation Forest
-                  |
-                  v
-Continuous anomaly score (-score_samples)
-                  |
-                  v
-Frozen threshold (strict score > 0.7135242760182695)
-                  |
-                  v
-NORMAL / ALERT ----+----> Exact-2-minute event grouping
-                  |
-                  v
-Future dashboard / event log
+Streamlit Dashboard
 ```
 
 `src/anomaly_detection/inference.py` is the boundary for future consumers. It
 verifies artifact hashes, validates the exact seven inputs, performs no fitting,
-and returns a stable dashboard-friendly schema. Preprocessing and feature
-preparation remain separate because monitoring inputs must supply `rtd_mean` and
-`rtd_std` consistently before scoring.
+and returns a stable dashboard-friendly schema. `src/dashboard/data_service.py`
+validates and caches the recorded 337-row replay, verifies the saved scores
+against that inference boundary, and supplies the Overview and Operational
+Monitoring pages. Preprocessing and feature preparation remain separate because
+monitoring inputs must supply `rtd_mean` and `rtd_std` consistently before
+scoring.
 
-## Computer-vision image path — dataset validated, training pending
+## Computer-vision image/video path — prototype complete
 
 ```text
-Solar Panel Image
+Image / Video
         |
         v
-YOLO Object Detector
+Frame / Image Input
+        |
+        v
+Frozen YOLO11n Detector
         |
         v
 Bounding Boxes + Class + Confidence
         |
         v
-Inspection Result
+Detection Results / Condition Summary / Detection Log
         |
         v
-Future Dashboard
+Streamlit Dashboard (UI integration pending Day 28)
 ```
 
-The active six-class dataset, all 820 image/label pairs, and all 5,751 boxes have
-been inspected after recoverable duplicate quarantine. Annotation syntax is
-valid and the ground-truth contact sheet is complete. Training/evaluation entry
-points are prepared; 25 empty labels remain queued for human approval.
+The final active six-class dataset, all 795 image/label pairs, and all 5,751 boxes
+have been inspected after recoverable duplicate and empty-label quarantine.
+Annotation syntax is valid, every class remains present in every split, and the
+ground-truth contact sheet is complete. One YOLO11n prototype was selected on
+validation and evaluated once on the untouched test split without subsequent
+tuning. Read-only image/frame inference, annotated output, cautious condition
+summaries, and sequential video processing are now implemented. The video smoke
+test used a clearly identified validation-image demo sequence because no real
+inspection video was present.
 
 ## Remaining integration placeholders
 
-- **Computer-vision model:** obtain human approval for empty-label handling,
-  then train and evaluate with per-class reporting that reflects the imbalance.
-- **Drone video processing:** retain source-video identity and keep every frame
-  from a video entirely within one dataset split.
-- **Dashboard integration:** combine operational scores/events and visual
-  detections, with real-pipeline and simulation modes clearly distinguished.
+- **Computer-vision model:** retain the frozen checkpoint and one-time test
+  results; do not tune from the test split.
+- **Drone video data:** obtain representative real footage, retain source-video
+  identity, and keep every frame from a video entirely within one dataset split.
+- **Dashboard image/video integration:** connect the existing CV inference
+  modules to the prepared placeholder pages, with real inputs and the earlier
+  validation-image demo clearly distinguished.
 
-Video processing and dashboard integration remain future placeholders; Day 24
-does not implement them.
+The operational dashboard path is functional. Image/video UI integration and
+final cross-module testing remain future work.

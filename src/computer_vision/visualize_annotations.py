@@ -92,7 +92,7 @@ def render_contact_sheet(data_yaml: Path, output: Path, maximum: int = 9) -> Pat
         axis.axis("off")
     for axis in axes.flat[len(selected):]:
         axis.axis("off")
-    figure.suptitle("Day 24 dataset samples — ground-truth YOLO annotations", fontsize=14)
+    figure.suptitle("Dataset samples — ground-truth YOLO annotations", fontsize=14)
     figure.tight_layout()
     output.parent.mkdir(parents=True, exist_ok=True)
     figure.savefig(output, dpi=150, bbox_inches="tight")

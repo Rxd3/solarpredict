@@ -1,1 +1,1 @@
-"""Future solar-panel computer-vision package."""
+"""Frozen solar-panel detector evaluation and image/video inference package."""

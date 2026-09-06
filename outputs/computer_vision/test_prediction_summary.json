@@ -1,0 +1,4552 @@
+{
+  "split_image_root": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\test\\images",
+  "image_count": 98,
+  "detection_count": 324,
+  "images": [
+    {
+      "image_path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\test\\images\\Bird-10-_jpg.rf.c10a8e1a3e2e88a652f7a30cb6d33b51.jpg",
+      "image_width": 474,
+      "image_height": 474,
+      "detections": []
+    },
+    {
+      "image_path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\test\\images\\Bird-102-_jpg.rf.b02c0e4261c4866e696be2514dee5058.jpg",
+      "image_width": 2560,
+      "image_height": 1920,
+      "detections": [
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.43324601650238037,
+          "xyxy": [
+            5.058441162109375,
+            0.0,
+            2526.11572265625,
+            1901.5711669921875
+          ],
+          "within_image_bounds": true
+        }
+      ]
+    },
+    {
+      "image_path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\test\\images\\Bird-126-_jpg.rf.a0fd463b5e3ab01ac8f9c56a9f472bad.jpg",
+      "image_width": 1536,
+      "image_height": 2048,
+      "detections": [
+        {
+          "class_id": 0,
+          "class_name": "bird-drop",
+          "confidence": 0.26090681552886963,
+          "xyxy": [
+            71.53990936279297,
+            1737.67431640625,
+            295.28399658203125,
+            2012.1689453125
+          ],
+          "within_image_bounds": true
+        }
+      ]
+    },
+    {
+      "image_path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\test\\images\\Bird-131-_jpg.rf.5e48b19f407ffcaae5cdf4d06e3395a4.jpg",
+      "image_width": 1600,
+      "image_height": 1290,
+      "detections": []
+    },
+    {
+      "image_path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\test\\images\\Bird-14-_JPG.rf.e0cbedec9b4f828b6ae47c3ba8bc78b7.jpg",
+      "image_width": 592,
+      "image_height": 374,
+      "detections": [
+        {
+          "class_id": 0,
+          "class_name": "bird-drop",
+          "confidence": 0.43674179911613464,
+          "xyxy": [
+            2.788957357406616,
+            249.71682739257812,
+            94.85238647460938,
+            317.48736572265625
+          ],
+          "within_image_bounds": true
+        }
+      ]
+    },
+    {
+      "image_path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\test\\images\\Bird-148-_jpg.rf.4aec670ec81fcf373d3ef6de596eef26.jpg",
+      "image_width": 259,
+      "image_height": 194,
+      "detections": [
+        {
+          "class_id": 0,
+          "class_name": "bird-drop",
+          "confidence": 0.6043022274971008,
+          "xyxy": [
+            116.38081359863281,
+            34.76176834106445,
+            161.81719970703125,
+            69.61258697509766
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 0,
+          "class_name": "bird-drop",
+          "confidence": 0.3835729956626892,
+          "xyxy": [
+            77.4393081665039,
+            130.58038330078125,
+            122.60037994384766,
+            167.9302520751953
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 0,
+          "class_name": "bird-drop",
+          "confidence": 0.3619755208492279,
+          "xyxy": [
+            159.77719116210938,
+            130.61585998535156,
+            183.7657470703125,
+            151.25656127929688
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 0,
+          "class_name": "bird-drop",
+          "confidence": 0.3601986765861511,
+          "xyxy": [
+            149.72166442871094,
+            151.41748046875,
+            196.46246337890625,
+            188.81797790527344
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 0,
+          "class_name": "bird-drop",
+          "confidence": 0.3588176369667053,
+          "xyxy": [
+            96.86671447753906,
+            133.16934204101562,
+            119.02251434326172,
+            158.10989379882812
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 0,
+          "class_name": "bird-drop",
+          "confidence": 0.3573876917362213,
+          "xyxy": [
+            176.2487030029297,
+            93.49085235595703,
+            200.7935028076172,
+            117.43331146240234
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 0,
+          "class_name": "bird-drop",
+          "confidence": 0.26011836528778076,
+          "xyxy": [
+            169.0320281982422,
+            90.1240463256836,
+            203.9550323486328,
+            117.97280883789062
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 0,
+          "class_name": "bird-drop",
+          "confidence": 0.2577630579471588,
+          "xyxy": [
+            217.97377014160156,
+            17.689363479614258,
+            240.6024627685547,
+            32.983001708984375
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 0,
+          "class_name": "bird-drop",
+          "confidence": 0.25762608647346497,
+          "xyxy": [
+            77.1401138305664,
+            152.10037231445312,
+            96.53292083740234,
+            172.22520446777344
+          ],
+          "within_image_bounds": true
+        }
+      ]
+    },
+    {
+      "image_path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\test\\images\\Bird-16-_JPG.rf.789fc3fb088ba9242a28aa93257d826c.jpg",
+      "image_width": 473,
+      "image_height": 477,
+      "detections": [
+        {
+          "class_id": 0,
+          "class_name": "bird-drop",
+          "confidence": 0.29586806893348694,
+          "xyxy": [
+            4.9959187507629395,
+            220.09620666503906,
+            53.43182373046875,
+            263.9557189941406
+          ],
+          "within_image_bounds": true
+        }
+      ]
+    },
+    {
+      "image_path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\test\\images\\Bird-177-_jpg.rf.aa7866e355b4953858c76261751811d2.jpg",
+      "image_width": 533,
+      "image_height": 533,
+      "detections": [
+        {
+          "class_id": 3,
+          "class_name": "electrical-damage",
+          "confidence": 0.3128954768180847,
+          "xyxy": [
+            45.322269439697266,
+            204.5153350830078,
+            302.9979553222656,
+            355.9848937988281
+          ],
+          "within_image_bounds": true
+        }
+      ]
+    },
+    {
+      "image_path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\test\\images\\Bird-179-_JPG.rf.8727f233ff6aa7fddb82e0f783f48fe6.jpg",
+      "image_width": 581,
+      "image_height": 769,
+      "detections": []
+    },
+    {
+      "image_path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\test\\images\\Bird-181-_jpg.rf.5d7c629bbfd4420ff4e0c0d63603f4f1.jpg",
+      "image_width": 474,
+      "image_height": 632,
+      "detections": []
+    },
+    {
+      "image_path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\test\\images\\Bird-185-_jpg.rf.964284f4e937cc6cc619de8191ae96e8.jpg",
+      "image_width": 1920,
+      "image_height": 1080,
+      "detections": []
+    },
+    {
+      "image_path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\test\\images\\Bird-187-_JPG.rf.a6ed03727cd50194fbbd3c14a6809180.jpg",
+      "image_width": 1162,
+      "image_height": 733,
+      "detections": [
+        {
+          "class_id": 3,
+          "class_name": "electrical-damage",
+          "confidence": 0.26454785466194153,
+          "xyxy": [
+            641.7402954101562,
+            7.7837395668029785,
+            794.6127319335938,
+            265.9309387207031
+          ],
+          "within_image_bounds": true
+        }
+      ]
+    },
+    {
+      "image_path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\test\\images\\Bird-188-_jpg.rf.9be9a7511d419573162b17f65c3070f1.jpg",
+      "image_width": 300,
+      "image_height": 200,
+      "detections": [
+        {
+          "class_id": 0,
+          "class_name": "bird-drop",
+          "confidence": 0.43571290373802185,
+          "xyxy": [
+            148.63204956054688,
+            126.8096923828125,
+            199.61366271972656,
+            157.0332794189453
+          ],
+          "within_image_bounds": true
+        }
+      ]
+    },
+    {
+      "image_path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\test\\images\\Bird-19-_jpg.rf.f95369028b37205256cd4459a4426997.jpg",
+      "image_width": 640,
+      "image_height": 480,
+      "detections": [
+        {
+          "class_id": 0,
+          "class_name": "bird-drop",
+          "confidence": 0.42583128809928894,
+          "xyxy": [
+            182.43556213378906,
+            95.91680145263672,
+            277.4051513671875,
+            184.02049255371094
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 0,
+          "class_name": "bird-drop",
+          "confidence": 0.29391148686408997,
+          "xyxy": [
+            462.2531433105469,
+            211.60433959960938,
+            516.8528442382812,
+            262.9641418457031
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 0,
+          "class_name": "bird-drop",
+          "confidence": 0.2551157772541046,
+          "xyxy": [
+            253.1387481689453,
+            248.94503784179688,
+            305.3416442871094,
+            305.0774841308594
+          ],
+          "within_image_bounds": true
+        }
+      ]
+    },
+    {
+      "image_path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\test\\images\\Bird-190-_jpg.rf.90cec6eab02ea0406344d1b4c1fe20cf.jpg",
+      "image_width": 657,
+      "image_height": 469,
+      "detections": []
+    },
+    {
+      "image_path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\test\\images\\Bird-194-_jpg.rf.66cee3814fc7d6da0d8527311f0faf43.jpg",
+      "image_width": 406,
+      "image_height": 306,
+      "detections": [
+        {
+          "class_id": 0,
+          "class_name": "bird-drop",
+          "confidence": 0.5595009922981262,
+          "xyxy": [
+            134.6425018310547,
+            150.47213745117188,
+            213.65902709960938,
+            204.18077087402344
+          ],
+          "within_image_bounds": true
+        }
+      ]
+    },
+    {
+      "image_path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\test\\images\\Bird-27-_jpg.rf.d7a66fe5e52d1b0ff773efba7c6cfeae.jpg",
+      "image_width": 1600,
+      "image_height": 1290,
+      "detections": [
+        {
+          "class_id": 0,
+          "class_name": "bird-drop",
+          "confidence": 0.38753390312194824,
+          "xyxy": [
+            623.5203857421875,
+            592.8046264648438,
+            747.9080200195312,
+            723.7355346679688
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 0,
+          "class_name": "bird-drop",
+          "confidence": 0.26034116744995117,
+          "xyxy": [
+            1340.8338623046875,
+            271.3981018066406,
+            1441.63232421875,
+            356.08966064453125
+          ],
+          "within_image_bounds": true
+        }
+      ]
+    },
+    {
+      "image_path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\test\\images\\Bird-3-_jpg.rf.7b3184cfe119f93435bf7f950650538d.jpg",
+      "image_width": 300,
+      "image_height": 300,
+      "detections": []
+    },
+    {
+      "image_path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\test\\images\\Bird-33-_JPG.rf.5f71270e6e427f09e16bde86a232d82b.jpg",
+      "image_width": 1093,
+      "image_height": 538,
+      "detections": [
+        {
+          "class_id": 0,
+          "class_name": "bird-drop",
+          "confidence": 0.5818301439285278,
+          "xyxy": [
+            504.8591003417969,
+            141.68692016601562,
+            777.0256958007812,
+            323.2889709472656
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.42942070960998535,
+          "xyxy": [
+            1.8674639463424683,
+            0.0,
+            936.9117431640625,
+            538.0
+          ],
+          "within_image_bounds": true
+        }
+      ]
+    },
+    {
+      "image_path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\test\\images\\Bird-35-_jpg.rf.a331f81627bc760cace1f6968b978fd6.jpg",
+      "image_width": 3024,
+      "image_height": 4032,
+      "detections": [
+        {
+          "class_id": 0,
+          "class_name": "bird-drop",
+          "confidence": 0.39972513914108276,
+          "xyxy": [
+            1264.8197021484375,
+            1015.1535034179688,
+            1556.8670654296875,
+            1253.1617431640625
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 0,
+          "class_name": "bird-drop",
+          "confidence": 0.31792113184928894,
+          "xyxy": [
+            478.9855651855469,
+            2977.0068359375,
+            833.7998046875,
+            3299.640869140625
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 0,
+          "class_name": "bird-drop",
+          "confidence": 0.30768439173698425,
+          "xyxy": [
+            257.2117004394531,
+            2119.496337890625,
+            594.9656372070312,
+            2338.52880859375
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 0,
+          "class_name": "bird-drop",
+          "confidence": 0.2699413299560547,
+          "xyxy": [
+            2078.336181640625,
+            1589.605712890625,
+            2458.34033203125,
+            1870.153076171875
+          ],
+          "within_image_bounds": true
+        }
+      ]
+    },
+    {
+      "image_path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\test\\images\\Bird-48-_jpg.rf.5b474819a0815de06ddfd694aeb265f3.jpg",
+      "image_width": 474,
+      "image_height": 355,
+      "detections": [
+        {
+          "class_id": 3,
+          "class_name": "electrical-damage",
+          "confidence": 0.5760669112205505,
+          "xyxy": [
+            145.27459716796875,
+            136.02151489257812,
+            211.62408447265625,
+            191.1044464111328
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.49607884883880615,
+          "xyxy": [
+            3.191950798034668,
+            2.8919081687927246,
+            468.4124450683594,
+            355.0
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 3,
+          "class_name": "electrical-damage",
+          "confidence": 0.2556048631668091,
+          "xyxy": [
+            132.59042358398438,
+            134.54324340820312,
+            221.89048767089844,
+            199.64967346191406
+          ],
+          "within_image_bounds": true
+        }
+      ]
+    },
+    {
+      "image_path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\test\\images\\Bird-5-_jpg.rf.a833adf77f8246dba81e55bed83bb991.jpg",
+      "image_width": 474,
+      "image_height": 345,
+      "detections": []
+    },
+    {
+      "image_path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\test\\images\\Bird-54-_jpg.rf.1a406b956bee5b0fcf43cd15054a2cc9.jpg",
+      "image_width": 500,
+      "image_height": 375,
+      "detections": [
+        {
+          "class_id": 0,
+          "class_name": "bird-drop",
+          "confidence": 0.32428136467933655,
+          "xyxy": [
+            328.67840576171875,
+            14.955982208251953,
+            379.78082275390625,
+            52.78294372558594
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 0,
+          "class_name": "bird-drop",
+          "confidence": 0.28398293256759644,
+          "xyxy": [
+            345.63067626953125,
+            240.53530883789062,
+            391.9272766113281,
+            293.39031982421875
+          ],
+          "within_image_bounds": true
+        }
+      ]
+    },
+    {
+      "image_path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\test\\images\\Bird-60-_jpg.rf.60bf7fcf8952d59caf9fca8f28f8c84e.jpg",
+      "image_width": 178,
+      "image_height": 189,
+      "detections": [
+        {
+          "class_id": 0,
+          "class_name": "bird-drop",
+          "confidence": 0.2934586703777313,
+          "xyxy": [
+            6.219604969024658,
+            117.42455291748047,
+            60.769508361816406,
+            151.34764099121094
+          ],
+          "within_image_bounds": true
+        }
+      ]
+    },
+    {
+      "image_path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\test\\images\\Bird-62-_jpg.rf.097fc076e2c8141ee8f56f3a9bda7dcd.jpg",
+      "image_width": 879,
+      "image_height": 943,
+      "detections": [
+        {
+          "class_id": 0,
+          "class_name": "bird-drop",
+          "confidence": 0.25097551941871643,
+          "xyxy": [
+            461.47772216796875,
+            257.1279296875,
+            693.0372314453125,
+            423.77703857421875
+          ],
+          "within_image_bounds": true
+        }
+      ]
+    },
+    {
+      "image_path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\test\\images\\Bird-9-_jpg.rf.6970407bffce20111582516079f06067.jpg",
+      "image_width": 601,
+      "image_height": 600,
+      "detections": [
+        {
+          "class_id": 0,
+          "class_name": "bird-drop",
+          "confidence": 0.5789315700531006,
+          "xyxy": [
+            290.0135498046875,
+            135.82440185546875,
+            348.34393310546875,
+            192.28077697753906
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 0,
+          "class_name": "bird-drop",
+          "confidence": 0.5109304785728455,
+          "xyxy": [
+            271.3483581542969,
+            242.57574462890625,
+            364.5091552734375,
+            336.49615478515625
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 0,
+          "class_name": "bird-drop",
+          "confidence": 0.48460182547569275,
+          "xyxy": [
+            538.0349731445312,
+            449.74017333984375,
+            595.8952026367188,
+            500.02520751953125
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 0,
+          "class_name": "bird-drop",
+          "confidence": 0.4334101676940918,
+          "xyxy": [
+            0.45761314034461975,
+            283.24884033203125,
+            90.78702545166016,
+            373.65576171875
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 0,
+          "class_name": "bird-drop",
+          "confidence": 0.42103111743927,
+          "xyxy": [
+            345.9335632324219,
+            189.22885131835938,
+            412.2203063964844,
+            258.49090576171875
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 0,
+          "class_name": "bird-drop",
+          "confidence": 0.41387420892715454,
+          "xyxy": [
+            514.9072875976562,
+            200.95266723632812,
+            600.3991088867188,
+            273.88360595703125
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 0,
+          "class_name": "bird-drop",
+          "confidence": 0.40825092792510986,
+          "xyxy": [
+            33.429962158203125,
+            501.16900634765625,
+            96.73450469970703,
+            561.8998413085938
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 0,
+          "class_name": "bird-drop",
+          "confidence": 0.393216609954834,
+          "xyxy": [
+            511.8015441894531,
+            123.75811767578125,
+            576.5953979492188,
+            186.86199951171875
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 0,
+          "class_name": "bird-drop",
+          "confidence": 0.38086485862731934,
+          "xyxy": [
+            96.6478500366211,
+            51.368648529052734,
+            144.95277404785156,
+            84.46641540527344
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 0,
+          "class_name": "bird-drop",
+          "confidence": 0.3784310221672058,
+          "xyxy": [
+            209.21083068847656,
+            116.83222961425781,
+            238.9283447265625,
+            145.57073974609375
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 0,
+          "class_name": "bird-drop",
+          "confidence": 0.3699977397918701,
+          "xyxy": [
+            563.9872436523438,
+            14.673479080200195,
+            600.9342041015625,
+            58.6562385559082
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 0,
+          "class_name": "bird-drop",
+          "confidence": 0.3674103617668152,
+          "xyxy": [
+            354.927001953125,
+            194.25938415527344,
+            404.59503173828125,
+            262.70538330078125
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 0,
+          "class_name": "bird-drop",
+          "confidence": 0.3577316403388977,
+          "xyxy": [
+            384.225830078125,
+            111.70355224609375,
+            432.92950439453125,
+            153.8813018798828
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 0,
+          "class_name": "bird-drop",
+          "confidence": 0.3473896384239197,
+          "xyxy": [
+            207.68218994140625,
+            107.6822738647461,
+            257.1110534667969,
+            146.90542602539062
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 0,
+          "class_name": "bird-drop",
+          "confidence": 0.3346932828426361,
+          "xyxy": [
+            347.98223876953125,
+            49.69622039794922,
+            379.1750793457031,
+            109.5739974975586
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 0,
+          "class_name": "bird-drop",
+          "confidence": 0.3317268490791321,
+          "xyxy": [
+            524.9465942382812,
+            203.79339599609375,
+            591.5595703125,
+            268.8160095214844
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 0,
+          "class_name": "bird-drop",
+          "confidence": 0.31542760133743286,
+          "xyxy": [
+            205.99090576171875,
+            251.263671875,
+            252.0551300048828,
+            299.3215637207031
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 0,
+          "class_name": "bird-drop",
+          "confidence": 0.30481553077697754,
+          "xyxy": [
+            522.7240600585938,
+            442.9223327636719,
+            600.8855590820312,
+            505.5791320800781
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 0,
+          "class_name": "bird-drop",
+          "confidence": 0.29388219118118286,
+          "xyxy": [
+            385.0631408691406,
+            31.613216400146484,
+            410.34271240234375,
+            63.42327880859375
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 0,
+          "class_name": "bird-drop",
+          "confidence": 0.29376959800720215,
+          "xyxy": [
+            93.76779174804688,
+            47.706642150878906,
+            147.392333984375,
+            91.33708953857422
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 0,
+          "class_name": "bird-drop",
+          "confidence": 0.27754372358322144,
+          "xyxy": [
+            12.245595932006836,
+            284.8249816894531,
+            80.33570861816406,
+            364.7791442871094
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 0,
+          "class_name": "bird-drop",
+          "confidence": 0.26554396748542786,
+          "xyxy": [
+            544.8438110351562,
+            448.0345458984375,
+            599.513671875,
+            492.8348693847656
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 0,
+          "class_name": "bird-drop",
+          "confidence": 0.2608051300048828,
+          "xyxy": [
+            204.76266479492188,
+            165.12786865234375,
+            233.2106475830078,
+            199.0186767578125
+          ],
+          "within_image_bounds": true
+        }
+      ]
+    },
+    {
+      "image_path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\test\\images\\Bird-92-_jpg.rf.fac54dcae577c919e92ff3dbe7a22ba8.jpg",
+      "image_width": 1024,
+      "image_height": 768,
+      "detections": [
+        {
+          "class_id": 0,
+          "class_name": "bird-drop",
+          "confidence": 0.4841645658016205,
+          "xyxy": [
+            732.53564453125,
+            344.3442077636719,
+            802.289794921875,
+            407.2196960449219
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 0,
+          "class_name": "bird-drop",
+          "confidence": 0.3998681604862213,
+          "xyxy": [
+            465.7713623046875,
+            168.88430786132812,
+            529.707275390625,
+            212.87429809570312
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 0,
+          "class_name": "bird-drop",
+          "confidence": 0.3950967788696289,
+          "xyxy": [
+            270.665771484375,
+            114.82473754882812,
+            338.0181884765625,
+            163.11434936523438
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 0,
+          "class_name": "bird-drop",
+          "confidence": 0.35405218601226807,
+          "xyxy": [
+            114.15706634521484,
+            293.83294677734375,
+            190.80349731445312,
+            347.0391845703125
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 0,
+          "class_name": "bird-drop",
+          "confidence": 0.32625654339790344,
+          "xyxy": [
+            454.175537109375,
+            166.02992248535156,
+            532.5958251953125,
+            218.36024475097656
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 0,
+          "class_name": "bird-drop",
+          "confidence": 0.2965535819530487,
+          "xyxy": [
+            303.7167663574219,
+            311.2967834472656,
+            391.2630310058594,
+            383.6592712402344
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 0,
+          "class_name": "bird-drop",
+          "confidence": 0.28972306847572327,
+          "xyxy": [
+            407.25115966796875,
+            570.2286376953125,
+            483.01983642578125,
+            638.757080078125
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 0,
+          "class_name": "bird-drop",
+          "confidence": 0.2656124234199524,
+          "xyxy": [
+            467.91497802734375,
+            398.742919921875,
+            548.0039672851562,
+            464.7913818359375
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 0,
+          "class_name": "bird-drop",
+          "confidence": 0.26303645968437195,
+          "xyxy": [
+            267.9016418457031,
+            111.17700958251953,
+            347.0190734863281,
+            176.8160400390625
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 0,
+          "class_name": "bird-drop",
+          "confidence": 0.26269522309303284,
+          "xyxy": [
+            707.30712890625,
+            606.7998046875,
+            771.808349609375,
+            672.149169921875
+          ],
+          "within_image_bounds": true
+        }
+      ]
+    },
+    {
+      "image_path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\test\\images\\Bird-97-_jpg.rf.4301a6e773b73e92b63f71f80b0a85e9.jpg",
+      "image_width": 720,
+      "image_height": 960,
+      "detections": []
+    },
+    {
+      "image_path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\test\\images\\Cleaan-126-_jpg.rf.5a74847d6adb3a7061d27b0787b41cd1.jpg",
+      "image_width": 1280,
+      "image_height": 720,
+      "detections": [
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.8456494808197021,
+          "xyxy": [
+            309.7164001464844,
+            202.6435089111328,
+            662.0492553710938,
+            384.09912109375
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.8377325534820557,
+          "xyxy": [
+            552.5687255859375,
+            354.26666259765625,
+            1063.0260009765625,
+            697.1502685546875
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.832643449306488,
+          "xyxy": [
+            46.18988037109375,
+            348.45855712890625,
+            662.9788208007812,
+            686.7407836914062
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.784202516078949,
+          "xyxy": [
+            824.9335327148438,
+            212.69012451171875,
+            1228.624267578125,
+            407.07611083984375
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.7799069881439209,
+          "xyxy": [
+            594.552978515625,
+            214.97535705566406,
+            925.0457153320312,
+            387.1797180175781
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.7623960375785828,
+          "xyxy": [
+            0.7733345031738281,
+            329.67620849609375,
+            315.7096862792969,
+            696.5983276367188
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.6369809508323669,
+          "xyxy": [
+            26.880569458007812,
+            197.46231079101562,
+            420.6391906738281,
+            378.2216491699219
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.5639841556549072,
+          "xyxy": [
+            898.9671020507812,
+            358.176025390625,
+            1279.7154541015625,
+            711.7498168945312
+          ],
+          "within_image_bounds": true
+        }
+      ]
+    },
+    {
+      "image_path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\test\\images\\Cleaan-136-_jpg.rf.b9e00d4aeee3e6a31919639799520eef.jpg",
+      "image_width": 474,
+      "image_height": 355,
+      "detections": [
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.6601908206939697,
+          "xyxy": [
+            4.033426284790039,
+            201.8860626220703,
+            465.1739196777344,
+            355.0
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.6053406000137329,
+          "xyxy": [
+            180.94972229003906,
+            135.0319366455078,
+            391.85546875,
+            219.0695037841797
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.6008438467979431,
+          "xyxy": [
+            33.325923919677734,
+            134.40830993652344,
+            227.57290649414062,
+            229.11338806152344
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.5925657749176025,
+          "xyxy": [
+            49.67612838745117,
+            94.04901123046875,
+            231.50555419921875,
+            154.8817901611328
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.5218085050582886,
+          "xyxy": [
+            346.09539794921875,
+            127.95458221435547,
+            474.0,
+            208.21157836914062
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.438084214925766,
+          "xyxy": [
+            311.81109619140625,
+            93.0266342163086,
+            472.3943786621094,
+            151.70204162597656
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.4198208749294281,
+          "xyxy": [
+            180.66143798828125,
+            97.01773071289062,
+            353.613525390625,
+            153.72007751464844
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.394061803817749,
+          "xyxy": [
+            157.74659729003906,
+            128.17955017089844,
+            399.1045227050781,
+            233.26806640625
+          ],
+          "within_image_bounds": true
+        }
+      ]
+    },
+    {
+      "image_path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\test\\images\\Cleaan-137-_jpg.rf.0f06ae150d02b5f728b5559879affac7.jpg",
+      "image_width": 474,
+      "image_height": 355,
+      "detections": [
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.7577112317085266,
+          "xyxy": [
+            119.76416778564453,
+            29.452823638916016,
+            278.0310974121094,
+            99.10845947265625
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.6771957278251648,
+          "xyxy": [
+            228.2905731201172,
+            21.51004409790039,
+            350.9024658203125,
+            78.90666198730469
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.6460758447647095,
+          "xyxy": [
+            0.0,
+            79.49378967285156,
+            257.0570373535156,
+            260.7257080078125
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.5452444553375244,
+          "xyxy": [
+            39.041595458984375,
+            175.759033203125,
+            437.4795227050781,
+            355.0
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.5439860224723816,
+          "xyxy": [
+            0.11045355349779129,
+            36.85149383544922,
+            166.8700714111328,
+            146.18666076660156
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.41624850034713745,
+          "xyxy": [
+            183.04562377929688,
+            64.5052719116211,
+            368.7812805175781,
+            177.63662719726562
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.4141283631324768,
+          "xyxy": [
+            304.1090393066406,
+            52.379878997802734,
+            438.9533996582031,
+            134.7851104736328
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.32469987869262695,
+          "xyxy": [
+            294.5716857910156,
+            121.39496612548828,
+            473.8851623535156,
+            293.2625427246094
+          ],
+          "within_image_bounds": true
+        }
+      ]
+    },
+    {
+      "image_path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\test\\images\\Cleaan-139-_jpg.rf.aa59f016239b6ec352e3543eb04ab513.jpg",
+      "image_width": 499,
+      "image_height": 385,
+      "detections": [
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.4125959277153015,
+          "xyxy": [
+            0.0,
+            14.300506591796875,
+            486.54833984375,
+            379.2982482910156
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.360463410615921,
+          "xyxy": [
+            4.500668048858643,
+            138.8072509765625,
+            466.1869201660156,
+            380.9393615722656
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.3253191411495209,
+          "xyxy": [
+            0.19537991285324097,
+            52.965087890625,
+            167.2861328125,
+            304.9280090332031
+          ],
+          "within_image_bounds": true
+        }
+      ]
+    },
+    {
+      "image_path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\test\\images\\Cleaan-146-_jpg.rf.3647d0795009babe04af25d9de427560.jpg",
+      "image_width": 3072,
+      "image_height": 2304,
+      "detections": [
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.8247277736663818,
+          "xyxy": [
+            289.63458251953125,
+            411.1907958984375,
+            1266.5079345703125,
+            1052.9234619140625
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.750905454158783,
+          "xyxy": [
+            905.278564453125,
+            403.9715881347656,
+            1999.6019287109375,
+            1015.56689453125
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.6666657328605652,
+          "xyxy": [
+            288.8975830078125,
+            920.6077880859375,
+            1698.5673828125,
+            2272.892822265625
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.6420005559921265,
+          "xyxy": [
+            1441.324951171875,
+            397.7566223144531,
+            2608.768798828125,
+            962.8775634765625
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.6175547242164612,
+          "xyxy": [
+            1170.80859375,
+            888.4290161132812,
+            2809.41748046875,
+            2067.2158203125
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.4533015489578247,
+          "xyxy": [
+            1879.494140625,
+            804.0580444335938,
+            3070.50390625,
+            1909.0625
+          ],
+          "within_image_bounds": true
+        }
+      ]
+    },
+    {
+      "image_path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\test\\images\\Cleaan-154-_JPG.rf.aed4549c4ad84470fea20bad38d8ff47.jpg",
+      "image_width": 494,
+      "image_height": 493,
+      "detections": [
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.8353627920150757,
+          "xyxy": [
+            0.0,
+            2.840353012084961,
+            486.1788330078125,
+            478.5970458984375
+          ],
+          "within_image_bounds": true
+        }
+      ]
+    },
+    {
+      "image_path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\test\\images\\Cleaan-174-_jpg.rf.20537aeb2e830cad291db6b7e33ec1fd.jpg",
+      "image_width": 474,
+      "image_height": 475,
+      "detections": [
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.554676353931427,
+          "xyxy": [
+            0.1503095030784607,
+            31.428985595703125,
+            466.9583740234375,
+            463.8598937988281
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.2964843511581421,
+          "xyxy": [
+            34.06795120239258,
+            35.581790924072266,
+            468.3570861816406,
+            208.11422729492188
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.25032442808151245,
+          "xyxy": [
+            2.0603926181793213,
+            189.59457397460938,
+            466.77996826171875,
+            470.07403564453125
+          ],
+          "within_image_bounds": true
+        }
+      ]
+    },
+    {
+      "image_path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\test\\images\\Cleaan-188-_jpg.rf.41916f8096be5c12edbeb46e7f0ed9c1.jpg",
+      "image_width": 620,
+      "image_height": 440,
+      "detections": [
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.535937488079071,
+          "xyxy": [
+            0.0,
+            52.24167251586914,
+            586.6131591796875,
+            440.0
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.42842045426368713,
+          "xyxy": [
+            4.018141269683838,
+            188.66677856445312,
+            614.5177001953125,
+            440.0
+          ],
+          "within_image_bounds": true
+        }
+      ]
+    },
+    {
+      "image_path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\test\\images\\Cleaan-197-_jpg.rf.f367c99af31408de58533d2a2a101b3e.jpg",
+      "image_width": 1500,
+      "image_height": 1000,
+      "detections": [
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.8023057579994202,
+          "xyxy": [
+            145.50796508789062,
+            542.3543701171875,
+            1217.0965576171875,
+            968.0472412109375
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.7776076793670654,
+          "xyxy": [
+            0.6536543369293213,
+            535.598388671875,
+            483.8315734863281,
+            986.7745361328125
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.7051718831062317,
+          "xyxy": [
+            703.926513671875,
+            376.4725036621094,
+            1302.3978271484375,
+            587.65380859375
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.6504184603691101,
+          "xyxy": [
+            0.0,
+            407.12060546875,
+            336.0201110839844,
+            574.1739501953125
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.62066251039505,
+          "xyxy": [
+            1006.6807861328125,
+            538.1514892578125,
+            1500.0,
+            991.6300048828125
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.5459626317024231,
+          "xyxy": [
+            1122.570068359375,
+            410.95465087890625,
+            1500.0,
+            587.3583374023438
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.48498544096946716,
+          "xyxy": [
+            222.7793731689453,
+            400.8958435058594,
+            793.9281616210938,
+            585.2294311523438
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.3464787006378174,
+          "xyxy": [
+            710.0849609375,
+            394.4959411621094,
+            1136.74365234375,
+            582.09814453125
+          ],
+          "within_image_bounds": true
+        }
+      ]
+    },
+    {
+      "image_path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\test\\images\\Cleaan-21-_jpg.rf.d885015f91ca287b6ffe26f14fcac5b1.jpg",
+      "image_width": 800,
+      "image_height": 600,
+      "detections": [
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.8420751690864563,
+          "xyxy": [
+            178.4562225341797,
+            371.5497741699219,
+            788.314453125,
+            599.13330078125
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.7447183728218079,
+          "xyxy": [
+            99.50051879882812,
+            211.5564422607422,
+            623.2760620117188,
+            418.2735900878906
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.728813886642456,
+          "xyxy": [
+            80.70240020751953,
+            118.25392150878906,
+            447.7909240722656,
+            265.88397216796875
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.630621612071991,
+          "xyxy": [
+            489.54296875,
+            234.43179321289062,
+            800.0,
+            394.54962158203125
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.5795072913169861,
+          "xyxy": [
+            48.98204803466797,
+            56.58058547973633,
+            383.05194091796875,
+            172.83482360839844
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.29149919748306274,
+          "xyxy": [
+            390.21820068359375,
+            138.37872314453125,
+            750.7265014648438,
+            279.07000732421875
+          ],
+          "within_image_bounds": true
+        }
+      ]
+    },
+    {
+      "image_path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\test\\images\\Cleaan-27-_jpg.rf.e53a961b3956df471e8c40de0d925ba5.jpg",
+      "image_width": 1824,
+      "image_height": 2048,
+      "detections": [
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.7179005742073059,
+          "xyxy": [
+            727.831298828125,
+            244.35980224609375,
+            1261.886474609375,
+            684.389892578125
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.6644877791404724,
+          "xyxy": [
+            1115.583984375,
+            253.29962158203125,
+            1657.453125,
+            697.123046875
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.5873764753341675,
+          "xyxy": [
+            762.8762817382812,
+            1025.8614501953125,
+            1405.039306640625,
+            1528.9783935546875
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.5739637613296509,
+          "xyxy": [
+            298.175048828125,
+            232.07757568359375,
+            813.6092529296875,
+            675.628662109375
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.5722300410270691,
+          "xyxy": [
+            786.1035766601562,
+            616.087646484375,
+            1319.6337890625,
+            1109.1563720703125
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.5444748997688293,
+          "xyxy": [
+            353.6051025390625,
+            1027.3193359375,
+            932.1253662109375,
+            1520.3798828125
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.5440824627876282,
+          "xyxy": [
+            1049.7772216796875,
+            2.63177490234375,
+            1579.1832275390625,
+            316.47235107421875
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.5115294456481934,
+          "xyxy": [
+            285.398193359375,
+            2.436126708984375,
+            774.442626953125,
+            294.4636535644531
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.5000342130661011,
+          "xyxy": [
+            671.9580078125,
+            2.860382080078125,
+            1184.6734619140625,
+            305.9488830566406
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.4946562945842743,
+          "xyxy": [
+            235.466796875,
+            616.5087890625,
+            877.2744140625,
+            1126.1025390625
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.43585190176963806,
+          "xyxy": [
+            1123.125244140625,
+            632.223388671875,
+            1794.704833984375,
+            1130.541748046875
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.39516493678092957,
+          "xyxy": [
+            0.0,
+            1027.429931640625,
+            389.91876220703125,
+            1524.880615234375
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.3558878004550934,
+          "xyxy": [
+            11.412353515625,
+            594.14990234375,
+            404.25421142578125,
+            1092.650146484375
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.30340516567230225,
+          "xyxy": [
+            1267.51123046875,
+            1039.71044921875,
+            1823.50537109375,
+            1520.974609375
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.2678506374359131,
+          "xyxy": [
+            7.486663818359375,
+            1.32708740234375,
+            378.5120544433594,
+            285.6180419921875
+          ],
+          "within_image_bounds": true
+        }
+      ]
+    },
+    {
+      "image_path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\test\\images\\Cleaan-3-_jpg.rf.02b880b229207a16b27120415042604d.jpg",
+      "image_width": 736,
+      "image_height": 494,
+      "detections": [
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.7949367165565491,
+          "xyxy": [
+            247.41722106933594,
+            177.52264404296875,
+            724.1076049804688,
+            494.0
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.7797302603721619,
+          "xyxy": [
+            325.78594970703125,
+            88.12425994873047,
+            574.635986328125,
+            205.9190216064453
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.7041327357292175,
+          "xyxy": [
+            482.7925720214844,
+            82.83341217041016,
+            723.9052734375,
+            189.90261840820312
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.6589221954345703,
+          "xyxy": [
+            136.3868408203125,
+            101.97008514404297,
+            402.44854736328125,
+            219.60433959960938
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.5804284811019897,
+          "xyxy": [
+            622.9230346679688,
+            70.361328125,
+            736.0,
+            172.84457397460938
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.5764052867889404,
+          "xyxy": [
+            214.28067016601562,
+            61.07091522216797,
+            381.0947265625,
+            116.61843872070312
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.5727875232696533,
+          "xyxy": [
+            69.9798583984375,
+            63.121517181396484,
+            248.8483123779297,
+            122.85721588134766
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.5707449316978455,
+          "xyxy": [
+            0.0,
+            206.814208984375,
+            479.253173828125,
+            494.0
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.5501091480255127,
+          "xyxy": [
+            0.0,
+            107.36808013916016,
+            193.2235870361328,
+            246.4375
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.48184558749198914,
+          "xyxy": [
+            527.8417358398438,
+            154.36990356445312,
+            736.0,
+            428.4952392578125
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.475538969039917,
+          "xyxy": [
+            0.0,
+            65.33221435546875,
+            100.63633728027344,
+            131.30564880371094
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.33956578373908997,
+          "xyxy": [
+            564.3560791015625,
+            54.58749008178711,
+            702.4811401367188,
+            99.62309265136719
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.3322139084339142,
+          "xyxy": [
+            345.69305419921875,
+            55.573577880859375,
+            500.239013671875,
+            111.23153686523438
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.314409464597702,
+          "xyxy": [
+            465.5526123046875,
+            54.147823333740234,
+            600.6065673828125,
+            106.82451629638672
+          ],
+          "within_image_bounds": true
+        }
+      ]
+    },
+    {
+      "image_path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\test\\images\\Cleaan-35-_jpg.rf.a06e903fded55b115993507a9ee0f81a.jpg",
+      "image_width": 1200,
+      "image_height": 800,
+      "detections": [
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.6882030963897705,
+          "xyxy": [
+            0.0,
+            207.35800170898438,
+            638.4305419921875,
+            652.8052978515625
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.6349191665649414,
+          "xyxy": [
+            264.7461853027344,
+            221.49851989746094,
+            761.0911865234375,
+            539.9521484375
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.5543467402458191,
+          "xyxy": [
+            456.5600891113281,
+            441.87469482421875,
+            1110.2730712890625,
+            796.7898559570312
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.33121299743652344,
+          "xyxy": [
+            446.27056884765625,
+            226.95758056640625,
+            818.5491333007812,
+            466.205322265625
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.26597410440444946,
+          "xyxy": [
+            374.54315185546875,
+            217.68167114257812,
+            847.2075805664062,
+            518.2095947265625
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.2610465884208679,
+          "xyxy": [
+            71.47371673583984,
+            447.5736999511719,
+            1125.0306396484375,
+            797.1673583984375
+          ],
+          "within_image_bounds": true
+        }
+      ]
+    },
+    {
+      "image_path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\test\\images\\Cleaan-42-_jpg.rf.2594c85304e9d15c1b206c09095d7000.jpg",
+      "image_width": 414,
+      "image_height": 353,
+      "detections": [
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.8114120364189148,
+          "xyxy": [
+            214.8675537109375,
+            155.8533172607422,
+            405.1710510253906,
+            249.384521484375
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.766196608543396,
+          "xyxy": [
+            130.10690307617188,
+            187.43112182617188,
+            322.334716796875,
+            314.28717041015625
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.764319896697998,
+          "xyxy": [
+            208.7484130859375,
+            231.4137420654297,
+            413.6167907714844,
+            349.92401123046875
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.6211161613464355,
+          "xyxy": [
+            295.1806335449219,
+            124.26263427734375,
+            414.0,
+            193.84092712402344
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.5825165510177612,
+          "xyxy": [
+            318.7353820800781,
+            175.96820068359375,
+            414.0,
+            288.82147216796875
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.5416294932365417,
+          "xyxy": [
+            160.1699981689453,
+            142.6887969970703,
+            280.0589294433594,
+            196.65907287597656
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.5054914951324463,
+          "xyxy": [
+            346.46844482421875,
+            97.462158203125,
+            413.98980712890625,
+            144.88084411621094
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.4806806445121765,
+          "xyxy": [
+            266.76116943359375,
+            98.16374969482422,
+            380.3437805175781,
+            133.97874450683594
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.4791261553764343,
+          "xyxy": [
+            217.13525390625,
+            121.51673126220703,
+            330.7921447753906,
+            162.73069763183594
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.40193971991539,
+          "xyxy": [
+            94.08712005615234,
+            167.37655639648438,
+            212.95538330078125,
+            242.89141845703125
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.27838945388793945,
+          "xyxy": [
+            177.48423767089844,
+            114.51689147949219,
+            255.5741424560547,
+            150.0718231201172
+          ],
+          "within_image_bounds": true
+        }
+      ]
+    },
+    {
+      "image_path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\test\\images\\Cleaan-54-_jpg.rf.a103a9cdbe3dbeb96bee38cb79ec2c7c.jpg",
+      "image_width": 400,
+      "image_height": 260,
+      "detections": [
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.8266790509223938,
+          "xyxy": [
+            54.0492057800293,
+            164.90919494628906,
+            262.3284912109375,
+            258.4381103515625
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.7384223341941833,
+          "xyxy": [
+            208.36773681640625,
+            153.08656311035156,
+            397.9228515625,
+            258.65869140625
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.7262623310089111,
+          "xyxy": [
+            30.587339401245117,
+            78.74180603027344,
+            207.30929565429688,
+            182.21652221679688
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.7212802171707153,
+          "xyxy": [
+            111.73381805419922,
+            15.561375617980957,
+            226.40316772460938,
+            79.87431335449219
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.7174060940742493,
+          "xyxy": [
+            189.9950714111328,
+            14.66008472442627,
+            312.1205139160156,
+            77.67771911621094
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.716350793838501,
+          "xyxy": [
+            28.835010528564453,
+            17.41179847717285,
+            142.20755004882812,
+            78.30391693115234
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.6877241730690002,
+          "xyxy": [
+            158.2278594970703,
+            75.80534362792969,
+            346.6857604980469,
+            175.8187255859375
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.6410720348358154,
+          "xyxy": [
+            0.0,
+            166.69984436035156,
+            90.73046875,
+            260.0
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.5624023079872131,
+          "xyxy": [
+            268.91650390625,
+            14.961570739746094,
+            387.9649658203125,
+            69.43463897705078
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.5544387698173523,
+          "xyxy": [
+            0.0,
+            79.5003433227539,
+            65.313232421875,
+            180.6133575439453
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.5491458773612976,
+          "xyxy": [
+            287.7804260253906,
+            71.64490509033203,
+            400.0,
+            173.79141235351562
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.5199692249298096,
+          "xyxy": [
+            43.199493408203125,
+            56.71870803833008,
+            152.01499938964844,
+            89.92069244384766
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.5144293904304504,
+          "xyxy": [
+            44.178062438964844,
+            0.0,
+            127.70374298095703,
+            27.264589309692383
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.4632021188735962,
+          "xyxy": [
+            273.44384765625,
+            0.0,
+            384.7077941894531,
+            26.710891723632812
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.45145684480667114,
+          "xyxy": [
+            215.9440155029297,
+            0.0,
+            304.41400146484375,
+            27.565351486206055
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.4257599115371704,
+          "xyxy": [
+            106.57868957519531,
+            0.0,
+            187.8025360107422,
+            27.128171920776367
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.4007255434989929,
+          "xyxy": [
+            302.9793701171875,
+            54.19485855102539,
+            399.267578125,
+            84.88602447509766
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.39927637577056885,
+          "xyxy": [
+            272.31427001953125,
+            11.107399940490723,
+            399.36553955078125,
+            83.95226287841797
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.35078364610671997,
+          "xyxy": [
+            0.0,
+            18.129793167114258,
+            56.32661819458008,
+            89.15347290039062
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.3424263596534729,
+          "xyxy": [
+            0.03490447998046875,
+            47.847408294677734,
+            60.08332061767578,
+            91.38587188720703
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.32869815826416016,
+          "xyxy": [
+            162.22532653808594,
+            0.0,
+            246.2932586669922,
+            28.25948715209961
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.32754290103912354,
+          "xyxy": [
+            190.77139282226562,
+            53.43822479248047,
+            324.66558837890625,
+            85.92736053466797
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.32071471214294434,
+          "xyxy": [
+            116.25051879882812,
+            45.2845458984375,
+            238.0115966796875,
+            87.6988296508789
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.31957918405532837,
+          "xyxy": [
+            0.0,
+            0.0,
+            66.99993896484375,
+            28.592315673828125
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.31220972537994385,
+          "xyxy": [
+            345.654052734375,
+            12.573546409606934,
+            399.8885192871094,
+            73.0120620727539
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.2807648181915283,
+          "xyxy": [
+            133.6612548828125,
+            55.4990119934082,
+            241.05758666992188,
+            88.65418243408203
+          ],
+          "within_image_bounds": true
+        }
+      ]
+    },
+    {
+      "image_path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\test\\images\\Cleaan-55-_jpg.rf.9fb26936c7fb36e4e8b9827849fbf506.jpg",
+      "image_width": 1536,
+      "image_height": 2048,
+      "detections": [
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.8009886145591736,
+          "xyxy": [
+            9.204345703125,
+            1.8524169921875,
+            1536.0,
+            2007.7618408203125
+          ],
+          "within_image_bounds": true
+        }
+      ]
+    },
+    {
+      "image_path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\test\\images\\Cleaan-56-_jpg.rf.b35175a823763b41287e875b5d38f332.jpg",
+      "image_width": 400,
+      "image_height": 500,
+      "detections": [
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.4532172977924347,
+          "xyxy": [
+            98.69583892822266,
+            170.82882690429688,
+            335.4092102050781,
+            337.2490234375
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.4183717668056488,
+          "xyxy": [
+            180.5343017578125,
+            186.97039794921875,
+            400.0,
+            479.8683166503906
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.3183722496032715,
+          "xyxy": [
+            133.95240783691406,
+            109.12974548339844,
+            297.35601806640625,
+            198.15821838378906
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.278930127620697,
+          "xyxy": [
+            189.08773803710938,
+            93.14012145996094,
+            400.0,
+            220.9539337158203
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.2521023452281952,
+          "xyxy": [
+            3.674581527709961,
+            157.02777099609375,
+            197.89437866210938,
+            278.4936218261719
+          ],
+          "within_image_bounds": true
+        }
+      ]
+    },
+    {
+      "image_path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\test\\images\\Cleaan-8-_jpg.rf.46bac3535d29395483cb535208f34045.jpg",
+      "image_width": 1420,
+      "image_height": 798,
+      "detections": []
+    },
+    {
+      "image_path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\test\\images\\Cleaan-89-_jpg.rf.50738796fdbdc13e77ca06c7371e30b4.jpg",
+      "image_width": 1536,
+      "image_height": 2048,
+      "detections": [
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.8627839684486389,
+          "xyxy": [
+            0.0,
+            0.0,
+            1536.0,
+            1925.7705078125
+          ],
+          "within_image_bounds": true
+        }
+      ]
+    },
+    {
+      "image_path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\test\\images\\Dust-100-_jpg.rf.0722c86e17a6df567e9eee1cf4518250.jpg",
+      "image_width": 2048,
+      "image_height": 921,
+      "detections": []
+    },
+    {
+      "image_path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\test\\images\\Dust-112-_jpg.rf.b88b001e8b10ebea7954f87f6da810d7.jpg",
+      "image_width": 1440,
+      "image_height": 1440,
+      "detections": []
+    },
+    {
+      "image_path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\test\\images\\Dust-127-_jpg.rf.fe21d65910638cbb6ba0d5d815a76d13.jpg",
+      "image_width": 2048,
+      "image_height": 1536,
+      "detections": [
+        {
+          "class_id": 2,
+          "class_name": "dusty",
+          "confidence": 0.41773706674575806,
+          "xyxy": [
+            0.0,
+            800.1383666992188,
+            909.401123046875,
+            1536.0
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 2,
+          "class_name": "dusty",
+          "confidence": 0.38634732365608215,
+          "xyxy": [
+            1003.175537109375,
+            828.068359375,
+            2012.87158203125,
+            1536.0
+          ],
+          "within_image_bounds": true
+        }
+      ]
+    },
+    {
+      "image_path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\test\\images\\Dust-129-_jpg.rf.63bbc732cf2bbda01c6061e4ac8ae17f.jpg",
+      "image_width": 2048,
+      "image_height": 1536,
+      "detections": []
+    },
+    {
+      "image_path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\test\\images\\Dust-13-_jpg.rf.f634e4ebc33437ea06f39015db82370c.jpg",
+      "image_width": 740,
+      "image_height": 416,
+      "detections": []
+    },
+    {
+      "image_path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\test\\images\\Dust-130-_jpg.rf.c5f73ebe311adbc2dc191a57d4ff6a1b.jpg",
+      "image_width": 2048,
+      "image_height": 1536,
+      "detections": []
+    },
+    {
+      "image_path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\test\\images\\Dust-134-_jpg.rf.ac743916f54dd5586b3a8b8c681f170d.jpg",
+      "image_width": 514,
+      "image_height": 960,
+      "detections": []
+    },
+    {
+      "image_path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\test\\images\\Dust-144-_jpg.rf.8000db7307bc959dd419fdf8c61f6873.jpg",
+      "image_width": 1600,
+      "image_height": 1200,
+      "detections": [
+        {
+          "class_id": 2,
+          "class_name": "dusty",
+          "confidence": 0.2965937852859497,
+          "xyxy": [
+            1329.367431640625,
+            382.02703857421875,
+            1546.3760986328125,
+            553.4996337890625
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 2,
+          "class_name": "dusty",
+          "confidence": 0.26180747151374817,
+          "xyxy": [
+            1153.22119140625,
+            581.2744140625,
+            1476.671142578125,
+            884.2422485351562
+          ],
+          "within_image_bounds": true
+        }
+      ]
+    },
+    {
+      "image_path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\test\\images\\Dust-145-_jpg.rf.82bba3b5238d65c1d528b93e35baefc4.jpg",
+      "image_width": 2048,
+      "image_height": 1536,
+      "detections": [
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.5274608135223389,
+          "xyxy": [
+            966.1497192382812,
+            408.9195556640625,
+            2014.457275390625,
+            1501.398681640625
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.4690426290035248,
+          "xyxy": [
+            965.4285278320312,
+            47.411865234375,
+            1586.862060546875,
+            471.03924560546875
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.4671855568885803,
+          "xyxy": [
+            20.508056640625,
+            459.6180419921875,
+            1128.02392578125,
+            1509.7083740234375
+          ],
+          "within_image_bounds": true
+        }
+      ]
+    },
+    {
+      "image_path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\test\\images\\Dust-152-_jpg.rf.29ab08ade56a8ae64a7e90462d438649.jpg",
+      "image_width": 1536,
+      "image_height": 2048,
+      "detections": [
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.5087159276008606,
+          "xyxy": [
+            872.4094848632812,
+            973.1820068359375,
+            1536.0,
+            1294.3665771484375
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.4297621250152588,
+          "xyxy": [
+            0.0,
+            1073.02294921875,
+            752.673583984375,
+            1416.7197265625
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.3103305399417877,
+          "xyxy": [
+            0.0,
+            1196.93115234375,
+            780.8973999023438,
+            1700.630859375
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.28563594818115234,
+          "xyxy": [
+            890.846435546875,
+            1153.3629150390625,
+            1527.66796875,
+            1556.6571044921875
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.276379257440567,
+          "xyxy": [
+            851.6981811523438,
+            850.5633544921875,
+            1536.0,
+            1129.7113037109375
+          ],
+          "within_image_bounds": true
+        }
+      ]
+    },
+    {
+      "image_path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\test\\images\\Dust-16-_jpg.rf.a6daa272e1986e6090c73e966984462d.jpg",
+      "image_width": 280,
+      "image_height": 280,
+      "detections": [
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.2770974338054657,
+          "xyxy": [
+            0.0,
+            5.029737949371338,
+            135.46334838867188,
+            163.80369567871094
+          ],
+          "within_image_bounds": true
+        }
+      ]
+    },
+    {
+      "image_path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\test\\images\\Dust-187-_jpg.rf.5b1ea0dadb1d7037e1e0072f15792bd3.jpg",
+      "image_width": 720,
+      "image_height": 960,
+      "detections": []
+    },
+    {
+      "image_path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\test\\images\\Dust-189-_jpg.rf.1ca3fb1e5153a763bc7de939a2b8a455.jpg",
+      "image_width": 626,
+      "image_height": 417,
+      "detections": []
+    },
+    {
+      "image_path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\test\\images\\Dust-209-_jpg.rf.fc9c69d3711ade2a8645e271108b8b90.jpg",
+      "image_width": 1305,
+      "image_height": 734,
+      "detections": [
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.8339234590530396,
+          "xyxy": [
+            639.1632690429688,
+            435.5622253417969,
+            997.2890014648438,
+            590.6390380859375
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.6459639668464661,
+          "xyxy": [
+            819.4446411132812,
+            510.4364318847656,
+            1207.4813232421875,
+            722.2081909179688
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.6032603979110718,
+          "xyxy": [
+            502.5417785644531,
+            361.87738037109375,
+            825.6729736328125,
+            479.1408996582031
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.591271698474884,
+          "xyxy": [
+            244.46409606933594,
+            454.3032531738281,
+            810.1069946289062,
+            690.4586181640625
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.5624760985374451,
+          "xyxy": [
+            115.189697265625,
+            348.59930419921875,
+            628.704345703125,
+            515.1615600585938
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.5613168478012085,
+          "xyxy": [
+            6.619112491607666,
+            263.72528076171875,
+            485.95941162109375,
+            406.9098815917969
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.5222100615501404,
+          "xyxy": [
+            868.243896484375,
+            422.7028503417969,
+            1102.0382080078125,
+            541.0570678710938
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.3600395619869232,
+          "xyxy": [
+            428.62298583984375,
+            544.2634887695312,
+            1107.6500244140625,
+            733.4789428710938
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.33049386739730835,
+          "xyxy": [
+            703.7100830078125,
+            352.40411376953125,
+            976.46484375,
+            467.3929138183594
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.2668757736682892,
+          "xyxy": [
+            0.1427726447582245,
+            268.6994323730469,
+            164.98544311523438,
+            485.44720458984375
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.25625258684158325,
+          "xyxy": [
+            319.9875183105469,
+            225.82455444335938,
+            713.9949951171875,
+            401.4706115722656
+          ],
+          "within_image_bounds": true
+        }
+      ]
+    },
+    {
+      "image_path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\test\\images\\Dust-210-_jpg.rf.8e93ea1943cf81c27d5852ccffa17ef7.jpg",
+      "image_width": 474,
+      "image_height": 355,
+      "detections": [
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.33858394622802734,
+          "xyxy": [
+            68.22616577148438,
+            3.02565598487854,
+            460.3382263183594,
+            355.0
+          ],
+          "within_image_bounds": true
+        }
+      ]
+    },
+    {
+      "image_path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\test\\images\\Dust-39-_jpg.rf.025538cf1c7bc58c98a646fce48415aa.jpg",
+      "image_width": 1919,
+      "image_height": 1080,
+      "detections": [
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.40183109045028687,
+          "xyxy": [
+            1230.7855224609375,
+            690.6748046875,
+            1625.6966552734375,
+            903.62451171875
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.3567167818546295,
+          "xyxy": [
+            949.919677734375,
+            644.63525390625,
+            1347.2713623046875,
+            875.8707885742188
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.35376617312431335,
+          "xyxy": [
+            792.5501708984375,
+            776.0560913085938,
+            1333.504150390625,
+            1080.0
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.33628058433532715,
+          "xyxy": [
+            1211.3585205078125,
+            830.8068237304688,
+            1765.0614013671875,
+            1079.9183349609375
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.3326714038848877,
+          "xyxy": [
+            407.69573974609375,
+            704.0413818359375,
+            997.7182006835938,
+            1050.8607177734375
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.28464609384536743,
+          "xyxy": [
+            0.0,
+            256.96282958984375,
+            1077.58935546875,
+            853.6478881835938
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.2828085720539093,
+          "xyxy": [
+            668.7935791015625,
+            606.0908813476562,
+            1049.677978515625,
+            801.7216186523438
+          ],
+          "within_image_bounds": true
+        }
+      ]
+    },
+    {
+      "image_path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\test\\images\\Dust-43-_jpg.rf.d2bb342c5a1413d8604a5250afc77b09.jpg",
+      "image_width": 350,
+      "image_height": 467,
+      "detections": []
+    },
+    {
+      "image_path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\test\\images\\Dust-46-_jpg.rf.38627eabbc05964723d717d94642e1ae.jpg",
+      "image_width": 149,
+      "image_height": 250,
+      "detections": []
+    },
+    {
+      "image_path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\test\\images\\Dust-51-_jpg.rf.8d16abaeed9958d427718df1ab20f814.jpg",
+      "image_width": 720,
+      "image_height": 960,
+      "detections": []
+    },
+    {
+      "image_path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\test\\images\\Dust-59-_jpg.rf.877da2feeaf1babb3d11a06680fb2101.jpg",
+      "image_width": 720,
+      "image_height": 960,
+      "detections": []
+    },
+    {
+      "image_path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\test\\images\\Dust-61-_jpg.rf.013e36c3873f759434c02e5b26092f97.jpg",
+      "image_width": 720,
+      "image_height": 960,
+      "detections": []
+    },
+    {
+      "image_path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\test\\images\\Dust-73-_jpg.rf.c097eb0d686b92df173d349626835d06.jpg",
+      "image_width": 1536,
+      "image_height": 2048,
+      "detections": [
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.28901374340057373,
+          "xyxy": [
+            12.5009765625,
+            867.0195922851562,
+            1536.0,
+            2034.0810546875
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.28695499897003174,
+          "xyxy": [
+            0.0,
+            459.1785888671875,
+            1181.3756103515625,
+            1144.778564453125
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.27335885167121887,
+          "xyxy": [
+            894.2235717773438,
+            291.93609619140625,
+            1525.49853515625,
+            564.3736572265625
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.2703518867492676,
+          "xyxy": [
+            19.627960205078125,
+            387.8238830566406,
+            1006.515869140625,
+            705.9627685546875
+          ],
+          "within_image_bounds": true
+        }
+      ]
+    },
+    {
+      "image_path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\test\\images\\Electrical-17-_jpg.rf.c945259079702ad2b8e501d939036ea1.jpg",
+      "image_width": 384,
+      "image_height": 402,
+      "detections": [
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.2528840899467468,
+          "xyxy": [
+            0.0,
+            2.9848780632019043,
+            383.9775695800781,
+            339.82586669921875
+          ],
+          "within_image_bounds": true
+        }
+      ]
+    },
+    {
+      "image_path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\test\\images\\Electrical-30-_jpg.rf.8c0555f83c4c8e4f6b5fb56eb45cb4ec.jpg",
+      "image_width": 1024,
+      "image_height": 682,
+      "detections": [
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.319158673286438,
+          "xyxy": [
+            799.1741943359375,
+            0.0,
+            1023.264404296875,
+            680.2991333007812
+          ],
+          "within_image_bounds": true
+        }
+      ]
+    },
+    {
+      "image_path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\test\\images\\Electrical-37-_jpg.rf.11e7738f87d8ea74f02824fe7808f154.jpg",
+      "image_width": 622,
+      "image_height": 415,
+      "detections": [
+        {
+          "class_id": 3,
+          "class_name": "electrical-damage",
+          "confidence": 0.5329549312591553,
+          "xyxy": [
+            187.9053192138672,
+            90.42144012451172,
+            314.82196044921875,
+            168.32229614257812
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 3,
+          "class_name": "electrical-damage",
+          "confidence": 0.3876332938671112,
+          "xyxy": [
+            236.0752410888672,
+            166.00648498535156,
+            371.2437744140625,
+            256.8821105957031
+          ],
+          "within_image_bounds": true
+        }
+      ]
+    },
+    {
+      "image_path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\test\\images\\Electrical-47-_jpg.rf.8745227f6259c725b9145bd91d7f6998.jpg",
+      "image_width": 1200,
+      "image_height": 806,
+      "detections": [
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.7997349500656128,
+          "xyxy": [
+            825.6040649414062,
+            229.45175170898438,
+            1195.7701416015625,
+            397.6595153808594
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.6256389021873474,
+          "xyxy": [
+            796.0117797851562,
+            159.92481994628906,
+            1200.0,
+            280.5
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.558870792388916,
+          "xyxy": [
+            1.611471176147461,
+            212.35888671875,
+            374.9559326171875,
+            359.671875
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.48150375485420227,
+          "xyxy": [
+            0.0,
+            313.70050048828125,
+            290.77410888671875,
+            526.0403442382812
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.46633151173591614,
+          "xyxy": [
+            3.670191764831543,
+            132.2526397705078,
+            424.1628723144531,
+            247.24322509765625
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.31308865547180176,
+          "xyxy": [
+            891.9479370117188,
+            543.7867431640625,
+            1200.0,
+            806.0
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.2700026035308838,
+          "xyxy": [
+            787.6411743164062,
+            104.5698013305664,
+            1165.873779296875,
+            202.68508911132812
+          ],
+          "within_image_bounds": true
+        }
+      ]
+    },
+    {
+      "image_path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\test\\images\\Electrical-6-_jpg.rf.7c5db630583c7ed430283cf2635557f3.jpg",
+      "image_width": 474,
+      "image_height": 355,
+      "detections": []
+    },
+    {
+      "image_path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\test\\images\\Electrical-62-_jpg.rf.a692c7117d2497645cb8c6793565dfca.jpg",
+      "image_width": 450,
+      "image_height": 285,
+      "detections": [
+        {
+          "class_id": 3,
+          "class_name": "electrical-damage",
+          "confidence": 0.32023847103118896,
+          "xyxy": [
+            115.98485565185547,
+            19.553571701049805,
+            295.4078369140625,
+            136.43603515625
+          ],
+          "within_image_bounds": true
+        }
+      ]
+    },
+    {
+      "image_path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\test\\images\\Electrical-63-_jpg.rf.eb32dd6b81296481fc0857c09b2f980c.jpg",
+      "image_width": 3024,
+      "image_height": 5376,
+      "detections": [
+        {
+          "class_id": 3,
+          "class_name": "electrical-damage",
+          "confidence": 0.4112355411052704,
+          "xyxy": [
+            905.71728515625,
+            1079.218505859375,
+            1864.02099609375,
+            1824.44287109375
+          ],
+          "within_image_bounds": true
+        }
+      ]
+    },
+    {
+      "image_path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\test\\images\\Electrical-73-_jpg.rf.4d46504e025dcb1c0a9193055edc37a0.jpg",
+      "image_width": 460,
+      "image_height": 345,
+      "detections": []
+    },
+    {
+      "image_path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\test\\images\\Electrical-74-_jpg.rf.efc8b14794d46238a3d3637260676d17.jpg",
+      "image_width": 300,
+      "image_height": 300,
+      "detections": []
+    },
+    {
+      "image_path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\test\\images\\Electrical-8-_jpg.rf.5b957c043871488cc88b5d9b91a1cebe.jpg",
+      "image_width": 474,
+      "image_height": 632,
+      "detections": [
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.6811744570732117,
+          "xyxy": [
+            0.9986352920532227,
+            1.4710941314697266,
+            474.0,
+            629.82275390625
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.3067205846309662,
+          "xyxy": [
+            3.2864179611206055,
+            0.0,
+            474.0,
+            445.9969787597656
+          ],
+          "within_image_bounds": true
+        }
+      ]
+    },
+    {
+      "image_path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\test\\images\\Physical-damaged-24-_JPG.rf.c71228928381d9fd3893ba3262391788.jpg",
+      "image_width": 1168,
+      "image_height": 769,
+      "detections": [
+        {
+          "class_id": 4,
+          "class_name": "physical-damage",
+          "confidence": 0.6476382613182068,
+          "xyxy": [
+            397.2532958984375,
+            204.23216247558594,
+            744.29052734375,
+            513.0454711914062
+          ],
+          "within_image_bounds": true
+        }
+      ]
+    },
+    {
+      "image_path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\test\\images\\Physical-damaged-32-_jpg.rf.1ea71cec2d0367bde6da64337c20e123.jpg",
+      "image_width": 1024,
+      "image_height": 768,
+      "detections": [
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.2552078664302826,
+          "xyxy": [
+            728.7158203125,
+            0.0,
+            1024.0,
+            81.17071533203125
+          ],
+          "within_image_bounds": true
+        }
+      ]
+    },
+    {
+      "image_path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\test\\images\\Physical-damaged-33-_jpg.rf.134fba1ab6349a9b0ce814c6ab15bd20.jpg",
+      "image_width": 474,
+      "image_height": 228,
+      "detections": [
+        {
+          "class_id": 4,
+          "class_name": "physical-damage",
+          "confidence": 0.847948431968689,
+          "xyxy": [
+            182.9495849609375,
+            17.039342880249023,
+            324.64459228515625,
+            170.27874755859375
+          ],
+          "within_image_bounds": true
+        }
+      ]
+    },
+    {
+      "image_path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\test\\images\\Physical-damaged-46-_jpg.rf.af484bde93817f1e5e3349a22ca55e5b.jpg",
+      "image_width": 825,
+      "image_height": 547,
+      "detections": [
+        {
+          "class_id": 4,
+          "class_name": "physical-damage",
+          "confidence": 0.7583044767379761,
+          "xyxy": [
+            318.44110107421875,
+            181.70355224609375,
+            572.138916015625,
+            451.8435363769531
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 4,
+          "class_name": "physical-damage",
+          "confidence": 0.6093389391899109,
+          "xyxy": [
+            731.6475830078125,
+            134.1326904296875,
+            825.0,
+            252.73431396484375
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 4,
+          "class_name": "physical-damage",
+          "confidence": 0.2886873483657837,
+          "xyxy": [
+            379.2346496582031,
+            201.63650512695312,
+            570.8556518554688,
+            452.4348449707031
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 3,
+          "class_name": "electrical-damage",
+          "confidence": 0.2631571888923645,
+          "xyxy": [
+            297.86016845703125,
+            186.98240661621094,
+            597.3519287109375,
+            469.43792724609375
+          ],
+          "within_image_bounds": true
+        }
+      ]
+    },
+    {
+      "image_path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\test\\images\\Physical-damaged-50-_jpg.rf.b95c4c8e613d63d0569a367b787d4419.jpg",
+      "image_width": 640,
+      "image_height": 480,
+      "detections": [
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.531122088432312,
+          "xyxy": [
+            18.43790054321289,
+            5.8655548095703125,
+            631.1345825195312,
+            479.61676025390625
+          ],
+          "within_image_bounds": true
+        }
+      ]
+    },
+    {
+      "image_path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\test\\images\\Physical-damaged-52-_jpg.rf.5e30733459188cb6eed837fe4cbaa586.jpg",
+      "image_width": 340,
+      "image_height": 327,
+      "detections": [
+        {
+          "class_id": 0,
+          "class_name": "bird-drop",
+          "confidence": 0.31087976694107056,
+          "xyxy": [
+            150.83413696289062,
+            66.44441223144531,
+            203.81094360351562,
+            105.90266418457031
+          ],
+          "within_image_bounds": true
+        }
+      ]
+    },
+    {
+      "image_path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\test\\images\\Physical-damaged-63-_jpg.rf.0bc2816dd1e0a1e574b6c8b1ca1c114d.jpg",
+      "image_width": 720,
+      "image_height": 473,
+      "detections": [
+        {
+          "class_id": 0,
+          "class_name": "bird-drop",
+          "confidence": 0.49206823110580444,
+          "xyxy": [
+            281.3831481933594,
+            129.34739685058594,
+            395.9082336425781,
+            201.23922729492188
+          ],
+          "within_image_bounds": true
+        }
+      ]
+    },
+    {
+      "image_path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\test\\images\\Solar-101-_jpg.rf.26ab0271df0c5afb160752d641a344dd.jpg",
+      "image_width": 768,
+      "image_height": 512,
+      "detections": [
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.4509330689907074,
+          "xyxy": [
+            0.0,
+            5.373870849609375,
+            517.0048828125,
+            497.7030029296875
+          ],
+          "within_image_bounds": true
+        }
+      ]
+    },
+    {
+      "image_path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\test\\images\\Solar-107-_jpg.rf.af495b261a8d0bb0575b314084a9199e.jpg",
+      "image_width": 620,
+      "image_height": 349,
+      "detections": []
+    },
+    {
+      "image_path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\test\\images\\Solar-112-_jpg.rf.f26f58fad628822285b9315560b82317.jpg",
+      "image_width": 800,
+      "image_height": 533,
+      "detections": [
+        {
+          "class_id": 5,
+          "class_name": "snow-covered",
+          "confidence": 0.3507651090621948,
+          "xyxy": [
+            537.9566040039062,
+            56.67764663696289,
+            702.482421875,
+            173.69601440429688
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 5,
+          "class_name": "snow-covered",
+          "confidence": 0.34885308146476746,
+          "xyxy": [
+            344.6189880371094,
+            91.14767456054688,
+            429.50372314453125,
+            165.9789276123047
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 5,
+          "class_name": "snow-covered",
+          "confidence": 0.3403584063053131,
+          "xyxy": [
+            731.271484375,
+            96.25489044189453,
+            792.818359375,
+            138.03445434570312
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 5,
+          "class_name": "snow-covered",
+          "confidence": 0.33208224177360535,
+          "xyxy": [
+            518.024658203125,
+            55.50260543823242,
+            700.4284057617188,
+            213.35618591308594
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 5,
+          "class_name": "snow-covered",
+          "confidence": 0.30916932225227356,
+          "xyxy": [
+            271.0856628417969,
+            95.9194107055664,
+            336.0736389160156,
+            171.44692993164062
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 5,
+          "class_name": "snow-covered",
+          "confidence": 0.2681615650653839,
+          "xyxy": [
+            732.1310424804688,
+            77.34222412109375,
+            799.9027099609375,
+            141.0923309326172
+          ],
+          "within_image_bounds": true
+        }
+      ]
+    },
+    {
+      "image_path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\test\\images\\Solar-118-_jpg.rf.954618b216079f0fe403d420c7bd393d.jpg",
+      "image_width": 2048,
+      "image_height": 1373,
+      "detections": [
+        {
+          "class_id": 5,
+          "class_name": "snow-covered",
+          "confidence": 0.6521852016448975,
+          "xyxy": [
+            740.712646484375,
+            686.333740234375,
+            878.730224609375,
+            752.439453125
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 5,
+          "class_name": "snow-covered",
+          "confidence": 0.6251174807548523,
+          "xyxy": [
+            735.0558471679688,
+            681.97705078125,
+            995.2955932617188,
+            758.557373046875
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 5,
+          "class_name": "snow-covered",
+          "confidence": 0.4537583887577057,
+          "xyxy": [
+            810.0223388671875,
+            681.1965942382812,
+            989.6746826171875,
+            757.3347778320312
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 5,
+          "class_name": "snow-covered",
+          "confidence": 0.4510376751422882,
+          "xyxy": [
+            859.8485717773438,
+            679.7987060546875,
+            993.0757446289062,
+            755.46044921875
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 5,
+          "class_name": "snow-covered",
+          "confidence": 0.3440912067890167,
+          "xyxy": [
+            1079.331298828125,
+            664.127685546875,
+            1274.296630859375,
+            769.41943359375
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 5,
+          "class_name": "snow-covered",
+          "confidence": 0.31664952635765076,
+          "xyxy": [
+            1072.49951171875,
+            611.114013671875,
+            1772.443359375,
+            782.382568359375
+          ],
+          "within_image_bounds": true
+        }
+      ]
+    },
+    {
+      "image_path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\test\\images\\Solar-17-_jpg.rf.fbc590734396ea21b4b900532e0b026c.jpg",
+      "image_width": 1080,
+      "image_height": 668,
+      "detections": []
+    },
+    {
+      "image_path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\test\\images\\Solar-22-_jpg.rf.40b6b1060fe0007fe83f2c9c45368351.jpg",
+      "image_width": 599,
+      "image_height": 499,
+      "detections": []
+    },
+    {
+      "image_path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\test\\images\\Solar-26-_JPG.rf.277efa8248e5b810c830fb4dbb82a410.jpg",
+      "image_width": 792,
+      "image_height": 591,
+      "detections": [
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.32840365171432495,
+          "xyxy": [
+            460.7152404785156,
+            158.065673828125,
+            792.0,
+            590.3500366210938
+          ],
+          "within_image_bounds": true
+        }
+      ]
+    },
+    {
+      "image_path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\test\\images\\Solar-40-_jpg.rf.dfb4f3b15e5a07e80995cf7243c9264f.jpg",
+      "image_width": 250,
+      "image_height": 188,
+      "detections": [
+        {
+          "class_id": 5,
+          "class_name": "snow-covered",
+          "confidence": 0.2541685700416565,
+          "xyxy": [
+            2.589369058609009,
+            70.19197845458984,
+            27.604677200317383,
+            98.20417785644531
+          ],
+          "within_image_bounds": true
+        }
+      ]
+    },
+    {
+      "image_path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\test\\images\\Solar-47-_jpg.rf.1d89a1409639a154bfc0b344894aef36.jpg",
+      "image_width": 474,
+      "image_height": 281,
+      "detections": [
+        {
+          "class_id": 5,
+          "class_name": "snow-covered",
+          "confidence": 0.48448455333709717,
+          "xyxy": [
+            272.3227233886719,
+            93.63325500488281,
+            472.7072448730469,
+            148.89410400390625
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 5,
+          "class_name": "snow-covered",
+          "confidence": 0.328290194272995,
+          "xyxy": [
+            346.9615173339844,
+            92.91797637939453,
+            473.4839172363281,
+            146.06700134277344
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 5,
+          "class_name": "snow-covered",
+          "confidence": 0.29761746525764465,
+          "xyxy": [
+            90.79753112792969,
+            213.66661071777344,
+            194.4014129638672,
+            263.56671142578125
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 5,
+          "class_name": "snow-covered",
+          "confidence": 0.2913776934146881,
+          "xyxy": [
+            229.69798278808594,
+            103.21577453613281,
+            431.05926513671875,
+            150.46363830566406
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 5,
+          "class_name": "snow-covered",
+          "confidence": 0.2790237367153168,
+          "xyxy": [
+            104.82972717285156,
+            36.45225143432617,
+            278.8874816894531,
+            95.9354476928711
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 5,
+          "class_name": "snow-covered",
+          "confidence": 0.2630353569984436,
+          "xyxy": [
+            168.59104919433594,
+            35.47903823852539,
+            281.19342041015625,
+            94.64334869384766
+          ],
+          "within_image_bounds": true
+        }
+      ]
+    },
+    {
+      "image_path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\test\\images\\Solar-49-_jpg.rf.4a32104431eefb09a49b7b47ddc82e9c.jpg",
+      "image_width": 474,
+      "image_height": 315,
+      "detections": [
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.38360294699668884,
+          "xyxy": [
+            0.0,
+            82.38912963867188,
+            179.47744750976562,
+            202.495361328125
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.2916673421859741,
+          "xyxy": [
+            5.390427112579346,
+            131.69725036621094,
+            233.23910522460938,
+            297.7203369140625
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 0,
+          "class_name": "bird-drop",
+          "confidence": 0.25282976031303406,
+          "xyxy": [
+            434.2996520996094,
+            103.84027099609375,
+            473.22784423828125,
+            145.13494873046875
+          ],
+          "within_image_bounds": true
+        }
+      ]
+    },
+    {
+      "image_path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\test\\images\\Solar-50-_jpg.rf.10a6d9b9f3bbe51f99aaa54748e6165a.jpg",
+      "image_width": 474,
+      "image_height": 266,
+      "detections": [
+        {
+          "class_id": 5,
+          "class_name": "snow-covered",
+          "confidence": 0.5119103193283081,
+          "xyxy": [
+            4.930941104888916,
+            189.55419921875,
+            54.370643615722656,
+            215.59405517578125
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 5,
+          "class_name": "snow-covered",
+          "confidence": 0.49911049008369446,
+          "xyxy": [
+            361.07086181640625,
+            74.1749038696289,
+            414.2518615722656,
+            91.97435760498047
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 5,
+          "class_name": "snow-covered",
+          "confidence": 0.46532225608825684,
+          "xyxy": [
+            249.8653106689453,
+            179.65350341796875,
+            315.49334716796875,
+            206.90980529785156
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 5,
+          "class_name": "snow-covered",
+          "confidence": 0.3529050946235657,
+          "xyxy": [
+            141.62001037597656,
+            186.7649688720703,
+            187.94264221191406,
+            209.0087432861328
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 5,
+          "class_name": "snow-covered",
+          "confidence": 0.3528482913970947,
+          "xyxy": [
+            140.87985229492188,
+            182.22776794433594,
+            213.6363525390625,
+            213.18092346191406
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 5,
+          "class_name": "snow-covered",
+          "confidence": 0.32595598697662354,
+          "xyxy": [
+            143.6943817138672,
+            177.33038330078125,
+            235.13601684570312,
+            213.97169494628906
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 5,
+          "class_name": "snow-covered",
+          "confidence": 0.2757558822631836,
+          "xyxy": [
+            357.2691345214844,
+            73.13831329345703,
+            432.551025390625,
+            92.17074584960938
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 5,
+          "class_name": "snow-covered",
+          "confidence": 0.270343154668808,
+          "xyxy": [
+            178.47694396972656,
+            98.863037109375,
+            208.72760009765625,
+            123.09404754638672
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 5,
+          "class_name": "snow-covered",
+          "confidence": 0.2538813352584839,
+          "xyxy": [
+            269.76910400390625,
+            180.0943603515625,
+            313.8088073730469,
+            203.9004364013672
+          ],
+          "within_image_bounds": true
+        }
+      ]
+    },
+    {
+      "image_path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\test\\images\\Solar-98-_jpg.rf.eb66fdbfec4d74f7070a3b10d4d60838.jpg",
+      "image_width": 768,
+      "image_height": 576,
+      "detections": [
+        {
+          "class_id": 5,
+          "class_name": "snow-covered",
+          "confidence": 0.758968710899353,
+          "xyxy": [
+            131.54086303710938,
+            130.1179962158203,
+            232.00927734375,
+            177.49264526367188
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 5,
+          "class_name": "snow-covered",
+          "confidence": 0.7454845309257507,
+          "xyxy": [
+            335.7020263671875,
+            255.36199951171875,
+            411.2991943359375,
+            297.34381103515625
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 5,
+          "class_name": "snow-covered",
+          "confidence": 0.730834424495697,
+          "xyxy": [
+            0.37893104553222656,
+            51.18269348144531,
+            86.50130462646484,
+            92.54207611083984
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 5,
+          "class_name": "snow-covered",
+          "confidence": 0.6974049210548401,
+          "xyxy": [
+            51.53945541381836,
+            213.6913604736328,
+            215.35887145996094,
+            276.7813415527344
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 5,
+          "class_name": "snow-covered",
+          "confidence": 0.6681653261184692,
+          "xyxy": [
+            193.155029296875,
+            99.6892318725586,
+            284.7805480957031,
+            140.9082794189453
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 5,
+          "class_name": "snow-covered",
+          "confidence": 0.6443755030632019,
+          "xyxy": [
+            664.9522705078125,
+            274.8707275390625,
+            767.3660888671875,
+            328.704345703125
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 5,
+          "class_name": "snow-covered",
+          "confidence": 0.608455240726471,
+          "xyxy": [
+            264.1739196777344,
+            158.62904357910156,
+            341.5671081542969,
+            196.1501922607422
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 5,
+          "class_name": "snow-covered",
+          "confidence": 0.5564231276512146,
+          "xyxy": [
+            299.20166015625,
+            126.00069427490234,
+            353.1600646972656,
+            158.287841796875
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 5,
+          "class_name": "snow-covered",
+          "confidence": 0.5553773045539856,
+          "xyxy": [
+            376.7985534667969,
+            143.285400390625,
+            422.7474060058594,
+            177.08200073242188
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 5,
+          "class_name": "snow-covered",
+          "confidence": 0.5552352666854858,
+          "xyxy": [
+            431.3152770996094,
+            194.5341796875,
+            544.7131958007812,
+            234.7580108642578
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 5,
+          "class_name": "snow-covered",
+          "confidence": 0.5313568115234375,
+          "xyxy": [
+            23.3353271484375,
+            496.702880859375,
+            174.9451904296875,
+            576.0
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 5,
+          "class_name": "snow-covered",
+          "confidence": 0.5108820796012878,
+          "xyxy": [
+            473.02276611328125,
+            262.9936218261719,
+            646.0499267578125,
+            320.2656555175781
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 5,
+          "class_name": "snow-covered",
+          "confidence": 0.49700143933296204,
+          "xyxy": [
+            525.4403686523438,
+            266.5467224121094,
+            646.4658203125,
+            319.4871826171875
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 5,
+          "class_name": "snow-covered",
+          "confidence": 0.47641241550445557,
+          "xyxy": [
+            316.31439208984375,
+            483.3218078613281,
+            537.1632080078125,
+            575.8314208984375
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 5,
+          "class_name": "snow-covered",
+          "confidence": 0.4706971347332001,
+          "xyxy": [
+            192.31260681152344,
+            96.58550262451172,
+            275.4152526855469,
+            134.2209930419922
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 5,
+          "class_name": "snow-covered",
+          "confidence": 0.4345175325870514,
+          "xyxy": [
+            585.138427734375,
+            220.93881225585938,
+            681.1812744140625,
+            259.88592529296875
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 5,
+          "class_name": "snow-covered",
+          "confidence": 0.42833754420280457,
+          "xyxy": [
+            262.51593017578125,
+            118.76921844482422,
+            352.7780456542969,
+            174.91802978515625
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 5,
+          "class_name": "snow-covered",
+          "confidence": 0.4043438732624054,
+          "xyxy": [
+            431.9227294921875,
+            159.84283447265625,
+            546.9800415039062,
+            236.97720336914062
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 5,
+          "class_name": "snow-covered",
+          "confidence": 0.4019988775253296,
+          "xyxy": [
+            47.18076705932617,
+            213.82049560546875,
+            155.5857391357422,
+            276.7737121582031
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 5,
+          "class_name": "snow-covered",
+          "confidence": 0.3720773160457611,
+          "xyxy": [
+            136.88900756835938,
+            96.3584976196289,
+            279.1035461425781,
+            150.1152801513672
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 5,
+          "class_name": "snow-covered",
+          "confidence": 0.32243990898132324,
+          "xyxy": [
+            91.29853820800781,
+            231.81056213378906,
+            213.26449584960938,
+            273.1545715332031
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 5,
+          "class_name": "snow-covered",
+          "confidence": 0.31835559010505676,
+          "xyxy": [
+            546.7028198242188,
+            210.814453125,
+            660.8666381835938,
+            245.7843017578125
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 5,
+          "class_name": "snow-covered",
+          "confidence": 0.3148840069770813,
+          "xyxy": [
+            129.18943786621094,
+            232.39151000976562,
+            215.66932678222656,
+            273.70660400390625
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 5,
+          "class_name": "snow-covered",
+          "confidence": 0.3067089319229126,
+          "xyxy": [
+            467.6847839355469,
+            264.0918273925781,
+            537.8575439453125,
+            305.5051574707031
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 5,
+          "class_name": "snow-covered",
+          "confidence": 0.3003911077976227,
+          "xyxy": [
+            133.01080322265625,
+            129.20315551757812,
+            217.8694305419922,
+            169.13250732421875
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 5,
+          "class_name": "snow-covered",
+          "confidence": 0.27982524037361145,
+          "xyxy": [
+            690.0639038085938,
+            236.9925994873047,
+            768.0,
+            275.062744140625
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 5,
+          "class_name": "snow-covered",
+          "confidence": 0.2784683108329773,
+          "xyxy": [
+            373.38330078125,
+            140.026123046875,
+            428.28875732421875,
+            180.66619873046875
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 5,
+          "class_name": "snow-covered",
+          "confidence": 0.2727371156215668,
+          "xyxy": [
+            47.395328521728516,
+            214.05230712890625,
+            127.76946258544922,
+            272.5800476074219
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 5,
+          "class_name": "snow-covered",
+          "confidence": 0.26238346099853516,
+          "xyxy": [
+            470.69696044921875,
+            265.2559509277344,
+            519.8043823242188,
+            300.2814636230469
+          ],
+          "within_image_bounds": true
+        },
+        {
+          "class_id": 5,
+          "class_name": "snow-covered",
+          "confidence": 0.25031009316444397,
+          "xyxy": [
+            194.77011108398438,
+            103.72716522216797,
+            298.8050537109375,
+            148.14234924316406
+          ],
+          "within_image_bounds": true
+        }
+      ]
+    }
+  ]
+}

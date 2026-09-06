@@ -40,11 +40,22 @@ parameter was changed in response to the evaluation. The next major component
 is **COMPUTER VISION SOLAR-PANEL INSPECTION**. Day 24 prepares its YOLO dataset
 inspector, label validator, ground-truth visualization, CPU-safe training
 configuration, dry-run entry point, and evaluation interface. The downloaded
-Roboflow export has now been inspected and cleaned conservatively: 820 active
+Roboflow export has now been inspected and cleaned conservatively: 795 active
 image/label pairs, six actual classes, and 5,751 valid boxes. The one exact
-train/test duplicate was moved to recoverable quarantine; 25 empty labels remain
-for human review. No computer-vision model, video pipeline, or full dashboard
-has been implemented.
+train/test duplicate and 25 uncertain empty-label pairs were moved intact to
+recoverable quarantine. The final active dataset passes its integrity checks and
+Day 25 completed one controlled CPU YOLO11n run: early stopping ended at epoch
+28, with epoch 20 selected from validation. The selected prototype reached
+validation precision 0.3083, recall 0.2462, mAP50 0.2004, and mAP50-95 0.0807.
+Day 26 froze the evaluation settings, evaluated the 98-image test split exactly
+once, and added reusable image/frame inference plus a sequential video interface.
+The unchanged checkpoint reached test precision 0.3878, recall 0.2356, mAP50
+0.2183, and mAP50-95 0.1062. No tuning followed the test result. The operational
+anomaly and computer-vision components are now **PROTOTYPE COMPLETE**. Day 27
+adds a working Streamlit application with a verified 337-row recorded-data
+replay, operational measurements, frozen anomaly scores/status, event handling,
+and prepared image/video navigation. Image/video UI integration and final
+cross-module testing remain pending.
 
 The repository directory name is **`solarpredict`**. The project and display
 name remains **Solar Panel Monitoring and Fault Detection System**.
@@ -77,8 +88,8 @@ solarpredict/
 |-- src/
 |   |-- data_processing/   # Dataset inspection, loading, and quality utilities
 |   |-- anomaly_detection/ # Frozen prototype evaluation and inference code
-|   |-- computer_vision/   # YOLO dataset/setup and future modeling code
-|   `-- dashboard/         # Future Streamlit application code
+|   |-- computer_vision/   # Frozen YOLO evaluation and image/video inference
+|   `-- dashboard/         # Streamlit replay UI, services, components, and charts
 |-- models/                # Generated model artifacts (not committed)
 |-- outputs/
 |   |-- figures/           # Generated plots and figures
@@ -188,17 +199,28 @@ Completed in the operational-data stage:
 - computer-vision directory structure, YOLO dataset-validation tooling,
   real dataset/YAML inspection, exhaustive annotation validation, class and
   split review, ground-truth visualization, environment verification, successful
-  non-training dry run, and evaluation interface (Day 24);
+  non-training dry run, duplicate cleanup, empty-label quarantine, final training
+  readiness review, and evaluation interface (Day 24);
+- one controlled YOLO11n CPU training run, validation-only evaluation, training
+  curve/confusion review, and fixed validation prediction figure (Day 25);
+- one-time independent test evaluation of the frozen checkpoint, descriptive
+  validation/test comparison, and preserved test curves/confusion matrix;
+- frozen six-class image/frame inference, non-destructive annotations, cautious
+  condition summaries, sequential video processing, structured frame/detection
+  logs, and a labelled validation-image demo smoke test (Day 26);
+- Streamlit application structure, system overview, operational monitoring,
+  session-state replay controls, selected-reading indicators, frozen anomaly
+  status/events, and nonfunctional CV integration placeholders (Day 27);
 - loader, inspection, preprocessing, quality-review, basic-feature, rolling,
   change-feature, feature-review, scenario-configuration, and generator tests.
 
 Not completed yet:
 
-- human approval or source correction of 25 empty labels;
-- YOLO model training, evaluation, and image inference;
-- video analysis;
-- dashboard integration;
-- final system integration.
+- image inspection dashboard integration;
+- video inspection dashboard integration;
+- final operational/computer-vision dashboard integration testing;
+- validation on representative real drone footage;
+- final full-system testing and deployment review.
 
 ### Operational anomaly component: PROTOTYPE COMPLETE
 
@@ -209,17 +231,38 @@ equally explicit: the frozen prototype detected none of the three moderate
 synthetic evaluation events on Day 22. This module is closed for further model
 tuning; future use must retain the frozen artifacts and report actual output.
 
-### Computer vision: DAY 24 DATASET VALIDATION COMPLETE — QUALITY GATE OPEN
+### Computer vision: PROTOTYPE COMPLETE
 
 Completed: acquisition, actual class/split discovery, validation of every YOLO
 line, image/annotation inventory, class distribution, cross-split hash review,
 real ground-truth sample visualization, CPU/Ultralytics verification,
 lightweight YOLO11n configuration, successful non-training dry run, and a future
 evaluation interface. The exact train/test duplicate and its differing label
-were documented, compared visually, and the test pair was moved intact to
-quarantine. All 25 empty-label images remain `NEEDS_MANUAL_REVIEW`; no boxes were
-invented. Model training, evaluation, inference, video, and dashboard
-integration remain pending.
+were documented, compared visually, and moved intact to quarantine. All 25
+uncertain empty-label pairs were also quarantined after review, without inventing
+annotations. The final 582/115/98 active splits contain 795 paired files and
+5,751 boxes; every class remains present in every split and the data-quality gate
+is open. One approved YOLO11n run completed 28 epochs before normal early
+stopping, selecting epoch 20. Validation limitations remain explicit. The frozen
+checkpoint was then evaluated once on all 98 test images and was not changed or
+tuned afterward. Image and OpenCV-frame prediction, bounded structured boxes,
+annotated output, conservative `ATTENTION`/`CLEAN`/`NO_DETECTION` summaries, and
+sequential video processing are implemented. Dusty recall remains particularly
+weak, electrical and physical damage remain limited, and the video smoke test
+used a labelled validation-image demo rather than real drone footage. Dashboard
+integration remains pending.
+
+### Dashboard: OPERATIONAL MONITORING COMPLETE
+
+The Streamlit dashboard now provides a functional Overview and Operational
+Monitoring experience over the 337-row evaluation-baseline replay. It validates
+and joins the recorded operational measurements with the unchanged saved anomaly
+feed, verifies those scores against the frozen detector, and preserves the real
+zero-alert result. Replay position is controlled by a slider and bounded
+Previous/Next/Reset controls. Power, solar radiation, anomaly score/threshold,
+and individually selected environmental charts all mark the chosen timestamp.
+Panel and drone-video sections are intentionally nonfunctional placeholders for
+the next integration stage; no upload control or fabricated prediction is shown.
 
 Operational-stage artifacts:
 
@@ -306,8 +349,18 @@ Operational-stage artifacts:
 - [Day 24 verified dataset inventory and integrity review](docs/computer_vision_dataset.md)
 - [Day 24 dataset cleanup and quarantine audit](docs/computer_vision_dataset_cleanup.md)
 - [Day 24 computer-vision setup](docs/computer_vision_setup.md)
+- [Day 25 YOLO training and initial validation](docs/computer_vision_training.md)
 - [YOLO prototype training configuration](config/computer_vision_training.yaml)
+- [Independent test evaluation](docs/computer_vision_test_evaluation.md)
+- [Frozen test-evaluation settings](config/computer_vision_test_evaluation.yaml)
+- [Machine-readable test metrics](outputs/computer_vision/test_evaluation.json)
+- [Image and video inference interfaces](docs/computer_vision_inference.md)
+- [Computer-vision prototype status](outputs/computer_vision/computer_vision_module_status.json)
+- [Representative test prediction figure](outputs/computer_vision/figures/day26_test_predictions.png)
 - [Machine-readable CV dataset/setup status](outputs/computer_vision/dataset_summary.json)
+- [Streamlit dashboard documentation](docs/dashboard.md)
+- [Dashboard application](src/dashboard/app.py)
+- [Validated dashboard data service](src/dashboard/data_service.py)
 - Processed CSV: `data/processed/operational_cleaned.csv` (ignored by Git and
   reproducible from the raw file)
 - Basic feature CSV: `data/processed/operational_features_basic.csv` (ignored by
@@ -497,6 +550,27 @@ python -m src.computer_vision.visualize_annotations
 python -m src.computer_vision.train_detector --dry-run
 ```
 
+The independent test evaluation has already been completed once. Do **not**
+rerun it or use its results to tune this frozen prototype. To recreate only the
+labelled engineering demo and exercise the normal video inference interface:
+
+```bash
+python -m src.computer_vision.create_demo_video
+python -m src.computer_vision.process_video outputs/computer_vision/video/demo_input.mp4 --output-video outputs/computer_vision/video/demo_annotated.mp4 --detection-log outputs/computer_vision/video/demo_detections.csv --frame-log outputs/computer_vision/video/demo_frames.json --summary outputs/computer_vision/video/demo_summary.json
+```
+
+Launch the operational monitoring dashboard:
+
+```bash
+streamlit run src/dashboard/app.py
+```
+
+Run the complete automated suite:
+
+```bash
+python -m pytest -q -p no:cacheprovider
+```
+
 Launch the reproducible notebook environment:
 
 ```bash
@@ -560,15 +634,18 @@ or run a model.
      metrics and paired score changes, and do not tune from those results.
    - Expose the frozen artifacts through a read-only interface and preserve the
      zero-detection Day 22 result without post-evaluation tuning.
-4. **Computer-vision modeling (Day 24 dataset validation complete; training pending)**
+4. **Computer-vision modeling (prototype complete)**
    - Validate the downloaded YOLO annotations and `data.yaml`.
-   - Train and evaluate object-detection models using the preserved source
-     train/validation/test split.
-5. **Drone/video inference pipeline**
-   - Extract frames, track provenance, and manage duplicate or near-duplicate
-     frames.
-6. **Dashboard and integration**
-   - Present monitoring data and validated model outputs in Streamlit.
+   - Train one detector, select it using validation, then evaluate the frozen
+     checkpoint once on the preserved test split.
+5. **Drone/video inference pipeline (prototype interface complete)**
+   - Process frames sequentially, retain frame/time provenance, and emit
+     dashboard-ready detection and frame summaries.
+   - Validate against representative real drone footage in a future stage.
+6. **Dashboard and integration (operational dashboard complete)**
+   - Present recorded operational measurements, frozen anomaly scores/status,
+     and real grouped-event output in Streamlit.
+   - Connect the existing image/video inference modules in the next stage.
 7. **Testing, documentation, and handoff**
    - Add reproducible tests, configuration, deployment notes, and a final report.
 
@@ -588,8 +665,14 @@ or run a model.
 - Solar relative-change and normalized-deviation features intentionally retain
   NaN when the previous value or trailing baseline is below the documented
   absolute denominator floor.
-- The computer-vision class mapping and split paths remain unverified until the
-  downloaded `data.yaml` is inspected.
+- The verified computer-vision prototype has low overall test recall (0.2356)
+  and mAP50-95 (0.1062). `dusty` recall is 0.0221; electrical and physical
+  damage also remain limited. These weaknesses were not used for post-test
+  tuning.
+- The video smoke test used a labelled validation-image demo because no real
+  inspection/drone video was available. Its short-run CPU throughput is not a
+  deployment guarantee.
+- `NO_DETECTION` does not establish that a panel is healthy or fault-free.
 - The seed-42 `NO_TIME_7` model is frozen as a reproducible prototype
   configuration. Its calibration 97.5th-percentile threshold is also frozen,
   and its controlled Day 22 evaluation result is explicitly reported below.

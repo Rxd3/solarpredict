@@ -77,70 +77,194 @@
       "image_path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\train\\images",
       "label_path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\train\\labels",
       "paths_exist": true,
-      "images": 600,
-      "labels": 600,
-      "boxes": 4359
+      "images": 582,
+      "labels": 582,
+      "boxes": 4359,
+      "classes": [
+        {
+          "class_id": 0,
+          "class_name": "bird-drop",
+          "image_count": 109,
+          "bounding_box_count": 1132,
+          "present": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "image_count": 135,
+          "bounding_box_count": 834,
+          "present": true
+        },
+        {
+          "class_id": 2,
+          "class_name": "dusty",
+          "image_count": 165,
+          "bounding_box_count": 1255,
+          "present": true
+        },
+        {
+          "class_id": 3,
+          "class_name": "electrical-damage",
+          "image_count": 60,
+          "bounding_box_count": 131,
+          "present": true
+        },
+        {
+          "class_id": 4,
+          "class_name": "physical-damage",
+          "image_count": 41,
+          "bounding_box_count": 101,
+          "present": true
+        },
+        {
+          "class_id": 5,
+          "class_name": "snow-covered",
+          "image_count": 78,
+          "bounding_box_count": 906,
+          "present": true
+        }
+      ]
     },
     "val": {
       "configured": true,
       "image_path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\valid\\images",
       "label_path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\valid\\labels",
       "paths_exist": true,
-      "images": 120,
-      "labels": 120,
-      "boxes": 761
+      "images": 115,
+      "labels": 115,
+      "boxes": 761,
+      "classes": [
+        {
+          "class_id": 0,
+          "class_name": "bird-drop",
+          "image_count": 19,
+          "bounding_box_count": 160,
+          "present": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "image_count": 38,
+          "bounding_box_count": 193,
+          "present": true
+        },
+        {
+          "class_id": 2,
+          "class_name": "dusty",
+          "image_count": 7,
+          "bounding_box_count": 53,
+          "present": true
+        },
+        {
+          "class_id": 3,
+          "class_name": "electrical-damage",
+          "image_count": 17,
+          "bounding_box_count": 35,
+          "present": true
+        },
+        {
+          "class_id": 4,
+          "class_name": "physical-damage",
+          "image_count": 13,
+          "bounding_box_count": 40,
+          "present": true
+        },
+        {
+          "class_id": 5,
+          "class_name": "snow-covered",
+          "image_count": 22,
+          "bounding_box_count": 280,
+          "present": true
+        }
+      ]
     },
     "test": {
       "configured": true,
       "image_path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\test\\images",
       "label_path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\test\\labels",
       "paths_exist": true,
-      "images": 100,
-      "labels": 100,
-      "boxes": 631
+      "images": 98,
+      "labels": 98,
+      "boxes": 631,
+      "classes": [
+        {
+          "class_id": 0,
+          "class_name": "bird-drop",
+          "image_count": 28,
+          "bounding_box_count": 217,
+          "present": true
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "image_count": 19,
+          "bounding_box_count": 80,
+          "present": true
+        },
+        {
+          "class_id": 2,
+          "class_name": "dusty",
+          "image_count": 22,
+          "bounding_box_count": 152,
+          "present": true
+        },
+        {
+          "class_id": 3,
+          "class_name": "electrical-damage",
+          "image_count": 10,
+          "bounding_box_count": 41,
+          "present": true
+        },
+        {
+          "class_id": 4,
+          "class_name": "physical-damage",
+          "image_count": 7,
+          "bounding_box_count": 28,
+          "present": true
+        },
+        {
+          "class_id": 5,
+          "class_name": "snow-covered",
+          "image_count": 12,
+          "bounding_box_count": 113,
+          "present": true
+        }
+      ]
     }
   },
   "split_image_percentages": {
-    "train": 73.17073170731707,
-    "val": 14.634146341463415,
-    "test": 12.195121951219512
+    "train": 73.20754716981132,
+    "val": 14.465408805031446,
+    "test": 12.327044025157234
   },
-  "total_images": 820,
-  "total_annotation_files": 820,
+  "class_coverage_by_split": {
+    "train": {
+      "present_class_count": 6,
+      "missing_classes": [],
+      "all_classes_present": true
+    },
+    "val": {
+      "present_class_count": 6,
+      "missing_classes": [],
+      "all_classes_present": true
+    },
+    "test": {
+      "present_class_count": 6,
+      "missing_classes": [],
+      "all_classes_present": true
+    }
+  },
+  "all_classes_present_in_every_split": true,
+  "total_images": 795,
+  "total_annotation_files": 795,
   "total_bounding_boxes": 5751,
   "images_without_labels": {
     "count": 0,
     "files": []
   },
   "images_with_empty_label_files": {
-    "count": 25,
-    "files": [
-      "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\train\\images\\Bird-2-_jpeg.rf.dc29899262a73ca43af321bbd1b57872.jpg",
-      "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\train\\images\\Bird-84-_jpg.rf.b49fdfac8454ae571085477f1e14d981.jpg",
-      "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\train\\images\\Cleaan-25-_jpg.rf.af2661ff815ee54419a34e8fac590b22.jpg",
-      "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\train\\images\\Dust-108-_jpg.rf.a733fa9cf63fcfdb113c89eb9af26f82.jpg",
-      "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\train\\images\\Dust-115-_jpg.rf.0ae50e2e7f2f133be79919132d11905e.jpg",
-      "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\train\\images\\Dust-122-_jpg.rf.e0f0ba20838cd344f257ede69850e712.jpg",
-      "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\train\\images\\Dust-15-_jpg.rf.895e336dd750f77b3bb66b69405085cb.jpg",
-      "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\train\\images\\Dust-157-_jpg.rf.d84265dd4bfabef0feba4bff23f0a70a.jpg",
-      "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\train\\images\\Dust-165-_jpg.rf.f4161e43f01eca8187137dd2daf5bad1.jpg",
-      "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\train\\images\\Dust-192-_jpg.rf.5fc84c693b9bb421a5cc1029732522ea.jpg",
-      "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\train\\images\\Dust-193-_jpg.rf.03ff577ea5ff286f427ee0340664b247.jpg",
-      "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\train\\images\\Dust-20-_jpg.rf.13ec0d8b49313a34bb44b4e8afe64880.jpg",
-      "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\train\\images\\Dust-32-_jpg.rf.268ff39b4fa7b3fc19681187462e335b.jpg",
-      "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\train\\images\\Dust-34-_jpg.rf.37ccb40410a6274624e5739f99016a37.jpg",
-      "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\train\\images\\Dust-36-_jpg.rf.c9df30e89235e8015adfc90040ab7aa5.jpg",
-      "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\train\\images\\Dust-5-_jpg.rf.a636155b675226269754b1a2155fb2dd.jpg",
-      "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\train\\images\\Dust-55-_jpg.rf.3a80148798e99fde14de1dc96655f7a2.jpg",
-      "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\train\\images\\Dust-71-_jpg.rf.92ee532fc26a7dd85dd9ab206ae41be0.jpg",
-      "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\valid\\images\\Bird-83-_jpg.rf.61ec6639bc533dc2a0c0aeea865e0f12.jpg",
-      "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\valid\\images\\Cleaan-122-_jpg.rf.e0ebbdac36f56b2621f6117fec33da61.jpg",
-      "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\valid\\images\\Dust-117-_jpg.rf.a3633ef8f78750680dda27d97fe13046.jpg",
-      "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\valid\\images\\Dust-167-_jpg.rf.443c6d6f913108c2f5bcde9832a42662.jpg",
-      "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\valid\\images\\Dust-168-_jpg.rf.2da28127e9b56d4b6814649b5b691abc.jpg",
-      "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\test\\images\\Bird-133-_jpg.rf.23109a7c66a3540edc28eb558d599f6d.jpg",
-      "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\test\\images\\Cleaan-73-_jpg.rf.f04b0905acc8e36da984c01abc5d196c.jpg"
-    ],
+    "count": 0,
+    "files": [],
     "interpretation": "valid YOLO negative/background rows unless source review indicates accidental omissions"
   },
   "labels_without_images": {
@@ -156,17 +280,17 @@
     "findings": []
   },
   "file_extensions": {
-    ".jpg": 820
+    ".jpg": 795
   },
   "image_resolutions": {
-    "readable_image_count": 820,
+    "readable_image_count": 795,
     "minimum_width": 149,
     "maximum_width": 6240,
-    "median_width": 765.5,
+    "median_width": 740,
     "minimum_height": 110,
     "maximum_height": 5376,
-    "median_height": 675.0,
-    "unique_resolution_count": 452,
+    "median_height": 665,
+    "unique_resolution_count": 447,
     "resolutions": {
       "1000x1000": 2,
       "1000x592": 1,
@@ -180,7 +304,6 @@
       "1012x686": 1,
       "1013x754": 1,
       "1018x393": 1,
-      "1024x538": 1,
       "1024x568": 1,
       "1024x576": 2,
       "1024x578": 1,
@@ -197,7 +320,7 @@
       "1051x777": 1,
       "1078x1078": 1,
       "1078x1440": 2,
-      "1080x1080": 11,
+      "1080x1080": 9,
       "1080x1440": 1,
       "1080x1920": 1,
       "1080x668": 1,
@@ -238,22 +361,21 @@
       "1420x798": 1,
       "1420x800": 1,
       "1427x951": 1,
-      "1440x1440": 16,
+      "1440x1440": 12,
       "1440x810": 1,
       "149x250": 1,
       "1500x1000": 1,
       "1500x1024": 1,
       "1500x1101": 2,
-      "1500x1102": 1,
       "1500x1105": 2,
       "1500x1225": 2,
       "1500x847": 1,
       "1512x2016": 2,
-      "1536x2048": 37,
+      "1536x2048": 33,
       "1600x1067": 1,
-      "1600x1200": 3,
+      "1600x1200": 2,
       "1600x1290": 2,
-      "1600x900": 2,
+      "1600x900": 1,
       "1625x916": 1,
       "164x300": 1,
       "165x220": 1,
@@ -277,11 +399,11 @@
       "2016x1512": 3,
       "201x251": 1,
       "2047x1152": 1,
-      "2048x1152": 23,
+      "2048x1152": 22,
       "2048x1166": 1,
       "2048x1373": 1,
       "2048x1536": 22,
-      "2048x921": 6,
+      "2048x921": 5,
       "2100x1575": 1,
       "221x136": 1,
       "221x202": 1,
@@ -362,9 +484,8 @@
       "384x402": 2,
       "384x512": 2,
       "387x275": 1,
-      "388x280": 1,
       "3892x2586": 1,
-      "389x280": 3,
+      "389x280": 1,
       "390x310": 1,
       "3936x2624": 1,
       "4000x3000": 1,
@@ -373,7 +494,6 @@
       "400x288": 1,
       "400x300": 2,
       "400x500": 1,
-      "4032x2268": 1,
       "4032x3024": 2,
       "406x306": 1,
       "406x406": 1,
@@ -471,7 +591,6 @@
       "533x533": 1,
       "533x800": 1,
       "544x960": 1,
-      "5464x3640": 1,
       "5472x3080": 1,
       "5472x3648": 1,
       "548x430": 1,
@@ -551,7 +670,7 @@
       "720x499": 1,
       "720x800": 1,
       "720x959": 1,
-      "720x960": 64,
+      "720x960": 60,
       "730x317": 1,
       "736x494": 1,
       "740x416": 1,
@@ -628,111 +747,6 @@
     "duplicate_label_filenames_across_splits": [],
     "exact_duplicate_label_files_across_splits": [
       {
-        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-        "files": [
-          {
-            "split": "train",
-            "path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\train\\labels\\Bird-2-_jpeg.rf.dc29899262a73ca43af321bbd1b57872.txt"
-          },
-          {
-            "split": "train",
-            "path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\train\\labels\\Bird-84-_jpg.rf.b49fdfac8454ae571085477f1e14d981.txt"
-          },
-          {
-            "split": "train",
-            "path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\train\\labels\\Cleaan-25-_jpg.rf.af2661ff815ee54419a34e8fac590b22.txt"
-          },
-          {
-            "split": "train",
-            "path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\train\\labels\\Dust-108-_jpg.rf.a733fa9cf63fcfdb113c89eb9af26f82.txt"
-          },
-          {
-            "split": "train",
-            "path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\train\\labels\\Dust-115-_jpg.rf.0ae50e2e7f2f133be79919132d11905e.txt"
-          },
-          {
-            "split": "train",
-            "path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\train\\labels\\Dust-122-_jpg.rf.e0f0ba20838cd344f257ede69850e712.txt"
-          },
-          {
-            "split": "train",
-            "path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\train\\labels\\Dust-15-_jpg.rf.895e336dd750f77b3bb66b69405085cb.txt"
-          },
-          {
-            "split": "train",
-            "path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\train\\labels\\Dust-157-_jpg.rf.d84265dd4bfabef0feba4bff23f0a70a.txt"
-          },
-          {
-            "split": "train",
-            "path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\train\\labels\\Dust-165-_jpg.rf.f4161e43f01eca8187137dd2daf5bad1.txt"
-          },
-          {
-            "split": "train",
-            "path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\train\\labels\\Dust-192-_jpg.rf.5fc84c693b9bb421a5cc1029732522ea.txt"
-          },
-          {
-            "split": "train",
-            "path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\train\\labels\\Dust-193-_jpg.rf.03ff577ea5ff286f427ee0340664b247.txt"
-          },
-          {
-            "split": "train",
-            "path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\train\\labels\\Dust-20-_jpg.rf.13ec0d8b49313a34bb44b4e8afe64880.txt"
-          },
-          {
-            "split": "train",
-            "path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\train\\labels\\Dust-32-_jpg.rf.268ff39b4fa7b3fc19681187462e335b.txt"
-          },
-          {
-            "split": "train",
-            "path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\train\\labels\\Dust-34-_jpg.rf.37ccb40410a6274624e5739f99016a37.txt"
-          },
-          {
-            "split": "train",
-            "path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\train\\labels\\Dust-36-_jpg.rf.c9df30e89235e8015adfc90040ab7aa5.txt"
-          },
-          {
-            "split": "train",
-            "path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\train\\labels\\Dust-5-_jpg.rf.a636155b675226269754b1a2155fb2dd.txt"
-          },
-          {
-            "split": "train",
-            "path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\train\\labels\\Dust-55-_jpg.rf.3a80148798e99fde14de1dc96655f7a2.txt"
-          },
-          {
-            "split": "train",
-            "path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\train\\labels\\Dust-71-_jpg.rf.92ee532fc26a7dd85dd9ab206ae41be0.txt"
-          },
-          {
-            "split": "val",
-            "path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\valid\\labels\\Bird-83-_jpg.rf.61ec6639bc533dc2a0c0aeea865e0f12.txt"
-          },
-          {
-            "split": "val",
-            "path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\valid\\labels\\Cleaan-122-_jpg.rf.e0ebbdac36f56b2621f6117fec33da61.txt"
-          },
-          {
-            "split": "val",
-            "path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\valid\\labels\\Dust-117-_jpg.rf.a3633ef8f78750680dda27d97fe13046.txt"
-          },
-          {
-            "split": "val",
-            "path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\valid\\labels\\Dust-167-_jpg.rf.443c6d6f913108c2f5bcde9832a42662.txt"
-          },
-          {
-            "split": "val",
-            "path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\valid\\labels\\Dust-168-_jpg.rf.2da28127e9b56d4b6814649b5b691abc.txt"
-          },
-          {
-            "split": "test",
-            "path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\test\\labels\\Bird-133-_jpg.rf.23109a7c66a3540edc28eb558d599f6d.txt"
-          },
-          {
-            "split": "test",
-            "path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\test\\labels\\Cleaan-73-_jpg.rf.f04b0905acc8e36da984c01abc5d196c.txt"
-          }
-        ]
-      },
-      {
         "sha256": "c01343608a0f8dd7eb7a4421fd20a3356f45695604fb37349c07dc82b66c9105",
         "files": [
           {
@@ -770,80 +784,100 @@
   },
   "planned_training_configuration": {
     "schema_version": 1,
-    "status": "prepared_not_trained",
+    "status": "trained_prototype",
     "task": "detect",
     "pretrained_model": "yolo11n.pt",
     "dataset_yaml": "data/vision/solar_panel_defects/data.yaml",
-    "image_size": 640,
-    "epochs": 50,
+    "image_size": 512,
+    "epochs": 30,
     "batch_size": 8,
-    "patience": 10,
+    "patience": 8,
     "device": "cpu",
     "workers": 0,
     "random_seed": 42,
     "deterministic": true,
+    "save": true,
+    "save_period": 5,
     "output_project": "outputs/computer_vision/training",
     "run_name": "yolo11n_solar_panel_defects_prototype",
     "exist_ok": false,
+    "completed_run": "outputs/computer_vision/training/yolo11n_solar_panel_defects_prototype",
+    "selected_checkpoint": "models/computer_vision/solar_panel_detector_best.pt",
+    "model_selection_split": "val",
+    "independent_test_evaluation_performed": false,
     "notes": [
       "CPU-safe defaults selected because CUDA is unavailable in the verified environment.",
       "Real data.yaml paths and all six classes were verified against the downloaded version 1 export.",
       "The documented train/test duplicate was quarantined; active cross-split image hashes are now unique.",
-      "Review the 25 empty labels before starting training; no annotations were invented.",
-      "Running the dry run may download the public pretrained checkpoint but never calls model.train()."
-    ],
-    "day25_cpu_recommendation": {
-      "rationale": "Reduce CPU cost while retaining every source image and annotation.",
-      "pretrained_model": "yolo11n.pt",
-      "image_size": 512,
-      "epochs": 30,
-      "batch_size": 8,
-      "patience": 8,
-      "device": "cpu",
-      "workers": 0,
-      "random_seed": 42
-    }
+      "The 25 uncertain empty-label pairs were quarantined; no annotations were invented.",
+      "Running the dry run may download the public pretrained checkpoint but never calls model.train().",
+      "CPU training may take significant time. Ultralytics will retain best.pt and last.pt, with an additional checkpoint every 5 epochs, so an interrupted run can be resumed."
+    ]
   },
   "dataset_cleanup": {
-    "action": "test duplicate moved to recoverable quarantine; retained train copy unchanged",
-    "before_split_images": {
-      "train": 600,
-      "val": 120,
-      "test": 101,
-      "total": 821
+    "cross_split_duplicate": {
+      "action": "test duplicate moved to recoverable quarantine; retained train copy unchanged",
+      "before_split_images": {
+        "train": 600,
+        "val": 120,
+        "test": 101,
+        "total": 821
+      },
+      "quarantined_image": {
+        "path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\quarantine\\cross_split_duplicate\\images\\Bird-184-_jpg.rf.4929f26fc5a5f175af527f49cefe25b3.jpg",
+        "sha256": "c6c7d608c8e1ed598fa95fe95a54df7ed5eeaeb5f73fc6bd823d9cab4a2361bc"
+      },
+      "quarantined_label": {
+        "path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\quarantine\\cross_split_duplicate\\labels\\Bird-184-_jpg.rf.4929f26fc5a5f175af527f49cefe25b3.txt",
+        "sha256": "5ce3c28c8f1fb24f08e62661a6290add1f144b6643c9f5debeb0f86196c8900f"
+      },
+      "removed_box_count": 9,
+      "removed_box_class": {
+        "class_id": 0,
+        "class_name": "bird-drop"
+      },
+      "annotations_rewritten": false
     },
-    "after_split_images": {
-      "train": 600,
-      "val": 120,
-      "test": 100,
-      "total": 820
+    "final_active_split_images": {
+      "train": 582,
+      "val": 115,
+      "test": 98,
+      "total": 795
     },
-    "quarantined_image": {
-      "path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\quarantine\\cross_split_duplicate\\images\\Bird-184-_jpg.rf.4929f26fc5a5f175af527f49cefe25b3.jpg",
-      "sha256": "c6c7d608c8e1ed598fa95fe95a54df7ed5eeaeb5f73fc6bd823d9cab4a2361bc"
-    },
-    "quarantined_label": {
-      "path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\quarantine\\cross_split_duplicate\\labels\\Bird-184-_jpg.rf.4929f26fc5a5f175af527f49cefe25b3.txt",
-      "sha256": "5ce3c28c8f1fb24f08e62661a6290add1f144b6643c9f5debeb0f86196c8900f"
-    },
-    "removed_box_count": 9,
-    "removed_box_class": {
-      "class_id": 0,
-      "class_name": "bird-drop"
-    },
-    "annotations_rewritten": false
+    "empty_label_quarantine": {
+      "manifest": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\quarantine\\empty_labels\\manifest.csv",
+      "pair_count": 25,
+      "original_split_counts": {
+        "train": 18,
+        "val": 5,
+        "test": 2
+      },
+      "all_manifest_paths_and_hashes_verified": true,
+      "reason": "Visible solar panels with empty annotation; cannot safely treat as background because clean is an object class.",
+      "annotations_rewritten": false
+    }
   },
   "empty_label_review": {
     "path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\outputs\\computer_vision\\empty_label_review.csv",
     "rows": 25,
     "likely_background": 0,
     "needs_manual_review": 25,
+    "active_empty_labels_remaining": 0,
+    "disposition": "quarantined from active splits; retained for possible future correction",
     "annotations_added": false
   },
   "training_quality_gate": {
-    "blocked": true,
-    "reasons": [
-      "25 empty-label images require human approval"
-    ]
+    "blocked": false,
+    "checks": {
+      "empty_label_files": 0,
+      "images_without_labels": 0,
+      "labels_without_images": 0,
+      "unreadable_images": 0,
+      "invalid_label_lines": 0,
+      "cross_split_duplicate_image_hashes": 0,
+      "cross_split_duplicate_filenames": 0,
+      "splits_missing_configured_classes": 0
+    },
+    "reasons": []
   }
 }

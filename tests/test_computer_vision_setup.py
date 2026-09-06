@@ -1,4 +1,4 @@
-"""Tests for Day 24 dataset validation and non-training YOLO setup."""
+"""Tests for the Day 24 dataset gate and Day 25 YOLO prototype."""
 
 from __future__ import annotations
 
@@ -12,6 +12,7 @@ import numpy as np
 import pandas as pd
 import pytest
 import yaml
+from ultralytics import YOLO
 
 import src.computer_vision.train_detector as training
 from src.computer_vision.evaluate_detector import evaluate_detector
@@ -23,6 +24,7 @@ from src.computer_vision.inspect_vision_dataset import (
     validate_yolo_line,
 )
 from src.computer_vision.visualize_annotations import render_contact_sheet
+from src.computer_vision.visualize_predictions import select_validation_examples
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -57,10 +59,10 @@ def tiny_dataset(tmp_path: Path) -> Path:
         "0 0.5 0.5 0.5 0.5\n1 0.25 0.25 0.1 0.1\n", encoding="utf-8"
     )
     (tmp_path / "valid/labels/two.txt").write_text(
-        "1 0.5 0.5 0.2 0.2\n", encoding="utf-8"
+        "1 0.5 0.5 0.2 0.2\n0 0.3 0.3 0.1 0.1\n", encoding="utf-8"
     )
     (tmp_path / "test/labels/one.txt").write_text(
-        "0 0.5 0.5 0.4 0.4\n", encoding="utf-8"
+        "0 0.5 0.5 0.4 0.4\n1 0.4 0.4 0.1 0.1\n", encoding="utf-8"
     )
     (tmp_path / "test/labels/orphan.txt").write_text(
         "0 0.5 0.5 0.1 0.1\n", encoding="utf-8"
@@ -91,12 +93,12 @@ def test_inventory_totals_matching_distribution_and_duplicates(tiny_dataset: Pat
     }
     assert summary["total_images"] == 4
     assert summary["total_annotation_files"] == 4
-    assert summary["total_bounding_boxes"] == 5
-    assert [item["bounding_box_count"] for item in summary["classes"]] == [3, 2]
-    assert [item["image_count"] for item in summary["classes"]] == [2, 2]
+    assert summary["total_bounding_boxes"] == 7
+    assert [item["bounding_box_count"] for item in summary["classes"]] == [4, 3]
+    assert [item["image_count"] for item in summary["classes"]] == [3, 3]
     assert summary["class_distribution_review"]["majority_classes"] == ["alpha"]
     assert summary["class_distribution_review"]["minority_classes"] == ["beta"]
-    assert summary["class_distribution_review"]["possible_imbalance"]
+    assert not summary["class_distribution_review"]["possible_imbalance"]
     assert summary["images_without_labels"]["count"] == 1
     assert summary["labels_without_images"]["count"] == 1
     assert summary["invalid_labels"]["count"] == 0
@@ -149,11 +151,21 @@ def test_training_dry_run_resolves_without_calling_train(
             raise AssertionError("dry-run must never train")
 
     monkeypatch.setattr(training, "YOLO", DummyYOLO)
+    (tiny_dataset.parent / "train/images/unlabelled.png").unlink()
+    (tiny_dataset.parent / "test/labels/orphan.txt").unlink()
+    _write_image(tiny_dataset.parent / "test/images/one.jpg", 80)
+    (tiny_dataset.parent / "test/images/one.jpg").rename(
+        tiny_dataset.parent / "test/images/test_one.jpg"
+    )
+    (tiny_dataset.parent / "test/labels/one.txt").rename(
+        tiny_dataset.parent / "test/labels/test_one.txt"
+    )
     config = {
         "schema_version": 1, "status": "prepared_not_trained", "task": "detect",
         "pretrained_model": "yolo11n.pt", "dataset_yaml": str(tiny_dataset),
         "image_size": 640, "epochs": 50, "batch_size": 8, "patience": 10,
         "device": "cpu", "workers": 0, "random_seed": 42, "deterministic": True,
+        "save": True, "save_period": 5,
         "output_project": str(tmp_path / "training"), "run_name": "dry_run", "exist_ok": False,
     }
     config_path = tmp_path / "training.yaml"
@@ -182,13 +194,13 @@ def test_real_project_summary_matches_downloaded_dataset() -> None:
     ]
     assert summary["class_count"] == 6
     assert {key: summary["splits"][key]["images"] for key in ("train", "val", "test")} == {
-        "train": 600, "val": 120, "test": 100,
+        "train": 582, "val": 115, "test": 98,
     }
-    assert summary["total_images"] == 820
-    assert summary["total_annotation_files"] == 820
+    assert summary["total_images"] == 795
+    assert summary["total_annotation_files"] == 795
     assert summary["total_bounding_boxes"] == 5751
-    assert sum(split["images"] for split in summary["splits"].values()) == 820
-    assert sum(split["labels"] for split in summary["splits"].values()) == 820
+    assert sum(split["images"] for split in summary["splits"].values()) == 795
+    assert sum(split["labels"] for split in summary["splits"].values()) == 795
     assert sum(split["boxes"] for split in summary["splits"].values()) == 5751
     assert sum(item["bounding_box_count"] for item in summary["classes"]) == 5751
     assert [item["bounding_box_count"] for item in summary["classes"]] == [
@@ -198,13 +210,24 @@ def test_real_project_summary_matches_downloaded_dataset() -> None:
     assert summary["images_without_labels"]["count"] == 0
     assert summary["labels_without_images"]["count"] == 0
     assert summary["unreadable_images"]["count"] == 0
-    assert summary["images_with_empty_label_files"]["count"] == 25
+    assert summary["images_with_empty_label_files"]["count"] == 0
     assert len(summary["duplicates"]["exact_duplicate_images_across_splits"]) == 0
     assert len(summary["duplicates"]["duplicate_filenames_across_splits"]) == 0
-    assert summary["dataset_cleanup"]["removed_box_count"] == 9
+    assert summary["dataset_cleanup"]["cross_split_duplicate"]["removed_box_count"] == 9
+    assert summary["dataset_cleanup"]["empty_label_quarantine"]["pair_count"] == 25
+    assert summary["dataset_cleanup"]["empty_label_quarantine"][
+        "all_manifest_paths_and_hashes_verified"
+    ]
     assert summary["empty_label_review"]["likely_background"] == 0
     assert summary["empty_label_review"]["needs_manual_review"] == 25
-    assert summary["training_quality_gate"]["blocked"]
+    assert summary["empty_label_review"]["active_empty_labels_remaining"] == 0
+    assert summary["all_classes_present_in_every_split"]
+    assert all(
+        value["all_classes_present"]
+        for value in summary["class_coverage_by_split"].values()
+    )
+    assert not summary["training_quality_gate"]["blocked"]
+    assert not any(summary["training_quality_gate"]["checks"].values())
     assert summary["environment"]["cuda_available"] is False
 
 
@@ -240,22 +263,144 @@ def test_quarantine_and_review_artifacts_are_complete() -> None:
     ))) == 3
     assert (ROOT / "outputs/computer_vision/figures/day24_duplicate_review.png").is_file()
 
+    empty_quarantine = ROOT / "data/vision/quarantine/empty_labels"
+    manifest = pd.read_csv(empty_quarantine / "manifest.csv")
+    assert len(manifest) == 25
+    assert manifest.original_split.value_counts().to_dict() == {
+        "train": 18, "val": 5, "test": 2,
+    }
+    assert manifest.reason.eq(
+        "Visible solar panels with empty annotation; cannot safely treat as background "
+        "because clean is an object class."
+    ).all()
+    for row in manifest.itertuples(index=False):
+        original_image = ROOT / row.original_image_path
+        original_label = ROOT / row.original_label_path
+        quarantined_image = ROOT / row.quarantine_image_path
+        quarantined_label = ROOT / row.quarantine_label_path
+        assert not original_image.exists() and not original_label.exists()
+        assert quarantined_image.is_file() and quarantined_label.is_file()
+        assert _sha256(quarantined_image) == row.image_sha256
+        assert _sha256(quarantined_label) == row.label_sha256
+        assert quarantined_label.read_text(encoding="utf-8-sig").strip() == ""
+    assert (empty_quarantine / "README.md").is_file()
 
-def test_real_dry_run_succeeds_without_trained_weights() -> None:
-    weights_before = sorted(ROOT.rglob("best.pt")) + sorted(ROOT.rglob("last.pt"))
+
+def test_real_dry_run_succeeds_without_changing_trained_weights() -> None:
+    checkpoint_paths = sorted(ROOT.rglob("best.pt")) + sorted(ROOT.rglob("last.pt"))
+    weights_before = {str(path): _sha256(path) for path in checkpoint_paths}
     report, model = training.validate_training_setup(training.DEFAULT_CONFIG)
-    weights_after = sorted(ROOT.rglob("best.pt")) + sorted(ROOT.rglob("last.pt"))
+    checkpoint_paths_after = sorted(ROOT.rglob("best.pt")) + sorted(ROOT.rglob("last.pt"))
+    weights_after = {str(path): _sha256(path) for path in checkpoint_paths_after}
     assert model is not None
     assert report["checks"]["ready_for_training"]
     assert report["checks"]["test_path_exists"] is True
-    assert report["checks"]["split_image_counts"] == {"train": 600, "val": 120, "test": 100}
-    assert report["checks"]["total_active_images"] == 820
+    assert report["checks"]["split_image_counts"] == {"train": 582, "val": 115, "test": 98}
+    assert report["checks"]["total_active_images"] == 795
     assert report["checks"]["class_count"] == 6
     assert report["checks"]["invalid_label_count"] == 0
+    assert report["checks"]["empty_label_count"] == 0
+    assert report["checks"]["image_without_label_count"] == 0
+    assert report["checks"]["label_without_image_count"] == 0
+    assert report["checks"]["unreadable_image_count"] == 0
     assert report["checks"]["cross_split_duplicate_image_groups"] == 0
+    assert report["checks"]["cross_split_duplicate_filename_count"] == 0
+    assert report["checks"]["all_classes_present_in_every_split"]
+    assert report["checks"]["checkpoint_saving_enabled"]
+    assert report["checks"]["checkpoint_save_period_epochs"] == 5
     assert report["checks"]["training_started"] is False
     assert report["errors"] == []
-    assert weights_before == weights_after == []
+    assert weights_before == weights_after
+
+
+def test_final_day25_configuration_and_checkpoint_artifacts() -> None:
+    config = training.load_training_config(training.DEFAULT_CONFIG)
+    assert {
+        "pretrained_model": config["pretrained_model"],
+        "epochs": config["epochs"],
+        "image_size": config["image_size"],
+        "batch_size": config["batch_size"],
+        "patience": config["patience"],
+        "device": config["device"],
+        "workers": config["workers"],
+        "random_seed": config["random_seed"],
+    } == {
+        "pretrained_model": "yolo11n.pt", "epochs": 30, "image_size": 512,
+        "batch_size": 8, "patience": 8, "device": "cpu", "workers": 0,
+        "random_seed": 42,
+    }
+    assert config["save"] is True and config["save_period"] == 5
+    run = ROOT / config["output_project"] / config["run_name"]
+    best = run / "weights/best.pt"
+    last = run / "weights/last.pt"
+    selected = ROOT / "models/computer_vision/solar_panel_detector_best.pt"
+    assert best.is_file() and last.is_file() and selected.is_file()
+    assert _sha256(best) == _sha256(selected)
+
+
+def test_training_metadata_uses_validation_not_test() -> None:
+    metadata = json.loads((
+        ROOT / "models/computer_vision/solar_panel_detector_metadata.json"
+    ).read_text(encoding="utf-8"))
+    summary = json.loads((
+        ROOT / "outputs/computer_vision/training_summary.json"
+    ).read_text(encoding="utf-8"))
+    validation = json.loads((
+        ROOT / "outputs/computer_vision/validation_metrics.json"
+    ).read_text(encoding="utf-8"))
+    config = training.load_training_config(training.DEFAULT_CONFIG)
+    assert metadata["training_configuration"] == config
+    assert metadata["class_names"] == [
+        "bird-drop", "clean", "dusty", "electrical-damage",
+        "physical-damage", "snow-covered",
+    ]
+    assert metadata["model_selection_split"] == "val"
+    assert metadata["test_split_used_for_training_or_model_selection"] is False
+    assert summary["test_split_used_for_training_or_model_selection"] is False
+    assert validation["evaluated_split"] == "val"
+    assert validation["test_split_used"] is False
+    assert metadata["epochs_completed"] <= metadata["epochs_requested"] == 30
+    assert 1 <= metadata["best_epoch"] <= metadata["epochs_completed"]
+    assert metadata["wall_clock_training_duration_seconds"] >= metadata[
+        "training_duration_seconds"
+    ]
+    for checkpoint in metadata["checkpoints"].values():
+        path = Path(checkpoint["path"])
+        assert path.is_file()
+        assert _sha256(path) == checkpoint["sha256"]
+
+
+def test_selected_checkpoint_loads_and_validation_inference_is_bounded() -> None:
+    selected = ROOT / "models/computer_vision/solar_panel_detector_best.pt"
+    model = YOLO(str(selected), task="detect")
+    config = load_dataset_yaml(DEFAULT_DATA_YAML)
+    examples = select_validation_examples(config, maximum=3)
+    results = model.predict(
+        source=[str(item[0]) for item in examples], imgsz=512, device="cpu",
+        conf=0.001, verbose=False,
+    )
+    assert len(results) == len(examples)
+    detection_count = 0
+    validation_root = config.split_paths["val"].resolve()
+    for result in results:
+        assert Path(result.path).resolve().is_relative_to(validation_root)
+        height, width = result.orig_shape
+        if result.boxes is None:
+            continue
+        for coordinates, class_value, confidence in zip(
+            result.boxes.xyxy.cpu().tolist(),
+            result.boxes.cls.cpu().tolist(),
+            result.boxes.conf.cpu().tolist(),
+        ):
+            x1, y1, x2, y2 = coordinates
+            assert 0 <= int(class_value) < 6
+            assert 0.0 <= confidence <= 1.0
+            assert 0.0 <= x1 <= x2 <= width + 1e-3
+            assert 0.0 <= y1 <= y2 <= height + 1e-3
+            detection_count += 1
+    assert detection_count > 0
+    figure = ROOT / "outputs/computer_vision/figures/day25_validation_predictions.png"
+    assert figure.is_file() and cv2.imread(str(figure)) is not None
 
 
 def test_frozen_operational_artifacts_are_unchanged() -> None:

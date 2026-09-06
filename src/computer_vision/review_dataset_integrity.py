@@ -89,7 +89,7 @@ def render_duplicate_review(output: Path = DUPLICATE_REVIEW_FIGURE) -> Path:
         axes[1], cv2.cvtColor(test_bgr, cv2.COLOR_BGR2RGB), test_boxes,
         config.class_names, f"TEST — quarantined ({len(test_boxes)} boxes)",
     )
-    figure.suptitle("Day 24 cross-split duplicate review — identical image, differing ground truth")
+    figure.suptitle("Cross-split duplicate review — identical image, differing ground truth")
     figure.tight_layout()
     output.parent.mkdir(parents=True, exist_ok=True)
     figure.savefig(output, dpi=160, bbox_inches="tight")
@@ -156,7 +156,7 @@ def render_empty_label_sheets(
         for axis in axes.flat[len(group):]:
             axis.axis("off")
         figure.suptitle(
-            f"Day 24 empty-label review {sheet_index} — no boxes added",
+            f"Empty-label review {sheet_index} — no boxes added",
             fontsize=14,
         )
         figure.tight_layout()

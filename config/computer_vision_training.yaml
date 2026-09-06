@@ -1,32 +1,30 @@
 schema_version: 1
-status: prepared_not_trained
+status: trained_prototype
 task: detect
 pretrained_model: yolo11n.pt
 dataset_yaml: data/vision/solar_panel_defects/data.yaml
-image_size: 640
-epochs: 50
+image_size: 512
+epochs: 30
 batch_size: 8
-patience: 10
+patience: 8
 device: cpu
 workers: 0
 random_seed: 42
 deterministic: true
+save: true
+save_period: 5
 output_project: outputs/computer_vision/training
 run_name: yolo11n_solar_panel_defects_prototype
 exist_ok: false
+completed_run: outputs/computer_vision/training/yolo11n_solar_panel_defects_prototype
+selected_checkpoint: models/computer_vision/solar_panel_detector_best.pt
+model_selection_split: val
+independent_test_evaluation_performed: true
 notes:
 - CPU-safe defaults selected because CUDA is unavailable in the verified environment.
 - Real data.yaml paths and all six classes were verified against the downloaded version 1 export.
 - The documented train/test duplicate was quarantined; active cross-split image hashes are now unique.
-- Review the 25 empty labels before starting training; no annotations were invented.
+- The 25 uncertain empty-label pairs were quarantined; no annotations were invented.
 - Running the dry run may download the public pretrained checkpoint but never calls model.train().
-day25_cpu_recommendation:
-  rationale: Reduce CPU cost while retaining every source image and annotation.
-  pretrained_model: yolo11n.pt
-  image_size: 512
-  epochs: 30
-  batch_size: 8
-  patience: 8
-  device: cpu
-  workers: 0
-  random_seed: 42
+- CPU training may take significant time. Ultralytics will retain best.pt and last.pt,
+  with an additional checkpoint every 5 epochs, so an interrupted run can be resumed.

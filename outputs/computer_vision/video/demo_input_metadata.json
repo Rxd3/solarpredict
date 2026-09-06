@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "description": "Demo sequence created from validation images for video-pipeline testing.",
+  "is_real_drone_footage": false,
+  "source_split": "validation",
+  "source_images": [
+    "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\valid\\images\\Electrical-42-_jpg.rf.aec017931b358d13ae27bbad1bece249.jpg",
+    "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\valid\\images\\Bird-162-_jpg.rf.f96d703b16738d244af318dd92dbdab2.jpg",
+    "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\valid\\images\\Cleaan-1-_jpeg.rf.2058dbcaf948cfa6b366726abfc3769a.jpg",
+    "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\valid\\images\\Dust-109-_jpg.rf.821f7ad5f4c2f4f58ccfb2a3ef0eec53.jpg",
+    "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\valid\\images\\Solar-10-_jpg.rf.b05741717062d756e84f9d73c7f1d645.jpg",
+    "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\valid\\images\\Bird-175-_JPG.rf.fe913afa0c4cdee10e765d6831ceb3d6.jpg"
+  ],
+  "image_count": 6,
+  "repeats_per_image": 2,
+  "total_frames": 12,
+  "fps": 2.0,
+  "width": 640,
+  "height": 480,
+  "output_video": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\outputs\\computer_vision\\video\\demo_input.mp4"
+}

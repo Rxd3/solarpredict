@@ -56,6 +56,9 @@ data/vision/**
 !data/vision/quarantine/
 !data/vision/quarantine/cross_split_duplicate/
 !data/vision/quarantine/cross_split_duplicate/README.md
+!data/vision/quarantine/empty_labels/
+!data/vision/quarantine/empty_labels/README.md
+!data/vision/quarantine/empty_labels/manifest.csv
 
 # Generated models and outputs
 *.pt
@@ -64,11 +67,17 @@ models/*
 !models/computer_vision/
 models/computer_vision/*
 !models/computer_vision/.gitkeep
+!models/computer_vision/solar_panel_detector_metadata.json
 outputs/figures/*
 !outputs/figures/.gitkeep
 outputs/predictions/*
 !outputs/predictions/.gitkeep
 outputs/computer_vision/training/
+outputs/computer_vision/evaluation/
+outputs/computer_vision/video/*.mp4
+outputs/computer_vision/video/*.avi
+outputs/computer_vision/video/*.mov
+outputs/computer_vision/video/*.mkv
 
 # Common experiment output directories
 runs/

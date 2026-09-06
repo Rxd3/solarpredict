@@ -1,0 +1,89 @@
+{
+  "artifact_status": "trained_prototype",
+  "source_pretrained_model": "yolo11n.pt",
+  "dataset": {
+    "version": 1,
+    "yaml_path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\data.yaml",
+    "active_split_images": {
+      "train": 582,
+      "val": 115,
+      "test": 98
+    },
+    "total_active_images": 795,
+    "total_bounding_boxes": 5751
+  },
+  "class_names": [
+    "bird-drop",
+    "clean",
+    "dusty",
+    "electrical-damage",
+    "physical-damage",
+    "snow-covered"
+  ],
+  "training_configuration": {
+    "schema_version": 1,
+    "status": "trained_prototype",
+    "task": "detect",
+    "pretrained_model": "yolo11n.pt",
+    "dataset_yaml": "data/vision/solar_panel_defects/data.yaml",
+    "image_size": 512,
+    "epochs": 30,
+    "batch_size": 8,
+    "patience": 8,
+    "device": "cpu",
+    "workers": 0,
+    "random_seed": 42,
+    "deterministic": true,
+    "save": true,
+    "save_period": 5,
+    "output_project": "outputs/computer_vision/training",
+    "run_name": "yolo11n_solar_panel_defects_prototype",
+    "exist_ok": false,
+    "completed_run": "outputs/computer_vision/training/yolo11n_solar_panel_defects_prototype",
+    "selected_checkpoint": "models/computer_vision/solar_panel_detector_best.pt",
+    "model_selection_split": "val",
+    "independent_test_evaluation_performed": true,
+    "notes": [
+      "CPU-safe defaults selected because CUDA is unavailable in the verified environment.",
+      "Real data.yaml paths and all six classes were verified against the downloaded version 1 export.",
+      "The documented train/test duplicate was quarantined; active cross-split image hashes are now unique.",
+      "The 25 uncertain empty-label pairs were quarantined; no annotations were invented.",
+      "Running the dry run may download the public pretrained checkpoint but never calls model.train().",
+      "CPU training may take significant time. Ultralytics will retain best.pt and last.pt, with an additional checkpoint every 5 epochs, so an interrupted run can be resumed."
+    ]
+  },
+  "random_seed": 42,
+  "epochs_requested": 30,
+  "epochs_completed": 28,
+  "best_epoch": 20,
+  "training_duration_seconds": 3267.9,
+  "wall_clock_training_duration_seconds": 3290.2683622837067,
+  "training_started_at": "2026-09-06T14:20:52.411196+03:00",
+  "training_completed_at": "2026-09-06T15:15:42.679558+03:00",
+  "average_seconds_per_completed_epoch": 116.71071428571429,
+  "early_stopping": {
+    "occurred": true,
+    "reason": "validation fitness did not improve for patience=8 epochs"
+  },
+  "model_selection_split": "val",
+  "test_split_used_for_training_or_model_selection": false,
+  "checkpoints": {
+    "run_best": {
+      "path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\outputs\\computer_vision\\training\\yolo11n_solar_panel_defects_prototype\\weights\\best.pt",
+      "sha256": "b7ad8d7fca947527b30fb24f8c11e9135fbe62aa1e7f44e8a54100933141cd89"
+    },
+    "run_last": {
+      "path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\outputs\\computer_vision\\training\\yolo11n_solar_panel_defects_prototype\\weights\\last.pt",
+      "sha256": "be8e59ed43d437151bd2a4800472e4db31d4215ff4fbb21de62186ef04fc764c"
+    },
+    "selected_best_copy": {
+      "path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\models\\computer_vision\\solar_panel_detector_best.pt",
+      "sha256": "b7ad8d7fca947527b30fb24f8c11e9135fbe62aa1e7f44e8a54100933141cd89"
+    }
+  },
+  "package_versions": {
+    "python": "3.12.4",
+    "pytorch": "2.14.0+cpu",
+    "ultralytics": "8.4.138"
+  }
+}

@@ -1,0 +1,142 @@
+{
+  "schema_version": 1,
+  "status": "computer_vision_module_complete_for_prototype",
+  "frozen_checkpoint": "models/computer_vision/solar_panel_detector_best.pt",
+  "checkpoint_sha256": "b7ad8d7fca947527b30fb24f8c11e9135fbe62aa1e7f44e8a54100933141cd89",
+  "test_evaluation": {
+    "evaluation_count": 1,
+    "split_images": 98,
+    "used_for_tuning": false,
+    "metrics_path": "outputs/computer_vision/test_evaluation.json",
+    "overall": {
+      "precision": 0.3877669172444366,
+      "recall": 0.23559344875121271,
+      "map50": 0.2182599317621913,
+      "map50_95": 0.10623760918586599
+    },
+    "per_class": [
+      {
+        "class_id": 0,
+        "class_name": "bird-drop",
+        "precision": 0.24567526959748187,
+        "recall": 0.15668202764976957,
+        "map50": 0.12985621360040703,
+        "map50_95": 0.039929684415823355
+      },
+      {
+        "class_id": 1,
+        "class_name": "clean",
+        "precision": 0.33932585147079025,
+        "recall": 0.7875,
+        "map50": 0.6017245264632552,
+        "map50_95": 0.36335990147702557
+      },
+      {
+        "class_id": 2,
+        "class_name": "dusty",
+        "precision": 0.5255794221417407,
+        "recall": 0.022092841513055066,
+        "map50": 0.09101621179211739,
+        "map50_95": 0.0338486080462939
+      },
+      {
+        "class_id": 3,
+        "class_name": "electrical-damage",
+        "precision": 0.292211578886516,
+        "recall": 0.10088885747845942,
+        "map50": 0.0892541628671524,
+        "map50_95": 0.031681760202718026
+      },
+      {
+        "class_id": 4,
+        "class_name": "physical-damage",
+        "precision": 0.668155660292775,
+        "recall": 0.14285714285714285,
+        "map50": 0.23607068774056678,
+        "map50_95": 0.11378104262287567
+      },
+      {
+        "class_id": 5,
+        "class_name": "snow-covered",
+        "precision": 0.2556537210773158,
+        "recall": 0.20353982300884957,
+        "map50": 0.16163778810964907,
+        "map50_95": 0.054824658350459396
+      }
+    ]
+  },
+  "class_mapping": {
+    "0": "bird-drop",
+    "1": "clean",
+    "2": "dusty",
+    "3": "electrical-damage",
+    "4": "physical-damage",
+    "5": "snow-covered"
+  },
+  "image_inference_api": {
+    "module": "src.computer_vision.inference",
+    "functions": [
+      "load_detector",
+      "predict_image",
+      "predict_frame",
+      "predict_images",
+      "draw_detections",
+      "save_annotated_image",
+      "summarize_conditions"
+    ],
+    "default_confidence": 0.25,
+    "default_confidence_was_tuned_on_test": false,
+    "device": "cpu"
+  },
+  "video_inference_api": {
+    "module": "src.computer_vision.process_video",
+    "default_confidence": 0.25,
+    "default_frame_stride": 1,
+    "preserves_all_output_frames": true,
+    "frame_log_records_skipped_analysis_explicitly": true
+  },
+  "video_output_schema": {
+    "detection_csv": [
+      "frame_index",
+      "video_time_seconds",
+      "class_id",
+      "class_name",
+      "confidence",
+      "x1",
+      "y1",
+      "x2",
+      "y2"
+    ],
+    "frame_json": [
+      "frame_index",
+      "video_time_seconds",
+      "analyzed",
+      "detection_count",
+      "condition_summary",
+      "detections"
+    ]
+  },
+  "smoke_test": {
+    "input_type": "demo_sequence_from_validation_images",
+    "real_drone_footage": false,
+    "total_frames": 12,
+    "analyzed_frames": 12,
+    "output_frames_written": 12,
+    "frame_stride": 1,
+    "total_detections": 68,
+    "average_inference_seconds_per_analyzed_frame": 0.14680612496643639,
+    "approximate_inference_fps": 6.8117048946603935,
+    "processing_duration_seconds": 1.8346817998681217,
+    "summary_path": "outputs/computer_vision/video/demo_summary.json"
+  },
+  "known_limitations": [
+    "Overall test recall is 0.2356 and mAP50-95 is 0.1062.",
+    "Dusty recall is 0.0221 and remains particularly weak.",
+    "Electrical-damage and physical-damage remain limited minority classes.",
+    "No real drone footage was available for the video smoke test.",
+    "No detection must not be interpreted as healthy or fault-free.",
+    "CPU throughput from a short demo is not a deployment guarantee."
+  ],
+  "unchanged_operational_anomaly_module": true,
+  "training_or_tuning_performed_during_this_stage": false
+}

@@ -182,7 +182,10 @@ def inspect_dataset(config: DatasetConfig) -> dict[str, Any]:
 
     for split, image_root in config.split_paths.items():
         if image_root is None:
-            split_summaries[split] = {"configured": False, "images": 0, "labels": 0, "boxes": 0}
+            split_summaries[split] = {
+                "configured": False, "images": 0, "labels": 0, "boxes": 0,
+                "classes": [],
+            }
             continue
         images = _image_files(image_root)
         label_root = _label_root(image_root)
@@ -194,6 +197,8 @@ def inspect_dataset(config: DatasetConfig) -> dict[str, Any]:
             label.relative_to(label_root).with_suffix("").as_posix().lower(): label for label in labels
         }
         split_box_count = 0
+        split_boxes = Counter()
+        split_images_by_class: dict[int, set[str]] = defaultdict(set)
         parsed_labels: dict[str, list[tuple[int, tuple[float, ...]]]] = {}
         for key, label in label_keys.items():
             boxes, errors = parse_label_file(label, class_count)
@@ -204,6 +209,7 @@ def inspect_dataset(config: DatasetConfig) -> dict[str, Any]:
             label_hash_splits[_sha256(label)].append({"split": split, "path": str(label)})
             for class_id, _ in boxes:
                 total_boxes[class_id] += 1
+                split_boxes[class_id] += 1
         for image in images:
             relative = image.relative_to(image_root).as_posix()
             extensions[image.suffix.lower()] += 1
@@ -231,6 +237,7 @@ def inspect_dataset(config: DatasetConfig) -> dict[str, Any]:
                 present.add(class_id)
             for class_id in present:
                 total_images_by_class[class_id].add(str(image))
+                split_images_by_class[class_id].add(str(image))
         for key, label in label_keys.items():
             if key not in image_keys:
                 label_without_image.append(str(label))
@@ -242,6 +249,16 @@ def inspect_dataset(config: DatasetConfig) -> dict[str, Any]:
             "images": len(images),
             "labels": len(labels),
             "boxes": split_box_count,
+            "classes": [
+                {
+                    "class_id": class_id,
+                    "class_name": name,
+                    "image_count": len(split_images_by_class[class_id]),
+                    "bounding_box_count": split_boxes[class_id],
+                    "present": split_boxes[class_id] > 0,
+                }
+                for class_id, name in enumerate(config.class_names)
+            ],
         }
 
     total_images = sum(item["images"] for item in split_summaries.values())
@@ -304,6 +321,16 @@ def inspect_dataset(config: DatasetConfig) -> dict[str, Any]:
         split: (100.0 * values["images"] / total_images) if total_images else 0.0
         for split, values in split_summaries.items()
     }
+    class_coverage = {
+        split: {
+            "present_class_count": sum(item["present"] for item in values["classes"]),
+            "missing_classes": [item["class_name"] for item in values["classes"] if not item["present"]],
+            "all_classes_present": bool(values["configured"] and all(
+                item["present"] for item in values["classes"]
+            )),
+        }
+        for split, values in split_summaries.items()
+    }
     return {
         "status": "inspection_complete",
         "dataset_yaml": str(config.yaml_path),
@@ -317,6 +344,10 @@ def inspect_dataset(config: DatasetConfig) -> dict[str, Any]:
         "class_distribution_review": distribution_review,
         "splits": split_summaries,
         "split_image_percentages": percentages,
+        "class_coverage_by_split": class_coverage,
+        "all_classes_present_in_every_split": all(
+            values["all_classes_present"] for values in class_coverage.values()
+        ),
         "total_images": total_images,
         "total_annotation_files": total_labels,
         "total_bounding_boxes": box_total,
@@ -370,6 +401,8 @@ def build_project_summary(
             "class_distribution_review": None,
             "splits": {"train": None, "val": None, "test": None},
             "split_image_percentages": None,
+            "class_coverage_by_split": None,
+            "all_classes_present_in_every_split": None,
             "total_images": None,
             "total_annotation_files": None,
             "total_bounding_boxes": None,
@@ -399,18 +432,53 @@ def build_project_summary(
     if quarantine_image.is_file() and quarantine_label.is_file():
         summary["status"] = "inspection_complete_after_quarantine"
         summary["dataset_cleanup"] = {
-            "action": "test duplicate moved to recoverable quarantine; retained train copy unchanged",
-            "before_split_images": {"train": 600, "val": 120, "test": 101, "total": 821},
-            "after_split_images": {
+            "cross_split_duplicate": {
+                "action": "test duplicate moved to recoverable quarantine; retained train copy unchanged",
+                "before_split_images": {"train": 600, "val": 120, "test": 101, "total": 821},
+                "quarantined_image": {
+                    "path": str(quarantine_image), "sha256": _sha256(quarantine_image),
+                },
+                "quarantined_label": {
+                    "path": str(quarantine_label), "sha256": _sha256(quarantine_label),
+                },
+                "removed_box_count": 9,
+                "removed_box_class": {"class_id": 0, "class_name": "bird-drop"},
+                "annotations_rewritten": False,
+            },
+            "final_active_split_images": {
                 "train": summary["splits"]["train"]["images"],
                 "val": summary["splits"]["val"]["images"],
                 "test": summary["splits"]["test"]["images"],
                 "total": summary["total_images"],
             },
-            "quarantined_image": {"path": str(quarantine_image), "sha256": _sha256(quarantine_image)},
-            "quarantined_label": {"path": str(quarantine_label), "sha256": _sha256(quarantine_label)},
-            "removed_box_count": 9,
-            "removed_box_class": {"class_id": 0, "class_name": "bird-drop"},
+        }
+    empty_manifest = ROOT / "data/vision/quarantine/empty_labels/manifest.csv"
+    if empty_manifest.is_file():
+        import csv
+
+        with empty_manifest.open("r", encoding="utf-8-sig", newline="") as source:
+            manifest_rows = list(csv.DictReader(source))
+        split_counts = {
+            split: sum(row.get("original_split") == split for row in manifest_rows)
+            for split in SPLIT_KEYS
+        }
+        quarantine_valid = all(
+            not (ROOT / row["original_image_path"]).exists()
+            and not (ROOT / row["original_label_path"]).exists()
+            and (ROOT / row["quarantine_image_path"]).is_file()
+            and (ROOT / row["quarantine_label_path"]).is_file()
+            and _sha256(ROOT / row["quarantine_image_path"]) == row["image_sha256"]
+            for row in manifest_rows
+        )
+        summary.setdefault("dataset_cleanup", {})["empty_label_quarantine"] = {
+            "manifest": str(empty_manifest),
+            "pair_count": len(manifest_rows),
+            "original_split_counts": split_counts,
+            "all_manifest_paths_and_hashes_verified": quarantine_valid,
+            "reason": (
+                "Visible solar panels with empty annotation; cannot safely treat as background "
+                "because clean is an object class."
+            ),
             "annotations_rewritten": False,
         }
     review_path = ROOT / "outputs/computer_vision/empty_label_review.csv"
@@ -423,17 +491,34 @@ def build_project_summary(
             "rows": len(review),
             "likely_background": int(review["review_status"].eq("LIKELY_BACKGROUND").sum()),
             "needs_manual_review": int(review["review_status"].eq("NEEDS_MANUAL_REVIEW").sum()),
+            "active_empty_labels_remaining": summary["images_with_empty_label_files"]["count"],
+            "disposition": "quarantined from active splits; retained for possible future correction",
             "annotations_added": False,
         }
-    needs_review = summary.get("empty_label_review", {}).get("needs_manual_review", 0)
     active_duplicates = len(
         (summary.get("duplicates") or {}).get("exact_duplicate_images_across_splits", [])
     )
+    duplicate_filenames = len(
+        (summary.get("duplicates") or {}).get("duplicate_filenames_across_splits", [])
+    )
+    integrity_issues = {
+        "empty_label_files": (summary.get("images_with_empty_label_files") or {}).get("count", 0),
+        "images_without_labels": (summary.get("images_without_labels") or {}).get("count", 0),
+        "labels_without_images": (summary.get("labels_without_images") or {}).get("count", 0),
+        "unreadable_images": (summary.get("unreadable_images") or {}).get("count", 0),
+        "invalid_label_lines": (summary.get("invalid_labels") or {}).get("count", 0),
+        "cross_split_duplicate_image_hashes": active_duplicates,
+        "cross_split_duplicate_filenames": duplicate_filenames,
+        "splits_missing_configured_classes": sum(
+            not values["all_classes_present"]
+            for values in (summary.get("class_coverage_by_split") or {}).values()
+        ),
+    }
     summary["training_quality_gate"] = {
-        "blocked": bool(active_duplicates or needs_review),
+        "blocked": any(integrity_issues.values()),
+        "checks": integrity_issues,
         "reasons": [
-            *(["active cross-split exact image duplicates remain"] if active_duplicates else []),
-            *([f"{needs_review} empty-label images require human approval"] if needs_review else []),
+            f"{name}: {count}" for name, count in integrity_issues.items() if count
         ],
     }
     return summary

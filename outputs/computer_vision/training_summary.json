@@ -1,0 +1,189 @@
+{
+  "source_pretrained_model": "yolo11n.pt",
+  "dataset": {
+    "version": 1,
+    "yaml_path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\data\\vision\\solar_panel_defects\\data.yaml",
+    "active_split_images": {
+      "train": 582,
+      "val": 115,
+      "test": 98
+    },
+    "total_active_images": 795,
+    "total_bounding_boxes": 5751
+  },
+  "class_names": [
+    "bird-drop",
+    "clean",
+    "dusty",
+    "electrical-damage",
+    "physical-damage",
+    "snow-covered"
+  ],
+  "training_configuration": {
+    "schema_version": 1,
+    "status": "trained_prototype",
+    "task": "detect",
+    "pretrained_model": "yolo11n.pt",
+    "dataset_yaml": "data/vision/solar_panel_defects/data.yaml",
+    "image_size": 512,
+    "epochs": 30,
+    "batch_size": 8,
+    "patience": 8,
+    "device": "cpu",
+    "workers": 0,
+    "random_seed": 42,
+    "deterministic": true,
+    "save": true,
+    "save_period": 5,
+    "output_project": "outputs/computer_vision/training",
+    "run_name": "yolo11n_solar_panel_defects_prototype",
+    "exist_ok": false,
+    "completed_run": "outputs/computer_vision/training/yolo11n_solar_panel_defects_prototype",
+    "selected_checkpoint": "models/computer_vision/solar_panel_detector_best.pt",
+    "model_selection_split": "val",
+    "independent_test_evaluation_performed": false,
+    "notes": [
+      "CPU-safe defaults selected because CUDA is unavailable in the verified environment.",
+      "Real data.yaml paths and all six classes were verified against the downloaded version 1 export.",
+      "The documented train/test duplicate was quarantined; active cross-split image hashes are now unique.",
+      "The 25 uncertain empty-label pairs were quarantined; no annotations were invented.",
+      "Running the dry run may download the public pretrained checkpoint but never calls model.train().",
+      "CPU training may take significant time. Ultralytics will retain best.pt and last.pt, with an additional checkpoint every 5 epochs, so an interrupted run can be resumed."
+    ]
+  },
+  "random_seed": 42,
+  "epochs_requested": 30,
+  "epochs_completed": 28,
+  "best_epoch": 20,
+  "training_duration_seconds": 3267.9,
+  "wall_clock_training_duration_seconds": 3290.2683622837067,
+  "training_started_at": "2026-09-06T14:20:52.411196+03:00",
+  "training_completed_at": "2026-09-06T15:15:42.679558+03:00",
+  "average_seconds_per_completed_epoch": 116.71071428571429,
+  "early_stopping": {
+    "occurred": true,
+    "reason": "validation fitness did not improve for patience=8 epochs"
+  },
+  "model_selection_split": "val",
+  "test_split_used_for_training_or_model_selection": false,
+  "checkpoints": {
+    "run_best": {
+      "path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\outputs\\computer_vision\\training\\yolo11n_solar_panel_defects_prototype\\weights\\best.pt",
+      "sha256": "b7ad8d7fca947527b30fb24f8c11e9135fbe62aa1e7f44e8a54100933141cd89"
+    },
+    "run_last": {
+      "path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\outputs\\computer_vision\\training\\yolo11n_solar_panel_defects_prototype\\weights\\last.pt",
+      "sha256": "be8e59ed43d437151bd2a4800472e4db31d4215ff4fbb21de62186ef04fc764c"
+    },
+    "selected_best_copy": {
+      "path": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\models\\computer_vision\\solar_panel_detector_best.pt",
+      "sha256": "b7ad8d7fca947527b30fb24f8c11e9135fbe62aa1e7f44e8a54100933141cd89"
+    }
+  },
+  "package_versions": {
+    "python": "3.12.4",
+    "pytorch": "2.14.0+cpu",
+    "ultralytics": "8.4.138"
+  },
+  "hardware": {
+    "device": "cpu",
+    "cuda_available": false
+  },
+  "overall_validation_metrics": {
+    "precision": 0.30826068261348955,
+    "recall": 0.24617143064204358,
+    "map50": 0.2003928337318148,
+    "map50_95": 0.080662251160553
+  },
+  "per_class_validation_metrics": [
+    {
+      "class_id": 0,
+      "class_name": "bird-drop",
+      "precision": 0.2887759177991728,
+      "recall": 0.36875,
+      "map50": 0.2296116319043306,
+      "map50_95": 0.06176964089684563
+    },
+    {
+      "class_id": 1,
+      "class_name": "clean",
+      "precision": 0.2787693736322704,
+      "recall": 0.46113989637305697,
+      "map50": 0.32143198038769716,
+      "map50_95": 0.1838723466572025
+    },
+    {
+      "class_id": 2,
+      "class_name": "dusty",
+      "precision": 0.17811605198721261,
+      "recall": 0.018867924528301886,
+      "map50": 0.02831640725047994,
+      "map50_95": 0.005917767740268791
+    },
+    {
+      "class_id": 3,
+      "class_name": "electrical-damage",
+      "precision": 0.17437927274972168,
+      "recall": 0.2,
+      "map50": 0.196463755903058,
+      "map50_95": 0.07100583716011279
+    },
+    {
+      "class_id": 4,
+      "class_name": "physical-damage",
+      "precision": 0.6900753029821558,
+      "recall": 0.1675564772366169,
+      "map50": 0.2283857443197306,
+      "map50_95": 0.09465477965595312
+    },
+    {
+      "class_id": 5,
+      "class_name": "snow-covered",
+      "precision": 0.23944817653040396,
+      "recall": 0.26071428571428573,
+      "map50": 0.1981474826255924,
+      "map50_95": 0.06675313485293517
+    }
+  ],
+  "strongest_classes_by_map50_95": [
+    "clean",
+    "physical-damage"
+  ],
+  "weakest_classes_by_map50_95": [
+    "bird-drop",
+    "dusty"
+  ],
+  "losses_and_epoch_metrics": {
+    "best_epoch": {
+      "epoch": 20,
+      "train/box_loss": 2.1203,
+      "train/cls_loss": 2.23013,
+      "train/dfl_loss": 1.79867,
+      "val/box_loss": 2.20041,
+      "val/cls_loss": 2.37321,
+      "val/dfl_loss": 2.02664,
+      "metrics/precision(B)": 0.31245,
+      "metrics/recall(B)": 0.25753,
+      "metrics/mAP50(B)": 0.20196,
+      "metrics/mAP50-95(B)": 0.08112
+    },
+    "final_epoch": {
+      "epoch": 28,
+      "train/box_loss": 2.07119,
+      "train/cls_loss": 2.209,
+      "train/dfl_loss": 1.82923,
+      "val/box_loss": 2.20201,
+      "val/cls_loss": 2.40671,
+      "val/dfl_loss": 2.00047,
+      "metrics/precision(B)": 0.29553,
+      "metrics/recall(B)": 0.27745,
+      "metrics/mAP50(B)": 0.20882,
+      "metrics/mAP50-95(B)": 0.07321
+    },
+    "minimum_training_box_loss": 2.07119,
+    "minimum_validation_box_loss": 2.14935,
+    "minimum_training_classification_loss": 2.18182,
+    "minimum_validation_classification_loss": 2.31524
+  },
+  "validation_metrics_artifact": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\outputs\\computer_vision\\validation_metrics.json"
+}

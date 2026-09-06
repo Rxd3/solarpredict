@@ -4,29 +4,31 @@
 
 - **Dataset:** [Detection for defects in solar panels](https://universe.roboflow.com/solar-panels-yolo/detection-for-defects-in-solar-panels-9qenv)
 - **Creator:** Solar Panels YOLO on Roboflow Universe
-- **Version:** 1
+- **Downloaded version:** 1
 - **Task:** object detection
 - **Format:** YOLO text annotations compatible with Ultralytics
 - **License:** [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
 - **Local root:** `data/vision/solar_panel_defects/`
 - **YAML:** `data/vision/solar_panel_defects/data.yaml`
-- **Train images:** `data/vision/solar_panel_defects/train/images`
-- **Validation images:** `data/vision/solar_panel_defects/valid/images`
-- **Test images:** `data/vision/solar_panel_defects/test/images`
 
-The downloaded YAML initially used `../train/images`, `../valid/images`, and
-`../test/images`, but those locations did not exist; the extracted split folders
-are directly beside `data.yaml`. Only these three proven structural paths were
-corrected to `train/images`, `valid/images`, and `test/images`. The class mapping
-and every annotation file remain unchanged.
+The export's class names were retained exactly. Only three invalid relative paths
+in the downloaded `data.yaml` were corrected to the locally verified
+`train/images`, `valid/images`, and `test/images` locations. Attribution must
+include the dataset title and creator, source and license links, a statement of
+changes, and no implication of creator endorsement.
 
-Published or redistributed use must credit the dataset title and creator, link
-the source and CC BY 4.0 license, state whether changes were made, and avoid
-implying creator endorsement.
+## Final active inventory
 
-## Actual class mapping
+| Split | Images | Share | Labels | Boxes |
+| --- | ---: | ---: | ---: | ---: |
+| Train | 582 | 73.21% | 582 | 4,359 |
+| Validation | 115 | 14.47% | 115 | 761 |
+| Test | 98 | 12.33% | 98 | 631 |
+| **Total** | **795** | **100.00%** | **795** | **5,751** |
 
-| ID | Exact `data.yaml` name | Images containing class | Boxes | Share of all boxes |
+## Actual class mapping and distribution
+
+| ID | Exact `data.yaml` name | Images containing class | Boxes | Box share |
 | -: | --- | ---: | ---: | ---: |
 | 0 | `bird-drop` | 156 | 1,509 | 26.24% |
 | 1 | `clean` | 192 | 1,107 | 19.25% |
@@ -35,78 +37,50 @@ implying creator endorsement.
 | 4 | `physical-damage` | 61 | 169 | 2.94% |
 | 5 | `snow-covered` | 112 | 1,299 | 22.59% |
 
-The largest class by boxes is `bird-drop`; the smallest is
-`physical-damage`. Their box-count ratio is 1,509 / 169 = **8.93:1**. This is a
-material imbalance to consider during later evaluation, but Day 24 does not
-rebalance, oversample, rename, or otherwise modify the data.
+`bird-drop` is the largest class by box count and `physical-damage` the
+smallest, a remaining ratio of **8.93:1**. No oversampling, rebalancing, class
+renaming, or split reassignment was performed.
 
-## Split inventory
+## Per-split class coverage
 
-| Split | Images | Image share | Label files | Valid boxes |
-| --- | ---: | ---: | ---: | ---: |
-| Train | 600 | 73.17% | 600 | 4,359 |
-| Validation | 120 | 14.63% | 120 | 761 |
-| Test | 100 | 12.20% | 100 | 631 |
-| **Total** | **820** | **100.00%** | **820** | **5,751** |
+Each cell is `images / boxes`.
 
-All 820 active images are JPEG files. There are 452 unique resolutions. Across the
-actual files, width ranges from 149 to 6,240 pixels with median 768; height
-ranges from 110 to 5,376 pixels with median 675. The complete resolution
-frequency table is retained in
-`outputs/computer_vision/dataset_summary.json`.
+| Class | Train | Validation | Test |
+| --- | ---: | ---: | ---: |
+| `bird-drop` | 109 / 1,132 | 19 / 160 | 28 / 217 |
+| `clean` | 135 / 834 | 38 / 193 | 19 / 80 |
+| `dusty` | 165 / 1,255 | 7 / 53 | 22 / 152 |
+| `electrical-damage` | 60 / 131 | 17 / 35 | 10 / 41 |
+| `physical-damage` | 41 / 101 | 13 / 40 | 7 / 28 |
+| `snow-covered` | 78 / 906 | 22 / 280 | 12 / 113 |
 
-## Annotation validation
+All six classes remain represented in every split. The two minority classes
+have enough labeled training support for a prototype fine-tuning attempt
+(`electrical-damage`: 60 images/131 boxes; `physical-damage`: 41 images/101
+boxes), but their low counts and the 8.93:1 imbalance require per-class metrics
+and cautious conclusions. Adequacy for production cannot be established before
+training and independent evaluation.
 
-Every non-empty line was checked as:
+## Final integrity checks
 
-```text
-class_id x_center y_center width height
-```
+- Empty labels: **0**
+- Images without labels: **0**
+- Labels without images: **0**
+- Unreadable images: **0**
+- Invalid YOLO lines: **0**
+- Cross-split exact image-hash groups: **0**
+- Duplicate filenames across splits: **0**
+- Classes missing from any split: **0**
 
-Results:
+The one cross-split duplicate and all 25 uncertain empty-label pairs remain
+recoverable in quarantine. See
+[computer_vision_dataset_cleanup.md](computer_vision_dataset_cleanup.md) and
+`data/vision/quarantine/empty_labels/manifest.csv`.
 
-- invalid annotation lines: **0**;
-- images missing a label file: **0**;
-- label files without a matching image: **0**;
-- unreadable images: **0**;
-- empty label files: **25** (18 train, 5 validation, 2 test).
+The original split is otherwise preserved. Every frame extracted from one future
+source video must remain entirely in one split to prevent temporal leakage.
 
-An empty YOLO label is valid for a negative/background image, so these 25 files
-are not counted as invalid. Visual review could not confidently exclude the six
-broad configured classes from any of them; all 25 are marked
-`NEEDS_MANUAL_REVIEW`. No label was silently repaired.
-
-## Split-integrity and duplicate review
-
-- Duplicate image filenames across splits: **0**.
-- Duplicate label filenames across splits: **0**.
-- Exact duplicate image SHA-256 groups across active splits: **0** after quarantine.
-- Exact duplicate label-content SHA-256 groups across splits: **2**.
-
-The previously duplicated image (`c6c7d608…a2361bc`) occurred once in train and
-once in test under different names:
-
-- train: `Physical-damaged-48-_jpg.rf.270e3124c478a269b63d42bb9037807f.jpg`
-- former test: `Bird-184-_jpg.rf.4929f26fc5a5f175af527f49cefe25b3.jpg`
-
-Their label files are not identical: both use class ID 0 (`bird-drop`), but the
-train copy has 12 boxes and the test copy has 9 with different coordinates.
-This created direct train/test leakage and inconsistent annotation coverage.
-The training copy was retained, while the test image and its nine-box label were
-moved intact to recoverable quarantine. See
-[computer_vision_dataset_cleanup.md](computer_vision_dataset_cleanup.md).
-
-Of the two cross-split label-content hash groups, one is the shared SHA-256 of
-the 25 empty files and does not by itself indicate duplicated images. The other
-is one identical non-empty annotation text shared by five different image files
-(three train and two validation); identical normalized text alone is not proof
-that those images are duplicates. Exact file lists and hashes are recorded in
-the machine-readable summary.
-
-The original split is otherwise preserved. Future frames extracted from any one
-source video must all remain in exactly one split to prevent temporal leakage.
-
-## Reproducible commands
+## Reproducible checks
 
 ```powershell
 .\.venv\Scripts\python.exe -m src.computer_vision.inspect_vision_dataset

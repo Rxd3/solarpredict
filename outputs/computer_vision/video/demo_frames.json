@@ -1,0 +1,970 @@
+{
+  "schema_version": 1,
+  "input_video": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\outputs\\computer_vision\\video\\demo_input.mp4",
+  "frame_stride": 1,
+  "records_include_all_source_frames": true,
+  "frames": [
+    {
+      "frame_index": 0,
+      "video_time_seconds": 0.0,
+      "analyzed": true,
+      "detection_count": 4,
+      "condition_summary": {
+        "overall_status": "ATTENTION",
+        "detected_conditions": [
+          "clean",
+          "electrical-damage"
+        ],
+        "counts_by_class": {
+          "bird-drop": 0,
+          "clean": 3,
+          "dusty": 0,
+          "electrical-damage": 1,
+          "physical-damage": 0,
+          "snow-covered": 0
+        },
+        "highest_confidence_by_class": {
+          "bird-drop": null,
+          "clean": 0.42929360270500183,
+          "dusty": null,
+          "electrical-damage": 0.5155126452445984,
+          "physical-damage": null,
+          "snow-covered": null
+        }
+      },
+      "detections": [
+        {
+          "class_id": 3,
+          "class_name": "electrical-damage",
+          "confidence": 0.5155126452445984,
+          "x1": 295.66473388671875,
+          "y1": 143.1743927001953,
+          "x2": 380.1503601074219,
+          "y2": 225.56658935546875
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.42929360270500183,
+          "x1": 12.356796264648438,
+          "y1": 252.623291015625,
+          "x2": 616.3114013671875,
+          "y2": 426.0441589355469
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.3932834267616272,
+          "x1": 9.747085571289062,
+          "y1": 74.64805603027344,
+          "x2": 638.4495239257812,
+          "y2": 362.5733947753906
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.3361184000968933,
+          "x1": 20.675277709960938,
+          "y1": 74.67926025390625,
+          "x2": 636.7490844726562,
+          "y2": 269.80560302734375
+        }
+      ]
+    },
+    {
+      "frame_index": 1,
+      "video_time_seconds": 0.5,
+      "analyzed": true,
+      "detection_count": 4,
+      "condition_summary": {
+        "overall_status": "ATTENTION",
+        "detected_conditions": [
+          "clean",
+          "electrical-damage"
+        ],
+        "counts_by_class": {
+          "bird-drop": 0,
+          "clean": 3,
+          "dusty": 0,
+          "electrical-damage": 1,
+          "physical-damage": 0,
+          "snow-covered": 0
+        },
+        "highest_confidence_by_class": {
+          "bird-drop": null,
+          "clean": 0.43878883123397827,
+          "dusty": null,
+          "electrical-damage": 0.5197107195854187,
+          "physical-damage": null,
+          "snow-covered": null
+        }
+      },
+      "detections": [
+        {
+          "class_id": 3,
+          "class_name": "electrical-damage",
+          "confidence": 0.5197107195854187,
+          "x1": 296.6346435546875,
+          "y1": 143.5870361328125,
+          "x2": 380.0010986328125,
+          "y2": 230.66009521484375
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.43878883123397827,
+          "x1": 12.256050109863281,
+          "y1": 253.1243896484375,
+          "x2": 616.7542724609375,
+          "y2": 425.8632507324219
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.3804156482219696,
+          "x1": 13.414230346679688,
+          "y1": 75.02388000488281,
+          "x2": 638.5641479492188,
+          "y2": 359.4487609863281
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.32583367824554443,
+          "x1": 28.179340362548828,
+          "y1": 75.2435302734375,
+          "x2": 636.77001953125,
+          "y2": 269.66693115234375
+        }
+      ]
+    },
+    {
+      "frame_index": 2,
+      "video_time_seconds": 1.0,
+      "analyzed": true,
+      "detection_count": 7,
+      "condition_summary": {
+        "overall_status": "ATTENTION",
+        "detected_conditions": [
+          "bird-drop"
+        ],
+        "counts_by_class": {
+          "bird-drop": 7,
+          "clean": 0,
+          "dusty": 0,
+          "electrical-damage": 0,
+          "physical-damage": 0,
+          "snow-covered": 0
+        },
+        "highest_confidence_by_class": {
+          "bird-drop": 0.4283130168914795,
+          "clean": null,
+          "dusty": null,
+          "electrical-damage": null,
+          "physical-damage": null,
+          "snow-covered": null
+        }
+      },
+      "detections": [
+        {
+          "class_id": 0,
+          "class_name": "bird-drop",
+          "confidence": 0.4283130168914795,
+          "x1": 73.42658996582031,
+          "y1": 330.24053955078125,
+          "x2": 148.7649383544922,
+          "y2": 376.7649841308594
+        },
+        {
+          "class_id": 0,
+          "class_name": "bird-drop",
+          "confidence": 0.3392311632633209,
+          "x1": 115.03646850585938,
+          "y1": 125.83589172363281,
+          "x2": 177.8994903564453,
+          "y2": 162.1284637451172
+        },
+        {
+          "class_id": 0,
+          "class_name": "bird-drop",
+          "confidence": 0.33457863330841064,
+          "x1": 46.796932220458984,
+          "y1": 406.8990173339844,
+          "x2": 86.18264770507812,
+          "y2": 439.8447265625
+        },
+        {
+          "class_id": 0,
+          "class_name": "bird-drop",
+          "confidence": 0.32923826575279236,
+          "x1": 450.58758544921875,
+          "y1": 374.1371154785156,
+          "x2": 590.0972900390625,
+          "y2": 438.9265441894531
+        },
+        {
+          "class_id": 0,
+          "class_name": "bird-drop",
+          "confidence": 0.3116324245929718,
+          "x1": 417.5056457519531,
+          "y1": 212.37060546875,
+          "x2": 460.8418273925781,
+          "y2": 249.86038208007812
+        },
+        {
+          "class_id": 0,
+          "class_name": "bird-drop",
+          "confidence": 0.3000503182411194,
+          "x1": 118.40158081054688,
+          "y1": 290.2030029296875,
+          "x2": 167.19322204589844,
+          "y2": 325.4823303222656
+        },
+        {
+          "class_id": 0,
+          "class_name": "bird-drop",
+          "confidence": 0.2770979106426239,
+          "x1": 0.038428306579589844,
+          "y1": 405.97418212890625,
+          "x2": 26.417831420898438,
+          "y2": 448.0101623535156
+        }
+      ]
+    },
+    {
+      "frame_index": 3,
+      "video_time_seconds": 1.5,
+      "analyzed": true,
+      "detection_count": 7,
+      "condition_summary": {
+        "overall_status": "ATTENTION",
+        "detected_conditions": [
+          "bird-drop"
+        ],
+        "counts_by_class": {
+          "bird-drop": 7,
+          "clean": 0,
+          "dusty": 0,
+          "electrical-damage": 0,
+          "physical-damage": 0,
+          "snow-covered": 0
+        },
+        "highest_confidence_by_class": {
+          "bird-drop": 0.4281923174858093,
+          "clean": null,
+          "dusty": null,
+          "electrical-damage": null,
+          "physical-damage": null,
+          "snow-covered": null
+        }
+      },
+      "detections": [
+        {
+          "class_id": 0,
+          "class_name": "bird-drop",
+          "confidence": 0.4281923174858093,
+          "x1": 73.42753601074219,
+          "y1": 330.24053955078125,
+          "x2": 148.7653350830078,
+          "y2": 376.76519775390625
+        },
+        {
+          "class_id": 0,
+          "class_name": "bird-drop",
+          "confidence": 0.3389998972415924,
+          "x1": 115.03929138183594,
+          "y1": 125.83595275878906,
+          "x2": 177.899658203125,
+          "y2": 162.12799072265625
+        },
+        {
+          "class_id": 0,
+          "class_name": "bird-drop",
+          "confidence": 0.33462512493133545,
+          "x1": 46.797149658203125,
+          "y1": 406.8981628417969,
+          "x2": 86.18270874023438,
+          "y2": 439.8464660644531
+        },
+        {
+          "class_id": 0,
+          "class_name": "bird-drop",
+          "confidence": 0.3293423354625702,
+          "x1": 450.61907958984375,
+          "y1": 374.1551513671875,
+          "x2": 590.0921630859375,
+          "y2": 438.9206237792969
+        },
+        {
+          "class_id": 0,
+          "class_name": "bird-drop",
+          "confidence": 0.3114223778247833,
+          "x1": 417.50830078125,
+          "y1": 212.3697967529297,
+          "x2": 460.8426513671875,
+          "y2": 249.85870361328125
+        },
+        {
+          "class_id": 0,
+          "class_name": "bird-drop",
+          "confidence": 0.2999131381511688,
+          "x1": 118.40116119384766,
+          "y1": 290.203125,
+          "x2": 167.19285583496094,
+          "y2": 325.48260498046875
+        },
+        {
+          "class_id": 0,
+          "class_name": "bird-drop",
+          "confidence": 0.2772098779678345,
+          "x1": 0.03887176513671875,
+          "y1": 405.9732360839844,
+          "x2": 26.418603897094727,
+          "y2": 448.0299072265625
+        }
+      ]
+    },
+    {
+      "frame_index": 4,
+      "video_time_seconds": 2.0,
+      "analyzed": true,
+      "detection_count": 2,
+      "condition_summary": {
+        "overall_status": "CLEAN",
+        "detected_conditions": [
+          "clean"
+        ],
+        "counts_by_class": {
+          "bird-drop": 0,
+          "clean": 2,
+          "dusty": 0,
+          "electrical-damage": 0,
+          "physical-damage": 0,
+          "snow-covered": 0
+        },
+        "highest_confidence_by_class": {
+          "bird-drop": null,
+          "clean": 0.6105086803436279,
+          "dusty": null,
+          "electrical-damage": null,
+          "physical-damage": null,
+          "snow-covered": null
+        }
+      },
+      "detections": [
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.6105086803436279,
+          "x1": 79.4967269897461,
+          "y1": 247.944091796875,
+          "x2": 561.7964477539062,
+          "y2": 479.6968688964844
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.432157427072525,
+          "x1": 86.29364013671875,
+          "y1": 54.78569030761719,
+          "x2": 554.123291015625,
+          "y2": 422.095703125
+        }
+      ]
+    },
+    {
+      "frame_index": 5,
+      "video_time_seconds": 2.5,
+      "analyzed": true,
+      "detection_count": 2,
+      "condition_summary": {
+        "overall_status": "CLEAN",
+        "detected_conditions": [
+          "clean"
+        ],
+        "counts_by_class": {
+          "bird-drop": 0,
+          "clean": 2,
+          "dusty": 0,
+          "electrical-damage": 0,
+          "physical-damage": 0,
+          "snow-covered": 0
+        },
+        "highest_confidence_by_class": {
+          "bird-drop": null,
+          "clean": 0.6105480790138245,
+          "dusty": null,
+          "electrical-damage": null,
+          "physical-damage": null,
+          "snow-covered": null
+        }
+      },
+      "detections": [
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.6105480790138245,
+          "x1": 79.5754623413086,
+          "y1": 247.9916229248047,
+          "x2": 561.839599609375,
+          "y2": 479.69512939453125
+        },
+        {
+          "class_id": 1,
+          "class_name": "clean",
+          "confidence": 0.4334651231765747,
+          "x1": 86.08650207519531,
+          "y1": 54.80133056640625,
+          "x2": 554.1471557617188,
+          "y2": 423.6631774902344
+        }
+      ]
+    },
+    {
+      "frame_index": 6,
+      "video_time_seconds": 3.0,
+      "analyzed": true,
+      "detection_count": 0,
+      "condition_summary": {
+        "overall_status": "NO_DETECTION",
+        "detected_conditions": [],
+        "counts_by_class": {
+          "bird-drop": 0,
+          "clean": 0,
+          "dusty": 0,
+          "electrical-damage": 0,
+          "physical-damage": 0,
+          "snow-covered": 0
+        },
+        "highest_confidence_by_class": {
+          "bird-drop": null,
+          "clean": null,
+          "dusty": null,
+          "electrical-damage": null,
+          "physical-damage": null,
+          "snow-covered": null
+        }
+      },
+      "detections": []
+    },
+    {
+      "frame_index": 7,
+      "video_time_seconds": 3.5,
+      "analyzed": true,
+      "detection_count": 0,
+      "condition_summary": {
+        "overall_status": "NO_DETECTION",
+        "detected_conditions": [],
+        "counts_by_class": {
+          "bird-drop": 0,
+          "clean": 0,
+          "dusty": 0,
+          "electrical-damage": 0,
+          "physical-damage": 0,
+          "snow-covered": 0
+        },
+        "highest_confidence_by_class": {
+          "bird-drop": null,
+          "clean": null,
+          "dusty": null,
+          "electrical-damage": null,
+          "physical-damage": null,
+          "snow-covered": null
+        }
+      },
+      "detections": []
+    },
+    {
+      "frame_index": 8,
+      "video_time_seconds": 4.0,
+      "analyzed": true,
+      "detection_count": 0,
+      "condition_summary": {
+        "overall_status": "NO_DETECTION",
+        "detected_conditions": [],
+        "counts_by_class": {
+          "bird-drop": 0,
+          "clean": 0,
+          "dusty": 0,
+          "electrical-damage": 0,
+          "physical-damage": 0,
+          "snow-covered": 0
+        },
+        "highest_confidence_by_class": {
+          "bird-drop": null,
+          "clean": null,
+          "dusty": null,
+          "electrical-damage": null,
+          "physical-damage": null,
+          "snow-covered": null
+        }
+      },
+      "detections": []
+    },
+    {
+      "frame_index": 9,
+      "video_time_seconds": 4.5,
+      "analyzed": true,
+      "detection_count": 0,
+      "condition_summary": {
+        "overall_status": "NO_DETECTION",
+        "detected_conditions": [],
+        "counts_by_class": {
+          "bird-drop": 0,
+          "clean": 0,
+          "dusty": 0,
+          "electrical-damage": 0,
+          "physical-damage": 0,
+          "snow-covered": 0
+        },
+        "highest_confidence_by_class": {
+          "bird-drop": null,
+          "clean": null,
+          "dusty": null,
+          "electrical-damage": null,
+          "physical-damage": null,
+          "snow-covered": null
+        }
+      },
+      "detections": []
+    },
+    {
+      "frame_index": 10,
+      "video_time_seconds": 5.0,
+      "analyzed": true,
+      "detection_count": 21,
+      "condition_summary": {
+        "overall_status": "ATTENTION",
+        "detected_conditions": [
+          "bird-drop"
+        ],
+        "counts_by_class": {
+          "bird-drop": 21,
+          "clean": 0,
+          "dusty": 0,
+          "electrical-damage": 0,
+          "physical-damage": 0,
+          "snow-covered": 0
+        },
+        "highest_confidence_by_class": {
+          "bird-drop": 0.43097272515296936,
+          "clean": null,
+          "dusty": null,
+          "electrical-damage": null,
+          "physical-damage": null,
+          "snow-covered": null
+        }
+      },
+      "detections": [
+        {
+          "class_id": 0,
+          "class_name": "bird-drop",
+          "confidence": 0.43097272515296936,
+          "x1": 403.99261474609375,
+          "y1": 379.542236328125,
+          "x2": 450.47943115234375,
+          "y2": 420.6510925292969
+        },
+        {
+          "class_id": 0,
+          "class_name": "bird-drop",
+          "confidence": 0.42614316940307617,
+          "x1": 397.9234313964844,
+          "y1": 375.67694091796875,
+          "x2": 460.4716491699219,
+          "y2": 423.6173095703125
+        },
+        {
+          "class_id": 0,
+          "class_name": "bird-drop",
+          "confidence": 0.4252702593803406,
+          "x1": 238.4151611328125,
+          "y1": 383.62066650390625,
+          "x2": 292.10626220703125,
+          "y2": 427.9936218261719
+        },
+        {
+          "class_id": 0,
+          "class_name": "bird-drop",
+          "confidence": 0.39336612820625305,
+          "x1": 400.7862854003906,
+          "y1": 377.5527038574219,
+          "x2": 479.94384765625,
+          "y2": 421.8166198730469
+        },
+        {
+          "class_id": 0,
+          "class_name": "bird-drop",
+          "confidence": 0.37967899441719055,
+          "x1": 301.33087158203125,
+          "y1": 135.19577026367188,
+          "x2": 393.0382385253906,
+          "y2": 219.91073608398438
+        },
+        {
+          "class_id": 0,
+          "class_name": "bird-drop",
+          "confidence": 0.3639669418334961,
+          "x1": 438.6092834472656,
+          "y1": 283.50848388671875,
+          "x2": 492.7688293457031,
+          "y2": 338.4251403808594
+        },
+        {
+          "class_id": 0,
+          "class_name": "bird-drop",
+          "confidence": 0.34402281045913696,
+          "x1": 549.6464233398438,
+          "y1": 95.25514221191406,
+          "x2": 588.2694702148438,
+          "y2": 129.15663146972656
+        },
+        {
+          "class_id": 0,
+          "class_name": "bird-drop",
+          "confidence": 0.340786337852478,
+          "x1": 353.801025390625,
+          "y1": 50.91249465942383,
+          "x2": 415.0234069824219,
+          "y2": 109.33045959472656
+        },
+        {
+          "class_id": 0,
+          "class_name": "bird-drop",
+          "confidence": 0.3297159969806671,
+          "x1": 510.08856201171875,
+          "y1": 222.28134155273438,
+          "x2": 577.587646484375,
+          "y2": 284.6693420410156
+        },
+        {
+          "class_id": 0,
+          "class_name": "bird-drop",
+          "confidence": 0.32457777857780457,
+          "x1": 135.7772674560547,
+          "y1": 240.7488250732422,
+          "x2": 175.85557556152344,
+          "y2": 279.28350830078125
+        },
+        {
+          "class_id": 0,
+          "class_name": "bird-drop",
+          "confidence": 0.3158420920372009,
+          "x1": 445.4714660644531,
+          "y1": 88.76504516601562,
+          "x2": 490.7278747558594,
+          "y2": 142.39210510253906
+        },
+        {
+          "class_id": 0,
+          "class_name": "bird-drop",
+          "confidence": 0.31497764587402344,
+          "x1": 284.2522277832031,
+          "y1": 247.4009552001953,
+          "x2": 325.89208984375,
+          "y2": 279.7291564941406
+        },
+        {
+          "class_id": 0,
+          "class_name": "bird-drop",
+          "confidence": 0.3081280291080475,
+          "x1": 515.3563842773438,
+          "y1": 250.5274200439453,
+          "x2": 563.64111328125,
+          "y2": 285.6780090332031
+        },
+        {
+          "class_id": 0,
+          "class_name": "bird-drop",
+          "confidence": 0.29080599546432495,
+          "x1": 404.1164245605469,
+          "y1": 234.02259826660156,
+          "x2": 485.6388854980469,
+          "y2": 276.7454528808594
+        },
+        {
+          "class_id": 0,
+          "class_name": "bird-drop",
+          "confidence": 0.28662240505218506,
+          "x1": 280.44903564453125,
+          "y1": 243.02001953125,
+          "x2": 330.0216979980469,
+          "y2": 284.5113220214844
+        },
+        {
+          "class_id": 0,
+          "class_name": "bird-drop",
+          "confidence": 0.28243646025657654,
+          "x1": 511.7561950683594,
+          "y1": 161.81124877929688,
+          "x2": 558.51953125,
+          "y2": 204.82699584960938
+        },
+        {
+          "class_id": 0,
+          "class_name": "bird-drop",
+          "confidence": 0.2786785364151001,
+          "x1": 136.87026977539062,
+          "y1": 243.35731506347656,
+          "x2": 169.2002410888672,
+          "y2": 276.4992370605469
+        },
+        {
+          "class_id": 0,
+          "class_name": "bird-drop",
+          "confidence": 0.276814341545105,
+          "x1": 165.38394165039062,
+          "y1": 336.11212158203125,
+          "x2": 206.73411560058594,
+          "y2": 373.3121337890625
+        },
+        {
+          "class_id": 0,
+          "class_name": "bird-drop",
+          "confidence": 0.27644333243370056,
+          "x1": 428.6503601074219,
+          "y1": 281.30816650390625,
+          "x2": 506.9749450683594,
+          "y2": 340.2986755371094
+        },
+        {
+          "class_id": 0,
+          "class_name": "bird-drop",
+          "confidence": 0.27553293108940125,
+          "x1": 162.6901092529297,
+          "y1": 333.9390563964844,
+          "x2": 221.27679443359375,
+          "y2": 379.3757629394531
+        },
+        {
+          "class_id": 0,
+          "class_name": "bird-drop",
+          "confidence": 0.2648581862449646,
+          "x1": 405.6145324707031,
+          "y1": 237.7234649658203,
+          "x2": 454.31036376953125,
+          "y2": 275.5523681640625
+        }
+      ]
+    },
+    {
+      "frame_index": 11,
+      "video_time_seconds": 5.5,
+      "analyzed": true,
+      "detection_count": 21,
+      "condition_summary": {
+        "overall_status": "ATTENTION",
+        "detected_conditions": [
+          "bird-drop"
+        ],
+        "counts_by_class": {
+          "bird-drop": 21,
+          "clean": 0,
+          "dusty": 0,
+          "electrical-damage": 0,
+          "physical-damage": 0,
+          "snow-covered": 0
+        },
+        "highest_confidence_by_class": {
+          "bird-drop": 0.43181276321411133,
+          "clean": null,
+          "dusty": null,
+          "electrical-damage": null,
+          "physical-damage": null,
+          "snow-covered": null
+        }
+      },
+      "detections": [
+        {
+          "class_id": 0,
+          "class_name": "bird-drop",
+          "confidence": 0.43181276321411133,
+          "x1": 404.0232849121094,
+          "y1": 379.5482482910156,
+          "x2": 450.46722412109375,
+          "y2": 420.6558837890625
+        },
+        {
+          "class_id": 0,
+          "class_name": "bird-drop",
+          "confidence": 0.4275514781475067,
+          "x1": 397.9363098144531,
+          "y1": 375.6886901855469,
+          "x2": 460.3691711425781,
+          "y2": 423.6144104003906
+        },
+        {
+          "class_id": 0,
+          "class_name": "bird-drop",
+          "confidence": 0.4251898527145386,
+          "x1": 238.4067840576172,
+          "y1": 383.60748291015625,
+          "x2": 292.0992736816406,
+          "y2": 427.9838562011719
+        },
+        {
+          "class_id": 0,
+          "class_name": "bird-drop",
+          "confidence": 0.3965194523334503,
+          "x1": 400.8430480957031,
+          "y1": 377.562255859375,
+          "x2": 480.06744384765625,
+          "y2": 421.8190002441406
+        },
+        {
+          "class_id": 0,
+          "class_name": "bird-drop",
+          "confidence": 0.38024190068244934,
+          "x1": 301.3280029296875,
+          "y1": 135.1999969482422,
+          "x2": 393.0428771972656,
+          "y2": 219.90626525878906
+        },
+        {
+          "class_id": 0,
+          "class_name": "bird-drop",
+          "confidence": 0.3595553934574127,
+          "x1": 438.614990234375,
+          "y1": 283.64447021484375,
+          "x2": 492.7615661621094,
+          "y2": 338.37921142578125
+        },
+        {
+          "class_id": 0,
+          "class_name": "bird-drop",
+          "confidence": 0.3433709740638733,
+          "x1": 549.6491088867188,
+          "y1": 95.23941040039062,
+          "x2": 588.27294921875,
+          "y2": 129.15481567382812
+        },
+        {
+          "class_id": 0,
+          "class_name": "bird-drop",
+          "confidence": 0.3404466509819031,
+          "x1": 353.8187255859375,
+          "y1": 50.89543914794922,
+          "x2": 414.9898376464844,
+          "y2": 109.33786010742188
+        },
+        {
+          "class_id": 0,
+          "class_name": "bird-drop",
+          "confidence": 0.3296622633934021,
+          "x1": 510.1158142089844,
+          "y1": 222.29129028320312,
+          "x2": 577.5930786132812,
+          "y2": 284.6729736328125
+        },
+        {
+          "class_id": 0,
+          "class_name": "bird-drop",
+          "confidence": 0.32575133442878723,
+          "x1": 135.8017578125,
+          "y1": 240.77194213867188,
+          "x2": 175.83441162109375,
+          "y2": 279.2742614746094
+        },
+        {
+          "class_id": 0,
+          "class_name": "bird-drop",
+          "confidence": 0.3161086142063141,
+          "x1": 445.4627990722656,
+          "y1": 88.73063659667969,
+          "x2": 490.73919677734375,
+          "y2": 142.36024475097656
+        },
+        {
+          "class_id": 0,
+          "class_name": "bird-drop",
+          "confidence": 0.31417116522789,
+          "x1": 284.29827880859375,
+          "y1": 247.41477966308594,
+          "x2": 325.8912353515625,
+          "y2": 279.70550537109375
+        },
+        {
+          "class_id": 0,
+          "class_name": "bird-drop",
+          "confidence": 0.30874136090278625,
+          "x1": 515.3658447265625,
+          "y1": 250.53070068359375,
+          "x2": 563.6382446289062,
+          "y2": 285.6758728027344
+        },
+        {
+          "class_id": 0,
+          "class_name": "bird-drop",
+          "confidence": 0.29019781947135925,
+          "x1": 404.159912109375,
+          "y1": 233.9862823486328,
+          "x2": 485.7417907714844,
+          "y2": 276.8462219238281
+        },
+        {
+          "class_id": 0,
+          "class_name": "bird-drop",
+          "confidence": 0.28627610206604004,
+          "x1": 280.47393798828125,
+          "y1": 243.03001403808594,
+          "x2": 330.0252380371094,
+          "y2": 284.4833984375
+        },
+        {
+          "class_id": 0,
+          "class_name": "bird-drop",
+          "confidence": 0.2831920087337494,
+          "x1": 511.6909484863281,
+          "y1": 161.82200622558594,
+          "x2": 558.5109252929688,
+          "y2": 204.8731231689453
+        },
+        {
+          "class_id": 0,
+          "class_name": "bird-drop",
+          "confidence": 0.2790122330188751,
+          "x1": 136.89039611816406,
+          "y1": 243.37753295898438,
+          "x2": 169.1938018798828,
+          "y2": 276.49908447265625
+        },
+        {
+          "class_id": 0,
+          "class_name": "bird-drop",
+          "confidence": 0.2767336666584015,
+          "x1": 165.37234497070312,
+          "y1": 336.1055603027344,
+          "x2": 206.7638702392578,
+          "y2": 373.3428039550781
+        },
+        {
+          "class_id": 0,
+          "class_name": "bird-drop",
+          "confidence": 0.27578428387641907,
+          "x1": 162.6752471923828,
+          "y1": 333.9286804199219,
+          "x2": 221.3152313232422,
+          "y2": 379.3891906738281
+        },
+        {
+          "class_id": 0,
+          "class_name": "bird-drop",
+          "confidence": 0.27292516827583313,
+          "x1": 428.76025390625,
+          "y1": 281.344970703125,
+          "x2": 507.0166320800781,
+          "y2": 340.2361145019531
+        },
+        {
+          "class_id": 0,
+          "class_name": "bird-drop",
+          "confidence": 0.2638886570930481,
+          "x1": 405.6455078125,
+          "y1": 237.74249267578125,
+          "x2": 454.2279052734375,
+          "y2": 275.57684326171875
+        }
+      ]
+    }
+  ]
+}

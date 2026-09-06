@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "input_video": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\outputs\\computer_vision\\video\\demo_input.mp4",
+  "input_video_name": "demo_input.mp4",
+  "annotated_video": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\outputs\\computer_vision\\video\\demo_annotated.mp4",
+  "detection_log_csv": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\outputs\\computer_vision\\video\\demo_detections.csv",
+  "frame_log_json": "C:\\Users\\Rasheed\\Documents\\projects\\solarpredict\\outputs\\computer_vision\\video\\demo_frames.json",
+  "duration_seconds": 6.0,
+  "source_fps": 2.0,
+  "output_fps": 2.0,
+  "frame_width": 640,
+  "frame_height": 480,
+  "total_frames": 12,
+  "output_frames_written": 12,
+  "analyzed_frames": 12,
+  "frame_stride": 1,
+  "confidence_threshold": 0.25,
+  "confidence_purpose": "deployment/viewing; not selected from test metrics",
+  "total_detections": 68,
+  "detections_by_class": {
+    "bird-drop": 56,
+    "clean": 10,
+    "dusty": 0,
+    "electrical-damage": 2,
+    "physical-damage": 0,
+    "snow-covered": 0
+  },
+  "frames_containing_each_class": {
+    "bird-drop": 4,
+    "clean": 4,
+    "dusty": 0,
+    "electrical-damage": 2,
+    "physical-damage": 0,
+    "snow-covered": 0
+  },
+  "maximum_confidence_by_class": {
+    "bird-drop": 0.43181276321411133,
+    "clean": 0.6105480790138245,
+    "dusty": null,
+    "electrical-damage": 0.5197107195854187,
+    "physical-damage": null,
+    "snow-covered": null
+  },
+  "processing_duration_seconds": 1.8346817998681217,
+  "inference_duration_seconds": 1.7616734995972365,
+  "average_inference_seconds_per_analyzed_frame": 0.14680612496643639,
+  "approximate_inference_fps": 6.8117048946603935,
+  "approximate_end_to_end_processing_fps": 6.540643724084781,
+  "warnings": []
+}

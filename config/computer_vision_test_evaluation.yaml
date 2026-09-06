@@ -1,0 +1,37 @@
+schema_version: 1
+status: frozen_before_evaluation
+settings_frozen_at: "2026-09-06T15:44:54.7916097+03:00"
+evaluation_policy:
+  permitted_runs: 1
+  split: test
+  checkpoint_selected_using: validation
+  tune_from_test_results: false
+checkpoint: models/computer_vision/solar_panel_detector_best.pt
+checkpoint_sha256: b7ad8d7fca947527b30fb24f8c11e9135fbe62aa1e7f44e8a54100933141cd89
+dataset_yaml: data/vision/solar_panel_defects/data.yaml
+test_dataset_path: data/vision/solar_panel_defects/test/images
+expected_test_images: 98
+image_size: 512
+batch_size: 8
+device: cpu
+workers: 0
+confidence_threshold: null
+iou_threshold: null
+evaluation_defaults:
+  confidence: Ultralytics validation default; not overridden
+  iou: Ultralytics validation default; not overridden
+class_mapping:
+  0: bird-drop
+  1: clean
+  2: dusty
+  3: electrical-damage
+  4: physical-damage
+  5: snow-covered
+versions:
+  python: 3.12.4
+  ultralytics: 8.4.138
+  pytorch: 2.14.0+cpu
+  opencv: 5.0.0
+notes:
+  - These settings were recorded before the first test evaluation.
+  - Test metrics must not be used for checkpoint selection, threshold tuning, retraining, or annotation changes.
