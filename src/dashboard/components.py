@@ -109,6 +109,28 @@ def render_model_information(threshold: float) -> None:
         )
 
 
+def render_cv_model_information() -> None:
+    """Expose frozen detector provenance and limitations without overloading pages."""
+
+    with st.expander("Computer vision prototype information"):
+        st.markdown(
+            """
+- **Detector:** frozen YOLO11n object-detection prototype.
+- **Classes:** bird-drop, clean, dusty, electrical-damage, physical-damage, and snow-covered.
+- **Checkpoint:** `models/computer_vision/solar_panel_detector_best.pt`.
+- **Independent test:** evaluated once after validation-based model selection;
+  test data was not used for tuning.
+- **Overall test results:** mAP50 approximately 0.218 and mAP50–95 approximately 0.106.
+- **Important limitation:** test recall varied substantially by class. Dusty
+  recall was approximately 0.022, while electrical and physical damage also
+  had limited recall.
+
+Predictions are screening outputs for review. They do not replace professional
+inspection and do not certify panel condition.
+"""
+        )
+
+
 def render_events(events: pd.DataFrame) -> None:
     """Render actual grouped alert events or an explicit zero-event message."""
 

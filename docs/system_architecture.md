@@ -1,72 +1,81 @@
 # System architecture
 
-## Operational anomaly path — prototype complete
+## Integrated prototype
 
 ```text
-Operational Dataset Replay
-                  |
-                  v
-Operational Processing / validated seven-feature rows
-                  |
-                  v
-Frozen Anomaly Detector + Threshold
-                  |
-                  v
-Score / NORMAL / ALERT ----> Exact-2-minute event grouping
-                  |
-                  v
-Streamlit Dashboard
+Recorded Operational Dataset Replay
+              |
+              v
+Validated operational rows --> Frozen anomaly detector + threshold
+              |                              |
+              |                              v
+              |                    score / NORMAL / ALERT
+              |                              |
+              +------------------------------+
+                             |
+                             v
+                    Streamlit Dashboard
+                             ^
+                             |
+               visual results and downloads
+                             |
+Uploaded image/video --> safe validation --> Frozen YOLO11n detector
+                                                |
+                                                v
+                              boxes / classes / confidence
 ```
 
-`src/anomaly_detection/inference.py` is the boundary for future consumers. It
-verifies artifact hashes, validates the exact seven inputs, performs no fitting,
-and returns a stable dashboard-friendly schema. `src/dashboard/data_service.py`
-validates and caches the recorded 337-row replay, verifies the saved scores
-against that inference boundary, and supplies the Overview and Operational
-Monitoring pages. Preprocessing and feature preparation remain separate because
-monitoring inputs must supply `rtd_mean` and `rtd_std` consistently before
-scoring.
+The Streamlit application is the presentation boundary for both established
+prototype paths. It does not fit, tune, calibrate, or otherwise mutate either
+model.
 
-## Computer-vision image/video path — prototype complete
+## Operational path
 
-```text
-Image / Video
-        |
-        v
-Frame / Image Input
-        |
-        v
-Frozen YOLO11n Detector
-        |
-        v
-Bounding Boxes + Class + Confidence
-        |
-        v
-Detection Results / Condition Summary / Detection Log
-        |
-        v
-Streamlit Dashboard (UI integration pending Day 28)
-```
+`src/anomaly_detection/inference.py` verifies the frozen scaler, Isolation
+Forest, metadata, and threshold artifacts; validates the exact seven inputs;
+and returns a stable scoring schema. `src/dashboard/data_service.py` joins the
+recorded 337-row evaluation baseline with its saved anomaly feed and verifies
+the saved scores and statuses against the frozen inference boundary. Exact
+two-minute threshold crossings are grouped into events for display.
 
-The final active six-class dataset, all 795 image/label pairs, and all 5,751 boxes
-have been inspected after recoverable duplicate and empty-label quarantine.
-Annotation syntax is valid, every class remains present in every split, and the
-ground-truth contact sheet is complete. One YOLO11n prototype was selected on
-validation and evaluated once on the untouched test split without subsequent
-tuning. Read-only image/frame inference, annotated output, cautious condition
-summaries, and sequential video processing are now implemented. The video smoke
-test used a clearly identified validation-image demo sequence because no real
-inspection video was present.
+## Image path
 
-## Remaining integration placeholders
+`src/dashboard/vision_service.py` validates the upload extension and size,
+decodes the actual bytes with OpenCV, verifies the frozen checkpoint hash, and
+calls `src/computer_vision/inference.py`. The existing prediction and drawing
+functions return actual bounded boxes, class names, confidences, condition
+summaries, and an annotated PNG held in memory for display/download.
 
-- **Computer-vision model:** retain the frozen checkpoint and one-time test
-  results; do not tune from the test split.
-- **Drone video data:** obtain representative real footage, retain source-video
-  identity, and keep every frame from a video entirely within one dataset split.
-- **Dashboard image/video integration:** connect the existing CV inference
-  modules to the prepared placeholder pages, with real inputs and the earlier
-  validation-image demo clearly distinguished.
+## Video path
 
-The operational dashboard path is functional. Image/video UI integration and
-final cross-module testing remain future work.
+The visual dashboard service validates container metadata and a readable frame,
+then places the upload in a generated isolated temporary workspace. It calls
+`src/computer_vision/process_video.py`, which processes frames sequentially,
+preserves every output frame, and writes detection CSV, per-frame JSON, and
+summary JSON. A bundled FFmpeg binary supplied through `imageio-ffmpeg`
+transcodes the validated OpenCV output to browser-compatible H.264/yuv420p when
+available. Output bytes are returned to Streamlit before the temporary
+workspace is automatically removed.
+
+## Data and security boundaries
+
+- Raw operational and vision datasets remain unchanged.
+- Uploaded media is size-limited, content-validated, and never permanently
+  written by the dashboard.
+- Untrusted client filenames are not used as storage paths.
+- Model resources are cached, but upload results are invalidated when content
+  hashes or inference settings change.
+- The operational source timezone remains unspecified and timestamps remain
+  timezone-naive.
+- Video frames derived from a future source video must remain entirely within
+  one train, validation, or test split to prevent temporal leakage.
+
+## Remaining system work
+
+The operational, anomaly-inference, image-inference, video-processing, and
+dashboard integration paths are complete as engineering prototypes. Remaining
+work includes representative real-drone validation, broader end-to-end and
+performance testing, persistent inspection records, live telemetry ingestion,
+authentication, deployment hardening, and final demonstration/handoff
+materials. The frozen checkpoint and one-time test results must not be tuned
+from the test split.

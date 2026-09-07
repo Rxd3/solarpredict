@@ -78,3 +78,48 @@ Artifacts are under `outputs/computer_vision/video/`:
 
 Generated video binaries are ignored by Git; the small metadata and logs remain
 reproducible project records.
+
+## Streamlit image integration
+
+`src/dashboard/vision_service.py` adapts the frozen APIs for uploads without
+changing their inference behavior. The image page accepts JPG, JPEG, and PNG
+files up to 20 MB, checks the suffix, decodes the actual bytes with OpenCV, and
+runs inference only after the user selects **Analyze Image**. Uploaded image
+bytes and annotated PNG output remain session-resident rather than being saved
+as project data.
+
+The page exposes a display/deployment confidence threshold from 0.05 to 0.95,
+defaulting to the predeclared 0.25. Changing it invalidates the old result. It
+does not retrain the detector or redefine the independent test metrics. The UI
+shows the actual annotated image, cautious condition status, confidence-ordered
+detections and box coordinates, class counts, and an annotated PNG download.
+
+## Streamlit video integration
+
+The video page accepts MP4, AVI, and MOV uploads up to 200 MB. It validates an
+actual decoded frame plus FPS, dimensions, and frame-count metadata before the
+explicit **Process Video** action. Uploads are placed under generated filenames
+inside an isolated temporary directory; client filenames are display-only and
+cannot choose storage locations. All temporary media and logs are removed after
+their result bytes are collected.
+
+The user can choose confidence from 0.05 to 0.95 and frame stride from 1 to 10.
+Every source frame remains in the annotated output at the source FPS and
+dimensions. When stride exceeds one, only every nth frame receives inference;
+the per-frame JSON explicitly records skipped frames as `analyzed: false`.
+
+The normal OpenCV output is validated and then transcoded with the bundled
+`imageio-ffmpeg` executable to H.264/yuv420p with fast-start metadata for browser
+playback. A failed conversion is surfaced clearly; the validated OpenCV output
+remains downloadable. The page provides the annotated MP4, full detection CSV,
+per-frame JSON, and summary JSON with unique generated filenames.
+
+The frozen checkpoint SHA-256 is verified before dashboard model loading:
+
+```text
+b7ad8d7fca947527b30fb24f8c11e9135fbe62aa1e7f44e8a54100933141cd89
+```
+
+No dashboard path invokes training or test-set evaluation. The established
+weak-class and no-real-drone-footage limitations remain visible beside the
+results.

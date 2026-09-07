@@ -2,128 +2,146 @@
 
 ## Purpose and current scope
 
-The dashboard is an engineering prototype for the **Solar Panel Monitoring and
-Fault Detection System**. Its operational side is functional and replays
-recorded evaluation-baseline measurements through previously calculated,
-verified outputs from the frozen anomaly detector.
+The Streamlit application is an integrated engineering prototype for the
+**Solar Panel Monitoring and Fault Detection System**. It combines a recorded
+operational-data replay, frozen anomaly-model results, frozen YOLO image
+inspection, and frame-by-frame video inspection.
 
-The interface consistently labels this source **Recorded Operational Dataset
-Replay** or **Monitoring Data Replay**. It is not live plant telemetry and must
-not be presented as a production monitoring deployment.
+The operational source is consistently labelled **Recorded Operational Dataset
+Replay** or **Monitoring Data Replay**. It is not live plant telemetry. Visual
+predictions are screening results for review, not a professional inspection or
+a certification that panels are healthy.
 
 ## Application sections
 
 ### Overview
 
-The overview displays:
-
-- 337 monitored replay readings;
-- power and solar radiation for the selected reading;
-- the actual number of alert rows (zero in the default feed);
-- the selected row's `NORMAL` or `ALERT` result;
-- operational prototype status and grouped-event count;
-- computer-vision readiness and its important weak-class limitation;
-- recorded-dataset scope and sampling information;
-- concise frozen-model information.
+The overview reports the selected operational reading, actual alert count and
+status, grouped-event count, recorded-data scope, and the readiness of the four
+prototype modules. The default 337-row feed contains zero threshold crossings;
+the application does not fabricate demonstration alerts.
 
 ### Operational Monitoring
 
-This section provides:
-
-- replay slider plus Previous Reading, Next Reading, and Reset Replay controls;
-- separate measurement and model-result panels;
-- selected power, solar radiation, air temperature, relative humidity, wind
-  speed, RTD mean/std, anomaly score, frozen threshold, and status;
-- interactive power and solar-radiation time series;
-- anomaly score with the unchanged frozen threshold;
-- selectable, single-unit environmental charts;
-- a selected-timestamp indicator on each chart;
-- actual alert-row and grouped-event summaries.
-
-The default feed contains zero threshold-crossing rows, so the event area states
-that no events were detected. The dashboard does not add demonstration alerts.
+This section provides a chronological replay slider; Previous, Next, and Reset
+controls; operational measurements; frozen anomaly score and threshold; four
+interactive charts; and actual grouped-event output. Timestamps remain
+timezone-naive because the dataset source does not specify a timezone.
 
 ### Panel Inspection
 
-This is a deliberate placeholder. It lists the verified six classes and model
-limitations, but exposes no inactive upload control and generates no prediction.
-Image upload, annotated results, and condition summaries are planned for Day 28.
+The image workflow accepts JPG, JPEG, and PNG uploads up to 20 MB. The browser
+extension filter is followed by decoding the actual bytes with OpenCV. After a
+successful preview, inference starts only when **Analyze Image** is pressed.
 
-### Drone Video Inspection
+The page uses the existing frozen YOLO11n checkpoint and lets the user select a
+display/deployment confidence threshold from 0.05 to 0.95 (default 0.25). This
+control changes which boxes are returned for the current upload; it is not a
+model-accuracy value and does not tune or retrain the checkpoint.
 
-This is also a deliberate placeholder. It describes the prepared frame-by-frame
-processor, annotated video, class counts, timestamps, and detection logs. No real
-drone footage is bundled; the earlier engineering smoke test used a clearly
-labelled sequence created from validation images. Video upload and execution are
-planned for Day 28.
+Actual outputs include:
 
-## Data and anomaly integration
+- original and annotated images;
+- total detections, highest confidence, detected-condition count, and cautious
+  `ATTENTION`, `CLEAN`, or `NO_DETECTION` status;
+- a confidence-ordered table with class, confidence, and box coordinates;
+- detected-class counts;
+- an annotated PNG download.
 
-`src/dashboard/data_service.py` joins two existing, timestamp-aligned sources:
+The uploaded image and generated annotation remain in memory for the current
+session and are not permanently saved by the application.
 
-- `data/model_ready/core_evaluation_baseline.csv` provides the recorded seven
-  model features and display measurements;
-- `outputs/dashboard_anomaly_feed_example.csv` provides saved anomaly score,
-  threshold, margin, and status values.
+### Video Inspection
 
-Both contain the same 337 evaluation-baseline timestamps. The service validates
-their schemas, exact timestamp order, numerical fields, power/radiation
-agreement, threshold margins, and strict status mapping. It then rescans the
-rows through `src/anomaly_detection/inference.py` and requires the frozen scores,
-threshold, and statuses to match the saved feed. Model loading is cached, and
-Streamlit caches the verified replay across normal reruns. No fitting occurs.
+The video workflow accepts MP4, AVI, and MOV uploads up to 200 MB. It validates
+the extension, file size, container metadata, FPS, dimensions, reported frame
+count, and an actual decoded frame before enabling processing. Inference starts
+only when **Process Video** is pressed.
 
-Timestamps use the verified `%Y-%m-%d %H:%M:%S` representation and remain
-timezone-naive because the dataset source does not specify a timezone.
+The confidence control has the same 0.05 to 0.95 range and 0.25 default as image
+inspection. Frame stride is limited to 1 through 10. Stride 1 analyzes every
+frame; a higher value analyzes every nth frame to reduce CPU work. Every source
+frame is still written to the annotated output, and skipped inference frames
+remain explicitly marked in the frame JSON rather than being treated as
+no-detection frames.
 
-## Replay behavior
+Processing reuses the existing sequential video API in an isolated,
+randomly-named temporary directory. Client filenames are reduced to safe
+basenames for display only and are never used as trusted storage paths. The
+temporary upload and intermediate files are removed automatically after their
+bytes have been collected for the session.
 
-Replay position is held in Streamlit session state. The slider permits direct
-inspection; Previous and Next move exactly one recorded row; Reset returns to
-the first row. All operations clamp safely to `[0, 336]`. Autoplay is omitted to
-keep the prototype deterministic and reliable.
+Actual outputs include:
 
-## Error handling
+- total, analyzed, and output-frame counts;
+- frame stride, total detections, processing time, and approximate inference
+  FPS;
+- cautious aggregate visual-condition status;
+- six-class counts, frames containing each class, and maximum confidence;
+- a detection-log preview;
+- downloadable annotated MP4, complete detection CSV, per-frame JSON, and
+  summary JSON.
 
-The application displays a readable error and recovery guidance when a feed or
-artifact is missing, required columns are absent, timestamps are invalid,
-sources disagree, or frozen-artifact verification fails. Expected data errors
-do not expose a Python traceback to normal dashboard users.
+OpenCV first creates and validates an MP4V result. The dashboard then uses the
+project dependency `imageio-ffmpeg` to create H.264/yuv420p, fast-start MP4 for
+browser playback. If conversion is unavailable, the validated OpenCV output is
+still downloadable and the UI reports that playback may not work in the
+browser. Generated download names contain a random run identifier and never
+reuse an untrusted upload path.
+
+## Frozen model boundaries
+
+The anomaly service verifies its frozen artifacts and rescans the saved feed
+without fitting. The visual service verifies the selected checkpoint SHA-256
+before loading it and checks the exact six-class map. Streamlit caches each
+model resource so normal reruns do not repeatedly load weights. Neither
+dashboard workflow calls training, fitting, threshold calibration, or test-set
+tuning code.
+
+## Error handling and session behavior
+
+Expected missing artifacts, corrupt uploads, unsupported formats, unreadable
+video containers, invalid metadata, inference failures, and encoding failures
+are shown as readable messages rather than normal-user tracebacks. A result is
+invalidated when its upload hash, confidence, or video stride changes, which
+prevents stale results from being shown under new settings.
 
 ## Launch
 
-From the repository root with the project virtual environment activated:
-
-```powershell
-streamlit run src/dashboard/app.py
-```
-
-Equivalent explicit Windows command:
+From the repository root with the project environment activated:
 
 ```powershell
 .\.venv\Scripts\streamlit.exe run src/dashboard/app.py
 ```
 
-Streamlit and Plotly were already present in the minimal project requirements
-and verified in the virtual environment.
+Or, after activation:
+
+```powershell
+streamlit run src/dashboard/app.py
+```
 
 ## Prototype limitations
 
-- The 337-row replay is recorded data, not live telemetry.
-- The underlying source spans approximately 33.6 hours, not long-term or
-  seasonal operation.
-- The frozen threshold is a prototype boundary, not a validated plant alarm.
-- The final moderate synthetic evaluation produced zero detected events; this
-  limitation remains visible in the model-information panel.
-- The computer-vision detector has low overall performance and is especially
-  weak for dusty, electrical-damage, and physical-damage conditions.
-- Image/video dashboard integration, representative real-drone validation,
-  cross-module testing, authentication, persistence, and deployment hardening
-  remain future work.
+- Operational monitoring replays 337 recorded readings rather than consuming
+  live telemetry.
+- The frozen anomaly detector produced no alerts for the final controlled
+  moderate synthetic evaluation events.
+- The computer-vision detector has low overall test performance and is
+  especially weak for dusty, electrical-damage, and physical-damage classes.
+- `NO_DETECTION` does not establish that a panel is healthy or fault-free, and
+  a clean-only output is not a physical-health certification.
+- Uploaded-video processing is synchronous and CPU-oriented; a large video can
+  take substantial time even with frame stride.
+- No representative real drone footage is bundled. The existing engineering
+  demo was constructed from validation images and must not be described as
+  real drone footage.
+- Authentication, persistent inspection history, live ingestion, background
+  job processing, and deployment hardening remain outside this prototype.
 
 ## Verification
 
-Streamlit's application test harness renders every navigation section, exercises
-the slider and Next control, verifies all four operational charts, confirms the
-selected reading updates, and confirms the default feed remains at zero alerts.
-The application also launches as a local Streamlit server without an exception.
+Automated Streamlit tests render all pages and exercise the operational replay.
+Service tests validate real image inference, corrupt uploads, safe filenames,
+the frozen checkpoint hash, frame-stride accounting, generated logs, H.264
+conversion, and unchanged anomaly artifacts. A live local-server smoke test is
+also used to verify navigation and real upload workflows.

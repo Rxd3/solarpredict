@@ -51,11 +51,11 @@ Day 26 froze the evaluation settings, evaluated the 98-image test split exactly
 once, and added reusable image/frame inference plus a sequential video interface.
 The unchanged checkpoint reached test precision 0.3878, recall 0.2356, mAP50
 0.2183, and mAP50-95 0.1062. No tuning followed the test result. The operational
-anomaly and computer-vision components are now **PROTOTYPE COMPLETE**. Day 27
-adds a working Streamlit application with a verified 337-row recorded-data
-replay, operational measurements, frozen anomaly scores/status, event handling,
-and prepared image/video navigation. Image/video UI integration and final
-cross-module testing remain pending.
+anomaly and computer-vision components are now **PROTOTYPE COMPLETE**. The
+Streamlit application integrates the verified 337-row recorded-data replay,
+frozen anomaly scores/status, actual image inference, and frame-by-frame video
+inference with downloadable results. Final broader system testing,
+representative real-drone validation, and deployment work remain pending.
 
 The repository directory name is **`solarpredict`**. The project and display
 name remains **Solar Panel Monitoring and Fault Detection System**.
@@ -210,17 +210,26 @@ Completed in the operational-data stage:
   logs, and a labelled validation-image demo smoke test (Day 26);
 - Streamlit application structure, system overview, operational monitoring,
   session-state replay controls, selected-reading indicators, frozen anomaly
-  status/events, and nonfunctional CV integration placeholders (Day 27);
+  status/events, and module navigation (Day 27);
+- real JPG/JPEG/PNG image upload, validation, frozen YOLO inference, annotated
+  results, detection summaries, and PNG download;
+- real MP4/AVI/MOV upload validation, sequential inference with selectable
+  stride, browser-compatible H.264 output, result summaries, and downloadable
+  video/CSV/JSON artifacts;
+- safe temporary-file handling, generated download names, frozen checkpoint
+  verification, and integrated Streamlit smoke testing;
 - loader, inspection, preprocessing, quality-review, basic-feature, rolling,
   change-feature, feature-review, scenario-configuration, and generator tests.
 
 Not completed yet:
 
-- image inspection dashboard integration;
-- video inspection dashboard integration;
-- final operational/computer-vision dashboard integration testing;
+- final full-system integration testing;
+- final documentation cleanup and presentation/showcase preparation;
 - validation on representative real drone footage;
-- final full-system testing and deployment review.
+- broader full-system, performance, and deployment testing;
+- live telemetry ingestion, persistent inspection history, authentication, and
+  deployment hardening;
+- final demonstration and handoff materials.
 
 ### Operational anomaly component: PROTOTYPE COMPLETE
 
@@ -250,9 +259,9 @@ annotated output, conservative `ATTENTION`/`CLEAN`/`NO_DETECTION` summaries, and
 sequential video processing are implemented. Dusty recall remains particularly
 weak, electrical and physical damage remain limited, and the video smoke test
 used a labelled validation-image demo rather than real drone footage. Dashboard
-integration remains pending.
+image/video integration is complete at prototype level.
 
-### Dashboard: OPERATIONAL MONITORING COMPLETE
+### Dashboard: INTEGRATED PROTOTYPE COMPLETE
 
 The Streamlit dashboard now provides a functional Overview and Operational
 Monitoring experience over the 337-row evaluation-baseline replay. It validates
@@ -261,8 +270,12 @@ feed, verifies those scores against the frozen detector, and preserves the real
 zero-alert result. Replay position is controlled by a slider and bounded
 Previous/Next/Reset controls. Power, solar radiation, anomaly score/threshold,
 and individually selected environmental charts all mark the chosen timestamp.
-Panel and drone-video sections are intentionally nonfunctional placeholders for
-the next integration stage; no upload control or fabricated prediction is shown.
+Panel inspection accepts validated image uploads and shows actual frozen-model
+annotations, cautious condition status, tables, and a PNG download. Video
+inspection validates uploaded containers, runs the existing sequential
+processor with selectable confidence and stride, and provides H.264 playback
+plus video, CSV, and JSON downloads. Uploaded media is held only in generated
+temporary workspaces and removed after result bytes are collected.
 
 Operational-stage artifacts:
 
@@ -343,7 +356,7 @@ Operational-stage artifacts:
 - [Day 23 final operational anomaly review](docs/anomaly_module_final_review.md)
 - [Frozen dashboard inference interface](src/anomaly_detection/inference.py)
 - [Dashboard real/simulation separation policy](docs/dashboard_simulation_policy.md)
-- [System architecture and future placeholders](docs/system_architecture.md)
+- [Integrated system architecture](docs/system_architecture.md)
 - [Final operational-module status](outputs/anomaly_module_final_status.json)
 - [Dashboard anomaly-feed example](outputs/dashboard_anomaly_feed_example.csv)
 - [Day 24 verified dataset inventory and integrity review](docs/computer_vision_dataset.md)
@@ -559,7 +572,7 @@ python -m src.computer_vision.create_demo_video
 python -m src.computer_vision.process_video outputs/computer_vision/video/demo_input.mp4 --output-video outputs/computer_vision/video/demo_annotated.mp4 --detection-log outputs/computer_vision/video/demo_detections.csv --frame-log outputs/computer_vision/video/demo_frames.json --summary outputs/computer_vision/video/demo_summary.json
 ```
 
-Launch the operational monitoring dashboard:
+Launch the integrated monitoring and visual-inspection dashboard:
 
 ```bash
 streamlit run src/dashboard/app.py
@@ -638,16 +651,20 @@ or run a model.
    - Validate the downloaded YOLO annotations and `data.yaml`.
    - Train one detector, select it using validation, then evaluate the frozen
      checkpoint once on the preserved test split.
-5. **Drone/video inference pipeline (prototype interface complete)**
+5. **Drone/video inference pipeline (prototype complete)**
    - Process frames sequentially, retain frame/time provenance, and emit
      dashboard-ready detection and frame summaries.
+   - Accept validated uploads, expose bounded confidence/stride controls, and
+     provide browser-compatible annotated video plus structured downloads.
    - Validate against representative real drone footage in a future stage.
-6. **Dashboard and integration (operational dashboard complete)**
+6. **Dashboard and integration (integrated prototype complete)**
    - Present recorded operational measurements, frozen anomaly scores/status,
-     and real grouped-event output in Streamlit.
-   - Connect the existing image/video inference modules in the next stage.
+     real grouped-event output, and actual image/video predictions in Streamlit.
+   - Preserve frozen model boundaries and clearly distinguish recorded data,
+     model outputs, limitations, and unavailable production capabilities.
 7. **Testing, documentation, and handoff**
-   - Add reproducible tests, configuration, deployment notes, and a final report.
+   - Extend end-to-end and performance tests, add deployment notes, validate
+     representative footage, and prepare the final report and demonstration.
 
 ## Current limitations
 

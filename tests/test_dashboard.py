@@ -130,12 +130,14 @@ def test_streamlit_pages_replay_controls_and_charts_render() -> None:
 
     app.radio[0].set_value("Panel Inspection").run()
     assert not app.exception
-    assert app.header[0].value == "Solar Panel Image Inspection"
-    assert not app.get("file_uploader")
-    app.radio[0].set_value("Drone Video Inspection").run()
+    assert app.header[0].value == "Solar panel image inspection"
+    assert len(app.get("file_uploader")) == 1
+    assert any(slider.label == "Display/deployment confidence threshold" for slider in app.slider)
+    app.radio[0].set_value("Video Inspection").run()
     assert not app.exception
-    assert app.header[0].value == "Drone Video Inspection"
-    assert not app.get("file_uploader")
+    assert app.header[0].value == "Video inspection"
+    assert len(app.get("file_uploader")) == 1
+    assert any(slider.label == "Video display/deployment confidence threshold" for slider in app.slider)
 
 
 def test_dashboard_has_no_training_calls_or_displayed_day_numbers() -> None:
